@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ['./index.html', './*.{js,jsx}', './globals.css'],
+  content: ['./index.html', './*.{js,jsx}', './globals.css'],
   theme: {
     extend: {
       colors: {
         midnight: '#050508',
         dark: '#0a0a12',
         darker: '#07070e',
-        'neon-cyan': '#00f5d4',
+        'neon-cyan': '#00b4ff',
         'neon-pink': '#ff2d78',
         'neon-purple': '#9b5de5',
         'neon-blue': '#00b4d8',
@@ -36,8 +36,8 @@ export default {
           '50%': { textShadow: '0 0 20px #ff2d78, 0 0 40px #ff2d78, 0 0 80px #ff2d78' },
         },
         glowCyan: {
-          '0%, 100%': { textShadow: '0 0 10px #00f5d4, 0 0 20px #00f5d4, 0 0 40px #00f5d4' },
-          '50%': { textShadow: '0 0 20px #00f5d4, 0 0 40px #00f5d4, 0 0 80px #00f5d4' },
+          '0%, 100%': { textShadow: '0 0 10px #00b4ff, 0 0 20px #00b4ff, 0 0 40px #00b4ff' },
+          '50%': { textShadow: '0 0 20px #00b4ff, 0 0 40px #00b4ff, 0 0 80px #00b4ff' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -45,7 +45,7 @@ export default {
         },
       },
       backgroundImage: {
-        'grid-pattern': `linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px)`,
+        'grid-pattern': `linear-gradient(rgba(0,180,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,180,255,0.03) 1px, transparent 1px)`,
       },
       backgroundSize: {
         'grid': '40px 40px',
