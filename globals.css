@@ -41,6 +41,35 @@
 }
 
 @layer components {
+  /* === NEON TUBE TITLE: Monoton multi-tube fill font for hero headings === */
+  .neon-tube-title {
+    font-family: 'Monoton', cursive;
+    color: #ffb3d1;
+    text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 10px #ff2d78,
+      0 0 20px #ff2d78,
+      0 0 40px #ff2d78,
+      0 0 80px rgba(255,45,120,0.6),
+      0 0 120px rgba(255,45,120,0.3);
+    filter: brightness(1.1);
+    letter-spacing: 0.05em;
+  }
+
+  /* === NEON TUBE SUB: Orbitron single-tube outline style for subheadings === */
+  .neon-tube-sub {
+    font-family: 'Orbitron', monospace;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #b3e9ff;
+    text-shadow:
+      0 0 6px #00b4ff,
+      0 0 14px #00b4ff,
+      0 0 28px rgba(0,180,255,0.7);
+    filter: brightness(1.15);
+    letter-spacing: 0.08em;
+  }
+
   .neon-pink {
     color: #ff9ec8;
     text-shadow:
@@ -194,4 +223,4 @@
 .animate-glow {
   animation: glow-pulse 2s ease-in-out infinite;
   color: #b3e9ff;
-  }
+}
