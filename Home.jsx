@@ -57,7 +57,7 @@ export default function Home() {
           </p>
 
           {/* Headline */}
-          <h1 className="font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-4 neon-flicker">
+          <h1 className="font-neon-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 neon-flicker neon-tube-title">
             <span className="neon-pink">Dull Knives Are</span><br />
             <span className="neon-cyan">Slowing Your Kitchen Down.</span><br />
             <span className="neon-pink">We Fix That Overnight.</span>
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="font-mono text-neon-pink text-xs tracking-[0.2em] uppercase mb-3">The Problem</p>
-              <h2 className="section-title neon-pink mb-6">DULL IS<br />DANGEROUS.</h2>
+              <h2 className="section-title neon-tube-sub mb-6">DULL IS<br />DANGEROUS.</h2>
               <p className="font-body text-light/70 text-lg leading-relaxed mb-8">
                 Dull blades slip off food and onto fingers. They crush instead of cut — more waste, more frustration, more risk. A sharp knife is faster, safer, and makes everything you cook taste better.
               </p>
@@ -160,7 +160,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="font-mono text-neon-cyan text-xs tracking-[0.2em] uppercase mb-3">Two Ways In</p>
-            <h2 className="section-title text-light mb-4">WHO ARE YOU?</h2>
+            <h2 className="section-title neon-tube-sub mb-4">WHO ARE YOU?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Commercial */}
@@ -170,7 +170,7 @@ export default function Home() {
                 <div className="mb-6">
                   <Clock className="text-neon-pink mb-3" size={32} />
                   <p className="font-mono text-neon-pink text-xs tracking-[0.2em] uppercase mb-2">For Restaurants &amp; Hotels</p>
-                  <h3 className="font-heading font-bold text-2xl text-light mb-3">Sharp After Dark</h3>
+                  <h3 className="font-heading font-bold text-2xl neon-tube-sub mb-3">Sharp After Dark</h3>
                   <p className="font-body text-light/60 leading-relaxed">
                     We pick up at the end of service. Sharpen overnight at the hub to industrial-grade standard. Back before your first prep cook clocks in. Zero downtime. Ever.
                   </p>
@@ -188,7 +188,7 @@ export default function Home() {
                 <div className="mb-6">
                   <Star className="text-neon-cyan mb-3" size={32} />
                   <p className="font-mono text-neon-cyan text-xs tracking-[0.2em] uppercase mb-2">For Home Cooks</p>
-                  <h3 className="font-heading font-bold text-2xl text-light mb-3">Miami Knife Club</h3>
+                  <h3 className="font-heading font-bold text-2xl neon-tube-sub mb-3">Miami Knife Club</h3>
                   <p className="font-body text-light/60 leading-relaxed">
                     Membership sharpening on your schedule. Start free — one knife, no commitment, in exchange for your honest review. Let the edge sell itself.
                   </p>
@@ -208,7 +208,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="font-mono text-neon-pink text-xs tracking-[0.2em] uppercase mb-3">Common Myths</p>
-            <h2 className="section-title neon-cyan mb-4">THE 5 LIES<br />OF SHARPENING</h2>
+            <h2 className="section-title neon-tube-sub mb-4">THE 5 LIES<br />OF SHARPENING</h2>
             <p className="font-body text-light/50 max-w-xl mx-auto">
               Debunking the myths that are keeping your knives dull
             </p>
@@ -250,7 +250,7 @@ export default function Home() {
         <div className="glow-orb-cyan w-96 h-96 top-0 left-1/4 opacity-30" />
         <div className="glow-orb-pink w-96 h-96 bottom-0 right-1/4 opacity-30" />
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <h2 className="section-title neon-pink mb-4">LET THE EDGE<br />SELL ITSELF.</h2>
+          <h2 className="section-title neon-tube-sub mb-4">LET THE EDGE<br />SELL ITSELF.</h2>
           <p className="font-body text-light/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             One knife. Sharpened free. In exchange for your honest review. No strings, no pressure, no pitch. Just feel what a real edge feels like — and then decide.
           </p>
