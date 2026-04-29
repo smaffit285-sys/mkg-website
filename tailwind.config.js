@@ -16,6 +16,7 @@ export default {
       },
       fontFamily: {
         heading: ['Orbitron', 'monospace'],
+        'neon-title': ['Monoton', 'cursive'],
         body: ['Rajdhani', 'sans-serif'],
         mono: ['Share Tech Mono', 'monospace'],
       },
