@@ -50,12 +50,12 @@
     text-shadow:
       0 0 1px #fff,
       0 0 2px #fff,
-      0 0 5px #fff,
-      0 0 8px #ff2d78,
-      0 0 16px #ff2d78,
-      0 0 26px rgba(255,45,120,0.7),
-      0 0 48px rgba(255,45,120,0.3),
-      0 0 80px rgba(255,45,120,0.12);
+      0 0 4px #fff,
+      0 0 8px #fff,
+      0 0 10px #ff2d78,
+      0 0 18px rgba(255,45,120,0.8),
+      0 0 30px rgba(255,45,120,0.2),
+      0 0 55px rgba(255,45,120,0.08);
     filter: brightness(1.05);
     letter-spacing: 0.05em;
   }
@@ -68,12 +68,14 @@
     color: transparent;
     -webkit-text-stroke: 1px #e8f8ff;
     text-shadow:
-      0 0 1px #fff,
-      0 0 4px #00b4ff,
-      0 0 10px rgba(0,180,255,0.8),
-      0 0 20px rgba(0,180,255,0.4),
-      0 0 35px rgba(0,180,255,0.15);
-    filter: brightness(1.1);
+      0 0 2px #fff,
+      0 0 6px #fff,
+      0 0 10px #00b4ff,
+      0 0 20px #00b4ff,
+      0 0 40px rgba(0,180,255,0.7),
+      0 0 70px rgba(0,180,255,0.4),
+      0 0 110px rgba(0,180,255,0.2);
+    filter: brightness(1.15);
     letter-spacing: 0.08em;
   }
 
