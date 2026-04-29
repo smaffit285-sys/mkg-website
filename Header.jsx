@@ -32,9 +32,9 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="https://static.wixstatic.com/media/37d64c_c26d92e0c01a495caeb57ac548ba7b8f~mv2.jpg"
+              src="/MKG_LOGO-7fe6ca44cb71193b.jpg"
               alt="Miami Knife Guy"
-              className="w-10 h-10 rounded-full border border-neon-pink/50 group-hover:border-neon-cyan transition-colors"
+              className="w-11 h-11 object-contain object-center"
             />
             <span className="font-heading font-bold text-sm sm:text-base hidden xs:block"
               style={{ background: 'linear-gradient(90deg, #ff2d78, #00f5d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
