@@ -53,7 +53,7 @@ export default function Home() {
 
           {/* Eyebrow */}
           <p className="font-mono text-neon-cyan text-xs tracking-[0.3em] uppercase mb-4 animate-glow">
-            Miami's Master Sharpener · Est. 2026
+            Miami's Master Sharpener · Since 2009
           </p>
 
           {/* Headline */}
