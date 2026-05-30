@@ -2641,8 +2641,10 @@ This section is currently approved. Do not alter during hero/service-card refine
     </section>
 
     <!-- HOME FOOTER STRIP -->
-    <footer class="w-full px-12 lg:px-24 py-7 bg-[#050505] border-t border-gray-800/25">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer class="w-full px-12 lg:px-24 bg-[#050505] border-t border-gray-800/25">
+
+        <!-- Top footer row: brand lockup + tagline -->
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 py-7">
             <div class="flex items-center gap-3">
                 <div class="w-7 h-7 rounded-full border border-gray-700/40 bg-black overflow-hidden flex items-center justify-center">
                     <img src="MKG LOGO.jpg" alt="MKG" class="w-full h-full object-contain mix-blend-lighten opacity-80" loading="lazy">
@@ -2660,11 +2662,49 @@ This section is currently approved. Do not alter during hero/service-card refine
                     <span class="text-cyan-400" style="font-family:'Alex Brush',cursive;font-size:2em;padding-left:2px;line-height:0.7;">glide.</span>
                 </span>
             </p>
-            <div class="text-gray-600 text-[10px] font-light tracking-wider">
-                &copy; 2026 Miami Knife Guy &middot; 1350 NE 191st St, North Miami Beach, FL 33179 &middot; <a href="sms:+13059095773" class="hover:text-cyan-400 transition-colors">(305) 909-5773</a><br class="md:hidden"><span class="block md:inline text-gray-700 mt-0.5 md:mt-0 md:ml-2">By appointment &middot; Pickup &amp; delivery service only</span>
+            <div class="text-gray-600 text-[10px] font-light tracking-wider text-right">
+                &copy; 2026 Miami Knife Guy
             </div>
         </div>
-        <p class="max-w-7xl mx-auto mt-4 text-[9px] font-light tracking-wide text-gray-700 leading-relaxed text-center md:text-left">Miami Knife Guy provides premium knife sharpening, repair, and restoration for restaurants, hotels, chefs, hospitality teams, and serious home cooks across Miami&#8209;Dade, Broward, North Miami Beach, and South Florida.</p>
+
+        <!-- NAP / local SEO block: 3-column on desktop, stacked on mobile -->
+        <div class="max-w-7xl mx-auto border-t border-gray-800/40 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+                <!-- Col 1: Brand + description -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2">Miami Knife Guy</p>
+                    <p class="text-[11px] font-light text-gray-500 leading-relaxed">Premium knife sharpening, repair,<br>and restoration.</p>
+                    <p class="text-[10px] font-light text-gray-600 mt-2 tracking-wide">North Miami Beach &middot; South Florida</p>
+                </div>
+
+                <!-- Col 2: Address -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2" style="color:rgba(34,211,238,0.55);">Location</p>
+                    <address class="not-italic">
+                        <p class="text-[11px] font-light text-gray-400 leading-relaxed">1350 NE 191st Street<br>North Miami Beach, FL 33179</p>
+                        <p class="text-[10px] font-light text-gray-600 mt-2 leading-relaxed tracking-wide uppercase" style="letter-spacing:0.12em;">By appointment<br>Pickup &amp; delivery service only</p>
+                    </address>
+                </div>
+
+                <!-- Col 3: Contact + service area -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2" style="color:rgba(236,72,153,0.55);">Contact</p>
+                    <p class="text-[11px] font-light text-gray-400 leading-relaxed">
+                        <a href="sms:+13059095773?body=SHARP" class="hover:text-cyan-400 transition-colors duration-300">(305) 909-5773</a>
+                    </p>
+                    <p class="text-[10px] font-light text-gray-600 mt-1 tracking-wide">Text <span class="text-gray-500">SHARP</span> to book service</p>
+                    <p class="text-[10px] font-light text-gray-600 mt-2 tracking-wide">Serving Miami&#8209;Dade &amp; Broward</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom micro-bar -->
+        <div class="max-w-7xl mx-auto border-t border-gray-800/25 py-3">
+            <p class="text-[9px] font-light tracking-wide text-gray-700 leading-relaxed text-center md:text-left">Miami Knife Guy provides premium knife sharpening, repair, and restoration for restaurants, hotels, chefs, hospitality teams, and serious home cooks across Miami&#8209;Dade, Broward, North Miami Beach, and South Florida.</p>
+        </div>
+
     </footer>
 
 </div><!-- /panel-home -->
@@ -3494,4 +3534,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialPanel = document.getElementById('panel-' + panelId);
     if (initialPanel) {
         initialPanel.classList.add('active');
-        initialPanel.setAttribute('aria-hidden', 'f
+        initialPanel.setAttribute('aria-hidden', 'false');
+        setActiveNav(panelId);
+    }
+});
+</script>
+</body>
+</html>
