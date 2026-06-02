@@ -251,4 +251,7 @@
   .our-story-hero h1 { font-size:clamp(2.75rem,15vw,4.25rem); }
   .story-subhead { max-width:340px; font-size:1rem; }
   .story-quote-band { margin-top:2rem; padding:1.5rem; }
-  .story-quote-band p { font-
+  .story-quote-band p { font-size:clamp(1.25rem,6vw,1.75rem); }
+  .story-closing { text-align:left; }
+  .story-button { width:100%; }
+}
