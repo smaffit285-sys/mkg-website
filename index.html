@@ -1873,6 +1873,7 @@ Before editing this file:
   },
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "1350 NE 191st Street",
     "addressLocality": "North Miami Beach",
     "addressRegion": "FL",
     "postalCode": "33179",
@@ -1964,6 +1965,271 @@ Before editing this file:
   }
 }
     </script>
+
+    <style>
+/* =====================================================================
+   SHARP AFTER DARK — homepage card logo lockup treatment
+   Scoped to .sad-card-enhanced. Does not affect Miami Knife Club card.
+   v3: ratio-refined — larger eyebrow, logo owns upper 2/3,
+       copy swapped (panel copy inside card, panel caption in transformer).
+   ===================================================================== */
+
+/* ── Eyebrow ────────────────────────────────────────────────────────
+   Sits inside the SAD card wrapper, directly above the card border.
+   Larger and more legible than v2 — still premium and restrained.   */
+.sad-card-eyebrow-above {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(34, 211, 238, 0.90);
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.80),
+        0 0 6px rgba(0,0,0,0.55),
+        0 0 1px rgba(255,255,255,0.65),
+        0 0 6px rgba(200,248,255,0.42),
+        0 0 14px rgba(34,211,238,0.28),
+        0 0 28px rgba(34,211,238,0.12);
+    text-align: center;
+    padding-bottom: 0.65rem;
+    margin: 0;
+    width: 100%;
+}
+
+/* ── Card height: keep original ─────────────────────────────────── */
+
+/* ── Logo-stage: flex-col, logo in upper zone, text anchored below ─
+   justify-content: flex-start + top padding puts the logo in the
+   upper 2/3. The lockup text then sits in the lower 1/3 naturally.  */
+.sad-logo-stage-lockup {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding-top: 14px !important;
+    padding-bottom: 0 !important;
+}
+
+/* ── Logo: larger — allows it to own the card visually ─────────────
+   max-height 66%: logo takes ~2/3 of the card's height.
+   width 88%: fills the card width confidently.                      */
+.sad-card-enhanced .service-card-logo--afterdark {
+    max-height: 72% !important;
+    width: 90% !important;
+}
+
+/* ── Lockup text: pinned to bottom of logo-stage ───────────────── */
+.sad-card-lockup-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;   /* pushes text to bottom of the flex-col stage */
+    padding: 0 0.6rem 18px;
+    opacity: 1;
+    transition: opacity 0.75s ease;
+    pointer-events: none;
+    z-index: 32;
+    position: relative;
+    width: 100%;
+}
+
+/* ── Fade lockup on hover ──────────────────────────────────────── */
+.sad-card-enhanced:hover .sad-card-lockup-text {
+    opacity: 0;
+}
+
+/* ── Inside-card headline: mixed case, premium caption feel ───────
+   "After service, you rest. Before prep, they're sharp."
+   Sentence-case, light-medium weight — sign caption, not a shout.  */
+.sad-lockup-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    text-transform: none;         /* sentence case — not all-caps */
+    color: rgba(255, 238, 248, 0.88);
+    text-shadow: 0 0 10px rgba(236,72,153,0.09);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    white-space: normal;
+    max-width: 44ch;
+}
+
+/* ── Inside-card support: condensed, quieter second line ──────────
+   "Zero-downtime edge care for working kitchens."
+   Narrower font stack to keep one clean line at this card width.   */
+.sad-lockup-support {
+    font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.58);
+    line-height: 1.4;
+    white-space: normal;
+    max-width: 48ch;
+}
+
+/* =====================================================================
+   SHARP AFTER DARK PANEL — overnight process module
+   Compact three-step flow. Scoped to panel-sharp-after-dark.
+   ===================================================================== */
+
+#panel-sharp-after-dark .sad-panel-overnight {
+    margin: 1.6rem 0 2rem;
+    border-left: 1.5px solid rgba(236,72,153,0.22);
+    padding-left: 1.1rem;
+}
+
+#panel-sharp-after-dark .sad-panel-overnight-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.40em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.18);
+    margin-bottom: 0.9rem;
+}
+
+#panel-sharp-after-dark .sad-panel-step {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 0.72rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+#panel-sharp-after-dark .sad-panel-step:last-child {
+    border-bottom: none;
+}
+
+#panel-sharp-after-dark .sad-panel-step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: rgba(236,72,153,0.45);
+    flex-shrink: 0;
+    min-width: 1.5rem;
+    padding-top: 0.15rem;
+}
+
+#panel-sharp-after-dark .sad-panel-step-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 0.2rem;
+}
+
+#panel-sharp-after-dark .sad-panel-step-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.34);
+    line-height: 1.6;
+}
+
+/* =====================================================================
+   MIAMI KNIFE CLUB HOMEPAGE CARD — logo-lockup treatment
+   Mirrors SAD card pattern: eyebrow above, logo upper zone,
+   two-line support copy lower zone, hover fade.
+   Cyan MKC neon color scheme.
+   ===================================================================== */
+
+/* ── MKC eyebrow: above the card, cyan neon ───────────────────────── */
+.mkc-card-eyebrow-above {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 220, 240, 0.97);
+    text-align: center;
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.85),
+        0 0 7px rgba(0,0,0,0.60),
+        0 0 0px rgba(255,255,255,1.00),
+        0 0 2px rgba(255,200,230,0.90),
+        0 0 6px rgba(236,72,153,0.55),
+        0 0 14px rgba(200,40,120,0.22);
+    margin: 0 0 0.55rem;
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* ── MKC logo-stage: flex-col, logo in upper zone ─────────────────── */
+.mkc-logo-stage-lockup {
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding-top: 14px !important;
+    padding-bottom: 0 !important;
+}
+
+/* ── MKC logo: slightly larger to fill upper zone ─────────────────── */
+.mkc-card-enhanced .service-card-logo--knifeclub {
+    max-height: 72% !important;
+    width: 86% !important;
+}
+
+/* ── MKC lockup text: pinned to bottom of logo-stage ─────────────── */
+.mkc-card-lockup-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+    padding: 0 0.6rem 18px;
+    opacity: 1;
+    transition: opacity 0.75s ease;
+    pointer-events: none;
+    z-index: 32;
+    position: relative;
+    width: 100%;
+}
+
+/* ── Fade MKC lockup on hover ─────────────────────────────────────── */
+.mkc-card-enhanced:hover .mkc-card-lockup-text {
+    opacity: 0;
+}
+
+/* ── MKC headline: "Sharp tools. Better prep. More pleasure." ────────
+   Matches SAD headline scale and weight. Cyan-tinted white.          */
+.mkc-lockup-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    text-transform: none;
+    color: rgba(240, 252, 255, 0.86);
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.08);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    white-space: normal;
+    max-width: 44ch;
+}
+
+/* ── MKC support: "Recurring edge care, so the food stays the focus."
+   Condensed font stack — mirrors SAD support treatment.              */
+.mkc-lockup-support {
+    font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.4;
+    white-space: normal;
+    max-width: 48ch;
+}
+    </style>
 </head>
 
 <body class="min-h-screen bg-[#060609] text-white overflow-hidden">
@@ -2189,7 +2455,8 @@ Before editing this file:
     <div class="mkg-service-grid-floor" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 relative z-10">
         <!-- Sharp After Dark -->
-        <div onclick="navigateTo('sharp-after-dark')" class="group cursor-pointer relative flex flex-col mt-0">
+        <div onclick="navigateTo('sharp-after-dark')" class="group cursor-pointer relative flex flex-col mt-0 sad-card-enhanced">
+            <p class="sad-card-eyebrow-above">THE NIGHT SHIFT FOR YOUR KNIVES.</p>
             <div class="hardware-gateway after-dark-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
                 <div class="service-card-water-scrim" aria-hidden="true"></div>
                 <img
@@ -2199,13 +2466,17 @@ Before editing this file:
                     loading="lazy"
                 >
                 <div class="gateway-vignette"></div>
-                <div class="service-card-logo-stage">
+                <div class="service-card-logo-stage sad-logo-stage-lockup">
                     <img
                         src="SharpAfterDark_transparent.png"
                         alt="Sharp After Dark"
                         class="service-card-logo service-card-logo--afterdark"
                         loading="lazy"
                     >
+                    <div class="sad-card-lockup-text" aria-hidden="true">
+                        <p class="sad-lockup-headline">After service, you rest. Before prep, they're sharp.</p>
+                        <p class="sad-lockup-support">Zero-downtime edge care for working kitchens.</p>
+                    </div>
                 </div>
                 <div class="gateway-contact-cap gateway-contact-cap--after-dark" aria-hidden="true"></div>
                 <div class="gateway-contact-pin gateway-contact-pin--after-a" aria-hidden="true"></div>
@@ -2234,7 +2505,7 @@ Before editing this file:
                         <span class="grounding-node"></span>
                     </div>
                     <p class="spec-text text-gray-400 text-xs font-light leading-relaxed text-center m-0 uppercase tracking-widest relative z-20 transition-colors duration-700">
-                        After service, you rest. Before prep, they're sharp. Zero-downtime edge care for working kitchens.
+                        Pickup after service. Back before morning prep.
                     </p>
                     <div class="flex justify-between items-center mt-1.5">
                         <span class="grounding-node"></span>
@@ -2244,7 +2515,8 @@ Before editing this file:
             </div>
         </div>
         <!-- Miami Knife Club -->
-        <div onclick="navigateTo('miami-knife-club')" class="group cursor-pointer relative flex flex-col mt-0">
+        <div onclick="navigateTo('miami-knife-club')" class="group cursor-pointer relative flex flex-col mt-0 mkc-card-enhanced">
+            <p class="mkc-card-eyebrow-above">PRO-LEVEL SERVICE FOR YOUR HOME KITCHEN.</p>
             <div class="hardware-gateway club-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
                 <div class="service-card-water-scrim" aria-hidden="true"></div>
                 <img
@@ -2254,13 +2526,17 @@ Before editing this file:
                     loading="lazy"
                 >
                 <div class="gateway-vignette"></div>
-                <div class="service-card-logo-stage">
+                <div class="service-card-logo-stage mkc-logo-stage-lockup">
                     <img
                         src="MiamiKnifeClub_transparent.png"
                         alt="Miami Knife Club"
                         class="service-card-logo service-card-logo--knifeclub"
                         loading="lazy"
                     >
+                    <div class="mkc-card-lockup-text" aria-hidden="true">
+                        <p class="mkc-lockup-headline">Sharp tools. Better prep. More pleasure.</p>
+                        <p class="mkc-lockup-support">Recurring edge care, so the food stays the focus.</p>
+                    </div>
                 </div>
                 <div class="gateway-contact-cap gateway-contact-cap--club" aria-hidden="true"></div>
                 <div class="gateway-contact-pin gateway-contact-pin--club-a" aria-hidden="true"></div>
@@ -2289,7 +2565,7 @@ Before editing this file:
                         <span class="grounding-node"></span>
                     </div>
                     <p class="spec-text text-gray-400 text-xs font-light leading-relaxed text-center m-0 uppercase tracking-widest relative z-20 transition-colors duration-700">
-                        Recurring edge care for homes that cook seriously.
+                        A sharper kitchen, without thinking about sharpening.
                     </p>
                     <div class="flex justify-between items-center mt-1.5">
                         <span class="grounding-node"></span>
@@ -2365,8 +2641,10 @@ This section is currently approved. Do not alter during hero/service-card refine
     </section>
 
     <!-- HOME FOOTER STRIP -->
-    <footer class="w-full px-12 lg:px-24 py-7 bg-[#050505] border-t border-gray-800/25">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer class="w-full px-12 lg:px-24 bg-[#050505] border-t border-gray-800/25">
+
+        <!-- Top footer row: brand lockup + tagline -->
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 py-7">
             <div class="flex items-center gap-3">
                 <div class="w-7 h-7 rounded-full border border-gray-700/40 bg-black overflow-hidden flex items-center justify-center">
                     <img src="MKG LOGO.jpg" alt="MKG" class="w-full h-full object-contain mix-blend-lighten opacity-80" loading="lazy">
@@ -2384,11 +2662,49 @@ This section is currently approved. Do not alter during hero/service-card refine
                     <span class="text-cyan-400" style="font-family:'Alex Brush',cursive;font-size:2em;padding-left:2px;line-height:0.7;">glide.</span>
                 </span>
             </p>
-            <div class="text-gray-600 text-[10px] font-light tracking-wider">
-                &copy; 2026 Miami Knife Guy &middot; North Miami Beach, FL &middot; <a href="sms:+13059095773" class="hover:text-cyan-400 transition-colors">(305) 909-5773</a>
+            <div class="text-gray-600 text-[10px] font-light tracking-wider text-right">
+                &copy; 2026 Miami Knife Guy
             </div>
         </div>
-        <p class="max-w-7xl mx-auto mt-4 text-[9px] font-light tracking-wide text-gray-700 leading-relaxed text-center md:text-left">Miami Knife Guy provides premium knife sharpening, repair, and restoration for restaurants, hotels, chefs, hospitality teams, and serious home cooks across Miami&#8209;Dade, Broward, North Miami Beach, and South Florida.</p>
+
+        <!-- NAP / local SEO block: 3-column on desktop, stacked on mobile -->
+        <div class="max-w-7xl mx-auto border-t border-gray-800/40 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+                <!-- Col 1: Brand + description -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2">Miami Knife Guy</p>
+                    <p class="text-[11px] font-light text-gray-500 leading-relaxed">Premium knife sharpening, repair,<br>and restoration.</p>
+                    <p class="text-[10px] font-light text-gray-600 mt-2 tracking-wide">North Miami Beach &middot; South Florida</p>
+                </div>
+
+                <!-- Col 2: Address -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2" style="color:rgba(34,211,238,0.55);">Location</p>
+                    <address class="not-italic">
+                        <p class="text-[11px] font-light text-gray-400 leading-relaxed">1350 NE 191st Street<br>North Miami Beach, FL 33179</p>
+                        <p class="text-[10px] font-light text-gray-600 mt-2 leading-relaxed tracking-wide uppercase" style="letter-spacing:0.12em;">By appointment<br>Pickup &amp; delivery service only</p>
+                    </address>
+                </div>
+
+                <!-- Col 3: Contact + service area -->
+                <div>
+                    <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-gray-400 mb-2" style="color:rgba(236,72,153,0.55);">Contact</p>
+                    <p class="text-[11px] font-light text-gray-400 leading-relaxed">
+                        <a href="sms:+13059095773?body=SHARP" class="hover:text-cyan-400 transition-colors duration-300">(305) 909-5773</a>
+                    </p>
+                    <p class="text-[10px] font-light text-gray-600 mt-1 tracking-wide">Text <span class="text-gray-500">SHARP</span> to book service</p>
+                    <p class="text-[10px] font-light text-gray-600 mt-2 tracking-wide">Serving Miami&#8209;Dade &amp; Broward</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom micro-bar -->
+        <div class="max-w-7xl mx-auto border-t border-gray-800/25 py-3">
+            <p class="text-[9px] font-light tracking-wide text-gray-700 leading-relaxed text-center md:text-left">Miami Knife Guy provides premium knife sharpening, repair, and restoration for restaurants, hotels, chefs, hospitality teams, and serious home cooks across Miami&#8209;Dade, Broward, North Miami Beach, and South Florida.</p>
+        </div>
+
     </footer>
 
 </div><!-- /panel-home -->
@@ -2408,6 +2724,32 @@ This section is currently approved. Do not alter during hero/service-card refine
                 <p class="sub-body mb-10 text-sm" style="color:rgba(255,255,255,0.32);">No downtime. No waiting. No knives sitting dull while the line runs.</p>
 
                 <p class="sad-service-area-line">Built for restaurants, hotels, and commercial kitchens across Miami&#8209;Dade and Broward.</p>
+
+                <!-- Overnight process — three steps -->
+                <div class="sad-panel-overnight" aria-label="How the overnight program works">
+                    <p class="sad-panel-overnight-header">How the overnight program works</p>
+                    <div class="sad-panel-step">
+                        <span class="sad-panel-step-num">01</span>
+                        <div>
+                            <p class="sad-panel-step-label">After the Last Ticket</p>
+                            <p class="sad-panel-step-desc">We collect your knives after service, once the line is down.</p>
+                        </div>
+                    </div>
+                    <div class="sad-panel-step">
+                        <span class="sad-panel-step-num">02</span>
+                        <div>
+                            <p class="sad-panel-step-label">Overnight Edge Work</p>
+                            <p class="sad-panel-step-desc">Precision sharpening while the kitchen sleeps.</p>
+                        </div>
+                    </div>
+                    <div class="sad-panel-step">
+                        <span class="sad-panel-step-num">03</span>
+                        <div>
+                            <p class="sad-panel-step-label">Before Morning Prep</p>
+                            <p class="sad-panel-step-desc">Your knives return before the first prep shift begins.</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="mb-10">
                     <div class="feature-item">
@@ -2872,58 +3214,362 @@ This section is currently approved. Do not alter during hero/service-card refine
 
 
 <!-- ====================================================
+     PANEL: OUR STORY — CSS
+     ==================================================== -->
+<style>
+/* ── Our Story page ──────────────────────────────────────── */
+#panel-our-story {
+  background:
+    radial-gradient(circle at 74% 12%, rgba(181,113,42,0.16), transparent 32%),
+    radial-gradient(circle at 25% 18%, rgba(80,10,32,0.16), transparent 34%),
+    linear-gradient(180deg,#030304 0%,#070505 48%,#030303 100%);
+  color:#f4efe6;
+}
+
+.our-story-hero {
+  position:relative;
+  min-height:clamp(560px,72vh,820px);
+  display:flex;
+  align-items:center;
+  background-image:url("ourstory.png");
+  background-size:cover;
+  background-position:center right;
+  background-repeat:no-repeat;
+  isolation:isolate;
+}
+.our-story-hero__overlay {
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,0.94) 0%,rgba(0,0,0,0.78) 24%,rgba(0,0,0,0.38) 52%,rgba(0,0,0,0.16) 100%),
+    linear-gradient(180deg,rgba(0,0,0,0.42) 0%,rgba(0,0,0,0.08) 42%,rgba(0,0,0,0.74) 100%);
+}
+.our-story-hero__content {
+  position:relative;
+  z-index:1;
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding-top:clamp(70px,8vw,120px);
+}
+.story-eyebrow {
+  margin:0 0 18px;
+  color:#c08a4d;
+  font-size:0.72rem;
+  font-weight:800;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
+.our-story-hero h1 {
+  max-width:680px;
+  margin:0;
+  color:#f6efe6;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3.7rem,8vw,7.6rem);
+  font-weight:400;
+  line-height:0.92;
+  letter-spacing:-0.06em;
+}
+.our-story-hero h1 span { display:block; }
+.story-subhead {
+  max-width:520px;
+  margin:28px 0 0;
+  color:#d8a15c;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.18rem,2vw,1.65rem);
+  line-height:1.38;
+}
+
+/* inner container */
+.our-story-inner {
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding:0 0 clamp(76px,8vw,128px);
+}
+
+/* quote band */
+.story-quote-band {
+  position:relative;
+  margin-top:clamp(-86px,-7vw,-52px);
+  padding:clamp(24px,3.8vw,42px);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:clamp(18px,3vw,34px);
+  align-items:center;
+  border:1px solid rgba(192,138,77,0.42);
+  background:linear-gradient(135deg,rgba(255,255,255,0.045),rgba(255,255,255,0.012)),rgba(8,7,7,0.9);
+  box-shadow:0 28px 70px rgba(0,0,0,0.46);
+  backdrop-filter:blur(12px);
+}
+.story-quote-mark {
+  color:rgba(192,138,77,0.72);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3.2rem,6vw,6rem);
+  line-height:0.8;
+}
+.story-quote-band p {
+  margin:0;
+  color:#f6efe6;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.45rem,3vw,2.6rem);
+  font-style:italic;
+  line-height:1.18;
+}
+.story-quote-band p span { display:block; }
+.story-signature {
+  color:#c08a4d;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.35rem,3vw,2.35rem);
+  font-style:italic;
+  letter-spacing:0.04em;
+}
+
+/* stats */
+.story-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr 1.35fr;
+  margin-top:34px;
+  border-top:1px solid rgba(192,138,77,0.25);
+  border-bottom:1px solid rgba(192,138,77,0.25);
+}
+.story-stat {
+  padding:clamp(24px,3vw,38px);
+  border-right:1px solid rgba(192,138,77,0.22);
+}
+.story-stat:last-child { border-right:0; }
+.story-stat strong {
+  display:block;
+  color:#f6efe6;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  font-weight:400;
+  line-height:1;
+}
+.story-stat span {
+  display:block;
+  margin-top:11px;
+  color:#c08a4d;
+  font-size:0.72rem;
+  font-weight:800;
+  letter-spacing:0.16em;
+  line-height:1.45;
+  text-transform:uppercase;
+}
+
+/* three columns */
+.story-columns {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(28px,4vw,58px);
+  margin-top:clamp(52px,7vw,88px);
+}
+.story-column {
+  position:relative;
+  padding-right:clamp(16px,3vw,38px);
+}
+.story-column:not(:last-child)::after {
+  content:"";
+  position:absolute;
+  top:0; right:0;
+  width:1px; height:100%;
+  background:linear-gradient(180deg,rgba(192,138,77,0.55),rgba(192,138,77,0.08));
+}
+.story-column__kicker {
+  margin:0 0 18px;
+  color:#c08a4d;
+  font-size:0.72rem;
+  font-weight:800;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
+.story-column h2 {
+  margin:0 0 18px;
+  color:#f6efe6;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.65rem,3vw,2.45rem);
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-0.035em;
+}
+.story-column p:not(.story-column__kicker) {
+  margin:0;
+  color:rgba(244,239,230,0.68);
+  font-size:0.98rem;
+  line-height:1.78;
+}
+
+/* closing */
+.story-closing {
+  max-width:920px;
+  margin:clamp(58px,7vw,96px) auto 0;
+  text-align:center;
+}
+.story-closing p {
+  margin:0;
+  color:#f6efe6;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.75rem,4vw,3.35rem);
+  line-height:1.13;
+  letter-spacing:-0.04em;
+}
+.story-closing p span { display:block; color:#d8a15c; }
+.story-closing small {
+  display:block;
+  margin-top:24px;
+  color:rgba(244,239,230,0.62);
+  font-size:1rem;
+}
+.story-closing strong {
+  display:block;
+  margin-top:26px;
+  color:#f6efe6;
+  font-size:0.78rem;
+  letter-spacing:0.19em;
+  line-height:1.65;
+  text-transform:uppercase;
+}
+
+/* CTA row */
+.story-cta {
+  margin-top:44px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.story-button {
+  display:inline-flex;
+  min-width:188px;
+  min-height:52px;
+  align-items:center;
+  justify-content:center;
+  padding:0 24px;
+  border-radius:8px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.78rem;
+  font-weight:900;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:transform 180ms ease,border-color 180ms ease,box-shadow 180ms ease;
+}
+.story-button:hover { transform:translateY(-2px); }
+.story-button--primary {
+  color:#061014;
+  border:1px solid #42eaff;
+  background:#42eaff;
+  box-shadow:0 0 24px rgba(66,234,255,0.42);
+}
+.story-button--secondary {
+  color:#f4efe6;
+  border:1px solid rgba(192,138,77,0.55);
+  background:rgba(255,255,255,0.018);
+}
+
+/* responsive */
+@media(max-width:980px){
+  .our-story-hero { background-position:66% center; }
+  .story-quote-band { grid-template-columns:1fr; }
+  .story-signature { justify-self:start; }
+  .story-stats,
+  .story-columns { grid-template-columns:1fr; }
+  .story-stat { border-right:0; border-bottom:1px solid rgba(192,138,77,0.22); }
+  .story-stat:last-child { border-bottom:0; }
+  .story-column { padding-right:0; padding-bottom:28px; }
+  .story-column:not(:last-child)::after { top:auto; bottom:0; right:auto; left:0; width:100%; height:1px; }
+}
+@media(max-width:620px){
+  .our-story-hero { min-height:620px; background-position:70% center; }
+  .our-story-hero__content,
+  .our-story-inner { width:min(calc(100% - 32px),1180px); }
+  .our-story-hero h1 { font-size:clamp(3rem,15vw,4.7rem); }
+  .story-subhead { max-width:340px; }
+  .story-quote-band { margin-top:-48px; }
+  .story-closing { text-align:left; }
+  .story-button { width:100%; }
+}
+</style>
+
+<!-- ====================================================
      PANEL: OUR STORY
      ==================================================== -->
 <div id="panel-our-story" class="panel" aria-hidden="true">
-    <div class="panel-inner">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-            <div class="flex flex-col gap-5">
-                <div class="relative overflow-hidden rounded border border-white/5 bg-black">
-                    <img src="green-bling.png" class="w-full h-[320px] object-cover opacity-70 contrast-125 grayscale-[0.2]" alt="Freshly sharpened knife on whetstone — precision bevel reflection" loading="lazy" width="600" height="320">
-                    <div class="absolute bottom-0 left-0 w-full h-px bg-emerald-500/18"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="p-4 border border-white/5 rounded text-center">
-                        <div class="text-3xl font-bold text-white/88 mb-1">17+</div>
-                        <div class="text-[9px] uppercase tracking-widest text-white/28 font-semibold">Years of Precision</div>
-                    </div>
-                    <div class="p-4 border border-white/5 rounded text-center">
-                        <div class="text-3xl font-bold text-white/88 mb-1">200k+</div>
-                        <div class="text-[9px] uppercase tracking-widest text-white/28 font-semibold">Knives Sharpened</div>
-                    </div>
-                </div>
-                <div class="p-4 border border-white/5 rounded bg-black/20">
-                    <p class="text-[9px] uppercase tracking-widest text-white/22 font-bold mb-2">Fine Dining Kitchens Served</p>
-                    <p class="text-white/40 text-xs font-light leading-relaxed">The French Laundry &middot; Lolinda &middot; Zuni Caf&eacute; &middot; Four Seasons &middot; Ritz-Carlton &middot; Hotel Nikko &middot; Nikku Steak &middot; Bourbon Steak &middot; SF Bay Area &amp; South Florida</p>
-                </div>
-            </div>
+  <!-- ═══════════════════════════════════════════════
+       OUR STORY — NEW DESIGN
+       Image path: ourstory.png (root-relative, same as all other assets)
+  ════════════════════════════════════════════════ -->
 
-            <div>
-                <p class="sub-eyebrow">The Standard</p>
-                <h2 class="text-xl lg:text-2xl font-light tracking-[0.2em] text-white/90 uppercase italic mb-6" style="text-shadow:0 0 1px #fff, 0 0 4px rgba(34,211,238,0.2); background:repeating-linear-gradient(90deg,#fff,#fff 30px,transparent 30px,transparent 32px); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">The right edge. No unnecessary loss.</h2>
-
-                <p class="sub-body mb-4 text-sm">A knife does not fail all at once. It loses bite. It loses shape. The tip breaks. The edge rolls. The profile gets over-ground until the knife no longer feels like itself.</p>
-                <p class="sub-body mb-4 text-sm">MKG exists for the cooks, chefs, restaurants, and serious home kitchens that notice the difference. Every blade is inspected before it is sharpened &#8212; geometry, damage, steel, wear, and intended use all matter.</p>
-                <p class="sub-body mb-8 text-sm" style="color:rgba(255,255,255,0.55);">Backed by 17+ years of professional edge care across Japanese and Western knives, fine dining kitchens, restaurant fleets, and damaged tools that needed more than a quick pass &#8212; the goal is not to grind every knife into sharpness. It is to return the right edge, with the least unnecessary steel loss, so the tool feels right again.</p>
-
-                <p class="text-[9px] uppercase tracking-widest text-white/22 font-bold mb-4">The Method</p>
-                <div class="space-y-3 mb-8">
-                    <div class="process-step"><div class="step-num">01</div><div><div class="text-white/78 text-sm font-semibold mb-1">Inspect</div><div class="text-white/32 text-xs font-light leading-relaxed">Every knife evaluated for edge condition, damage, geometry, wear, and intended use.</div></div></div>
-                    <div class="process-step"><div class="step-num">02</div><div><div class="text-white/78 text-sm font-semibold mb-1">Correct</div><div class="text-white/32 text-xs font-light leading-relaxed">Chips, rolls, uneven bevels, and damaged tips addressed before final sharpening begins.</div></div></div>
-                    <div class="process-step"><div class="step-num">03</div><div><div class="text-white/78 text-sm font-semibold mb-1">Sharpen</div><div class="text-white/32 text-xs font-light leading-relaxed">The edge built for this knife — not forced into a one-size-fits-all finish.</div></div></div>
-                    <div class="process-step"><div class="step-num">04</div><div><div class="text-white/78 text-sm font-semibold mb-1">Finish</div><div class="text-white/32 text-xs font-light leading-relaxed">Final refinement, cleanup, and quality check. Returned ready for the kitchen.</div></div></div>
-                </div>
-
-                <div class="flex flex-wrap gap-4">
-                    <a href="sms:+13059095773?body=SHARP" class="panel-cta-btn panel-cta-cyan">Text Sharp</a>
-                    <a href="https://mkggrowthengine.vercel.app/register" class="panel-cta-btn panel-cta-ghost">Schedule Service &rarr;</a>
-                </div>
-            </div>
-
-        </div>
+  <!-- 1. HERO -->
+  <div class="our-story-hero">
+    <div class="our-story-hero__overlay"></div>
+    <div class="our-story-hero__content">
+      <p class="story-eyebrow">Our Story</p>
+      <h1>The Details <span>Before the Dinner</span></h1>
+      <p class="story-subhead">Because every great experience begins long before the plate reaches the table.</p>
     </div>
+  </div>
+
+  <!-- 2–6. BODY -->
+  <div class="our-story-inner">
+
+    <!-- Quote band -->
+    <section class="story-quote-band" aria-label="MKG story statement">
+      <div class="story-quote-mark">&ldquo;</div>
+      <p>A well-kept knife changes more than the cut.<span>It changes the room.</span></p>
+      <div class="story-signature">MKG</div>
+    </section>
+
+    <!-- Stats -->
+    <section class="story-stats" aria-label="MKG experience and trust indicators">
+      <div class="story-stat">
+        <strong>17+</strong>
+        <span>Years of Precision</span>
+      </div>
+      <div class="story-stat">
+        <strong>200k+</strong>
+        <span>Knives Sharpened</span>
+      </div>
+      <div class="story-stat story-stat--wide">
+        <strong>Trusted</strong>
+        <span>By Top Chefs, Sommeliers &amp; Steakhouses</span>
+      </div>
+    </section>
+
+    <!-- Three columns -->
+    <section class="story-columns" aria-label="MKG story, standard, and method">
+      <article class="story-column">
+        <p class="story-column__kicker">01 &middot; Our Story</p>
+        <h2>A Standard Set Before Service</h2>
+        <p>MKG exists for the cooks, chefs, restaurants, hospitality teams, and serious home kitchens that understand the details are not separate from the experience. They are the experience taking shape.</p>
+      </article>
+      <article class="story-column">
+        <p class="story-column__kicker">02 &middot; Our Standard</p>
+        <h2>Care, Restraint, and the Right Edge</h2>
+        <p>Every knife is inspected before it is sharpened: steel, profile, bevel, damage, wear, and intended use all matter. The goal is not simply to make a knife sharp. The goal is to restore confidence, preserve the life of the blade, and help the tool feel right again.</p>
+      </article>
+      <article class="story-column">
+        <p class="story-column__kicker">03 &middot; Our Method</p>
+        <h2>Inspect. Correct. Sharpen. Finish.</h2>
+        <p>Poorly maintained tools slow the work, dull the mood, and make "good enough" easier to accept. When the tools are right, the standard rises. Prep becomes cleaner. Movement becomes smoother. The kitchen works with more confidence.</p>
+      </article>
+    </section>
+
+    <!-- Closing -->
+    <section class="story-closing" aria-label="MKG philosophy">
+      <p>Do kitchens that care keep their tools sharp?<span>Or do sharp tools help keep the kitchen caring?</span></p>
+      <small>Maybe it does not matter.</small>
+      <strong>Either way, the standard is set before the plate reaches the table.</strong>
+    </section>
+
+    <!-- CTA -->
+    <div class="story-cta">
+      <a class="story-button story-button--primary" href="sms:+13059095773?body=SHARP">Text Sharp</a>
+      <a class="story-button story-button--secondary" href="https://mkggrowthengine.vercel.app/register">Schedule Service</a>
+    </div>
+
+  </div><!-- /our-story-inner -->
+
 </div><!-- /panel-our-story -->
 
 
