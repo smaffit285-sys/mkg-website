@@ -24,7 +24,7 @@
         .sub-eyebrow { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.42em; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:10px; }
         .sub-headline-cyan { color:transparent; -webkit-text-fill-color:transparent; -webkit-text-stroke:1.4px rgba(34,211,238,0.72); text-shadow:0 0 20px rgba(34,211,238,0.15); font-family:'Dosis','Montserrat',sans-serif; font-weight:300; text-transform:uppercase; letter-spacing:0.05em; line-height:1.15; }
         .sub-headline-pink { color:transparent; -webkit-text-fill-color:transparent; -webkit-text-stroke:1.4px rgba(236,72,153,0.72); text-shadow:0 0 20px rgba(236,72,153,0.15); font-family:'Dosis','Montserrat',sans-serif; font-weight:300; text-transform:uppercase; letter-spacing:0.05em; line-height:1.15; }
-        .sub-body { color:rgba(209,213,219,0.70); font-family:'Montserrat',sans-serif; font-weight:300; line-height:1.75; font-size:0.94rem; }
+        .sub-body { color:rgba(209,213,219,0.70); font-family:'Montserrat',sans-serif; font-weight:300; line-height:1.78; font-size:1rem; }
 
         .feature-item { display:flex; align-items:flex-start; gap:14px; padding:15px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
         .feature-dot-cyan { width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; background:rgba(34,211,238,0.7); box-shadow:0 0 8px rgba(34,211,238,0.4); }
@@ -100,7 +100,7 @@
         .sad-steak-question {
             margin: 0 0 0.85rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.92rem;
+            font-size: 0.98rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -133,7 +133,7 @@
         .review-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:26px; display:flex; flex-direction:column; gap:0; transition:border-color 0.3s ease; }
         .review-card:hover { border-color:rgba(34,211,238,0.18); }
         .star-row { color:#22d3ee; font-size:12px; letter-spacing:2px; margin-bottom:12px; }
-        .review-quote { color:rgba(209,213,219,0.78); font-family:'Montserrat',sans-serif; font-weight:300; font-size:0.87rem; line-height:1.7; font-style:italic; margin-bottom:16px; flex:1; }
+        .review-quote { color:rgba(209,213,219,0.78); font-family:'Montserrat',sans-serif; font-weight:300; font-size:0.94rem; line-height:1.72; font-style:italic; margin-bottom:16px; flex:1; }
         .review-source { font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.28); }
 
         /* Process steps */
@@ -146,7 +146,7 @@
         .service-tile:hover { border-color:rgba(34,211,238,0.22); transform:translateY(-2px); }
         .service-tile-icon { font-size:20px; margin-bottom:10px; }
         .service-tile-title { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:7px; }
-        .service-tile-body  { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:300; color:rgba(255,255,255,0.4); line-height:1.65; }
+        .service-tile-body  { font-family:'Montserrat',sans-serif; font-size:12px; font-weight:300; color:rgba(255,255,255,0.46); line-height:1.68; }
         .price-tag { display:inline-block; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:rgba(34,211,238,0.78); letter-spacing:0.08em; margin-top:9px; }
 
 /* =============================================

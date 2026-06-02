@@ -44,7 +44,7 @@
 .mkg-hero-copy {
     position: absolute;
     left: clamp(4.5rem, 7vw, 7.75rem);
-    top: clamp(1.6rem, 4.6vh, 3.35rem);
+    top: clamp(1.25rem, 3.9vh, 2.9rem);
     width: min(52vw, 940px);
     max-width: 940px;
     display: block;
@@ -126,7 +126,7 @@
 
     .mkg-hero-copy {
         left: clamp(5rem, 7vw, 8.25rem);
-        top: clamp(1.65rem, 4.4vh, 3.45rem);
+        top: clamp(1.35rem, 3.8vh, 3.05rem);
         width: min(51vw, 960px);
         max-width: 960px;
     }
@@ -161,7 +161,7 @@
 
     .mkg-hero-copy {
         left: clamp(2rem, 6vw, 4rem);
-        top: clamp(1.8rem, 4.7vh, 3.75rem);
+        top: clamp(1.45rem, 4vh, 3.25rem);
         width: min(78vw, 720px);
         max-width: 720px;
     }
@@ -190,7 +190,7 @@
     .mkg-hero-copy {
         left: 1.15rem;
         right: 1.15rem;
-        top: 2.25rem;
+        top: 1.85rem;
         width: auto;
         max-width: none;
     }

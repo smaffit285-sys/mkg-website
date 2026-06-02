@@ -6,8 +6,8 @@
 
         .mkg-proof-feature {
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-            gap: clamp(1.25rem, 3vw, 2.5rem);
+            grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+            gap: clamp(1.25rem, 2.6vw, 2.2rem);
             align-items: center;
             padding: clamp(1rem, 2vw, 1.35rem);
             border: 1px solid rgba(255,255,255,0.07);
@@ -33,7 +33,7 @@
             display: block;
             width: 100%;
             height: auto;
-            max-height: 520px;
+            max-height: 440px;
             object-fit: cover;
             opacity: 0.92;
             filter:
@@ -54,7 +54,7 @@
         }
 
         .mkg-proof-feature-copy {
-            max-width: 26rem;
+            max-width: 30rem;
         }
 
         .mkg-proof-title {
