@@ -1,0 +1,130 @@
+/* =============================================
+           HEADER POLISH
+           ============================================= */
+        .mkg-header {
+            border-bottom-color: rgba(34,211,238,0.14) !important;
+            box-shadow:
+                0 1px 0 rgba(34,211,238,0.08),
+                0 8px 32px rgba(0,0,0,0.62);
+        }
+        .mkg-header.is-scrolled {
+            border-bottom-color: rgba(34,211,238,0.18) !important;
+            box-shadow:
+                0 1px 0 rgba(34,211,238,0.11),
+                0 4px 20px rgba(0,0,0,0.72);
+            background-color: rgba(2,2,2,0.99) !important;
+        }
+        .mkg-header-inner {
+            width: 100%;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .mkg-header-inner {
+                width: min(100%, 1680px);
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: clamp(2rem, 4vw, 5rem);
+                padding-right: clamp(2rem, 4vw, 5rem);
+            }
+        }
+
+/* =============================================
+           MOBILE NAV
+           ============================================= */
+        .mkg-mobile-menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid rgba(34,211,238,0.18);
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0;
+            transition: border-color 260ms ease, box-shadow 260ms ease;
+        }
+        .mkg-mobile-menu-button:hover {
+            border-color: rgba(34,211,238,0.45);
+            box-shadow: 0 0 8px rgba(34,211,238,0.12);
+        }
+        .mkg-mobile-menu-button svg {
+            width: 18px;
+            height: 18px;
+            stroke: rgba(209,213,219,0.72);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            transition: stroke 260ms ease;
+        }
+        .mkg-mobile-menu-button:hover svg {
+            stroke: rgba(34,211,238,0.90);
+        }
+        .mkg-mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 49;
+            background: rgba(5,5,8,0.97);
+            border-bottom: 1px solid rgba(34,211,238,0.10);
+            padding: 20px 0 24px;
+            display: none;
+            flex-direction: column;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .mkg-mobile-menu.is-open {
+            display: flex;
+        }
+        .mkg-mobile-menu-link {
+            display: block;
+            padding: 13px 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: rgba(209,213,219,0.65);
+            text-decoration: none;
+            border-left: 2px solid transparent;
+            transition: color 220ms ease, border-color 220ms ease, text-shadow 220ms ease;
+        }
+        .mkg-mobile-menu-link:hover,
+        .mkg-mobile-menu-link:focus {
+            color: #f0feff;
+            border-left-color: rgba(34,211,238,0.55);
+            text-shadow: 0 0 6px rgba(34,211,238,0.30);
+            outline: none;
+        }
+
+/* =============================================
+           MOBILE HEADER CTA ROW
+           ============================================= */
+        .mkg-mobile-cta-row {
+            display: none;
+        }
+        .mkg-mobile-cta-row a {
+            display: block;
+            text-align: center;
+            width: min(100%, 18rem);
+            margin: 0 auto;
+        }
+
+/* =============================================
+           SPA PANEL SYSTEM
+           ============================================= */
+        .panel {
+            position:fixed; top:80px; left:0; right:0; bottom:0;
+            overflow-y:auto; overflow-x:hidden;
+            opacity:0; visibility:hidden; transform:translateY(6px);
+            transition:opacity 0.45s cubic-bezier(0.4,0,0.2,1), transform 0.45s cubic-bezier(0.4,0,0.2,1), visibility 0.45s;
+            will-change:opacity, transform;
+        }
+        .panel.active { opacity:1; visibility:visible; transform:translateY(0); }
+        .panel.panel-exiting { opacity:0; transform:translateY(-6px); transition:opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+        @media (max-width: 639px) {
+            .mkg-mobile-cta-row { display: block; padding: 0 1.5rem 10px; }
+            .panel { top: 128px; }
+            .mkg-mobile-menu { top: 128px; }
+        }

@@ -1,0 +1,55 @@
+# Local configuration
+.env
+.env.*
+.vercel/
+.claude/
+
+# Operating system and OneDrive/system junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+*.tmp
+~$*
+*.partial
+*.crdownload
+
+# Screenshots, mockups, exports, and drafts
+screenshots*/
+screenshots and mockups*/
+*screenshot*
+*screencapture*
+*mockup*
+*draft*
+*_draft*
+*-draft.html
+*draft.html
+*_backup*
+*backup*
+*backup*.html
+*.bak
+*.old
+*.orig
+*_temp*
+_temp*
+indexcurrent (*).html
+indexcurrent-LAPTOP*.html
+_versions/
+Instagram_files/
+chis2_files/
+borders/
+neon fonts/
+
+# Large or unrelated local artifacts
+*.zip
+*.pdf
+*.exe
+*.winmd
+*.HEIC
+*.heic
+
+# Keep dependency/build outputs out if a future refactor adds tooling
+node_modules/
+dist/
+.astro/
+.cache/

@@ -1,0 +1,11 @@
+:root {
+  --mkg-black: #050505;
+  --mkg-bg: #060609;
+  --mkg-cyan: #22d3ee;
+  --mkg-pink: #ec4899;
+  --mkg-white: #ffffff;
+  --mkg-font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --mkg-font-neon: 'Dosis', 'Montserrat', system-ui, -apple-system, sans-serif;
+  --mkg-font-script: 'Alex Brush', cursive;
+  --mkg-font-serif: 'Playfair Display', serif;
+}

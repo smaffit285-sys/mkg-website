@@ -1,0 +1,809 @@
+/* Service-card section should tease the paths without crowding the hero. */
+.mkg-service-gateway-section {
+    position: relative;
+    isolation: isolate;
+    margin-top: -12rem;
+    padding-top: 0;
+    padding-bottom: 2rem;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.00) 0%,
+            rgba(1,2,8,0.03) 8%,
+            rgba(1,2,8,0.10) 20%,
+            rgba(1,2,8,0.26) 38%,
+            rgba(1,2,8,0.50) 58%,
+            rgba(0,0,0,0.76) 78%,
+            rgba(0,0,0,0.94) 92%,
+            rgba(0,0,0,1.00) 100%
+        );
+}
+@media (max-width: 900px) {
+    .mkg-service-gateway-section {
+        margin-top: -3rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-bottom: 1.5rem;
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.00) 0%,
+                rgba(1,2,8,0.10) 22%,
+                rgba(1,2,8,0.38) 52%,
+                rgba(0,0,0,0.78) 80%,
+                rgba(0,0,0,1.00) 100%
+            );
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .mkg-service-gateway-section {
+        margin-top: -9rem;
+    }
+}
+
+/* =============================================
+   MKG SERVICE CARD LOCK
+
+   This section follows index_PRE_EXPANSION_original.html as the canonical
+   physical-sign reference.
+
+   Preserve:
+   - hardware-gateway as the sign frame owner
+   - continuous physical frame unless explicitly redesigned
+   - contact hardware sitting over the frame
+   - dark HV wires as physical conduits
+   - transformer chassis below the sign
+   - floor grid as environmental stage architecture
+
+   Do not add:
+   - segmented tube spans
+   - fake rectangular bloom panels
+   - generic glass-card effects
+   - new service-card architecture without explicit approval
+
+   Fix the source rule that owns the behavior.
+   ============================================= */
+
+/* =============================================
+   SERVICE CARD HARDWARE — ORIGINAL PHYSICAL SIGN SYSTEM
+   Restored from the pre-expansion mockup.
+   No segmented tube spans. No fake template glow panel.
+   ============================================= */
+
+/* Service floor grid belongs behind the service cards */
+.mkg-service-grid-floor {
+    position: absolute;
+    left: -16vw;
+    right: -16vw;
+    top: -34px;
+    height: 640px;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    background-image:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(86,220,255,0.055) 0%,
+            rgba(86,220,255,0.020) 28%,
+            transparent 58%
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            rgba(120,220,255,0.030) 0px,
+            rgba(120,220,255,0.018) 1px,
+            transparent 7px,
+            transparent 22px
+        ),
+        linear-gradient(to right, rgba(34,211,238,0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34,211,238,0.14) 1px, transparent 1px);
+
+    background-size:
+        100% 280px,
+        100% 42px,
+        72px 72px,
+        72px 72px;
+
+    transform-origin: top center;
+    transform: perspective(920px) rotateX(63deg) scaleX(0.86) scaleY(1.18);
+    opacity: 0.22;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0,0,0,0.08) 10%,
+        rgba(0,0,0,0.22) 24%,
+        rgba(0,0,0,0.50) 44%,
+        rgba(0,0,0,0.76) 66%,
+        rgba(0,0,0,0.92) 84%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0,0,0,0.08) 10%,
+        rgba(0,0,0,0.22) 24%,
+        rgba(0,0,0,0.50) 44%,
+        rgba(0,0,0,0.76) 66%,
+        rgba(0,0,0,0.92) 84%,
+        transparent 100%
+    );
+}
+@media (max-width: 900px) {
+    .mkg-service-grid-floor {
+        top: 0;
+        height: 620px;
+        opacity: 0.16;
+        background-size:
+            100% 260px,
+            100% 40px,
+            56px 56px,
+            56px 56px;
+        transform: perspective(860px) rotateX(62deg) scaleX(0.92) scaleY(1.12);
+    }
+}
+
+/* Base physical framing */
+.hardware-gateway {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: visible;
+    transition:
+        border-color 0.7s ease-in-out,
+        box-shadow 0.7s ease-in-out,
+        background-color 0.7s ease-in-out,
+        backdrop-filter 0.7s ease-in-out;
+    border: 2.5px solid rgba(226,238,242,0.32);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(3,5,12,0.10) 0%,
+            rgba(2,3,8,0.20) 58%,
+            rgba(0,0,0,0.34) 100%
+        );
+    backdrop-filter: blur(3px) saturate(1.04);
+    -webkit-backdrop-filter: blur(3px) saturate(1.04);
+    box-shadow:
+        0 0 1px rgba(255,255,255,0.22),
+        0 0 7px rgba(210,235,240,0.11),
+        0 0 14px rgba(210,235,240,0.045),
+        inset 0 0 0 1px rgba(255,255,255,0.026);
+    z-index: 20;
+}
+
+.hardware-gateway.club-grid,
+.hardware-gateway.after-dark-grid {
+    border-color: rgba(226, 238, 242, 0.32);
+}
+
+/* Named source-owner: card darkening layer. Replaces generic Tailwind overlay. */
+.service-card-water-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: 0.5rem;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(1,2,8,0.06) 0%,
+            rgba(1,2,8,0.16) 46%,
+            rgba(0,0,0,0.34) 100%
+        );
+    backdrop-filter: blur(2px) saturate(1.03);
+    -webkit-backdrop-filter: blur(2px) saturate(1.03);
+    transition:
+        background 0.7s ease-in-out,
+        backdrop-filter 0.7s ease-in-out;
+}
+.group:hover .service-card-water-scrim {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(1,2,8,0.12) 0%,
+            rgba(1,2,8,0.24) 46%,
+            rgba(0,0,0,0.42) 100%
+        );
+    backdrop-filter: blur(4px) saturate(1.08);
+    -webkit-backdrop-filter: blur(4px) saturate(1.08);
+}
+
+.hardware-gateway.club-grid {
+    box-shadow:
+        0 0 1px rgba(255,255,255,0.16),
+        0 0 8px rgba(34,211,238,0.13),
+        0 0 18px rgba(34,211,238,0.055),
+        inset 0 0 0 1px rgba(255,255,255,0.024);
+}
+
+.hardware-gateway.after-dark-grid {
+    box-shadow:
+        0 0 1px rgba(255,255,255,0.16),
+        0 0 8px rgba(168,85,247,0.13),
+        0 0 18px rgba(236,72,153,0.045),
+        inset 0 0 0 1px rgba(255,255,255,0.024);
+}
+
+/* Deep radial vignette layer */
+.gateway-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+}
+
+/* High voltage drooping wires — physical conduits, not neon tubes */
+.hv-wire {
+    stroke: rgba(42, 44, 58, 0.88);
+    stroke-width: 1.75px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    filter: none;
+    transition: stroke 0.7s ease;
+}
+
+.hv-wire-bg {
+    stroke: rgba(5, 6, 10, 0.82);
+    stroke-width: 3.1px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    filter: none;
+}
+
+/* Transformer stack sits below the sign frame. Named owner replaces fragile sibling positioning. */
+.service-transformer-stack {
+    position: relative;
+    z-index: 35;
+    width: 100%;
+    margin-top: 0.78rem;
+    transform: none;
+}
+
+.service-transformer-stack > svg,
+.service-transformer-wires {
+    position: absolute;
+    top: -34px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 84px;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.service-transformer-wires--after-dark,
+.service-transformer-wires--club {
+    left: 0;
+    right: 0;
+}
+
+/* Matte-black industrial specification chassis */
+.transformer-chassis {
+    position: relative;
+    z-index: 35;
+    width: 100%;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.35rem;
+    background:
+        linear-gradient(to bottom, rgba(22,22,31,0.42), rgba(9,9,15,0.54));
+    border: 1px solid rgba(92,100,116,0.36);
+    border-radius: 0.25rem;
+    padding: 0.9rem 0.95rem;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    box-shadow:
+        0 8px 22px rgba(0,0,0,0.26),
+        inset 0 1px 0 rgba(255,255,255,0.045);
+    transition:
+        background 0.7s ease-in-out,
+        box-shadow 0.7s ease-in-out,
+        transform 0.7s ease-in-out,
+        backdrop-filter 0.7s ease-in-out;
+}
+.transformer-chassis .spec-text {
+    color: rgba(226,232,240,0.64);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.72);
+}
+
+/* Transformer top-entry terminal ports — wire landing hardware */
+.transformer-terminal-row {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 86px;
+    height: 14px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 50;
+}
+.transformer-terminal {
+    position: absolute;
+    top: 0;
+    width: 14px;
+    height: 9px;
+    border-radius: 3px 3px 1px 1px;
+    background:
+        linear-gradient(to bottom, rgba(58,61,76,0.86), rgba(16,17,24,0.96));
+    border: 1px solid rgba(130,138,158,0.32);
+    box-shadow:
+        0 1px 5px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.transformer-terminal--a {
+    left: 26px;
+}
+.transformer-terminal--b {
+    right: 26px;
+}
+
+@media (max-width: 640px) {
+    .service-transformer-stack {
+        margin-top: 0.75rem;
+    }
+
+    .service-transformer-stack > svg,
+    .service-transformer-wires {
+        top: -24px;
+        height: 58px;
+    }
+    .transformer-chassis {
+        max-width: 92%;
+        margin-top: 1.2rem;
+        padding: 0.85rem 0.8rem;
+    }
+    .transformer-chassis .spec-text {
+        font-size: 0.62rem;
+        line-height: 1.55;
+        letter-spacing: 0.16em;
+    }
+}
+
+/* Structural hardware grounding anchor nodes */
+.grounding-node {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #4a4a5a;
+    border: 1px solid #111;
+    display: inline-block;
+}
+
+/* Miami Knife Club ignition */
+.group:hover .hardware-gateway.club-grid {
+    border-color: rgba(172,248,255,0.92);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5,5,8,0.20),
+            rgba(2,3,8,0.38)
+        );
+    backdrop-filter: blur(4px) saturate(1.08);
+    -webkit-backdrop-filter: blur(4px) saturate(1.08);
+    box-shadow:
+        0 0 2px rgba(255,255,255,0.48),
+        0 0 8px rgba(34,211,238,0.50),
+        0 0 18px rgba(34,211,238,0.28),
+        0 0 30px rgba(236,72,153,0.10),
+        inset 0 0 1px rgba(255,255,255,0.18),
+        inset 0 0 12px rgba(34,211,238,0.10);
+}
+
+.group:hover .club-grid .gateway-vignette {
+    opacity: 1;
+    background:
+        radial-gradient(circle at 35% 28%, rgba(255, 45, 135, 0.08) 0%, transparent 34%),
+        radial-gradient(circle at 72% 72%, rgba(0, 185, 255, 0.10) 0%, transparent 42%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.12));
+}
+
+/* Sharp After Dark ignition */
+.group:hover .hardware-gateway.after-dark-grid {
+    border-color: rgba(232,210,255,0.92);
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5,5,8,0.20),
+            rgba(2,3,8,0.38)
+        );
+    backdrop-filter: blur(4px) saturate(1.08);
+    -webkit-backdrop-filter: blur(4px) saturate(1.08);
+    box-shadow:
+        0 0 2px rgba(255,255,255,0.46),
+        0 0 8px rgba(168,85,247,0.50),
+        0 0 18px rgba(168,85,247,0.28),
+        0 0 30px rgba(236,72,153,0.10),
+        inset 0 0 1px rgba(255,255,255,0.17),
+        inset 0 0 12px rgba(168,85,247,0.10);
+}
+
+.group:hover .after-dark-grid .gateway-vignette {
+    opacity: 1;
+    background:
+        radial-gradient(circle at center, rgba(255, 94, 180, 0.12) 0%, rgba(0, 0, 0, 0.08) 52%, rgba(5, 5, 8, 0.18) 100%);
+}
+
+/* Shared hardware engagement physics */
+.group:hover .transformer-chassis {
+    background:
+        linear-gradient(to bottom, rgba(28,28,38,0.42), rgba(12,12,19,0.54));
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.34),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+}
+
+.group:hover .transformer-chassis p {
+    color: #d1d5db;
+}
+
+/* Shared service-card logo system */
+.service-card-logo-stage {
+    position: relative;
+    z-index: 30;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    overflow: hidden;
+}
+
+.service-card-logo {
+    display: block;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.46;
+    transform: translateY(0) scale(1);
+    transition:
+        opacity 900ms ease,
+        filter 900ms ease,
+        transform 900ms ease;
+    filter:
+        saturate(0.82)
+        brightness(0.76)
+        contrast(1.12)
+        drop-shadow(0 0 3px rgba(95,210,255,0.16))
+        drop-shadow(0 0 7px rgba(255,90,180,0.09));
+}
+
+.service-card-logo--knifeclub {
+    width: 76%;
+    max-height: 78%;
+    opacity: 0.46;
+    filter:
+        saturate(0.90)
+        brightness(0.72)
+        contrast(1.16)
+        drop-shadow(0 0 4px rgba(34,211,238,0.16))
+        drop-shadow(0 0 7px rgba(236,72,153,0.10));
+}
+
+.service-card-logo--afterdark {
+    width: 86%;
+    max-height: 86%;
+    mix-blend-mode: lighten;
+    opacity: 0.54;
+    transform: translateY(0) scale(1);
+    filter:
+        brightness(0.88)
+        contrast(1.22)
+        saturate(1.05)
+        drop-shadow(0 0 5px rgba(77,231,255,0.20))
+        drop-shadow(0 0 8px rgba(168,85,247,0.18))
+        drop-shadow(0 0 9px rgba(255,160,40,0.12));
+    transition:
+        opacity 900ms ease,
+        transform 900ms ease,
+        filter 900ms ease;
+}
+
+@media (max-width: 640px) {
+    .service-card-logo-stage {
+        padding: 16px 18px;
+    }
+    .service-card-logo--afterdark {
+        width: 88%;
+        max-height: 82%;
+    }
+    .service-card-logo--knifeclub {
+        width: 82%;
+        max-height: 76%;
+    }
+}
+
+.group:hover .service-card-logo--knifeclub {
+    opacity: 1;
+    transform: translateY(-46px) scale(0.78);
+    filter:
+        saturate(1.55)
+        contrast(1.42)
+        brightness(1.08)
+        drop-shadow(0 0 2px rgba(34, 211, 238, 0.55))
+        drop-shadow(0 0 3px rgba(236, 72, 153, 0.50))
+        drop-shadow(0 0 3px rgba(124, 58, 237, 0.32));
+}
+
+.group:hover .service-card-logo--afterdark {
+    opacity: 1;
+    mix-blend-mode: lighten;
+    transform: translateY(-46px) scale(0.78);
+    filter:
+        saturate(1.55)
+        contrast(1.42)
+        brightness(1.08)
+        drop-shadow(0 0 2px rgba(34, 211, 238, 0.55))
+        drop-shadow(0 0 3px rgba(124, 58, 237, 0.50))
+        drop-shadow(0 0 3px rgba(245, 158, 11, 0.42));
+}
+
+/* Note: wires intentionally remain dark on hover. They are conduits, not neon tubes. */
+
+/* =============================================
+   CONTACT CAP + PIN HARDWARE
+   The cap masks the border at the wire exit zone.
+   Pins sit above the cap at full z-index.
+   ============================================= */
+.gateway-contact-cap {
+    position: absolute;
+    bottom: -5px;
+    width: 78px;
+    height: 11px;
+    z-index: 46;
+    background:
+        linear-gradient(to bottom, rgba(6,6,9,0.78) 0%, rgba(3,3,5,0.90) 100%);
+    border-top: 1px solid rgba(255,255,255,0.13);
+    border-radius: 0 0 7px 7px;
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.66),
+        inset 0 1px 0 rgba(255,255,255,0.075);
+    pointer-events: none;
+}
+
+.gateway-contact-cap--club {
+    left: calc(20% - 12px);
+}
+
+.gateway-contact-cap--after-dark {
+    right: calc(20% - 12px);
+}
+
+.gateway-contact-pin {
+    position: absolute;
+    bottom: -2px;
+    width: 6px;
+    height: 9px;
+    z-index: 50;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid rgba(230,238,242,0.24);
+    background:
+        linear-gradient(to bottom, rgba(255,255,255,0.42), rgba(255,255,255,0.10));
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.16);
+    transition:
+        border-color 0.7s ease-in-out,
+        box-shadow 0.7s ease-in-out,
+        background 0.7s ease-in-out;
+    pointer-events: none;
+}
+
+.gateway-contact-pin--club-a {
+    left: 20%;
+}
+
+.gateway-contact-pin--club-b {
+    left: 28%;
+}
+
+.gateway-contact-pin--after-a {
+    right: 28%;
+}
+
+.gateway-contact-pin--after-b {
+    right: 20%;
+}
+
+@media (max-width: 640px) {
+    .gateway-contact-cap {
+        width: 64px;
+        height: 9px;
+    }
+    .gateway-contact-cap--club {
+        left: calc(20% - 10px);
+    }
+    .gateway-contact-cap--after-dark {
+        right: calc(20% - 10px);
+    }
+    .gateway-contact-pin {
+        width: 5px;
+        height: 8px;
+    }
+}
+
+.group:hover .club-grid .gateway-contact-pin,
+.group:hover .gateway-contact-pin--club-a,
+.group:hover .gateway-contact-pin--club-b {
+    border-color: rgba(172,248,255,0.72);
+    box-shadow:
+        0 0 5px rgba(34,211,238,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.22);
+}
+
+.group:hover .after-dark-grid .gateway-contact-pin,
+.group:hover .gateway-contact-pin--after-a,
+.group:hover .gateway-contact-pin--after-b {
+    border-color: rgba(222,196,255,0.72);
+    box-shadow:
+        0 0 5px rgba(168,85,247,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.20);
+}
+
+/* =============================================
+   TOUCH / ACTIVE CARD IGNITION
+   Mirrors all hover states for touch devices.
+   Transition durations cut to 150ms so the card
+   responds immediately on tap.
+   Desktop hover behavior is unchanged.
+   ============================================= */
+@media (hover: none), (pointer: coarse) {
+
+    /* Fast transitions on touch — override the 0.7s/900ms desktop values */
+    .service-card-water-scrim {
+        transition:
+            background 150ms ease-in-out,
+            backdrop-filter 150ms ease-in-out;
+    }
+    .gateway-vignette {
+        transition: opacity 150ms ease-in-out;
+    }
+    .transformer-chassis {
+        transition:
+            background 150ms ease-in-out,
+            box-shadow 150ms ease-in-out,
+            transform 150ms ease-in-out,
+            backdrop-filter 150ms ease-in-out;
+    }
+    .service-card-logo,
+    .service-card-logo--afterdark {
+        transition:
+            opacity 150ms ease,
+            filter 150ms ease,
+            transform 150ms ease;
+    }
+    .gateway-contact-pin {
+        transition:
+            border-color 150ms ease-in-out,
+            box-shadow 150ms ease-in-out,
+            background 150ms ease-in-out;
+    }
+
+    /* Water scrim */
+    .group:active .service-card-water-scrim {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(1,2,8,0.12) 0%,
+                rgba(1,2,8,0.24) 46%,
+                rgba(0,0,0,0.42) 100%
+            );
+        backdrop-filter: blur(4px) saturate(1.08);
+        -webkit-backdrop-filter: blur(4px) saturate(1.08);
+    }
+
+    /* Miami Knife Club ignition */
+    .group:active .hardware-gateway.club-grid {
+        border-color: rgba(172,248,255,0.92);
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(5,5,8,0.20),
+                rgba(2,3,8,0.38)
+            );
+        backdrop-filter: blur(4px) saturate(1.08);
+        -webkit-backdrop-filter: blur(4px) saturate(1.08);
+        box-shadow:
+            0 0 2px rgba(255,255,255,0.48),
+            0 0 8px rgba(34,211,238,0.50),
+            0 0 18px rgba(34,211,238,0.28),
+            0 0 30px rgba(236,72,153,0.10),
+            inset 0 0 1px rgba(255,255,255,0.18),
+            inset 0 0 12px rgba(34,211,238,0.10);
+    }
+    .group:active .club-grid .gateway-vignette {
+        opacity: 1;
+        background:
+            radial-gradient(circle at 35% 28%, rgba(255,45,135,0.08) 0%, transparent 34%),
+            radial-gradient(circle at 72% 72%, rgba(0,185,255,0.10) 0%, transparent 42%),
+            linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.12));
+    }
+
+    /* Sharp After Dark ignition */
+    .group:active .hardware-gateway.after-dark-grid {
+        border-color: rgba(232,210,255,0.92);
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(5,5,8,0.20),
+                rgba(2,3,8,0.38)
+            );
+        backdrop-filter: blur(4px) saturate(1.08);
+        -webkit-backdrop-filter: blur(4px) saturate(1.08);
+        box-shadow:
+            0 0 2px rgba(255,255,255,0.46),
+            0 0 8px rgba(168,85,247,0.50),
+            0 0 18px rgba(168,85,247,0.28),
+            0 0 30px rgba(236,72,153,0.10),
+            inset 0 0 1px rgba(255,255,255,0.17),
+            inset 0 0 12px rgba(168,85,247,0.10);
+    }
+    .group:active .after-dark-grid .gateway-vignette {
+        opacity: 1;
+        background:
+            radial-gradient(circle at center, rgba(255,94,180,0.12) 0%, rgba(0,0,0,0.08) 52%, rgba(5,5,8,0.18) 100%);
+    }
+
+    /* Transformer chassis */
+    .group:active .transformer-chassis {
+        background:
+            linear-gradient(to bottom, rgba(28,28,38,0.42), rgba(12,12,19,0.54));
+        box-shadow:
+            0 12px 30px rgba(0,0,0,0.34),
+            inset 0 1px 0 rgba(255,255,255,0.05);
+        transform: translateY(-2px);
+    }
+    .group:active .transformer-chassis p {
+        color: #d1d5db;
+    }
+
+    /* Logo float + illuminate */
+    .group:active .service-card-logo--knifeclub {
+        opacity: 1;
+        transform: translateY(-46px) scale(0.78);
+        filter:
+            saturate(1.55)
+            contrast(1.42)
+            brightness(1.08)
+            drop-shadow(0 0 2px rgba(34,211,238,0.55))
+            drop-shadow(0 0 3px rgba(236,72,153,0.50))
+            drop-shadow(0 0 3px rgba(124,58,237,0.32));
+    }
+    .group:active .service-card-logo--afterdark {
+        opacity: 1;
+        mix-blend-mode: lighten;
+        transform: translateY(-46px) scale(0.78);
+        filter:
+            saturate(1.55)
+            contrast(1.42)
+            brightness(1.08)
+            drop-shadow(0 0 2px rgba(34,211,238,0.55))
+            drop-shadow(0 0 3px rgba(124,58,237,0.50))
+            drop-shadow(0 0 3px rgba(245,158,11,0.42));
+    }
+
+    /* Contact pins */
+    .group:active .club-grid .gateway-contact-pin,
+    .group:active .gateway-contact-pin--club-a,
+    .group:active .gateway-contact-pin--club-b {
+        border-color: rgba(172,248,255,0.72);
+        box-shadow:
+            0 0 5px rgba(34,211,238,0.22),
+            inset 0 1px 0 rgba(255,255,255,0.22);
+    }
+    .group:active .after-dark-grid .gateway-contact-pin,
+    .group:active .gateway-contact-pin--after-a,
+    .group:active .gateway-contact-pin--after-b {
+        border-color: rgba(222,196,255,0.72);
+        box-shadow:
+            0 0 5px rgba(168,85,247,0.22),
+            inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+}
