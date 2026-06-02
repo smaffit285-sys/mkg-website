@@ -1,1 +1,5 @@
-{"buildCommand":"echo ok","outputDirectory":".","rewrites":[{"source":"/(.*)","destination":"/index.html"}]}
+{
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installComman
