@@ -1,0 +1,15 @@
+/* =============================================
+           BASE
+           ============================================= */
+        body { background-color: #060609; color: #ffffff; }
+
+        .neon-btn-cyan {
+            color: #e0ffff; border-color: #22d3ee;
+            text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee;
+            box-shadow: 0 0 8px #22d3ee, inset 0 0 8px #22d3ee;
+            background: transparent;
+        }
+        .neon-btn-cyan:hover {
+            text-shadow: 0 0 8px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #fff;
+            box-shadow: 0 0 15px #22d3ee, inset 0 0 15px #22d3ee;
+        }
