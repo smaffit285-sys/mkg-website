@@ -5,7 +5,7 @@
    ============================================= */
 
 .mkg-home-panel {
-    padding-top: 80px;
+    padding-top: 20px;
 }
 
 .mkg-home-hero {
@@ -175,7 +175,7 @@
 
 @media (max-width: 640px) {
     .mkg-home-panel {
-        padding-top: 72px;
+        padding-top: 16px;
     }
 
     .mkg-home-hero {
