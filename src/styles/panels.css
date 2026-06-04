@@ -1,11 +1,11 @@
 /* =============================================
            SOCIAL PROOF TICKER
            ============================================= */
-        .ticker-outer { overflow:hidden; white-space:nowrap; border-top:1px solid rgba(34,211,238,0.07); border-bottom:1px solid rgba(236,72,153,0.07); background:rgba(5,5,8,0.95); padding:10px 0; }
-        .ticker-track { display:inline-flex; animation:tickerScroll 62s linear infinite; }
+        .ticker-outer { overflow:hidden; white-space:nowrap; border-top:1px solid rgba(34,211,238,0.07); border-bottom:1px solid rgba(236,72,153,0.07); background:rgba(5,5,8,0.95); padding:6px 0; }
+        .ticker-track { display:inline-flex; animahtion:tickerScroll 104s linear infinite; }
         .ticker-track:hover { animation-play-state:paused; }
         @keyframes tickerScroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-        .ticker-text { font-family:'Montserrat',sans-serif; font-size:19px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; padding:0 20px; white-space:nowrap; }
+        .ticker-text { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; padding:0 20px; white-space:nowrap; }
         .t-cyan  { color:rgba(34,211,238,0.80); }
         .t-pink  { color:rgba(236,72,153,0.80); }
         .t-gold  { color:rgba(251,191,36,0.80); }
@@ -13,7 +13,7 @@
         .ticker-sep { font-size:8px; color:rgba(255,255,255,0.18); padding:0 2px; }
         .ticker-sep.s-cyan { color:rgba(34,211,238,0.4); }
         .ticker-sep.s-pink { color:rgba(236,72,153,0.4); }
-        .ticker-sep.s-gold { color:rgba(251,191,36,0.4); }
+        .ticker-sep.s-gold { color:rgba(251,191,36,0.4); }        /* Service card description text override */        .spec-text { font-size: 13px !important; }        /* Service card description text override */
 
 /* =============================================
            SUB-PANEL SHARED STYLES
@@ -30,7 +30,7 @@
         .feature-dot-cyan { width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; background:rgba(34,211,238,0.7); box-shadow:0 0 8px rgba(34,211,238,0.4); }
         .feature-dot-pink { width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; background:rgba(236,72,153,0.7); box-shadow:0 0 8px rgba(236,72,153,0.4); }
 
-        .panel-cta-btn { display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:19px; letter-spacing:0.2em; text-transform:uppercase; padding:11px 26px; border-radius:4px; border-width:2px; border-style:solid; transition:all 0.3s ease; }
+        .panel-cta-btn { display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:11px 26px; border-radius:4px; border-width:2px; border-style:solid; transition:all 0.3s ease; }
         .panel-cta-cyan  { color:#e0ffff; border-color:#22d3ee; text-shadow:0 0 5px #22d3ee; box-shadow:0 0 8px #22d3ee, inset 0 0 8px #22d3ee; background:transparent; }
         .panel-cta-cyan:hover  { box-shadow:0 0 20px #22d3ee, inset 0 0 16px rgba(34,211,238,0.2); }
         .panel-cta-pink  { color:#ffe4f0; border-color:#ec4899; text-shadow:0 0 5px #ec4899; box-shadow:0 0 8px rgba(236,72,153,0.6), inset 0 0 8px rgba(236,72,153,0.2); background:transparent; }
@@ -133,7 +133,7 @@
         .review-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:26px; display:flex; flex-direction:column; gap:0; transition:border-color 0.3s ease; }
         .review-card:hover { border-color:rgba(34,211,238,0.18); }
         .star-row { color:#22d3ee; font-size:18px; letter-spacing:2px; margin-bottom:12px; }
-        .review-quote { color:rgba(209,213,219,0.78); font-family:'Montserrat',sans-serif; font-weight:300; font-size:1.3rem; line-height:1.72; font-style:italic; margin-bottom:16px; flex:1; }
+        .review-quote { color:rgba(209,213,219,0.78); font-family:'Montserrat',sans-serif; font-weight:300; font-size:1.4rem; line-height:1.72; font-style:italic; margin-bottom:16px; flex:1; }
         .review-source { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.28); }
 
         /* Process steps */
@@ -147,7 +147,7 @@
         .service-tile-icon { font-size:20px; margin-bottom:10px; }
         .service-tile-title { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:7px; }
         .service-tile-body  { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:300; color:rgba(255,255,255,0.46); line-height:1.68; }
-        .price-tag { display:inline-block; font-family:'Montserrat',sans-serif; font-size:19px; font-weight:700; color:rgba(34,211,238,0.78); letter-spacing:0.08em; margin-top:9px; }
+        .price-tag { display:inline-block; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:rgba(34,211,238,0.78); letter-spacing:0.08em; margin-top:9px; }
 
 /* =============================================
    MKG GLIDE CTA LOCK
