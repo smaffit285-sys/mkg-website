@@ -1,0 +1,105 @@
+{
+  "communities": {
+    "0": [
+      "c_users_miami_mkg_code_mkg_website_src_scripts_interactions_js_url",
+      "c_users_miami_mkg_code_mkg_website_src_scripts_navigation_js_url",
+      "c_users_miami_mkg_code_mkg_website_src_styles_base_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_hero_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_layout_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_neon_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_our_story_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_panels_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_proof_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_service_cards_css",
+      "c_users_miami_mkg_code_mkg_website_src_styles_tokens_css",
+      "layouts_baselayout"
+    ],
+    "1": [
+      "components_beforeafterpanel",
+      "components_heropanel",
+      "components_miamiknifeclubpanel",
+      "components_ourstorypanel",
+      "components_reviewspanel",
+      "components_servicespanel",
+      "components_sharpafterdarkpanel",
+      "components_sitefooter",
+      "components_siteheader",
+      "pages_index"
+    ],
+    "2": [
+      "scripts_interactions",
+      "scripts_interactions_closemenu",
+      "scripts_interactions_onscroll",
+      "scripts_interactions_openmenu",
+      "scripts_interactions_togglemenu"
+    ],
+    "3": [
+      "scripts_navigation",
+      "scripts_navigation_nav_map",
+      "scripts_navigation_panel_ids"
+    ]
+  },
+  "cohesion": {
+    "0": 0.16666666666666666,
+    "1": 0.2,
+    "2": 0.6,
+    "3": 0.6666666666666666
+  },
+  "gods": [
+    {
+      "id": "scripts_interactions_togglemenu",
+      "label": "toggleMenu()",
+      "degree": 3
+    },
+    {
+      "id": "scripts_interactions_openmenu",
+      "label": "openMenu()",
+      "degree": 2
+    },
+    {
+      "id": "scripts_interactions_closemenu",
+      "label": "closeMenu()",
+      "degree": 2
+    },
+    {
+      "id": "components_sitefooter",
+      "label": "./SiteFooter.astro",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_tokens_css",
+      "label": "../styles/tokens.css",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_base_css",
+      "label": "../styles/base.css",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_layout_css",
+      "label": "../styles/layout.css",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_neon_css",
+      "label": "../styles/neon.css",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_hero_css",
+      "label": "../styles/hero.css",
+      "degree": 1
+    },
+    {
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_service_cards_css",
+      "label": "../styles/service-cards.css",
+      "degree": 1
+    }
+  ],
+  "surprises": [],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

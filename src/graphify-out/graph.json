@@ -1,0 +1,585 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "BeforeAfterPanel.astro",
+      "file_type": "code",
+      "source_file": "components/BeforeAfterPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "beforeafterpanel.astro",
+      "id": "components_beforeafterpanel"
+    },
+    {
+      "label": "HeroPanel.astro",
+      "file_type": "code",
+      "source_file": "components/HeroPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "heropanel.astro",
+      "id": "components_heropanel"
+    },
+    {
+      "label": "./SiteFooter.astro",
+      "file_type": "code",
+      "source_file": "components/SiteFooter.astro",
+      "confidence": "EXTRACTED",
+      "community": 1,
+      "norm_label": "./sitefooter.astro",
+      "id": "components_sitefooter"
+    },
+    {
+      "label": "MiamiKnifeClubPanel.astro",
+      "file_type": "code",
+      "source_file": "components/MiamiKnifeClubPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "miamiknifeclubpanel.astro",
+      "id": "components_miamiknifeclubpanel"
+    },
+    {
+      "label": "OurStoryPanel.astro",
+      "file_type": "code",
+      "source_file": "components/OurStoryPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "ourstorypanel.astro",
+      "id": "components_ourstorypanel"
+    },
+    {
+      "label": "ReviewsPanel.astro",
+      "file_type": "code",
+      "source_file": "components/ReviewsPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "reviewspanel.astro",
+      "id": "components_reviewspanel"
+    },
+    {
+      "label": "ServicesPanel.astro",
+      "file_type": "code",
+      "source_file": "components/ServicesPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "servicespanel.astro",
+      "id": "components_servicespanel"
+    },
+    {
+      "label": "SharpAfterDarkPanel.astro",
+      "file_type": "code",
+      "source_file": "components/SharpAfterDarkPanel.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "sharpafterdarkpanel.astro",
+      "id": "components_sharpafterdarkpanel"
+    },
+    {
+      "label": "SiteHeader.astro",
+      "file_type": "code",
+      "source_file": "components/SiteHeader.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "siteheader.astro",
+      "id": "components_siteheader"
+    },
+    {
+      "label": "BaseLayout.astro",
+      "file_type": "code",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "baselayout.astro",
+      "id": "layouts_baselayout"
+    },
+    {
+      "label": "../styles/tokens.css",
+      "file_type": "code",
+      "source_file": "styles/tokens.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/tokens.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_tokens_css"
+    },
+    {
+      "label": "../styles/base.css",
+      "file_type": "code",
+      "source_file": "styles/base.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/base.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_base_css"
+    },
+    {
+      "label": "../styles/layout.css",
+      "file_type": "code",
+      "source_file": "styles/layout.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/layout.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_layout_css"
+    },
+    {
+      "label": "../styles/neon.css",
+      "file_type": "code",
+      "source_file": "styles/neon.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/neon.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_neon_css"
+    },
+    {
+      "label": "../styles/hero.css",
+      "file_type": "code",
+      "source_file": "styles/hero.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/hero.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_hero_css"
+    },
+    {
+      "label": "../styles/service-cards.css",
+      "file_type": "code",
+      "source_file": "styles/service-cards.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/service-cards.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_service_cards_css"
+    },
+    {
+      "label": "../styles/panels.css",
+      "file_type": "code",
+      "source_file": "styles/panels.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/panels.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_panels_css"
+    },
+    {
+      "label": "../styles/proof.css",
+      "file_type": "code",
+      "source_file": "styles/proof.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/proof.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_proof_css"
+    },
+    {
+      "label": "../styles/our-story.css",
+      "file_type": "code",
+      "source_file": "styles/our-story.css",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../styles/our-story.css",
+      "id": "c_users_miami_mkg_code_mkg_website_src_styles_our_story_css"
+    },
+    {
+      "label": "../scripts/interactions.js?url",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js?url",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../scripts/interactions.js?url",
+      "id": "c_users_miami_mkg_code_mkg_website_src_scripts_interactions_js_url"
+    },
+    {
+      "label": "../scripts/navigation.js?url",
+      "file_type": "code",
+      "source_file": "scripts/navigation.js?url",
+      "confidence": "EXTRACTED",
+      "community": 0,
+      "norm_label": "../scripts/navigation.js?url",
+      "id": "c_users_miami_mkg_code_mkg_website_src_scripts_navigation_js_url"
+    },
+    {
+      "label": "index.astro",
+      "file_type": "code",
+      "source_file": "pages/index.astro",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "index.astro",
+      "id": "pages_index"
+    },
+    {
+      "label": "interactions.js",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "interactions.js",
+      "id": "scripts_interactions"
+    },
+    {
+      "label": "openMenu()",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L6",
+      "community": 2,
+      "norm_label": "openmenu()",
+      "id": "scripts_interactions_openmenu"
+    },
+    {
+      "label": "closeMenu()",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L10",
+      "community": 2,
+      "norm_label": "closemenu()",
+      "id": "scripts_interactions_closemenu"
+    },
+    {
+      "label": "toggleMenu()",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L14",
+      "community": 2,
+      "norm_label": "togglemenu()",
+      "id": "scripts_interactions_togglemenu"
+    },
+    {
+      "label": "onScroll()",
+      "file_type": "code",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L46",
+      "community": 2,
+      "norm_label": "onscroll()",
+      "id": "scripts_interactions_onscroll"
+    },
+    {
+      "label": "navigation.js",
+      "file_type": "code",
+      "source_file": "scripts/navigation.js",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "navigation.js",
+      "id": "scripts_navigation"
+    },
+    {
+      "label": "PANEL_IDS",
+      "file_type": "code",
+      "source_file": "scripts/navigation.js",
+      "source_location": "L4",
+      "community": 3,
+      "norm_label": "panel_ids",
+      "id": "scripts_navigation_panel_ids"
+    },
+    {
+      "label": "NAV_MAP",
+      "file_type": "code",
+      "source_file": "scripts/navigation.js",
+      "source_location": "L5",
+      "community": 3,
+      "norm_label": "nav_map",
+      "id": "scripts_navigation_nav_map"
+    }
+  ],
+  "links": [
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_beforeafterpanel"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "components/HeroPanel.astro",
+      "confidence_score": 1.0,
+      "source": "components_heropanel",
+      "target": "components_sitefooter"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_heropanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_miamiknifeclubpanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_ourstorypanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_reviewspanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_servicespanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_sharpafterdarkpanel"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "components_siteheader"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_scripts_interactions_js_url"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_scripts_navigation_js_url"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_base_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_hero_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_layout_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_neon_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_our_story_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_panels_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_proof_css"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_service_cards_css"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "layouts/BaseLayout.astro",
+      "confidence_score": 1.0,
+      "source": "layouts_baselayout",
+      "target": "c_users_miami_mkg_code_mkg_website_src_styles_tokens_css"
+    },
+    {
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "pages/index.astro",
+      "confidence_score": 1.0,
+      "source": "pages_index",
+      "target": "layouts_baselayout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions",
+      "target": "scripts_interactions_closemenu"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions",
+      "target": "scripts_interactions_onscroll"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions",
+      "target": "scripts_interactions_openmenu"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions",
+      "target": "scripts_interactions_togglemenu"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions_togglemenu",
+      "target": "scripts_interactions_openmenu"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/interactions.js",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_interactions_togglemenu",
+      "target": "scripts_interactions_closemenu"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/navigation.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_navigation",
+      "target": "scripts_navigation_nav_map"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/navigation.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_navigation",
+      "target": "scripts_navigation_panel_ids"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "d391b47fc2ce005544e3facec52badbdc0c3c62e"
+}
