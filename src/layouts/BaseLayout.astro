@@ -1,5 +1,6 @@
 ---
-import "../styles/global.css";`nimport "../styles/tokens.css";
+import "../styles/global.css";
+import "../styles/tokens.css";
 import "../styles/base.css";
 import "../styles/layout.css";
 import "../styles/neon.css";
@@ -13,26 +14,53 @@ import navigationScript from "../scripts/navigation.js?url";
 ---
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Miami Knife Guy | Premium Knife Sharpening in South Florida</title>
-    <meta name="description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens. Based in North Miami Beach and serving select clients from Miami to Fort Lauderdale." />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#060609" />
-    <meta property="og:title" content="Miami Knife Guy | Premium Knife Sharpening in South Florida" />
-    <meta property="og:description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens." />
-    <meta property="og:url" content="https://www.miamiknifeguy.com/" />
-    <meta property="og:image" content="https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://www.miamiknifeguy.com/" />
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Yellowtail&family=Playfair+Display:ital,wght@1,900&family=Alex+Brush&display=swap" rel="stylesheet" />
-    
-    <script type="application/ld+json" set:html={"{\r\n      \"@context\": \"https://schema.org\",\r\n      \"@type\": \"LocalBusiness\",\r\n      \"@id\": \"https://www.miamiknifeguy.com/#business\",\r\n      \"name\": \"Miami Knife Guy\",\r\n      \"alternateName\": \"MKG\",\r\n      \"description\": \"Premium knife sharpening and edge care in South Florida for chefs, restaurants, hotels, hospitality teams, and serious home kitchens.\",\r\n      \"url\": \"https://www.miamiknifeguy.com/\",\r\n      \"telephone\": \"+13059095773\",\r\n      \"priceRange\": \"$$\",\r\n      \"image\": \"https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg\",\r\n      \"aggregateRating\": { \"@type\": \"AggregateRating\", \"ratingValue\": \"5.0\", \"reviewCount\": \"3\" },\r\n      \"address\": {\r\n        \"@type\": \"PostalAddress\",\r\n        \"addressLocality\": \"North Miami Beach\",\r\n        \"addressRegion\": \"FL\",\r\n        \"addressCountry\": \"US\"\r\n      },\r\n      \"areaServed\": [\r\n        { \"@type\": \"City\", \"name\": \"North Miami Beach\" },\r\n        { \"@type\": \"City\", \"name\": \"Aventura\" },\r\n        { \"@type\": \"City\", \"name\": \"Sunny Isles Beach\" },\r\n        { \"@type\": \"City\", \"name\": \"Hollywood\" },\r\n        { \"@type\": \"City\", \"name\": \"Fort Lauderdale\" },\r\n        { \"@type\": \"City\", \"name\": \"Miami\" },\r\n        { \"@type\": \"AdministrativeArea\", \"name\": \"South Florida\" }\r\n      ]\r\n    }"}></script>
-  </head>
-  <body class="min-h-screen bg-[#060609] text-white overflow-hidden">
-    <slot />
-    <script src={interactionsScript}></script>
-    <script src={navigationScript}></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Miami Knife Guy | Premium Knife Sharpening in South Florida</title>
+<meta name="description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens. Based in North Miami Beach and serving select clients from Miami to Fort Lauderdale." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#060609" />
+<meta property="og:title" content="Miami Knife Guy | Premium Knife Sharpening in South Florida" />
+<meta property="og:description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens." />
+<meta property="og:url" content="https://www.miamiknifeguy.com/" />
+<meta property="og:image" content="https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://www.miamiknifeguy.com/" />
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Yellowtail&family=Playfair+Display:ital,wght@1,900&family=Alex+Brush&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json" set:html={`{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.miamiknifeguy.com/#business",
+  "name": "Miami Knife Guy",
+  "alternateName": "MKG",
+  "description": "Premium knife sharpening and edge care in South Florida for chefs, restaurants, hotels, hospitality teams, and serious home kitchens.",
+  "url": "https://www.miamiknifeguy.com/",
+  "telephone": "+13059095773",
+  "priceRange": "$$",
+  "image": "https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "6" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "North Miami Beach",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "North Miami Beach" },
+    { "@type": "City", "name": "Aventura" },
+    { "@type": "City", "name": "Sunny Isles Beach" },
+    { "@type": "City", "name": "Hollywood" },
+    { "@type": "City", "name": "Fort Lauderdale" },
+    { "@type": "City", "name": "Miami" },
+    { "@type": "AdministrativeArea", "name": "South Florida" }
+  ]
+}`}></script>
+</head>
+<body class="min-h-screen bg-[#060609] text-white overflow-hidden">
+<slot />
+<script src={interactionsScript}></script>
+<script src={navigationScript}></script>
+</body>
 </html>
