@@ -789,6 +789,24 @@
             drop-shadow(0 0 3px rgba(245,158,11,0.42));
     }
 
+    /* Background image reveal on touch */
+    .service-card-bg {
+        transition:
+            opacity 150ms ease,
+            filter 150ms ease;
+    }
+
+    .group:active .service-card-bg--after-dark {
+        opacity: 0.6;
+        filter: grayscale(0);
+    }
+
+    .group:active .service-card-bg--club {
+        opacity: 0.85;
+        filter: grayscale(0);
+    }
+
+
     /* Contact pins */
     .group:active .club-grid .gateway-contact-pin,
     .group:active .gateway-contact-pin--club-a,

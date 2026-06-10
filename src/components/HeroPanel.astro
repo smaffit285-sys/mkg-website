@@ -1,4 +1,5 @@
 ---
+import SiteFooter from "./SiteFooter.astro";
 ---
 <!-- ====================================================
 PANEL: HOME
@@ -76,7 +77,7 @@ View Services
 <div class="service-card-water-scrim" aria-hidden="true"></div>
 <img
 src="/images/services/gemini-table.png"
-class="absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-60 group-hover:grayscale-0 z-10 rounded-lg"
+class="service-card-bg service-card-bg--after-dark absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-60 group-hover:grayscale-0 z-10 rounded-lg"
 alt="Sharp After Dark commercial knife sharpening"
 loading="lazy"
 >
@@ -131,7 +132,7 @@ After service, you rest. Before prep, they're sharp. Zero-downtime edge care for
 <div class="service-card-water-scrim" aria-hidden="true"></div>
 <img
 src="/images/services/neon-knives.png"
-class="absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-85 group-hover:grayscale-0 z-10 rounded-lg"
+class="service-card-bg service-card-bg--club absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-85 group-hover:grayscale-0 z-10 rounded-lg"
 alt="Premium knives with neon lighting"
 loading="lazy"
 >
@@ -245,5 +246,7 @@ This section is currently approved. Do not alter during hero/service-card refine
 </div>
 </div>
 </section>
+
+<SiteFooter />
 
 </div><!-- /panel-home -->
