@@ -30,13 +30,7 @@
         .feature-dot-cyan { width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; background:rgba(34,211,238,0.7); box-shadow:0 0 8px rgba(34,211,238,0.4); }
         .feature-dot-pink { width:6px; height:6px; border-radius:50%; margin-top:6px; flex-shrink:0; background:rgba(236,72,153,0.7); box-shadow:0 0 8px rgba(236,72,153,0.4); }
 
-        .panel-cta-btn { display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:11px 26px; border-radius:4px; border-width:2px; border-style:solid; transition:all 0.3s ease; }
-        .panel-cta-cyan  { color:#e0ffff; border-color:#22d3ee; text-shadow:0 0 5px #22d3ee; box-shadow:0 0 8px #22d3ee, inset 0 0 8px #22d3ee; background:transparent; }
-        .panel-cta-cyan:hover  { box-shadow:0 0 20px #22d3ee, inset 0 0 16px rgba(34,211,238,0.2); }
-        .panel-cta-pink  { color:#ffe4f0; border-color:#ec4899; text-shadow:0 0 5px #ec4899; box-shadow:0 0 8px rgba(236,72,153,0.6), inset 0 0 8px rgba(236,72,153,0.2); background:transparent; }
-        .panel-cta-pink:hover  { box-shadow:0 0 20px rgba(236,72,153,0.8), inset 0 0 16px rgba(236,72,153,0.2); }
-        .panel-cta-ghost { color:rgba(255,255,255,0.45); border-color:rgba(255,255,255,0.14); background:transparent; }
-        .panel-cta-ghost:hover { color:rgba(255,255,255,0.8); border-color:rgba(255,255,255,0.35); }
+        
 
         /* ---- Steak knife module — Sharp After Dark only ---- */
         .sad-steak-module {
