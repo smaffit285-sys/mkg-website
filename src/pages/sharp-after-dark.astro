@@ -1,0 +1,22 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import SharpAfterDarkPanel from "../components/SharpAfterDarkPanel.astro";
+export const prerender = true;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Sharp After Dark Restaurant Knife Sharpening",
+  provider: { "@id": "https://www.miamiknifeguy.com/#business" },
+  areaServed: "South Florida",
+  serviceType: "After-hours restaurant and commercial kitchen knife sharpening",
+};
+---
+<RouteShell
+  title="Sharp After Dark | Restaurant Knife Sharpening Miami"
+  description="Zero-downtime recurring knife sharpening for Miami restaurants, hotels, and commercial kitchens, with after-hours collection and return."
+  canonicalPath="/sharp-after-dark/"
+  image="/images/brand/sharp-after-dark-transparent.webp"
+  schema={schema}
+>
+  <SharpAfterDarkPanel />
+</RouteShell>

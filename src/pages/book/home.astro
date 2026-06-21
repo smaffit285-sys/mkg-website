@@ -1,0 +1,25 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Book Home Knife Sharpening Miami | MKG"
+  description="Request premium home kitchen knife sharpening, repair, restoration, or recurring Knife Club service."
+  canonicalPath="/book/home/"
+>
+  <CustomerFlowPage
+    eyebrow="Home Kitchens · Serious Cooks"
+    headline="Book home knife sharpening."
+    intro="Tell MKG how many knives you have, the blade types, your location, and whether any need repair or restoration."
+    steps={[
+      { title: "Count the knives", copy: "Include chef, utility, paring, bread, steak, and specialty knives." },
+      { title: "Note the condition", copy: "Mention chips, broken tips, serrations, premium Japanese steel, or finish-sensitive blades." },
+      { title: "Choose your rhythm", copy: "Book one-time service or ask about recurring Miami Knife Club edge care." },
+    ]}
+    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27d%20like%20to%20book%20home%20knife%20sharpening."
+    primaryLabel="Text Home Request"
+    secondaryHref="/miami-knife-club/"
+    secondaryLabel="View Knife Club"
+  />
+</RouteShell>

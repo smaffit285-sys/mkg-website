@@ -1,0 +1,25 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Leave a Review | Miami Knife Guy"
+  description="Share your experience with Miami Knife Guy or leave a verified Google review."
+  canonicalPath="/review/"
+>
+  <CustomerFlowPage
+    eyebrow="Thank You"
+    headline="How did the edge feel?"
+    intro="Your feedback helps other Miami chefs, restaurants, and home cooks know who they can trust with their knives."
+    steps={[
+      { title: "Open Google", copy: "Use the direct Google Business profile link to leave a public review." },
+      { title: "Share the work", copy: "Mention the knife type, repair, service experience, and how it cuts now." },
+      { title: "Send photos", copy: "Before-and-after photos are welcome if you would like MKG to see or feature the result." },
+    ]}
+    primaryHref="https://www.google.com/maps/place/Miami+Knife+Guy/@26.0911541,-80.2454439,9z/data=!3m1!4b1!4m6!3m5!1s0xa7ab485ee4b470eb:0x9e750736e273b955!8m2!3d26.091154!4d-80.2454439"
+    primaryLabel="Review on Google"
+    secondaryHref="/send-photos/"
+    secondaryLabel="Send Photos"
+  />
+</RouteShell>

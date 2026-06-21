@@ -1,0 +1,25 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Book Knife Sharpening | Miami Knife Guy"
+  description="Choose home or restaurant knife sharpening service with Miami Knife Guy in South Florida."
+  canonicalPath="/book/"
+>
+  <CustomerFlowPage
+    eyebrow="Book Miami Knife Guy"
+    headline="Choose your service path."
+    intro="MKG serves professional kitchens and serious home cooks differently. Choose the path that fits your knives and schedule."
+    steps={[
+      { title: "Restaurant & hotel", copy: "Recurring fleet care, after-hours collection, steak knives, repair, and zero-downtime programs." },
+      { title: "Home kitchen", copy: "Premium sharpening, repair, and recurring edge care for the knives you use every day." },
+      { title: "Damage or restoration", copy: "Send photos first when a knife has chips, a broken tip, corrosion, or major profile damage." },
+    ]}
+    primaryHref="/book/restaurant/"
+    primaryLabel="Restaurant Service"
+    secondaryHref="/book/home/"
+    secondaryLabel="Home Service"
+  />
+</RouteShell>

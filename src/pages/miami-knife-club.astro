@@ -1,0 +1,22 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import MiamiKnifeClubPanel from "../components/MiamiKnifeClubPanel.astro";
+export const prerender = true;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Miami Knife Club",
+  provider: { "@id": "https://www.miamiknifeguy.com/#business" },
+  areaServed: "South Florida",
+  serviceType: "Recurring residential knife sharpening and edge care",
+};
+---
+<RouteShell
+  title="Miami Knife Club | Recurring Home Knife Sharpening"
+  description="Recurring premium edge care for serious home cooks in Miami and South Florida."
+  canonicalPath="/miami-knife-club/"
+  image="/images/brand/miami-knife-club-transparent.webp"
+  schema={schema}
+>
+  <MiamiKnifeClubPanel />
+</RouteShell>

@@ -1,0 +1,71 @@
+---
+interface Props {
+  eyebrow: string;
+  headline: string;
+  accent?: "cyan" | "pink";
+  intro: string;
+  highlights: string[];
+  detailTitle: string;
+  detail: string;
+  faq: Array<{ question: string; answer: string }>;
+  bookingPath?: string;
+}
+
+const {
+  eyebrow,
+  headline,
+  accent = "cyan",
+  intro,
+  highlights,
+  detailTitle,
+  detail,
+  faq,
+  bookingPath = "/book/",
+} = Astro.props;
+const headlineClass = accent === "pink" ? "sub-headline-pink" : "sub-headline-cyan";
+const dotClass = accent === "pink" ? "feature-dot-pink" : "feature-dot-cyan";
+const buttonClass = accent === "pink" ? "panel-cta-pink" : "panel-cta-cyan";
+---
+<main class="panel" aria-hidden="false">
+  <div class="panel-inner">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section>
+        <p class="sub-eyebrow">{eyebrow}</p>
+        <h1 class:list={[headlineClass, "text-4xl lg:text-5xl mb-6"]}>{headline}</h1>
+        <p class="sub-body mb-10">{intro}</p>
+
+        <div class="mb-10">
+          {highlights.map((item) => (
+            <div class="feature-item">
+              <div class={dotClass}></div>
+              <div class="text-white/75 text-[18px] font-light leading-relaxed">{item}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href={bookingPath} class:list={["panel-cta-btn", buttonClass]}>Book Service</a>
+          <a href="/send-photos/" class="panel-cta-btn panel-cta-ghost">Send Photos &rarr;</a>
+        </div>
+      </section>
+
+      <aside class="space-y-7">
+        <div class="p-7 border border-white/6 rounded bg-white/[0.02]">
+          <p class="sub-eyebrow">{detailTitle}</p>
+          <p class="sub-body text-sm">{detail}</p>
+        </div>
+        <div>
+          <p class="text-[9px] uppercase tracking-widest text-white/28 font-bold mb-5">Common Questions</p>
+          <div class="space-y-4">
+            {faq.map((item) => (
+              <details class="p-5 border border-white/6 rounded bg-black/20">
+                <summary class="cursor-pointer text-white/78 text-sm font-semibold">{item.question}</summary>
+                <p class="text-white/42 text-sm font-light leading-relaxed mt-3">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>

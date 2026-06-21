@@ -1,0 +1,25 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Send Knife Photos | Miami Knife Guy"
+  description="Send knife damage, repair, restoration, and before-and-after photos to Miami Knife Guy."
+  canonicalPath="/send-photos/"
+>
+  <CustomerFlowPage
+    eyebrow="Repair & Restoration Assessment"
+    headline="Show us the blade."
+    intro="Clear photos help MKG understand damage and geometry before you bring the knife in."
+    steps={[
+      { title: "Full profile", copy: "Photograph the entire knife from the side on a plain, well-lit background." },
+      { title: "Damage close-up", copy: "Include the chip, broken tip, bend, corrosion, or worn section from multiple angles." },
+      { title: "Both blade faces", copy: "Send both sides and note the maker, steel, intended use, and anything finish-sensitive." },
+    ]}
+    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27m%20sending%20photos%20for%20a%20knife%20assessment."
+    primaryLabel="Text Photos to MKG"
+    secondaryHref="/knife-repair-restoration-miami/"
+    secondaryLabel="Repair Services"
+  />
+</RouteShell>

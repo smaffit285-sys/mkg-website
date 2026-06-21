@@ -123,8 +123,15 @@
         }
         .panel.active { opacity:1; visibility:visible; transform:translateY(0); }
         .panel.panel-exiting { opacity:0; transform:translateY(-6px); transition:opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .route-page .panel {
+            position:relative; top:auto; left:auto; right:auto; bottom:auto;
+            min-height:calc(100vh - 80px); margin-top:80px;
+            overflow:visible; opacity:1; visibility:visible; transform:none;
+        }
+        .route-page .route-footer { position:relative; }
         @media (max-width: 639px) {
             .mkg-mobile-cta-row { display: block; padding: 0 1.5rem 10px; }
             .panel { top: 128px; }
             .mkg-mobile-menu { top: 128px; }
+            .route-page .panel { top:auto; margin-top:128px; min-height:calc(100vh - 128px); }
         }

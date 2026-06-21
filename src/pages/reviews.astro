@@ -1,0 +1,27 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import ReviewsPanel from "../components/ReviewsPanel.astro";
+export const prerender = true;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Miami Knife Guy Google Reviews",
+  numberOfItems: 9,
+  itemListElement: [
+    "Sergey Nikiforov", "TheTwoAndys TheTwoAndys", "Ivan Kondakov", "Jenine Jones",
+    "Eugene Soul Handyman", "slavik drakh", "Hank Thorpe", "Danilo Labb", "Kalye.Net"
+  ].map((name, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: { "@type": "Review", author: { "@type": "Person", name }, reviewRating: { "@type": "Rating", ratingValue: 5 } },
+  })),
+};
+---
+<RouteShell
+  title="Miami Knife Guy Reviews | Verified Google Reviews"
+  description="Read all nine verified five-star Google reviews for Miami Knife Guy knife sharpening and repair services."
+  canonicalPath="/reviews/"
+  schema={schema}
+>
+  <ReviewsPanel />
+</RouteShell>

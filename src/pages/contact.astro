@@ -1,0 +1,25 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Contact Miami Knife Guy | Knife Sharpening South Florida"
+  description="Contact Miami Knife Guy to discuss knife sharpening, repair, restoration, restaurant programs, or recurring home service."
+  canonicalPath="/contact/"
+>
+  <CustomerFlowPage
+    eyebrow="Miami Knife Guy · North Miami Beach"
+    headline="Let’s talk about your edge."
+    intro="Tell Sean what you have, what condition it is in, and where you are located. Photos are welcome for repair and restoration questions."
+    steps={[
+      { title: "Choose a service", copy: "Home cooks, restaurants, hotels, and hospitality teams have dedicated booking paths." },
+      { title: "Share the details", copy: "Include knife quantity, blade types, damage, and the timing you need." },
+      { title: "Confirm the plan", copy: "MKG will confirm service details, timing, and collection or drop-off options." },
+    ]}
+    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27d%20like%20to%20ask%20about%20service."
+    primaryLabel="Text MKG"
+    secondaryHref="tel:+13059095773"
+    secondaryLabel="Call (305) 909-5773"
+  />
+</RouteShell>

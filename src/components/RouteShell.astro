@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  image?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  robots?: string;
+}
+
+const { title, description, canonicalPath, image, schema = [], robots = "index, follow" } = Astro.props;
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  image={image}
+  schema={schema}
+  robots={robots}
+  pageClass="route-page"
+>
+  <SiteHeader />
+  <slot />
+  <div class="route-footer"><SiteFooter /></div>
+</BaseLayout>

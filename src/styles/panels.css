@@ -183,7 +183,7 @@
     z-index: 1;
     pointer-events: none;
 
-    background-image: url("/images/backgrounds/miami-skyline.jpg");
+    background-image: url("/images/backgrounds/miami-skyline.webp");
    background-size: 100% 145%;
     background-position: center bottom;
     background-repeat: no-repeat;

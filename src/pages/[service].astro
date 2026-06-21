@@ -1,0 +1,59 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import ServiceLanding from "../components/ServiceLanding.astro";
+import { servicePages } from "../components/servicePages";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return servicePages.map((page) => ({ params: { service: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const canonicalPath = `/${page.slug}/`;
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: page.headline,
+  description: page.description,
+  url: `https://www.miamiknifeguy.com${canonicalPath}`,
+  provider: { "@id": "https://www.miamiknifeguy.com/#business" },
+  areaServed: "South Florida",
+};
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: page.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.miamiknifeguy.com/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://www.miamiknifeguy.com/services/" },
+    { "@type": "ListItem", position: 3, name: page.headline, item: `https://www.miamiknifeguy.com${canonicalPath}` },
+  ],
+};
+---
+<RouteShell
+  title={page.title}
+  description={page.description}
+  canonicalPath={canonicalPath}
+  schema={[serviceSchema, faqSchema, breadcrumbSchema]}
+>
+  <ServiceLanding
+    eyebrow={page.eyebrow}
+    headline={page.headline}
+    accent={page.accent}
+    intro={page.intro}
+    highlights={[...page.highlights]}
+    detailTitle={page.detailTitle}
+    detail={page.detail}
+    faq={[...page.faq]}
+    bookingPath={"bookingPath" in page ? page.bookingPath : "/book/"}
+  />
+</RouteShell>

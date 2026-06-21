@@ -11,7 +11,7 @@
   min-height:clamp(360px,48vh,560px);
   display:flex;
   align-items:center;
-  background-image:url("/images/story/ourstory.png");
+  background-image:url("/images/story/ourstory.webp");
   background-size:cover;
   background-position:center right;
   background-repeat:no-repeat;

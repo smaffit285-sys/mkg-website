@@ -1,0 +1,55 @@
+---
+interface Props {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  steps: Array<{ title: string; copy: string }>;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  referral?: boolean;
+  referralCode?: string;
+}
+
+const {
+  eyebrow,
+  headline,
+  intro,
+  steps,
+  primaryHref,
+  primaryLabel,
+  secondaryHref = "/contact/",
+  secondaryLabel = "Contact MKG",
+  referral = false,
+  referralCode,
+} = Astro.props;
+---
+<main class="panel" aria-hidden="false">
+  <div class="panel-inner">
+    <div class="max-w-4xl mx-auto">
+      <p class="sub-eyebrow">{eyebrow}</p>
+      <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">{headline}</h1>
+      <p class="sub-body max-w-2xl mb-10">{intro}</p>
+      {referral && (
+        <p id="referral-code" class="text-[10px] uppercase tracking-[0.24em] text-pink-400 mb-7">
+          {referralCode ? `MKG referral · ${referralCode}` : "MKG referral"}
+        </p>
+      )}
+      {referralCode && <input type="hidden" name="referralCode" value={referralCode} />}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+        {steps.map((step, index) => (
+          <div class="review-card">
+            <div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">0{index + 1}</div>
+            <h2 class="text-white/82 text-base font-semibold mb-3">{step.title}</h2>
+            <p class="text-white/42 text-sm font-light leading-relaxed">{step.copy}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href={primaryHref} class="panel-cta-btn panel-cta-cyan">{primaryLabel}</a>
+        <a href={secondaryHref} class="panel-cta-btn panel-cta-ghost">{secondaryLabel}</a>
+      </div>
+    </div>
+  </div>
+</main>

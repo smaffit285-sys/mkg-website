@@ -10,57 +10,82 @@ import "../styles/panels.css";
 import "../styles/proof.css";
 import "../styles/our-story.css";
 import interactionsScript from "../scripts/interactions.js?url";
-import navigationScript from "../scripts/navigation.js?url";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  pageClass?: string;
+  schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  preloadHero?: boolean;
+  robots?: string;
+}
+
+const {
+  title = "Miami Knife Guy | Premium Knife Sharpening in South Florida",
+  description = "Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens. Based in North Miami Beach and serving select clients from Miami to Fort Lauderdale.",
+  canonicalPath = "/",
+  image = "/images/brand/mkg-logo.jpg",
+  pageClass = "",
+  schema = [],
+  preloadHero = false,
+  robots = "index, follow",
+} = Astro.props;
+
+const siteUrl = "https://www.miamiknifeguy.com";
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const socialImage = new URL(image, siteUrl).toString();
+const schemas = Array.isArray(schema) ? schema : [schema];
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#business`,
+  name: "Miami Knife Guy",
+  alternateName: "MKG",
+  description: "Premium knife sharpening and edge care in South Florida for chefs, restaurants, hotels, hospitality teams, and serious home kitchens.",
+  url: `${siteUrl}/`,
+  telephone: "+13059095773",
+  priceRange: "$$",
+  image: `${siteUrl}/images/brand/mkg-logo.jpg`,
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "9" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "North Miami Beach",
+    addressRegion: "FL",
+    addressCountry: "US",
+  },
+  areaServed: ["North Miami Beach", "Aventura", "Sunny Isles Beach", "Hollywood", "Fort Lauderdale", "Miami", "South Florida"],
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Miami Knife Guy | Premium Knife Sharpening in South Florida</title>
-<meta name="description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens. Based in North Miami Beach and serving select clients from Miami to Fort Lauderdale." />
-<meta name="robots" content="index, follow" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
 <meta name="theme-color" content="#060609" />
-<meta property="og:title" content="Miami Knife Guy | Premium Knife Sharpening in South Florida" />
-<meta property="og:description" content="Premium knife sharpening in South Florida for chefs, restaurants, hotels, and serious home kitchens." />
-<meta property="og:url" content="https://www.miamiknifeguy.com/" />
-<meta property="og:image" content="https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Miami Knife Guy" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={socialImage} />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="canonical" href="https://www.miamiknifeguy.com/" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" href="/favicon.ico" sizes="any" />
 <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Yellowtail&family=Playfair+Display:ital,wght@1,900&family=Alex+Brush&display=swap" rel="stylesheet" />
-
-<script type="application/ld+json" set:html={`{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.miamiknifeguy.com/#business",
-  "name": "Miami Knife Guy",
-  "alternateName": "MKG",
-  "description": "Premium knife sharpening and edge care in South Florida for chefs, restaurants, hotels, hospitality teams, and serious home kitchens.",
-  "url": "https://www.miamiknifeguy.com/",
-  "telephone": "+13059095773",
-  "priceRange": "$$",
-  "image": "https://www.miamiknifeguy.com/images/brand/mkg-logo.jpg",
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "9" },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "North Miami Beach",
-    "addressRegion": "FL",
-    "addressCountry": "US"
-  },
-  "areaServed": [
-    { "@type": "City", "name": "North Miami Beach" },
-    { "@type": "City", "name": "Aventura" },
-    { "@type": "City", "name": "Sunny Isles Beach" },
-    { "@type": "City", "name": "Hollywood" },
-    { "@type": "City", "name": "Fort Lauderdale" },
-    { "@type": "City", "name": "Miami" },
-    { "@type": "AdministrativeArea", "name": "South Florida" }
-  ]
-}`}></script>
+{preloadHero && <link rel="preload" href="/images/backgrounds/miami-skyline.webp" as="image" type="image/webp" fetchpriority="high" />}
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+{schemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)}></script>)}
 </head>
-<body class="min-h-screen bg-[#060609] text-white overflow-hidden">
+<body class:list={["min-h-screen bg-[#060609] text-white", pageClass, { "overflow-hidden": !pageClass.includes("route-page") }]}>
 <slot />
 <script src={interactionsScript}></script>
-<script src={navigationScript}></script>
 </body>
 </html>

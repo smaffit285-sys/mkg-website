@@ -1,0 +1,32 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+
+export const prerender = false;
+
+const referralCode = Astro.params.referralCode ?? "";
+const canonicalPath = `/r/${encodeURIComponent(referralCode)}/`;
+---
+<RouteShell
+  title="Miami Knife Guy Referral"
+  description="Book Miami Knife Guy through a trusted referral."
+  canonicalPath={canonicalPath}
+  robots="noindex, follow"
+>
+  <CustomerFlowPage
+    eyebrow="Referred to Miami Knife Guy"
+    headline="A sharper introduction."
+    intro="Someone who knows MKG sent you here. Choose the service path that fits your kitchen, or text Sean directly and mention your referral."
+    steps={[
+      { title: "Choose the kitchen", copy: "Select professional restaurant service or premium home knife sharpening." },
+      { title: "Mention the referral", copy: "Your referral code is carried with this page and can be included when you contact MKG." },
+      { title: "Describe the knives", copy: "Share quantity, blade types, condition, location, and preferred timing." },
+    ]}
+    primaryHref="/book/"
+    primaryLabel="Choose Service"
+    secondaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%20was%20referred%20to%20you."
+    secondaryLabel="Text MKG"
+    referral={true}
+    referralCode={referralCode}
+  />
+</RouteShell>

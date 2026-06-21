@@ -9,10 +9,10 @@ PANEL: HOME
 <!-- HERO -->
 <main class="mkg-home-hero w-full relative overflow-hidden bg-[#050505]">
 <div class="mkg-hero-bg-stage absolute inset-0 z-0 pointer-events-none">
-<img src="/images/backgrounds/miami-skyline.jpg"
+<img src="/images/backgrounds/miami-skyline.webp"
 class="mkg-hero-skyline absolute inset-0 w-full h-full object-cover opacity-80 z-10"
 alt="Miami Skyline"
-loading="lazy"
+fetchpriority="high"
 width="1600"
 height="900">
 
@@ -49,14 +49,13 @@ Precision sharpening, repair, and restoration for Miami restaurants, chefs, and 
 </p>
 
 <div class="mkg-hero-cta-row">
-<a href="sms:+13059095773?body=SHARP"
+<a href="/book/"
 class="panel-cta-btn panel-cta-pink"
 style="font-size:10px; letter-spacing:0.22em;">
-Text SHARP
+Book Service
 </a>
 
-<a href="#services"
-onclick="navigateTo('services'); return false;"
+<a href="/services/"
 class="panel-cta-btn panel-cta-ghost"
 style="font-size:10px; letter-spacing:0.22em;">
 View Services
@@ -72,11 +71,12 @@ View Services
 <div class="mkg-service-grid-floor" aria-hidden="true"></div>
 <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 relative z-10">
 <!-- Sharp After Dark -->
-<div onclick="navigateTo('sharp-after-dark')" class="group cursor-pointer relative flex flex-col mt-0">
+<div class="group cursor-pointer relative flex flex-col mt-0">
+<a href="/sharp-after-dark/" class="absolute inset-0 z-40" aria-label="Explore Sharp After Dark restaurant knife sharpening"></a>
 <div class="hardware-gateway after-dark-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
 <div class="service-card-water-scrim" aria-hidden="true"></div>
 <img
-src="/images/services/gemini-table.png"
+src="/images/services/gemini-table.webp"
 class="service-card-bg service-card-bg--after-dark absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-60 group-hover:grayscale-0 z-10 rounded-lg"
 alt="Sharp After Dark commercial knife sharpening"
 loading="lazy"
@@ -84,7 +84,7 @@ loading="lazy"
 <div class="gateway-vignette"></div>
 <div class="service-card-logo-stage">
 <img
-src="/images/brand/sharp-after-dark-transparent.png"
+src="/images/brand/sharp-after-dark-transparent.webp"
 alt="Sharp After Dark"
 class="service-card-logo service-card-logo--afterdark"
 loading="lazy"
@@ -127,11 +127,12 @@ After service, you rest. Before prep, they're sharp. Zero-downtime edge care for
 </div>
 </div>
 <!-- Miami Knife Club -->
-<div onclick="navigateTo('miami-knife-club')" class="group cursor-pointer relative flex flex-col mt-0">
+<div class="group cursor-pointer relative flex flex-col mt-0">
+<a href="/miami-knife-club/" class="absolute inset-0 z-40" aria-label="Explore Miami Knife Club recurring home knife sharpening"></a>
 <div class="hardware-gateway club-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
 <div class="service-card-water-scrim" aria-hidden="true"></div>
 <img
-src="/images/services/neon-knives.png"
+src="/images/services/neon-knives.webp"
 class="service-card-bg service-card-bg--club absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-85 group-hover:grayscale-0 z-10 rounded-lg"
 alt="Premium knives with neon lighting"
 loading="lazy"
@@ -139,7 +140,7 @@ loading="lazy"
 <div class="gateway-vignette"></div>
 <div class="service-card-logo-stage">
 <img
-src="/images/brand/miami-knife-club-transparent.png"
+src="/images/brand/miami-knife-club-transparent.webp"
 alt="Miami Knife Club"
 class="service-card-logo service-card-logo--knifeclub"
 loading="lazy"
@@ -240,9 +241,9 @@ This section is currently approved. Do not alter during hero/service-card refine
 <div class="w-px h-8 mx-auto mb-8" style="background:linear-gradient(to bottom, rgba(236,72,153,0.4), transparent);"></div>
 <!-- CTAs -->
 <div class="flex flex-wrap justify-center gap-4">
-<a href="https://mkggrowthengine.vercel.app/register" class="panel-cta-btn panel-cta-pink" style="font-size:10px; letter-spacing:0.22em;">Get Your Edge Back</a>
-<a href="https://mkggrowthengine.vercel.app/register" class="panel-cta-btn panel-cta-ghost" style="font-size:10px; letter-spacing:0.22em;">Schedule Service</a>
-<a href="sms:+13059095773?body=SHARP" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">Text Sharp</a>
+<a href="/book/" class="panel-cta-btn panel-cta-pink" style="font-size:10px; letter-spacing:0.22em;">Get Your Edge Back</a>
+<a href="/book/" class="panel-cta-btn panel-cta-ghost" style="font-size:10px; letter-spacing:0.22em;">Schedule Service</a>
+<a href="/send-photos/" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">Send Photos</a>
 </div>
 </div>
 </section>

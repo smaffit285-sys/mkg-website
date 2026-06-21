@@ -1,26 +1,26 @@
 <header class="mkg-header fixed top-0 left-0 w-full z-50 bg-[#020202]/96 backdrop-blur-md border-b border-white/5">
     <div class="mkg-header-inner h-20 flex items-center justify-between gap-8">
 
-        <div id="logo-home-btn" onclick="navigateTo('home')" class="flex items-center gap-4 shrink-0 cursor-pointer">
+        <a id="logo-home-btn" href="/" class="flex items-center gap-4 shrink-0 cursor-pointer">
             <div class="w-12 h-12 rounded-full border border-gray-700/40 bg-black overflow-hidden flex items-center justify-center">
                 <img src="/images/brand/mkg-logo.jpg" alt="MKG" class="w-full h-full object-contain mix-blend-lighten opacity-90" width="48" height="48">
             </div>
             <span class="text-lg font-medium tracking-wider whitespace-nowrap">Miami Knife Guy</span>
-        </div>
+        </a>
 
         <nav class="hidden lg:flex flex-1 justify-center gap-8 xl:gap-10 text-[10px] tracking-[0.25em] uppercase text-gray-400 font-semibold whitespace-nowrap">
-            <a href="#sharp-after-dark" id="nav-sad"      onclick="navigateTo('sharp-after-dark'); return false;" class="nav-neon-link">Sharp After Dark</a>
-            <a href="#miami-knife-club" id="nav-mkc"      onclick="navigateTo('miami-knife-club');  return false;" class="nav-neon-link">Knife Club</a>
-            <a href="#before-after"     id="nav-proof"    onclick="navigateTo('before-after');      return false;" class="nav-neon-link">Proof</a>
-            <a href="#reviews"          id="nav-reviews"  onclick="navigateTo('reviews');           return false;" class="nav-neon-link">Reviews</a>
-            <a href="#services"         id="nav-services" onclick="navigateTo('services');          return false;" class="nav-neon-link">Services</a>
-            <a href="#our-story"        id="nav-story"    onclick="navigateTo('our-story');         return false;" class="nav-neon-link">Our Story</a>
+            <a href="/sharp-after-dark/" id="nav-sad" class="nav-neon-link">Sharp After Dark</a>
+            <a href="/miami-knife-club/" id="nav-mkc" class="nav-neon-link">Knife Club</a>
+            <a href="/proof/" id="nav-proof" class="nav-neon-link">Proof</a>
+            <a href="/reviews/" id="nav-reviews" class="nav-neon-link">Reviews</a>
+            <a href="/services/" id="nav-services" class="nav-neon-link">Services</a>
+            <a href="/about/" id="nav-story" class="nav-neon-link">Our Story</a>
         </nav>
 
         <div class="flex items-center gap-6 shrink-0">
             <span class="hidden xl:inline text-sm font-light tracking-widest text-gray-300">(305) 909-5773</span>
-            <a href="sms:+13059095773?body=SHARP" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
-                Text Sharp
+            <a href="/book/" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
+                Book Service
             </a>
             <button id="mkg-hamburger" class="mkg-mobile-menu-button flex lg:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mkg-mobile-menu">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -34,17 +34,17 @@
     </div>
 
     <div class="mkg-mobile-cta-row">
-        <a href="sms:+13059095773?body=SHARP" class="neon-btn-cyan border-2 rounded-md text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">
-            Text Sharp
+        <a href="/book/" class="neon-btn-cyan border-2 rounded-md text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">
+            Book Service
         </a>
     </div>
 
     <nav id="mkg-mobile-menu" class="mkg-mobile-menu" aria-label="Mobile navigation">
-        <a href="#sharp-after-dark" class="mkg-mobile-menu-link" onclick="navigateTo('sharp-after-dark'); return false;">Sharp After Dark</a>
-        <a href="#miami-knife-club" class="mkg-mobile-menu-link" onclick="navigateTo('miami-knife-club'); return false;">Knife Club</a>
-        <a href="#before-after"     class="mkg-mobile-menu-link" onclick="navigateTo('before-after'); return false;">Proof</a>
-        <a href="#reviews"          class="mkg-mobile-menu-link" onclick="navigateTo('reviews'); return false;">Reviews</a>
-        <a href="#services"         class="mkg-mobile-menu-link" onclick="navigateTo('services'); return false;">Services</a>
-        <a href="#our-story"        class="mkg-mobile-menu-link" onclick="navigateTo('our-story'); return false;">Our Story</a>
+        <a href="/sharp-after-dark/" class="mkg-mobile-menu-link">Sharp After Dark</a>
+        <a href="/miami-knife-club/" class="mkg-mobile-menu-link">Knife Club</a>
+        <a href="/proof/" class="mkg-mobile-menu-link">Proof</a>
+        <a href="/reviews/" class="mkg-mobile-menu-link">Reviews</a>
+        <a href="/services/" class="mkg-mobile-menu-link">Services</a>
+        <a href="/about/" class="mkg-mobile-menu-link">Our Story</a>
     </nav>
 </header>
