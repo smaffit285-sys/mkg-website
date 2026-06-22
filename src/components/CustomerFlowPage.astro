@@ -8,6 +8,8 @@ interface Props {
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  tertiaryHref?: string;
+  tertiaryLabel?: string;
   referral?: boolean;
   referralCode?: string;
 }
@@ -21,6 +23,8 @@ const {
   primaryLabel,
   secondaryHref = "/contact/",
   secondaryLabel = "Contact MKG",
+  tertiaryHref,
+  tertiaryLabel,
   referral = false,
   referralCode,
 } = Astro.props;
@@ -49,6 +53,9 @@ const {
       <div class="flex flex-wrap gap-3">
         <a href={primaryHref} class="panel-cta-btn panel-cta-cyan">{primaryLabel}</a>
         <a href={secondaryHref} class="panel-cta-btn panel-cta-ghost">{secondaryLabel}</a>
+        {tertiaryHref && tertiaryLabel && (
+          <a href={tertiaryHref} class="panel-cta-btn panel-cta-ghost">{tertiaryLabel}</a>
+        )}
       </div>
     </div>
   </div>

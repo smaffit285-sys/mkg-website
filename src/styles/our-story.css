@@ -205,6 +205,17 @@
   gap:16px;
   flex-wrap:wrap;
 }
+.story-cta > a {
+  display:inline-flex;
+  width:188px;
+  min-height:52px;
+  box-sizing:border-box;
+  align-items:center;
+  justify-content:center;
+  padding:0 24px;
+  line-height:1;
+  vertical-align:middle;
+}
 .story-button {
   display:inline-flex;
   min-width:188px;
@@ -253,5 +264,6 @@
   .story-quote-band { margin-top:2rem; padding:1.5rem; }
   .story-quote-band p { font-size:clamp(1.25rem,6vw,1.75rem); }
   .story-closing { text-align:left; }
+  .story-cta > a,
   .story-button { width:100%; }
 }
