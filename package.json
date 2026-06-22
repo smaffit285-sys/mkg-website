@@ -9,8 +9,8 @@
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
-    "@astrojs/vercel": "^9.0.5",
-    "astro": "^5.0.0",
+    "@astrojs/vercel": "10.0.8",
+    "astro": "6.4.8",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
