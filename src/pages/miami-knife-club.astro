@@ -2,7 +2,15 @@
 import RouteShell from "../components/RouteShell.astro";
 import MiamiKnifeClubPanel from "../components/MiamiKnifeClubPanel.astro";
 export const prerender = true;
-const schema = {
+const faq = [
+  { question: "What is Miami Knife Club?", answer: "Miami Knife Club is a recurring edge-care membership designed to keep home-kitchen knives sharp and ready without relying on memory or emergency scheduling." },
+  { question: "Who is Miami Knife Club for?", answer: "It is for serious home cooks, private chefs, and food-focused households in the Miami area that value consistent knife performance." },
+  { question: "Is Miami Knife Club for professional kitchens?", answer: "The club is primarily designed for home cooks and private chefs. Restaurants, hotels, and commercial kitchens should request a Sharp After Dark program." },
+  { question: "How often should home kitchen knives be sharpened?", answer: "The right interval depends on steel, cutting surface, technique, and use. A recurring plan helps establish service around how your knives actually perform." },
+  { question: "Can repairs or special requests be included?", answer: "Repairs, unusual knives, and custom requests can be reviewed separately. Photos may be requested before the work and timing are confirmed." },
+  { question: "How do I join Miami Knife Club?", answer: "Use the Home Service booking page to request membership and confirm the plan, location, and service details that fit your kitchen." },
+];
+const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Miami Knife Club",
@@ -10,13 +18,22 @@ const schema = {
   areaServed: "South Florida",
   serviceType: "Recurring residential knife sharpening and edge care",
 };
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
 ---
 <RouteShell
   title="Miami Knife Club | Recurring Home Knife Sharpening"
   description="Recurring premium edge care for serious home cooks in Miami and South Florida."
   canonicalPath="/miami-knife-club/"
   image="/images/brand/miami-knife-club-transparent.webp"
-  schema={schema}
+  schema={[serviceSchema, faqSchema]}
 >
-  <MiamiKnifeClubPanel />
+  <MiamiKnifeClubPanel faq={faq} />
 </RouteShell>

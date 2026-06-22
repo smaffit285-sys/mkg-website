@@ -15,9 +15,12 @@ export const servicePages = [
     detailTitle: "Built Around the Blade",
     detail: "There is no universal edge angle or one-machine process here. Steel, geometry, use, and condition determine the work. The goal is a sharp, durable edge without unnecessary material removal.",
     faq: [
+      { question: "Do you offer knife sharpening in Miami?", answer: "Yes. Miami Knife Guy is based in North Miami Beach and provides professional knife sharpening for clients across Miami-Dade and Broward." },
       { question: "What kinds of knives do you sharpen?", answer: "MKG sharpens Japanese and Western chef knives, utility and paring knives, slicers, serrated knives, steak knives, and many specialty blades." },
-      { question: "Can you repair chips while sharpening?", answer: "Yes. Minor chips and edge damage can often be corrected during service. Larger damage is assessed before work begins." },
-      { question: "Where do you provide service?", answer: "Miami Knife Guy is based in North Miami Beach and serves select clients across Miami-Dade and Broward." },
+      { question: "Do you offer pickup and drop-off?", answer: "Pickup, drop-off, and service logistics depend on location and the type of service requested. Details are confirmed before scheduling." },
+      { question: "How do I know if my knife needs repair instead of sharpening?", answer: "Chips, broken tips, heavy rust, bends, or a worn profile may require repair before the final edge is sharpened. Photos may be requested to review the condition first." },
+      { question: "Do you sharpen serrated knives?", answer: "Yes, when the serration pattern and blade condition make sharpening appropriate. Each serrated knife is reviewed individually." },
+      { question: "How do I book knife sharpening?", answer: "Use the Book Service page to choose the service path that fits your kitchen. For damaged or unusual knives, send photos before scheduling." },
     ],
   },
   {
@@ -37,9 +40,12 @@ export const servicePages = [
     detail: "The program is designed for kitchens that cannot afford dull knives or missing tools during prep. Every cycle is planned around operational timing and the way each team actually uses its fleet.",
     bookingPath: "/book/restaurant/",
     faq: [
-      { question: "Will our kitchen lose access to its knives?", answer: "The program is scheduled to minimize or eliminate downtime, with collection and return coordinated around service and prep." },
-      { question: "Can you manage a large knife fleet?", answer: "Yes. Recurring programs can include inventory accountability, tracking, repair notes, and consistent service intervals." },
-      { question: "Do you sharpen steak knives?", answer: "Yes. Dining-room steak knife fleets can be serviced as part of a restaurant program." },
+      { question: "Do you sharpen knives for restaurants in Miami?", answer: "Yes. MKG serves restaurants, hotels, and commercial kitchens across Miami-Dade and Broward with professional fleet sharpening and repair." },
+      { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. Sharp After Dark is designed around after-hours collection and return before prep. Timing is reviewed and confirmed for each kitchen." },
+      { question: "Do you handle recurring restaurant knife programs?", answer: "Yes. Weekly, bi-weekly, and other recurring intervals can be arranged based on fleet size, volume, and operational needs." },
+      { question: "Can you sharpen steak knives for dining rooms?", answer: "Yes. Straight-edge and serviceable serrated steak knives can be handled in batches or included in a recurring restaurant program." },
+      { question: "Do you track knife condition over time?", answer: "Recurring programs can include fleet accountability, condition notes, repair needs, and consistent service intervals." },
+      { question: "How do restaurants request service?", answer: "Use the Restaurant Service booking page and share the approximate knife count, schedule, location, and any repair or steak-knife needs." },
     ],
   },
   {
@@ -58,9 +64,12 @@ export const servicePages = [
     detailTitle: "Trust Matters",
     detail: "Expensive Japanese knives can be permanently altered by careless grinding. MKG works from the blade’s geometry and intended use, preserving the character of the knife while restoring performance.",
     faq: [
-      { question: "Do you sharpen single-bevel knives?", answer: "Yes. Single-bevel knives require specialized attention to the bevel, ura, and existing geometry." },
-      { question: "Will sharpening scratch the blade?", answer: "The work is handled carefully, but each knife is assessed for condition and required correction before service. Discuss finish-sensitive concerns when booking." },
-      { question: "Can you repair chipped Japanese steel?", answer: "Many chips can be repaired. The best approach depends on chip depth, blade height, steel, and existing profile." },
+      { question: "Do you sharpen Japanese knives in Miami?", answer: "Yes. MKG provides Japanese knife sharpening in Miami for serious home cooks, chefs, and professional kitchens across Miami-Dade and Broward." },
+      { question: "Do Japanese knives need different sharpening than Western knives?", answer: "Often, yes. Steel, bevel design, edge geometry, and intended use determine the sharpening approach rather than a single standard angle." },
+      { question: "Do you sharpen single-bevel knives?", answer: "Yes. Single-bevel knives require careful attention to the primary bevel, ura, and the geometry already established in the blade." },
+      { question: "Can you repair chips in Japanese knives?", answer: "Many chips can be repaired. The correct approach depends on chip depth, steel, blade height, and how the repair will affect the profile." },
+      { question: "Do you preserve the knife’s geometry?", answer: "Yes. The work is planned around controlled steel removal and the blade’s existing geometry, with long-term performance in mind." },
+      { question: "Should I send photos before booking?", answer: "Send photos for chips, broken tips, corrosion, bends, or finish-sensitive concerns. The knife can then be reviewed before service is confirmed." },
     ],
   },
   {
@@ -79,9 +88,12 @@ export const servicePages = [
     detailTitle: "Send Photos First",
     detail: "For significant damage, send clear photos of both blade faces, the edge, tip, and full profile. MKG can then give you a more useful preliminary assessment before service.",
     faq: [
-      { question: "Can every broken tip be repaired?", answer: "Many can, but the repair depends on how much material is missing and how the new profile will affect blade function." },
-      { question: "What is thinning?", answer: "Thinning reduces material behind the edge when a knife has become too thick to cut efficiently, even after sharpening." },
-      { question: "Should I send photos before booking?", answer: "Yes for substantial chips, broken tips, bent blades, heavy corrosion, or restoration work." },
+      { question: "Do you repair chipped knives?", answer: "Yes. Chip repair is reviewed according to the depth of the damage, the steel, and the amount of material required to restore a usable edge." },
+      { question: "Can you fix broken knife tips?", answer: "Many broken tips can be corrected. The repair depends on how much material is missing and how the new profile will affect the knife’s function." },
+      { question: "Can rusted knives be restored?", answer: "Some rust and corrosion can be cleaned or reduced, but the result depends on severity and whether pitting has compromised the blade. Photos help establish realistic expectations." },
+      { question: "When is a knife too damaged to repair?", answer: "A knife may not be a practical repair if damage affects structural safety, removes too much blade height, or would cost more than the tool reasonably justifies. MKG confirms that honestly before work." },
+      { question: "Do you remove as little steel as possible?", answer: "Yes. Repairs are planned to restore function and geometry while preserving as much usable steel and blade life as practical." },
+      { question: "Should I send photos before requesting restoration?", answer: "Yes. Send clear photos of both blade faces, the edge, the tip, and the full profile so the condition can be reviewed before service is confirmed." },
     ],
   },
   {
@@ -101,9 +113,12 @@ export const servicePages = [
     detail: "A dull steak knife drags through food and changes the guest’s perception of the plate. Dining-room fleet care treats the knife as part of the hospitality experience.",
     bookingPath: "/book/restaurant/",
     faq: [
-      { question: "Can serrated steak knives be sharpened?", answer: "Many can. Each pattern and condition is assessed to determine whether sharpening is appropriate." },
-      { question: "Do you offer recurring service?", answer: "Yes. Steak knife fleets can be included in a recurring restaurant or hotel edge-care program." },
-      { question: "Can you service a full dining-room fleet?", answer: "Yes. Share the approximate quantity, knife style, condition, and preferred service interval when booking." },
+      { question: "Do restaurants need steak knives sharpened?", answer: "Yes. Even durable steak knives lose performance through regular dining-room use, dishwashing, and contact with plates." },
+      { question: "Why do steak knives matter to the guest experience?", answer: "The guest feels the knife on the first cut. A clean-cutting, consistent fleet supports the food, the table setting, and the standard of service." },
+      { question: "Can you service steak knives in batches?", answer: "Yes. Restaurants, steakhouses, and hotels can submit full dining-room batches for assessment and service." },
+      { question: "Do you help maintain dining-room knife consistency?", answer: "Yes. Recurring fleet care helps keep sharpness and cutting feel more consistent across the dining room while identifying damaged pieces." },
+      { question: "Is steak-knife service part of Sharp After Dark?", answer: "It can be. Steak-knife fleets may be included in an after-hours restaurant program when the schedule and knife type are confirmed." },
+      { question: "How do I request steak-knife service?", answer: "Use the Restaurant Service booking page and include the approximate quantity, knife style, condition, and preferred timing." },
     ],
   },
 ] as const;

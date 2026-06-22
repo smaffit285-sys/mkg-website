@@ -1,0 +1,32 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FAQItem[];
+  accent?: "cyan" | "pink";
+  class?: string;
+}
+
+const {
+  items,
+  accent = "cyan",
+  class: className = "",
+} = Astro.props;
+
+const eyebrowClass = accent === "pink" ? "text-pink-400/70" : "text-cyan-400/70";
+---
+<section class:list={["faq-section", className]} aria-labelledby="faq-heading">
+  <p class:list={["text-[9px] uppercase tracking-widest font-bold mb-2", eyebrowClass]}>Helpful Details</p>
+  <h2 id="faq-heading" class="text-white/82 text-2xl font-semibold tracking-wide mb-5">Common Questions</h2>
+  <div class="space-y-4">
+    {items.map((item) => (
+      <details class="p-5 border border-white/6 rounded bg-black/20">
+        <summary class="cursor-pointer text-white/78 text-sm font-semibold">{item.question}</summary>
+        <p class="text-white/42 text-sm font-light leading-relaxed mt-3">{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

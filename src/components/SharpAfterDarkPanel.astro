@@ -1,7 +1,16 @@
+---
+import FAQSection from "./FAQSection.astro";
+
+interface Props {
+  faq: Array<{ question: string; answer: string }>;
+}
+
+const { faq } = Astro.props;
+---
 <!-- ====================================================
 PANEL: SHARP AFTER DARK
 ==================================================== -->
-<div id="panel-sharp-after-dark" class="panel" aria-hidden="true">
+<div id="panel-sharp-after-dark" class="panel" aria-hidden="false">
 <div class="panel-inner">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
@@ -81,5 +90,6 @@ Every cut matters, including the one the guest makes.
 </div>
 
 </div>
+<FAQSection items={faq} accent="pink" class="mt-14 pt-10 border-t border-white/5" />
 </div>
 </div><!-- /panel-sharp-after-dark -->
