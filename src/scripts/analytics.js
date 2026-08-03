@@ -110,7 +110,10 @@ document.addEventListener("click", (event) => {
   }
 
   const destination = new URL(link.href, window.location.origin);
-  if (destination.hostname.includes("google.com") && destination.pathname.includes("/maps/place/Miami+Knife+Guy")) {
+  if (
+    destination.hostname === "maps.app.goo.gl"
+    || (destination.hostname.includes("google.com") && destination.pathname.includes("/maps/place/Miami+Knife+Guy"))
+  ) {
     track("review_google_click", { placement, service_type: "review" });
     return;
   }
