@@ -1,37 +1,37 @@
-# MKG Copy Opportunities — Hold for Approval
+# MKG Copy Opportunities — Decisions & Implementation
 
-These are intentionally **not** published. The current voice and offer remain unchanged until Sean chooses what is true and useful.
+Sean supplied the operating details on August 3, 2026. The approved items below are now incorporated into the `fix/mkg-site-polish` preview without changing the broader brand voice.
 
 ## 1. Make the service radius concrete
 
-Current copy says Miami-Dade and Broward. A stronger conversion line could name the actual logistics—pickup, drop-off, mobile service, or service-zone minimums—if those details are stable.
+**Implemented.** Commercial service is available throughout Miami-Dade and Broward by confirmed appointment. Scheduling depends on location, operating hours, the existing route, and availability; it is not positioned as immediate on-call service.
 
-**Possible direction:** “Professional edge care across Miami-Dade and Broward, with service logistics confirmed before scheduling.”
+Residential sharpening is completed at the MKG shop. Drop-off is available. Same-day and quick-turnaround service depend on capacity; rush pricing depends on workload and requested timing.
 
 ## 2. Give Sharp After Dark one measurable promise
 
-“Zero downtime” is strong. It becomes more credible with one operational detail that MKG can consistently deliver, such as the normal collection/return window, recurring cadence, or fleet-accountability method.
+**Implemented.** Preferred pickup windows run from 8 PM–1 AM; preferred return windows run from 3 AM–8 AM. Every appointment remains subject to route and schedule confirmation.
 
-**Decision needed:** What timing or service standard can MKG promise without exceptions?
+The page now uses the windows as a concrete scheduling range rather than an unconditional guarantee.
 
 ## 3. Clarify the home-service threshold
 
-Home customers will wonder whether service is mobile, pickup/drop-off, or appointment-based and whether a minimum knife count applies. Answering that before the booking form could reduce weak inquiries.
+**Implemented.** Pickup and return are free within 10 miles for orders of 10 or more knives. Outside the free zone—or for fewer than 10 knives—travel is $1 per mile driven. Exact cost and timing are confirmed before booking.
 
-**Decision needed:** Minimum quantity, typical logistics, and whether starting pricing should be public.
+A mileage calculator is intentionally deferred until the distance origin and exact mileage method are defined well enough to prevent accidental misquotes.
 
 ## 4. Turn Knife Club into an instantly legible offer
 
-The mood is premium, but the practical value could land faster with a one-line structure: who it is for, what repeats, and what inconvenience disappears.
+**Implemented** with a compact opening line and no additional section:
 
-**Possible direction:** “Recurring edge care for serious home kitchens—scheduled before the knives start fighting back.”
+“Recurring edge care for serious home kitchens—scheduled before the knives start fighting back.”
 
 ## 5. Add a proof bridge near the first booking decision
 
-The site has excellent review and restoration proof. A compact line beside the first CTA could connect that evidence to the action without adding another section.
+**Implemented** directly below the first homepage CTA as a restrained link to the review page:
 
-**Possible direction:** “17+ years of professional edge care · 200K+ knives sharpened · 5.0 on Google.”
+“17+ years of edge care · 200K+ knives sharpened · 5.0 on Google.”
 
 ## Recommendation
 
-Approve only the claims MKG can repeat reliably. The strongest next copy pass would tighten logistics and service expectations—not add more adjectives.
+The new presentation uses one reusable logistics component across the Services page and both booking paths. Future changes to the service rules should be made in `src/config/serviceLogistics.ts` so the language stays consistent.
