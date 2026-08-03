@@ -2,6 +2,7 @@
 import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
 import RequestForm from "../../components/RequestForm.astro";
+import ServiceLogistics from "../../components/ServiceLogistics.astro";
 export const prerender = true;
 ---
 <RouteShell
@@ -16,7 +17,7 @@ export const prerender = true;
     steps={[
       { title: "Describe the kitchen", copy: "Share restaurant or hotel name, location, operating hours, and the best contact." },
       { title: "Estimate the fleet", copy: "Include chef knives, prep knives, steak knives, specialty blades, and known damage." },
-      { title: "Plan the cycle", copy: "MKG will discuss collection, return timing, recurring frequency, and fleet accountability." },
+      { title: "Plan the cycle", copy: "Choose preferred pickup and return windows; MKG confirms timing around location, route, and availability." },
     ]}
     primaryHref="tel:+13059095773"
     primaryLabel="Call MKG"
@@ -24,6 +25,7 @@ export const prerender = true;
     secondaryLabel="View Sharp After Dark"
     nextCopy="Prepare the request, then send the message. Sean reviews the account, knife volume, timing, and service window before confirming the right program."
   >
+    <ServiceLogistics mode="commercial" />
     <RequestForm
       id="restaurant-service-request"
       title="Request Restaurant Service"
@@ -45,7 +47,7 @@ export const prerender = true;
           { value: "monthly", label: "Monthly" },
           { value: "unsure", label: "Not sure yet" },
         ] },
-        { name: "serviceWindow", label: "Preferred service window", placeholder: "After close, before prep, preferred days" },
+        { name: "serviceWindow", label: "Preferred service window", placeholder: "Pickup 8 PM–1 AM · Return 3 AM–8 AM · Preferred days" },
         { name: "serviceNeeds", label: "Service needs", type: "textarea", fullWidth: true, placeholder: "Recurring sharpening, repairs, steak knives, fleet tracking, or other needs" },
       ]}
     />
