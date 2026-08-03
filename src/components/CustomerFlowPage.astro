@@ -12,6 +12,7 @@ interface Props {
   tertiaryLabel?: string;
   referral?: boolean;
   referralCode?: string;
+  nextCopy?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   tertiaryLabel,
   referral = false,
   referralCode,
+  nextCopy,
 } = Astro.props;
 ---
 <main class="panel" aria-hidden="false">
@@ -40,16 +42,23 @@ const {
           {referralCode ? `MKG referral · ${referralCode}` : "MKG referral"}
         </p>
       )}
-      {referralCode && <input type="hidden" name="referralCode" value={referralCode} />}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
         {steps.map((step, index) => (
           <div class="review-card">
             <div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">0{index + 1}</div>
             <h2 class="text-white/82 text-base font-semibold mb-3">{step.title}</h2>
-            <p class="text-white/42 text-sm font-light leading-relaxed">{step.copy}</p>
+            <p class="text-white/58 text-sm font-light leading-relaxed">{step.copy}</p>
           </div>
         ))}
       </div>
+      <slot />
+      {nextCopy && (
+        <aside class="mb-10 p-5 border border-white/10 rounded bg-white/[0.022]" aria-labelledby="what-happens-next">
+          <p class="text-[9px] uppercase tracking-[0.24em] text-cyan-400/75 font-bold mb-2">What happens next</p>
+          <h2 id="what-happens-next" class="sr-only">What happens next</h2>
+          <p class="text-white/58 text-sm font-light leading-relaxed">{nextCopy}</p>
+        </aside>
+      )}
       <div class="flex flex-wrap gap-3">
         <a href={primaryHref} class="panel-cta-btn panel-cta-cyan">{primaryLabel}</a>
         <a href={secondaryHref} class="panel-cta-btn panel-cta-ghost">{secondaryLabel}</a>

@@ -10,6 +10,7 @@ import "../styles/panels.css";
 import "../styles/proof.css";
 import "../styles/our-story.css";
 import interactionsScript from "../scripts/interactions.js?url";
+import analyticsScript from "../scripts/analytics.js?url";
 
 interface Props {
   title?: string;
@@ -81,11 +82,45 @@ const localBusinessSchema = {
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Yellowtail&family=Playfair+Display:ital,wght@1,900&family=Alex+Brush&display=swap" rel="stylesheet" />
 {preloadHero && <link rel="preload" href="/images/backgrounds/miami-skyline.webp" as="image" type="image/webp" fetchpriority="high" />}
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-LvFj7u-EnfNshXjuf74lQ.js"></script>
+<script is:inline>
+  window.plausible = window.plausible || function () {
+    (plausible.q = plausible.q || []).push(arguments);
+  };
+  plausible.init = plausible.init || function (options) {
+    plausible.o = options || {};
+  };
+  plausible.init({
+    outboundLinks: false,
+    fileDownloads: false,
+    transformRequest(payload) {
+      if (!payload || !payload.u) return payload;
+      try {
+        const url = new URL(payload.u);
+        if (/^\/r\/[^/]+\/?$/.test(url.pathname)) url.pathname = "/r/referral/";
+        const allowedCampaignParams = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+        const campaignParams = new URLSearchParams();
+        allowedCampaignParams.forEach((key) => {
+          const value = url.searchParams.get(key);
+          if (value) campaignParams.set(key, value);
+        });
+        url.search = campaignParams.toString();
+        url.hash = "";
+        payload.u = url.toString();
+      } catch {
+        return payload;
+      }
+      return payload;
+    },
+  });
+</script>
 <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
 {schemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)}></script>)}
 </head>
 <body class:list={["min-h-screen bg-[#060609] text-white", pageClass, { "overflow-hidden": !pageClass.includes("route-page") }]}>
 <slot />
 <script src={interactionsScript}></script>
+<script src={analyticsScript}></script>
 </body>
 </html>

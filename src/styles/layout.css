@@ -18,6 +18,7 @@
             width: 100%;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
+            gap: clamp(1rem, 2vw, 2rem);
         }
         @media (min-width: 1024px) {
             .mkg-header-inner {
@@ -44,6 +45,9 @@
             cursor: pointer;
             padding: 0;
             transition: border-color 260ms ease, box-shadow 260ms ease;
+        }
+        @media (min-width: 1024px) {
+            .mkg-mobile-menu-button { display: none; }
         }
         .mkg-mobile-menu-button:hover {
             border-color: rgba(34,211,238,0.45);
@@ -91,12 +95,16 @@
             transition: color 220ms ease, border-color 220ms ease, text-shadow 220ms ease;
         }
         .mkg-mobile-menu-link:hover,
-        .mkg-mobile-menu-link:focus {
+        .mkg-mobile-menu-link:focus-visible,
+        .mkg-mobile-menu-link[aria-current="page"] {
             color: #f0feff;
             border-left-color: rgba(34,211,238,0.55);
             text-shadow: 0 0 6px rgba(34,211,238,0.30);
             outline: none;
         }
+        .mkg-header-phone { transition: color 180ms ease, text-shadow 180ms ease; }
+        .mkg-header-phone:hover,
+        .mkg-header-phone:focus-visible { color: #e9fdff; text-shadow: 0 0 8px rgba(34,211,238,0.38); }
 
 /* =============================================
            MOBILE HEADER CTA ROW

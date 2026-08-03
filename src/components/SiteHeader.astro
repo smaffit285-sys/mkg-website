@@ -1,3 +1,15 @@
+---
+const currentPath = Astro.url.pathname;
+const servicePaths = new Set([
+    "/services/",
+    "/knife-sharpening-miami/",
+    "/restaurant-knife-sharpening-miami/",
+    "/japanese-knife-sharpening-miami/",
+    "/knife-repair-restoration-miami/",
+    "/steak-knife-sharpening-miami-restaurants/",
+]);
+const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(currentPath) : currentPath === path;
+---
 <header class="mkg-header fixed top-0 left-0 w-full z-50 bg-[#020202]/96 backdrop-blur-md border-b border-white/5">
     <div class="mkg-header-inner h-20 flex items-center justify-between gap-8">
 
@@ -9,17 +21,17 @@
         </a>
 
         <nav class="hidden lg:flex flex-1 justify-center gap-8 xl:gap-10 text-[10px] tracking-[0.25em] uppercase text-gray-400 font-semibold whitespace-nowrap">
-            <a href="/sharp-after-dark/" id="nav-sad" class="nav-neon-link">Sharp After Dark</a>
-            <a href="/miami-knife-club/" id="nav-mkc" class="nav-neon-link">Knife Club</a>
-            <a href="/proof/" id="nav-proof" class="nav-neon-link">Proof</a>
-            <a href="/reviews/" id="nav-reviews" class="nav-neon-link">Reviews</a>
-            <a href="/services/" id="nav-services" class="nav-neon-link">Services</a>
-            <a href="/about/" id="nav-story" class="nav-neon-link">Our Story</a>
+            <a href="/sharp-after-dark/" id="nav-sad" class:list={["nav-neon-link", { "nav-active": isCurrent("/sharp-after-dark/") }]} aria-current={isCurrent("/sharp-after-dark/") ? "page" : undefined}>Sharp After Dark</a>
+            <a href="/miami-knife-club/" id="nav-mkc" class:list={["nav-neon-link", { "nav-active": isCurrent("/miami-knife-club/") }]} aria-current={isCurrent("/miami-knife-club/") ? "page" : undefined}>Knife Club</a>
+            <a href="/proof/" id="nav-proof" class:list={["nav-neon-link", { "nav-active": isCurrent("/proof/") }]} aria-current={isCurrent("/proof/") ? "page" : undefined}>Proof</a>
+            <a href="/reviews/" id="nav-reviews" class:list={["nav-neon-link", { "nav-active": isCurrent("/reviews/") }]} aria-current={isCurrent("/reviews/") ? "page" : undefined}>Reviews</a>
+            <a href="/services/" id="nav-services" class:list={["nav-neon-link", { "nav-active": isCurrent("/services/") }]} aria-current={isCurrent("/services/") ? "page" : undefined}>Services</a>
+            <a href="/about/" id="nav-story" class:list={["nav-neon-link", { "nav-active": isCurrent("/about/") }]} aria-current={isCurrent("/about/") ? "page" : undefined}>Our Story</a>
         </nav>
 
         <div class="flex items-center gap-6 shrink-0">
-            <span class="hidden xl:inline text-sm font-light tracking-widest text-gray-300">(305) 909-5773</span>
-            <a href="/book/" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
+            <a href="tel:+13059095773" class="mkg-header-phone hidden xl:inline text-sm font-light tracking-widest text-gray-300">(305) 909-5773</a>
+            <a href="/book/" aria-current={currentPath.startsWith("/book/") ? "page" : undefined} class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
                 Book Service
             </a>
             <button id="mkg-hamburger" class="mkg-mobile-menu-button flex lg:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mkg-mobile-menu">
@@ -40,11 +52,11 @@
     </div>
 
     <nav id="mkg-mobile-menu" class="mkg-mobile-menu" aria-label="Mobile navigation">
-        <a href="/sharp-after-dark/" class="mkg-mobile-menu-link">Sharp After Dark</a>
-        <a href="/miami-knife-club/" class="mkg-mobile-menu-link">Knife Club</a>
-        <a href="/proof/" class="mkg-mobile-menu-link">Proof</a>
-        <a href="/reviews/" class="mkg-mobile-menu-link">Reviews</a>
-        <a href="/services/" class="mkg-mobile-menu-link">Services</a>
-        <a href="/about/" class="mkg-mobile-menu-link">Our Story</a>
+        <a href="/sharp-after-dark/" class="mkg-mobile-menu-link" aria-current={isCurrent("/sharp-after-dark/") ? "page" : undefined}>Sharp After Dark</a>
+        <a href="/miami-knife-club/" class="mkg-mobile-menu-link" aria-current={isCurrent("/miami-knife-club/") ? "page" : undefined}>Knife Club</a>
+        <a href="/proof/" class="mkg-mobile-menu-link" aria-current={isCurrent("/proof/") ? "page" : undefined}>Proof</a>
+        <a href="/reviews/" class="mkg-mobile-menu-link" aria-current={isCurrent("/reviews/") ? "page" : undefined}>Reviews</a>
+        <a href="/services/" class="mkg-mobile-menu-link" aria-current={isCurrent("/services/") ? "page" : undefined}>Services</a>
+        <a href="/about/" class="mkg-mobile-menu-link" aria-current={isCurrent("/about/") ? "page" : undefined}>Our Story</a>
     </nav>
 </header>

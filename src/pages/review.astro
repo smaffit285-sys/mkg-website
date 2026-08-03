@@ -1,6 +1,7 @@
 ---
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+import RequestForm from "../components/RequestForm.astro";
 export const prerender = true;
 ---
 <RouteShell
@@ -21,5 +22,33 @@ export const prerender = true;
     primaryLabel="Review on Google"
     secondaryHref="/send-photos/"
     secondaryLabel="Send Photos"
-  />
+    nextCopy="Choose a platform, write your review, then send the prepared message or use the Google review link."
+  >
+    <RequestForm
+      id="review-submission"
+      title="Share Your Experience"
+      description="Leave the public review on your preferred platform, or prepare a message for MKG with the review text and link."
+      source="public_review"
+      serviceType="review"
+      submitLabel="Prepare Review Message"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "platform", label: "Review platform", type: "select", required: true, options: [
+          { value: "google", label: "Google" },
+          { value: "other", label: "Other public platform" },
+          { value: "private", label: "Private feedback to MKG" },
+        ] },
+        { name: "rating", label: "Rating", type: "select", options: [
+          { value: "5", label: "5 stars" },
+          { value: "4", label: "4 stars" },
+          { value: "3", label: "3 stars" },
+          { value: "2", label: "2 stars" },
+          { value: "1", label: "1 star" },
+        ] },
+        { name: "feedback", label: "Review or feedback", type: "textarea", required: true, fullWidth: true, placeholder: "Tell us about the knife, repair, service, and how the edge feels now" },
+        { name: "reviewUrl", label: "Published review link", type: "url", fullWidth: true, placeholder: "Optional URL after posting" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>

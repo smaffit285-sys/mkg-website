@@ -1,6 +1,7 @@
 ---
 import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
 
 export const prerender = false;
 
@@ -28,5 +29,28 @@ const canonicalPath = `/r/${encodeURIComponent(referralCode)}/`;
     secondaryLabel="Text MKG"
     referral={true}
     referralCode={referralCode}
-  />
+    nextCopy="Prepare the referral request, then send the message. The referral code is included so Sean can connect the request."
+  >
+    <RequestForm
+      id="coded-referral-request"
+      title="Request Service Through a Referral"
+      description="Your MKG referral code is included automatically. Share the service path and knife details so Sean can review the request."
+      source="public_referral_code"
+      serviceType="referral"
+      submitLabel="Prepare Referral Request"
+      fields={[
+        { name: "referralCode", label: "Referral code", type: "hidden", value: referralCode },
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "serviceInterest", label: "Service interest", type: "select", required: true, options: [
+          { value: "restaurant", label: "Restaurant or hotel" },
+          { value: "home", label: "Home kitchen" },
+          { value: "knife_club", label: "Miami Knife Club" },
+          { value: "special", label: "Repair or special request" },
+        ] },
+        { name: "details", label: "Knife and timing details", type: "textarea", fullWidth: true, placeholder: "Quantity, knife types, condition, location, and preferred timing" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>
