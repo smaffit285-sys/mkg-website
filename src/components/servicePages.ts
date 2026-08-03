@@ -17,7 +17,8 @@ export const servicePages = [
     faq: [
       { question: "Do you offer knife sharpening in Miami?", answer: "Yes. Miami Knife Guy is based in North Miami Beach and provides professional knife sharpening for clients across Miami-Dade and Broward." },
       { question: "What kinds of knives do you sharpen?", answer: "MKG sharpens Japanese and Western chef knives, utility and paring knives, slicers, serrated knives, steak knives, and many specialty blades." },
-      { question: "Do you offer pickup and drop-off?", answer: "Pickup, drop-off, and service logistics depend on location and the type of service requested. Details are confirmed before scheduling." },
+      { question: "Do you offer pickup and drop-off?", answer: "Yes. Residential sharpening is completed at the MKG shop. Pickup and return are free within 10 miles for orders of 10 or more knives; otherwise travel is $1 per mile driven. The exact fee and timing are confirmed before scheduling." },
+      { question: "Is same-day knife sharpening available?", answer: "Same-day and quick-turnaround shop service may be available depending on the schedule. Rush requests are priced according to current workload and the turnaround requested." },
       { question: "How do I know if my knife needs repair instead of sharpening?", answer: "Chips, broken tips, heavy rust, bends, or a worn profile may require repair before the final edge is sharpened. Photos may be requested to review the condition first." },
       { question: "Do you sharpen serrated knives?", answer: "Yes, when the serration pattern and blade condition make sharpening appropriate. Each serrated knife is reviewed individually." },
       { question: "How do I book knife sharpening?", answer: "Use the Book Service page to choose the service path that fits your kitchen. For damaged or unusual knives, send photos before scheduling." },
@@ -30,9 +31,9 @@ export const servicePages = [
     eyebrow: "Restaurants · Hotels · Commercial Kitchens",
     headline: "Restaurant Knife Sharpening Miami",
     accent: "pink",
-    intro: "A recurring edge program built around the rhythm of service: collected after close, sharpened and repaired, then returned before prep.",
+    intro: "A recurring edge program built around the rhythm of service, with scheduled 8 PM–1 AM pickup and 3 AM–8 AM return windows.",
     highlights: [
-      "After-hours collection and return designed to avoid kitchen downtime.",
+      "Confirmed after-hours pickup and return windows designed to avoid kitchen downtime.",
       "Recurring weekly or bi-weekly programs sized to your knife fleet and volume.",
       "Fleet tracking, chip repair, tip correction, and profile restoration in the same cycle.",
     ],
@@ -41,7 +42,8 @@ export const servicePages = [
     bookingPath: "/book/restaurant/",
     faq: [
       { question: "Do you sharpen knives for restaurants in Miami?", answer: "Yes. MKG serves restaurants, hotels, and commercial kitchens across Miami-Dade and Broward with professional fleet sharpening and repair." },
-      { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. Sharp After Dark is designed around after-hours collection and return before prep. Timing is reviewed and confirmed for each kitchen." },
+      { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. Sharp After Dark offers scheduled pickup between 8 PM and 1 AM and return between 3 AM and 8 AM. The final appointment is confirmed around the kitchen's preferred timing, location, and MKG route availability." },
+      { question: "How far does commercial service travel?", answer: "Commercial service is available throughout Miami-Dade and Broward by scheduled appointment. Timing depends on the kitchen location and the existing service route; immediate on-call service is not offered." },
       { question: "Do you handle recurring restaurant knife programs?", answer: "Yes. Weekly, bi-weekly, and other recurring intervals can be arranged based on fleet size, volume, and operational needs." },
       { question: "Can you sharpen steak knives for dining rooms?", answer: "Yes. Straight-edge and serviceable serrated steak knives can be handled in batches or included in a recurring restaurant program." },
       { question: "Do you track knife condition over time?", answer: "Recurring programs can include fleet accountability, condition notes, repair needs, and consistent service intervals." },
