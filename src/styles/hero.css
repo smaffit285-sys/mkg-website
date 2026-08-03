@@ -114,6 +114,32 @@
     margin-left: clamp(0.35rem, 0.8vw, 1rem);
 }
 
+.mkg-proof-bridge {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.65rem;
+    width: fit-content;
+    margin-top: 0.95rem;
+    margin-left: clamp(0.35rem, 0.8vw, 1rem);
+    color: rgba(255,255,255,0.50);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 650;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    transition: color 180ms ease;
+}
+
+.mkg-proof-bridge:hover {
+    color: rgba(34,211,238,0.82);
+}
+
+.mkg-proof-bridge span[aria-hidden="true"] {
+    color: rgba(236,72,153,0.56);
+}
+
 @media (min-width: 1400px) {
     .mkg-home-hero {
         min-height: clamp(720px, calc(100vh - 80px), 890px);
@@ -152,6 +178,10 @@
 }
 
 .mkg-hero-cta-row {
+    margin-left: clamp(0.25rem, 0.7vw, 0.75rem);
+}
+
+.mkg-proof-bridge {
     margin-left: clamp(0.25rem, 0.7vw, 0.75rem);
 }
     .mkg-hero-skyline {
@@ -233,5 +263,13 @@
     .mkg-hero-cta-row {
         gap: 0.75rem;
         margin-left: 0;
+    }
+
+    .mkg-proof-bridge {
+        gap: 0.28rem 0.48rem;
+        margin-top: 0.8rem;
+        margin-left: 0;
+        font-size: 0.56rem;
+        line-height: 1.55;
     }
 }
