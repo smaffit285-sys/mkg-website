@@ -143,6 +143,32 @@
         .service-tile-body  { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:300; color:rgba(255,255,255,0.46); line-height:1.68; }
         .price-tag { display:inline-block; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; color:rgba(34,211,238,0.78); letter-spacing:0.08em; margin-top:9px; }
 
+        /* Service logistics — one reusable explanation across overview and booking flows */
+        .service-logistics { margin:0 0 3rem; padding:1.4rem; border:1px solid rgba(255,255,255,0.07); border-radius:8px; background:linear-gradient(135deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01)); }
+        .service-logistics-heading { display:flex; align-items:end; justify-content:space-between; gap:1.5rem; margin-bottom:1.1rem; }
+        .service-logistics-eyebrow { margin:0 0 0.35rem; color:rgba(34,211,238,0.68); font-family:'Montserrat',sans-serif; font-size:9px; font-weight:800; letter-spacing:0.26em; text-transform:uppercase; }
+        .service-logistics-title { margin:0; color:rgba(255,255,255,0.86); font-family:'Montserrat',sans-serif; font-size:clamp(1.2rem,2.4vw,1.65rem); font-weight:650; letter-spacing:0.015em; }
+        .service-logistics-summary { max-width:25rem; margin:0; color:rgba(255,255,255,0.38); font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:300; line-height:1.6; text-align:right; }
+        .service-logistics-grid { display:grid; grid-template-columns:1fr; gap:0.75rem; }
+        @media(min-width:1024px) { .service-logistics-grid--commercial, .service-logistics-grid--residential { grid-template-columns:repeat(2,minmax(0,1fr)); } .service-logistics-grid--overview { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+        .service-logistics-card { position:relative; overflow:hidden; padding:1.15rem; border:1px solid rgba(255,255,255,0.065); border-radius:6px; background:rgba(3,3,6,0.46); }
+        .service-logistics-card::before { content:""; position:absolute; inset:0 auto 0 0; width:2px; background:rgba(255,255,255,0.15); }
+        .service-logistics-card--pink::before { background:rgba(236,72,153,0.72); box-shadow:0 0 14px rgba(236,72,153,0.35); }
+        .service-logistics-card--cyan::before { background:rgba(34,211,238,0.72); box-shadow:0 0 14px rgba(34,211,238,0.35); }
+        .service-logistics-card-topline { display:flex; justify-content:space-between; gap:1rem; margin-bottom:0.75rem; color:rgba(255,255,255,0.30); font-family:'Montserrat',sans-serif; font-size:8px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; }
+        .service-logistics-card h3 { margin:0 0 0.6rem; color:rgba(255,255,255,0.82); font-family:'Montserrat',sans-serif; font-size:0.96rem; font-weight:650; line-height:1.4; }
+        .service-logistics-card p { margin:0; color:rgba(255,255,255,0.48); font-family:'Montserrat',sans-serif; font-size:0.76rem; font-weight:300; line-height:1.65; }
+        .service-logistics-card .service-logistics-note { margin-top:0.65rem; color:rgba(255,255,255,0.28); font-size:0.68rem; }
+        .service-logistics-window { display:flex; flex-wrap:wrap; align-items:center; gap:0.4rem 0.65rem; margin-top:0.9rem; padding-top:0.75rem; border-top:1px solid rgba(236,72,153,0.10); color:rgba(255,255,255,0.35); font-family:'Montserrat',sans-serif; font-size:0.66rem; }
+        .service-logistics-window span:first-child { width:100%; color:rgba(236,72,153,0.62); font-size:8px; font-weight:800; letter-spacing:0.17em; text-transform:uppercase; }
+        .service-logistics-window strong { color:rgba(255,255,255,0.70); font-weight:650; }
+        .service-logistics-rate { display:flex; align-items:center; gap:0.55rem; margin:0.1rem 0 0.75rem; color:rgba(255,255,255,0.34); font-family:'Montserrat',sans-serif; }
+        .service-logistics-rate > span:not(.service-logistics-plus):not(.service-logistics-equals):not(.service-logistics-free) { display:flex; flex-direction:column; }
+        .service-logistics-rate strong { color:rgba(255,255,255,0.82); font-size:1.15rem; line-height:1; }
+        .service-logistics-rate small { margin-top:0.18rem; color:rgba(255,255,255,0.28); font-size:0.55rem; letter-spacing:0.08em; text-transform:uppercase; }
+        .service-logistics-free { color:rgba(34,211,238,0.86); font-size:0.82rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; text-shadow:0 0 10px rgba(34,211,238,0.25); }
+        @media(max-width:640px) { .service-logistics { padding:1rem; } .service-logistics-heading { align-items:start; flex-direction:column; } .service-logistics-summary { text-align:left; } }
+
 /* =============================================
    MKG GLIDE CTA LOCK
    Current status: approved direction.
