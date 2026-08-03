@@ -6,6 +6,7 @@ interface Props {
   steps: Array<{ title: string; copy: string }>;
   primaryHref: string;
   primaryLabel: string;
+  primaryExternal?: boolean;
   secondaryHref?: string;
   secondaryLabel?: string;
   tertiaryHref?: string;
@@ -22,6 +23,7 @@ const {
   steps,
   primaryHref,
   primaryLabel,
+  primaryExternal = false,
   secondaryHref = "/contact/",
   secondaryLabel = "Contact MKG",
   tertiaryHref,
@@ -60,7 +62,12 @@ const {
         </aside>
       )}
       <div class="flex flex-wrap gap-3">
-        <a href={primaryHref} class="panel-cta-btn panel-cta-cyan">{primaryLabel}</a>
+        <a
+          href={primaryHref}
+          target={primaryExternal ? "_blank" : undefined}
+          rel={primaryExternal ? "noopener noreferrer" : undefined}
+          class="panel-cta-btn panel-cta-cyan"
+        >{primaryLabel}</a>
         <a href={secondaryHref} class="panel-cta-btn panel-cta-ghost">{secondaryLabel}</a>
         {tertiaryHref && tertiaryLabel && (
           <a href={tertiaryHref} class="panel-cta-btn panel-cta-ghost">{tertiaryLabel}</a>
