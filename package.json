@@ -9,11 +9,14 @@
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
-    "@astrojs/vercel": "10.0.8",
-    "astro": "6.4.8",
+    "@astrojs/vercel": "11.0.4",
+    "astro": "7.1.6",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.0"
+  },
+  "overrides": {
+    "path-to-regexp": "6.3.0"
   }
 }
