@@ -2,7 +2,7 @@
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
 import RequestForm from "../components/RequestForm.astro";
-import { GOOGLE_BUSINESS_URL } from "../config/site";
+import { GOOGLE_REVIEW_URL } from "../config/site";
 export const prerender = true;
 ---
 <RouteShell
@@ -15,11 +15,11 @@ export const prerender = true;
     headline="How did the edge feel?"
     intro="Your feedback helps other Miami chefs, restaurants, and home cooks know who they can trust with their knives."
     steps={[
-      { title: "Open Google", copy: "Use the direct Google Business profile link to leave a public review." },
+      { title: "Open Google", copy: "Use the direct Google review link to leave a public review." },
       { title: "Share the work", copy: "Mention the knife type, repair, service experience, and how it cuts now." },
       { title: "Send photos", copy: "Before-and-after photos are welcome if you would like MKG to see or feature the result." },
     ]}
-    primaryHref={GOOGLE_BUSINESS_URL}
+    primaryHref={GOOGLE_REVIEW_URL}
     primaryLabel="Leave a Google Review"
     primaryExternal={true}
     secondaryHref="/send-photos/"

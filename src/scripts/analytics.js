@@ -113,6 +113,7 @@ document.addEventListener("click", (event) => {
   if (
     destination.hostname === "maps.app.goo.gl"
     || (destination.hostname.includes("google.com") && destination.pathname.includes("/maps/place/Miami+Knife+Guy"))
+    || (destination.hostname.includes("google.com") && destination.searchParams.get("ludocid") === "11418040362576623957")
   ) {
     track("review_google_click", { placement, service_type: "review" });
     return;

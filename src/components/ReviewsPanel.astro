@@ -1,5 +1,5 @@
 ---
-import { GOOGLE_BUSINESS_URL, GOOGLE_REVIEW_COUNT } from "../config/site";
+import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_URL } from "../config/site";
 import { googleReviews } from "../data/googleReviews";
 ---
 <!-- ====================================================
@@ -94,7 +94,7 @@ PANEL: REVIEWS
 <p class="text-white/42 text-xs font-light leading-relaxed max-w-md">Leave a public Google review, or send private feedback directly to MKG.</p>
 </div>
 <div class="flex flex-wrap gap-3 shrink-0">
-<a href={GOOGLE_BUSINESS_URL} target="_blank" rel="noopener noreferrer" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">Leave a Google Review</a>
+<a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">Leave a Google Review</a>
 <a href="/review/" class="panel-cta-btn panel-cta-ghost">Private Feedback</a>
 </div>
 </div>
