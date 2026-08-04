@@ -1,0 +1,240 @@
+---
+type Option = { value: string; label: string };
+
+type Field = {
+  name: string;
+  label: string;
+  type?: "text" | "tel" | "email" | "number" | "url" | "select" | "textarea" | "file" | "hidden";
+  required?: boolean;
+  placeholder?: string;
+  rows?: number;
+  options?: Option[];
+  fullWidth?: boolean;
+  accept?: string;
+  value?: string;
+  private?: boolean;
+  help?: string;
+};
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  source: string;
+  serviceType: string;
+  submitLabel: string;
+  fields: Field[];
+  photoHandoff?: boolean;
+  clubTitle?: string;
+  clubSource?: string;
+  clubServiceType?: string;
+  clubSubmitLabel?: string;
+}
+
+const {
+  id,
+  title,
+  description,
+  source,
+  serviceType,
+  submitLabel,
+  fields,
+  photoHandoff = false,
+  clubTitle,
+  clubSource,
+  clubServiceType,
+  clubSubmitLabel,
+} = Astro.props;
+
+const inputClass = "w-full rounded border border-white/20 bg-black/45 px-4 py-3 text-sm text-white/85 placeholder:text-white/35 outline-none transition-colors focus:border-cyan-400/75 focus:ring-2 focus:ring-cyan-400/15";
+---
+<section class="my-10 p-6 md:p-8 border border-white/10 rounded-md bg-white/[0.022]" aria-labelledby={`${id}-title`}>
+  <p class="text-[9px] uppercase tracking-[0.24em] text-white/40 font-bold mb-2">Request Details</p>
+  <h2 id={`${id}-title`} class="text-white/90 text-2xl font-semibold tracking-wide mb-3">{title}</h2>
+  <p class="text-white/58 text-sm font-light leading-relaxed max-w-2xl mb-7">{description}</p>
+
+  <form
+    id={id}
+    class="grid grid-cols-1 md:grid-cols-2 gap-5"
+    data-mkg-request-form
+    data-form-title={title}
+    data-photo-handoff={String(photoHandoff)}
+    data-club-title={clubTitle}
+    data-club-source={clubSource}
+    data-club-service-type={clubServiceType}
+    data-club-submit-label={clubSubmitLabel}
+  >
+    <input type="hidden" name="source" value={source} data-private />
+    <input type="hidden" name="serviceType" value={serviceType} data-private />
+
+    {fields.map((field) => {
+      const type = field.type ?? "text";
+      if (type === "hidden") {
+        return <input type="hidden" name={field.name} value={field.value ?? ""} data-label={field.label} data-private={field.private || undefined} />;
+      }
+
+      return (
+        <label class:list={["block", { "md:col-span-2": field.fullWidth }]}>
+          <span class="block text-[10px] uppercase tracking-[0.2em] text-white/65 font-semibold mb-2">
+            {field.label}{field.required && <span class="text-cyan-400" aria-hidden="true"> *</span>}
+          </span>
+          {type === "select" ? (
+            <select name={field.name} required={field.required} data-label={field.label} class={inputClass}>
+              <option value="">Choose one</option>
+              {field.options?.map((option) => <option value={option.value}>{option.label}</option>)}
+            </select>
+          ) : type === "textarea" ? (
+            <textarea
+              name={field.name}
+              required={field.required}
+              placeholder={field.placeholder}
+              data-label={field.label}
+              rows={field.rows ?? 5}
+              class={`${inputClass} resize-y`}
+            ></textarea>
+          ) : type === "file" ? (
+            <input
+              type="file"
+              name={field.name}
+              required={field.required}
+              accept={field.accept}
+              data-label={field.label}
+              class={`${inputClass} file:mr-4 file:rounded file:border-0 file:bg-cyan-400/15 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-cyan-100`}
+            />
+          ) : (
+            <input
+              type={type}
+              name={field.name}
+              required={field.required}
+              placeholder={field.placeholder}
+              data-label={field.label}
+              class={inputClass}
+            />
+          )}
+          {field.help && <span class="mt-2 block text-xs font-light leading-relaxed text-white/52">{field.help}</span>}
+        </label>
+      );
+    })}
+
+    <div class="md:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+      <button type="button" data-prepare-request class="panel-cta-btn panel-cta-cyan">{submitLabel}</button>
+      <a href="tel:+13059095773" class="text-white/55 hover:text-white/80 text-xs tracking-wide transition-colors">Or call (305) 909-5773</a>
+    </div>
+    <p class="md:col-span-2 text-white/58 text-xs font-light leading-relaxed min-h-5" data-form-status aria-live="polite"></p>
+    <noscript>
+      <p class="md:col-span-2 text-white/65 text-xs leading-relaxed">
+        JavaScript is required to prepare the text message from this form. You can
+        <a href="tel:+13059095773" class="text-cyan-300 underline">call</a> or
+        <a href="sms:+13059095773" class="text-cyan-300 underline">text Miami Knife Guy directly at 305-909-5773</a>.
+      </p>
+    </noscript>
+  </form>
+</section>
+
+<script>
+  const MKG_PHONE = "+13059095773";
+
+  document.querySelectorAll("[data-mkg-request-form]").forEach((candidate) => {
+    if (!(candidate instanceof HTMLFormElement) || candidate.dataset.requestReady === "true") return;
+    const form = candidate;
+    form.dataset.requestReady = "true";
+
+    if (new URLSearchParams(window.location.search).get("intent") === "club" && form.dataset.clubTitle) {
+      form.dataset.formTitle = form.dataset.clubTitle;
+      const heading = form.closest("section")?.querySelector("h2");
+      if (heading) heading.textContent = form.dataset.clubTitle;
+
+      const source = form.querySelector('input[name="source"]');
+      const serviceType = form.querySelector('input[name="serviceType"]');
+      const serviceInterest = form.querySelector('select[name="serviceInterest"]');
+      const button = form.querySelector("[data-prepare-request]");
+      if (source instanceof HTMLInputElement && form.dataset.clubSource) source.value = form.dataset.clubSource;
+      if (serviceType instanceof HTMLInputElement && form.dataset.clubServiceType) serviceType.value = form.dataset.clubServiceType;
+      if (serviceInterest instanceof HTMLSelectElement) serviceInterest.value = "knife_club";
+      if (button && form.dataset.clubSubmitLabel) button.textContent = form.dataset.clubSubmitLabel;
+    }
+
+    form.addEventListener("submit", (event) => event.preventDefault());
+    form.querySelector("[data-prepare-request]")?.addEventListener("click", async () => {
+      if (!form.reportValidity()) return;
+
+      const status = form.querySelector("[data-form-status]");
+      const data = new FormData(form);
+      const lines = [`Miami Knife Guy — ${form.dataset.formTitle || "Service Request"}`];
+      const fileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(
+        (input) => input instanceof HTMLInputElement,
+      );
+
+      Array.from(form.elements).forEach((control) => {
+        if (
+          !(control instanceof HTMLInputElement || control instanceof HTMLSelectElement || control instanceof HTMLTextAreaElement)
+          || !control.name
+          || control.type === "file"
+          || control.type === "submit"
+          || control.hasAttribute("data-private")
+        ) return;
+
+        const value = String(data.get(control.name) || "").trim();
+        if (!value) return;
+        let readableValue = value;
+        if (control instanceof HTMLSelectElement) {
+          readableValue = control.selectedOptions[0]?.textContent?.trim() || readableValue;
+        } else if (control instanceof HTMLInputElement && (control.type === "radio" || control.type === "checkbox")) {
+          if (!control.checked) return;
+          readableValue = control.closest("label")?.textContent?.replace("*", "").trim() || readableValue;
+        }
+
+        const label = control.dataset.label || control.name;
+        const line = `${label}: ${readableValue}`;
+        if (!lines.includes(line)) lines.push(line);
+      });
+
+      const message = lines.join("\n");
+      const files = fileInputs.flatMap((input) => Array.from(input.files || []));
+      const canShareFiles = files.length > 0
+        && typeof navigator.share === "function"
+        && typeof navigator.canShare === "function"
+        && navigator.canShare({ files });
+
+      const definitions = {
+        "restaurant-service-request": { prepared: "restaurant_request_prepared", serviceType: "restaurant" },
+        "home-service-request": { prepared: "home_request_prepared", serviceType: "home" },
+        "special-request-review": { prepared: "photo_request_prepared", serviceType: "photo" },
+        "review-submission": { prepared: "review_message_prepared", serviceType: "review" },
+        "generic-referral-request": { prepared: "referral_request_prepared", serviceType: "referral" },
+        "coded-referral-request": { prepared: "referral_request_prepared", serviceType: "referral" },
+      };
+      const definition = definitions[form.id];
+      const handoffType = form.dataset.photoHandoff === "true" && canShareFiles ? "share" : "sms";
+      if (definition) {
+        window.dispatchEvent(new CustomEvent("mkg:analytics", {
+          detail: {
+            name: definition.prepared,
+            properties: { placement: "form", service_type: definition.serviceType, handoff_type: handoffType },
+          },
+        }));
+      }
+
+      try {
+        if (form.dataset.photoHandoff === "true" && canShareFiles) {
+          window.dispatchEvent(new CustomEvent("mkg:analytics", {
+            detail: { name: "photo_share_opened", properties: { placement: "form", service_type: "photo", handoff_type: "share" } },
+          }));
+          await navigator.share({ title: form.dataset.formTitle, text: message, files });
+          if (status) status.textContent = "Your request was handed to the share sheet. Choose Messages and send it to MKG to finish.";
+          return;
+        }
+
+        if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(message).catch(() => {});
+        if (status) {
+          status.textContent = files.length > 0
+            ? "Your request is copied and ready. Messages will open next; attach the selected photos there and send to finish."
+            : "Your request is copied and ready. Send the prepared message to MKG to finish.";
+        }
+        window.location.href = `sms:${MKG_PHONE}?body=${encodeURIComponent(message)}`;
+      } catch {
+        if (status) status.textContent = "The handoff was not completed. Call or text (305) 909-5773; your entered details will remain on this page.";
+      }
+    });
+  });
+</script>

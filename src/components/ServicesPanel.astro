@@ -1,3 +1,6 @@
+---
+import ServiceLogistics from "./ServiceLogistics.astro";
+---
 <!-- ====================================================
 PANEL: SERVICES
 ==================================================== -->
@@ -9,30 +12,28 @@ PANEL: SERVICES
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
 <div class="service-tile">
-<div class="service-tile-icon">&#128298;</div>
 <div class="service-tile-title">Knife Sharpening</div>
 <div class="service-tile-body">Precision sharpening for chef knives, slicers, utility knives, paring knives, and specialty blades. Edges are matched to the tool, the steel, and the way the knife is used.</div>
 <div class="price-tag">From $10/knife</div>
 </div>
 <div class="service-tile">
-<div class="service-tile-icon">&#128295;</div>
 <div class="service-tile-title">Repair &amp; Restoration</div>
 <div class="service-tile-body">Chip repair, tip repair, thinning, reprofiling, rust cleanup, and corrective work for knives that need more than a quick pass on a belt.</div>
 <div class="price-tag">By assessment</div>
 </div>
 <div class="service-tile">
-<div class="service-tile-icon">&#127976;</div>
 <div class="service-tile-title">Restaurant &amp; Hotel Programs</div>
 <div class="service-tile-body">Scheduled edge-care programs for kitchens that need consistency, accountability, and tools ready for service.</div>
 <div class="price-tag">Custom quote</div>
 </div>
 <div class="service-tile">
-<div class="service-tile-icon">&#9881;</div>
 <div class="service-tile-title">Specialty Modifications</div>
 <div class="service-tile-body">Functional adjustments for tools that need to perform differently, including practical conversions, shape changes, and task-specific edge work.</div>
 <div class="price-tag">By assessment</div>
 </div>
 </div>
+
+<ServiceLogistics mode="overview" />
 
 <section class="mb-12 pt-2" aria-labelledby="service-paths-heading">
 <p class="text-[9px] uppercase tracking-widest text-cyan-400/70 font-bold mb-2">Explore Service Pages</p>
@@ -55,12 +56,12 @@ PANEL: SERVICES
 <p class="text-sm uppercase tracking-widest text-white/22 font-bold mb-4">&Agrave; la Carte</p>
 <div class="space-y-0">
 <div class="flex justify-between items-start py-3 border-b border-white/5">
-<div><div class="text-white/72 text-sm font-semibold mb-0.5">Single Knife Sharpening</div><div class="text-white/28 text-xs font-light">Standard sharpening &middot; 2&ndash;3 day turnaround</div></div>
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Single Knife Sharpening</div><div class="text-white/28 text-xs font-light">Shop drop-off &middot; Same-day or quick turnaround when available</div></div>
 <div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">$10/knife</div>
 </div>
 <div class="flex justify-between items-start py-3 border-b border-white/5">
-<div><div class="text-white/72 text-sm font-semibold mb-0.5">On-Site Sharpening Visit</div><div class="text-white/28 text-xs font-light">Within 20-mile radius &middot; Up to 10 knives included</div></div>
-<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">$150</div>
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Pickup &amp; Return</div><div class="text-white/28 text-xs font-light">Free within 10 miles for orders of 10+ knives</div></div>
+<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">Free / $1 per mile</div>
 </div>
 <div class="flex justify-between items-start py-3 border-b border-white/5">
 <div><div class="text-white/72 text-sm font-semibold mb-0.5">Knife Exchange Program</div><div class="text-white/28 text-xs font-light">Trade dull knives for sharp refurbished ones &middot; Shipping included</div></div>

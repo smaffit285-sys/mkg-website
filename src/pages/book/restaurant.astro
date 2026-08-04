@@ -1,6 +1,8 @@
 ---
 import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+import ServiceLogistics from "../../components/ServiceLogistics.astro";
 export const prerender = true;
 ---
 <RouteShell
@@ -15,11 +17,39 @@ export const prerender = true;
     steps={[
       { title: "Describe the kitchen", copy: "Share restaurant or hotel name, location, operating hours, and the best contact." },
       { title: "Estimate the fleet", copy: "Include chef knives, prep knives, steak knives, specialty blades, and known damage." },
-      { title: "Plan the cycle", copy: "MKG will discuss collection, return timing, recurring frequency, and fleet accountability." },
+      { title: "Plan the cycle", copy: "Choose preferred pickup and return windows; MKG confirms timing around location, route, and availability." },
     ]}
-    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27d%20like%20to%20set%20up%20restaurant%20knife%20service."
-    primaryLabel="Text Restaurant Request"
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
     secondaryHref="/sharp-after-dark/"
     secondaryLabel="View Sharp After Dark"
-  />
+    nextCopy="Prepare the request, then send the message. Sean reviews the account, knife volume, timing, and service window before confirming the right program."
+  >
+    <ServiceLogistics mode="commercial" />
+    <RequestForm
+      id="restaurant-service-request"
+      title="Request Restaurant Service"
+      description="Share the kitchen, fleet, and preferred service window. Recurring programs, after-hours collection, repairs, and steak-knife service are reviewed before confirmation."
+      source="public_book_restaurant"
+      serviceType="restaurant"
+      submitLabel="Prepare Restaurant Request"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "business", label: "Restaurant or hotel", required: true, placeholder: "Business name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "Service location", required: true, placeholder: "City or address" },
+        { name: "knifeVolume", label: "Approximate knife volume", placeholder: "Chef knives, prep knives, steak knives" },
+        { name: "frequency", label: "Preferred frequency", type: "select", options: [
+          { value: "one_time", label: "One-time service" },
+          { value: "weekly", label: "Weekly" },
+          { value: "biweekly", label: "Bi-weekly" },
+          { value: "monthly", label: "Monthly" },
+          { value: "unsure", label: "Not sure yet" },
+        ] },
+        { name: "serviceWindow", label: "Preferred service window", placeholder: "Pickup 8 PM–1 AM · Return 3 AM–8 AM · Preferred days" },
+        { name: "serviceNeeds", label: "Service needs", type: "textarea", fullWidth: true, placeholder: "Recurring sharpening, repairs, steak knives, fleet tracking, or other needs" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>

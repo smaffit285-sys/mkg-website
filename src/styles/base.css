@@ -1,7 +1,23 @@
 /* =============================================
            BASE
            ============================================= */
-        body { background-color: #060609; color: #ffffff; }
+        body { background-color: #060609; color: #ffffff; overflow-x: hidden; }
+
+        :where(a, button, input, select, textarea):focus-visible {
+            outline: 2px solid rgba(103, 232, 249, 0.95);
+            outline-offset: 3px;
+        }
+
+        :where(button, a) { -webkit-tap-highlight-color: transparent; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
 
         .neon-btn-cyan {
             color: #e0ffff; border-color: #22d3ee;

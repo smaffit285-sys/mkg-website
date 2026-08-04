@@ -1,0 +1,69 @@
+---
+import { serviceLogistics } from "../config/serviceLogistics";
+
+interface Props {
+  mode?: "overview" | "commercial" | "residential";
+}
+
+const { mode = "overview" } = Astro.props;
+const showCommercial = mode !== "residential";
+const showResidential = mode !== "commercial";
+---
+<section class="service-logistics" aria-labelledby={`service-logistics-${mode}`}>
+  <div class="service-logistics-heading">
+    <div>
+      <p class="service-logistics-eyebrow">Service, without the guesswork</p>
+      <h2 id={`service-logistics-${mode}`} class="service-logistics-title">
+        {mode === "commercial" ? "Built around your kitchen." : mode === "residential" ? "Choose the easiest handoff." : "Choose your service path."}
+      </h2>
+    </div>
+    {mode === "overview" && <p class="service-logistics-summary">The short version: commercial service travels; residential sharpening happens at the shop.</p>}
+  </div>
+
+  <div class:list={["service-logistics-grid", `service-logistics-grid--${mode}`]}>
+    {showCommercial && (
+      <article class="service-logistics-card service-logistics-card--pink">
+        <div class="service-logistics-card-topline">
+          <span>Commercial</span>
+          <span>{serviceLogistics.commercialArea}</span>
+        </div>
+        <h3>Scheduled service across the full service area.</h3>
+        <p>{serviceLogistics.commercialScheduling}</p>
+        <div class="service-logistics-window">
+          <span>Sharp After Dark</span>
+          <strong>{serviceLogistics.afterDarkPickupWindow} pickup</strong>
+          <span aria-hidden="true">→</span>
+          <strong>{serviceLogistics.afterDarkReturnWindow} return</strong>
+        </div>
+      </article>
+    )}
+
+    {showResidential && (
+      <article class="service-logistics-card service-logistics-card--cyan">
+        <div class="service-logistics-card-topline">
+          <span>Residential</span>
+          <span>Shop service</span>
+        </div>
+        <h3>Drop off—or arrange pickup and return.</h3>
+        <p>{serviceLogistics.residentialService}</p>
+        <p class="service-logistics-note">{serviceLogistics.rushService}</p>
+      </article>
+    )}
+
+    <article class="service-logistics-card service-logistics-card--neutral">
+      <div class="service-logistics-card-topline">
+        <span>Pickup + return</span>
+        <span>Simple rule</span>
+      </div>
+      <div class="service-logistics-rate" aria-label="Free pickup and return within 10 miles for 10 or more knives">
+        <span><strong>10 mi</strong><small>or closer</small></span>
+        <span class="service-logistics-plus">+</span>
+        <span><strong>10+</strong><small>knives</small></span>
+        <span class="service-logistics-equals">=</span>
+        <span class="service-logistics-free">Free</span>
+      </div>
+      <p>{serviceLogistics.pickupRule}</p>
+      <p class="service-logistics-note">The exact travel fee and timing are confirmed before scheduling.</p>
+    </article>
+  </div>
+</section>

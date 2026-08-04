@@ -1,11 +1,13 @@
 ---
 import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+import ServiceLogistics from "../../components/ServiceLogistics.astro";
 export const prerender = true;
 ---
 <RouteShell
   title="Book Home Knife Sharpening Miami | MKG"
-  description="Request premium home kitchen knife sharpening, repair, restoration, or recurring Knife Club service."
+  description="Request shop-based home knife sharpening with drop-off, qualifying pickup and return, same-day availability, or recurring Knife Club service."
   canonicalPath="/book/home/"
 >
   <CustomerFlowPage
@@ -17,9 +19,49 @@ export const prerender = true;
       { title: "Note the condition", copy: "Mention chips, broken tips, serrations, premium Japanese steel, or finish-sensitive blades." },
       { title: "Choose your rhythm", copy: "Book one-time service or ask about recurring Miami Knife Club edge care." },
     ]}
-    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27d%20like%20to%20book%20home%20knife%20sharpening."
-    primaryLabel="Text Home Request"
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
     secondaryHref="/miami-knife-club/"
     secondaryLabel="View Knife Club"
-  />
+    nextCopy="Prepare the request, then send the message. Sean reviews the knife count, location, and service needs before confirming."
+  >
+    <ServiceLogistics mode="residential" />
+    <RequestForm
+      id="home-service-request"
+      title="Request Home Knife Service"
+      description="Request one-time or recurring sharpening for the knives you use at home. Repairs and special conditions are reviewed before scheduling."
+      source="public_book_home"
+      serviceType="home_knives"
+      submitLabel="Prepare Home Request"
+      clubTitle="Join Miami Knife Club"
+      clubSource="public_book_home_club"
+      clubServiceType="knife_club"
+      clubSubmitLabel="Prepare Club Request"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "Location", required: true, placeholder: "City or neighborhood" },
+        { name: "knifeCount", label: "Approximate knife count", type: "number", placeholder: "6" },
+        { name: "handoffPreference", label: "Preferred handoff", type: "select", options: [
+          { value: "shop_dropoff", label: "I can drop off at the shop" },
+          { value: "pickup_return", label: "Request pickup and return" },
+          { value: "unsure", label: "Help me choose" },
+        ] },
+        { name: "turnaround", label: "Timing preference", type: "select", options: [
+          { value: "standard", label: "Standard / flexible" },
+          { value: "same_day", label: "Same day, if available" },
+          { value: "rush", label: "Rush quote" },
+          { value: "unsure", label: "Not sure" },
+        ] },
+        { name: "serviceInterest", label: "Service interest", type: "select", required: true, options: [
+          { value: "one_time_home", label: "One-time home service" },
+          { value: "knife_club", label: "Miami Knife Club" },
+          { value: "repair_review", label: "Repair or restoration review" },
+          { value: "consultation", label: "Not sure yet" },
+        ] },
+        { name: "knifeDetails", label: "Knife details and condition", type: "textarea", fullWidth: true, placeholder: "Knife types, Japanese steel, serrations, chips, broken tips, or other details" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>

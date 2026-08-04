@@ -1,6 +1,8 @@
 ---
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+import RequestForm from "../components/RequestForm.astro";
+import { GOOGLE_REVIEW_URL } from "../config/site";
 export const prerender = true;
 ---
 <RouteShell
@@ -13,13 +15,42 @@ export const prerender = true;
     headline="How did the edge feel?"
     intro="Your feedback helps other Miami chefs, restaurants, and home cooks know who they can trust with their knives."
     steps={[
-      { title: "Open Google", copy: "Use the direct Google Business profile link to leave a public review." },
+      { title: "Open Google", copy: "Use the direct Google review link to leave a public review." },
       { title: "Share the work", copy: "Mention the knife type, repair, service experience, and how it cuts now." },
       { title: "Send photos", copy: "Before-and-after photos are welcome if you would like MKG to see or feature the result." },
     ]}
-    primaryHref="https://www.google.com/maps/place/Miami+Knife+Guy/@26.0911541,-80.2454439,9z/data=!3m1!4b1!4m6!3m5!1s0xa7ab485ee4b470eb:0x9e750736e273b955!8m2!3d26.091154!4d-80.2454439"
-    primaryLabel="Review on Google"
+    primaryHref={GOOGLE_REVIEW_URL}
+    primaryLabel="Leave a Google Review"
+    primaryExternal={true}
     secondaryHref="/send-photos/"
     secondaryLabel="Send Photos"
-  />
+    nextCopy="Choose a platform, write your review, then send the prepared message or use the Google review link."
+  >
+    <RequestForm
+      id="review-submission"
+      title="Share Your Experience"
+      description="Leave the public review on your preferred platform, or prepare a message for MKG with the review text and link."
+      source="public_review"
+      serviceType="review"
+      submitLabel="Prepare Review Message"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "platform", label: "Review platform", type: "select", required: true, options: [
+          { value: "google", label: "Google" },
+          { value: "other", label: "Other public platform" },
+          { value: "private", label: "Private feedback to MKG" },
+        ] },
+        { name: "rating", label: "Rating", type: "select", options: [
+          { value: "5", label: "5 stars" },
+          { value: "4", label: "4 stars" },
+          { value: "3", label: "3 stars" },
+          { value: "2", label: "2 stars" },
+          { value: "1", label: "1 star" },
+        ] },
+        { name: "feedback", label: "Review or feedback", type: "textarea", required: true, fullWidth: true, placeholder: "Tell us about the knife, repair, service, and how the edge feels now" },
+        { name: "reviewUrl", label: "Published review link", type: "url", fullWidth: true, placeholder: "Optional URL after posting" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>

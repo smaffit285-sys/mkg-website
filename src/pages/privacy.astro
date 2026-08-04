@@ -1,0 +1,37 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Privacy Policy | Miami Knife Guy"
+  description="How Miami Knife Guy uses privacy-friendly website analytics and handles service-request information."
+  canonicalPath="/privacy/"
+>
+  <main class="panel" aria-hidden="false">
+    <div class="panel-inner">
+      <article class="max-w-4xl mx-auto">
+        <p class="sub-eyebrow">Miami Knife Guy</p>
+        <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">Privacy policy.</h1>
+        <div class="space-y-7 text-white/62 text-sm md:text-base font-light leading-relaxed">
+          <p>Miami Knife Guy uses privacy-friendly analytics to understand page visits and service-request actions. This information helps improve the website and make the service flow easier to use.</p>
+          <section>
+            <h2 class="mb-2 text-xl font-semibold text-white/88">Aggregate website analytics</h2>
+            <p>The site may measure aggregate actions such as booking clicks, phone taps, review-link clicks, referral visits, and prepared request messages. These measurements are used to understand which pages and service paths are useful.</p>
+          </section>
+          <section>
+            <h2 class="mb-2 text-xl font-semibold text-white/88">Information excluded from analytics</h2>
+            <p>The analytics setup is designed not to collect names, phone numbers, email addresses, restaurant names, neighborhoods, message text, selected photos, form-field values, or referral codes. Knife photos remain on your device until you choose to share them.</p>
+          </section>
+          <section>
+            <h2 class="mb-2 text-xl font-semibold text-white/88">Service requests</h2>
+            <p>Public request forms prepare a text message or device share action. Information entered into a form is not sent to Miami Knife Guy until you choose to send or share the prepared message.</p>
+          </section>
+          <section>
+            <h2 class="mb-2 text-xl font-semibold text-white/88">Questions</h2>
+            <p>For privacy questions, call or text Miami Knife Guy at <a class="text-cyan-300 underline underline-offset-4" href="tel:+13059095773">305-909-5773</a>.</p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+</RouteShell>

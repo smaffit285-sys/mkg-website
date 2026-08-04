@@ -1,6 +1,7 @@
 ---
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+import RequestForm from "../components/RequestForm.astro";
 export const prerender = true;
 ---
 <RouteShell
@@ -17,9 +18,35 @@ export const prerender = true;
       { title: "Damage close-up", copy: "Include the chip, broken tip, bend, corrosion, or worn section from multiple angles." },
       { title: "Both blade faces", copy: "Send both sides and note the maker, steel, intended use, and anything finish-sensitive." },
     ]}
-    primaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%27m%20sending%20photos%20for%20a%20knife%20assessment."
-    primaryLabel="Text Photos to MKG"
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
     secondaryHref="/knife-repair-restoration-miami/"
     secondaryLabel="Repair Services"
-  />
+    nextCopy="Prepare the photo request, then share or text the message. Photos stay on your device until you choose to send them."
+  >
+    <RequestForm
+      id="special-request-review"
+      title="Send Knife Photos"
+      description="Repairs, restorations, chips, broken tips, rust, unusual knives, events, rush situations, and custom requests are reviewed before scheduling."
+      source="public_send_photos"
+      serviceType="photo_review"
+      submitLabel="Prepare Photo Request"
+      photoHandoff={true}
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "requestType", label: "Request type", type: "select", required: true, options: [
+          { value: "chip", label: "Chip or edge damage" },
+          { value: "tip", label: "Broken tip" },
+          { value: "restoration", label: "Rust or restoration" },
+          { value: "specialty", label: "Unusual or specialty knife" },
+          { value: "rush", label: "Event or rush request" },
+          { value: "other", label: "Other custom request" },
+        ] },
+        { name: "notes", label: "Knife and issue notes", type: "textarea", required: true, fullWidth: true, placeholder: "Describe the knife, condition, maker, intended use, timing, and what you would like reviewed" },
+        { name: "photos", label: "Knife photos", type: "file", fullWidth: true, accept: "image/*", help: "Selected photos stay on your device. On supported phones, the share sheet can pass them to Messages. Otherwise, attach them after the prepared message opens." },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>
