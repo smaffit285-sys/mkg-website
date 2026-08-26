@@ -1,6 +1,7 @@
 ---
 import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_URL } from "../config/site";
 import { googleReviews } from "../data/googleReviews";
+const isLongReview = (body: string) => body.length > 180;
 ---
 <!-- ====================================================
 PANEL: REVIEWS
@@ -22,12 +23,19 @@ PANEL: REVIEWS
 </div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+<div class="review-grid grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
 {googleReviews.map((review, index) => (
 <article class="review-card">
 <div class="star-row" aria-label={`${review.rating} out of 5 stars`}>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="review-quote whitespace-pre-line" style="font-size:1.05rem;">&ldquo;{review.body}&rdquo;</p>
-<div class="flex items-center gap-3">
+<p class="review-quote review-quote-preview whitespace-pre-line">&ldquo;{review.body}&rdquo;</p>
+<div class="review-card-actions">
+{isLongReview(review.body) && (
+  <button type="button" class="review-read-more" data-review-open={`review-${index}`} aria-controls={`review-${index}`}>
+    Read more
+  </button>
+)}
+</div>
+<div class="review-author flex items-center gap-3">
 <div class:list={[
   "w-8 h-8 rounded-full border flex items-center justify-center text-[11px] font-bold",
   index % 2 === 0
@@ -39,6 +47,14 @@ PANEL: REVIEWS
 <div class="text-[9px] text-white/20 font-light mt-0.5">Google</div>
 </div>
 </div>
+<dialog id={`review-${index}`} class="review-dialog">
+  <div class="review-dialog-inner">
+    <button type="button" class="review-dialog-close" data-review-close aria-label="Close full review">&times;</button>
+    <div class="star-row" aria-label={`${review.rating} out of 5 stars`}>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="review-dialog-quote whitespace-pre-line">&ldquo;{review.body}&rdquo;</p>
+    <p class="review-dialog-source">{review.name} &middot; Google</p>
+  </div>
+</dialog>
 </article>
 ))}
 </div>
@@ -103,3 +119,19 @@ PANEL: REVIEWS
 
 </div>
 </div><!-- /panel-reviews -->
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-review-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const dialog = document.getElementById(button.dataset.reviewOpen || "") as HTMLDialogElement | null;
+      dialog?.showModal();
+    });
+  });
+
+  document.querySelectorAll<HTMLDialogElement>(".review-dialog").forEach((dialog) => {
+    dialog.querySelector<HTMLElement>("[data-review-close]")?.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>

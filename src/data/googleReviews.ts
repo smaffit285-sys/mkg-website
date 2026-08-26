@@ -6,6 +6,31 @@ export type GoogleReview = {
 
 export const googleReviews: GoogleReview[] = [
   {
+    name: "Jordan Fein",
+    rating: 5,
+    body: "What a pleasure it was to deal with Miami Knife Guy. Very punctual and replying to me when I text messaged him after finding him online. Came over very personal and knowledgeable about knives, was not trying to do a money grab, and was very fair and honest. We need more businessmen like him. I recommend him to anybody who wants to get their knife sharpened!",
+  },
+  {
+    name: "Chris Alihosseini",
+    rating: 5,
+    body: "Sean took my knife on short notice and got it sharpened for me in under 10 minutes. Looks great. Affordable price.",
+  },
+  {
+    name: "Zarina Isakova",
+    rating: 5,
+    body: "Fantastic experience! The service was superb--quick, easy, and incredibly convenient from start to finish. Everything was handled professionally and efficiently, and I couldn't be happier with the results. Highly recommend if you're looking for fast, reliable, high-quality knife sharpening!",
+  },
+  {
+    name: "Begin Anestin",
+    rating: 5,
+    body: "Fast. Great communication. Excellent work. A+++++++++++++++++++++",
+  },
+  {
+    name: "Nancy Frehling",
+    rating: 5,
+    body: "This guy is the nicest, most efficient and fairest! He picked up and dropped off six hours later and did a terrific job. I cannot recommend him enough!",
+  },
+  {
     name: "Lorie Mertes",
     rating: 5,
     body: `I cannot recommend Miami Knife Guy enough. I brought him 6 knives that had gone years without proper sharpening — including a few chef's knives, a paring knife, and two boning knives. These are not super high end but I did spend some money on. I have some amateur culinary training and love too cook, so I know exactly how much sharp knives matter for both efficiency and safety in the kitchen, but I have a genuine aversion to the sound and feel of sharpening, so my knives had suffered neglect badly over the years plus my own DIY attempts.

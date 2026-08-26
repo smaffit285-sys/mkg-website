@@ -124,11 +124,28 @@
         }
 
         /* Reviews */
-        .review-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:26px; display:flex; flex-direction:column; gap:0; transition:border-color 0.3s ease; }
+        .review-grid { grid-auto-rows:1fr; }
+        .review-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:6px; padding:22px; display:flex; flex-direction:column; gap:0; min-height:260px; height:100%; transition:border-color 0.3s ease; }
         .review-card:hover { border-color:rgba(34,211,238,0.18); }
         .star-row { color:#22d3ee; font-size:18px; letter-spacing:2px; margin-bottom:12px; }
         .review-quote { color:rgba(209,213,219,0.78); font-family:'Montserrat',sans-serif; font-weight:300; font-size:1.4rem; line-height:1.72; font-style:italic; margin-bottom:16px; flex:1; }
+        .review-quote-preview { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:4; overflow:hidden; font-size:1rem; line-height:1.62; margin-bottom:8px; flex:0 0 auto; }
+        .review-card-actions { min-height:26px; margin-bottom:12px; }
+        .review-read-more { appearance:none; border:0; padding:0; background:none; color:rgba(34,211,238,0.86); font:700 0.72rem/1.4 'Montserrat',sans-serif; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+        .review-read-more:hover, .review-read-more:focus-visible { color:#67e8f9; }
+        .review-author { margin-top:auto; }
         .review-source { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.28); }
+        .review-dialog { width:min(680px, calc(100vw - 32px)); max-height:82vh; margin:auto; padding:0; overflow:auto; color:#d1d5db; background:#090a0c; border:1px solid rgba(34,211,238,0.24); border-radius:6px; box-shadow:0 24px 90px rgba(0,0,0,0.78); }
+        .review-dialog::backdrop { background:rgba(0,0,0,0.78); backdrop-filter:blur(3px); }
+        .review-dialog-inner { position:relative; padding:30px; }
+        .review-dialog-close { position:absolute; top:12px; right:14px; width:34px; height:34px; border:0; background:transparent; color:rgba(255,255,255,0.62); font-size:28px; line-height:1; cursor:pointer; }
+        .review-dialog-close:hover, .review-dialog-close:focus-visible { color:#fff; }
+        .review-dialog-quote { margin:0 32px 22px 0; color:rgba(229,231,235,0.88); font:300 italic 1rem/1.72 'Montserrat',sans-serif; }
+        .review-dialog-source { color:rgba(255,255,255,0.42); font:700 0.72rem/1.4 'Montserrat',sans-serif; text-transform:uppercase; }
+        @media (max-width:640px) {
+            .review-card { min-height:238px; padding:20px; }
+            .review-dialog-inner { padding:24px 20px; }
+        }
 
         /* Process steps */
         .process-step { display:flex; gap:18px; align-items:flex-start; padding:16px; border:1px solid rgba(255,255,255,0.05); border-radius:4px; background:rgba(255,255,255,0.02); transition:border-color 0.3s ease; }

@@ -34,7 +34,7 @@ export const servicePages = [
     intro: "A recurring edge program built around the rhythm of service, with scheduled 8 PM–1 AM pickup and 3 AM–8 AM return windows.",
     highlights: [
       "Confirmed after-hours pickup and return windows designed to avoid kitchen downtime.",
-      "Recurring weekly or bi-weekly programs sized to your knife fleet and volume.",
+      "Recurring weekly, bi-weekly, or monthly programs sized to your knife fleet and volume.",
       "Fleet tracking, chip repair, tip correction, and profile restoration in the same cycle.",
     ],
     detailTitle: "Sharp After Dark",
@@ -44,7 +44,7 @@ export const servicePages = [
       { question: "Do you sharpen knives for restaurants in Miami?", answer: "Yes. MKG serves restaurants, hotels, and commercial kitchens across Miami-Dade and Broward with professional fleet sharpening and repair." },
       { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. Sharp After Dark offers scheduled pickup between 8 PM and 1 AM and return between 3 AM and 8 AM. The final appointment is confirmed around the kitchen's preferred timing, location, and MKG route availability." },
       { question: "How far does commercial service travel?", answer: "Commercial service is available throughout Miami-Dade and Broward by scheduled appointment. Timing depends on the kitchen location and the existing service route; immediate on-call service is not offered." },
-      { question: "Do you handle recurring restaurant knife programs?", answer: "Yes. Weekly, bi-weekly, and other recurring intervals can be arranged based on fleet size, volume, and operational needs." },
+      { question: "Do you handle recurring restaurant knife programs?", answer: "Yes. Weekly, bi-weekly, monthly, and other recurring intervals can be arranged based on fleet size, volume, and operational needs." },
       { question: "Can you sharpen steak knives for dining rooms?", answer: "Yes. Straight-edge and serviceable serrated steak knives can be handled in batches or included in a recurring restaurant program." },
       { question: "Do you track knife condition over time?", answer: "Recurring programs can include fleet accountability, condition notes, repair needs, and consistent service intervals." },
       { question: "How do restaurants request service?", answer: "Use the Restaurant Service booking page and share the approximate knife count, schedule, location, and any repair or steak-knife needs." },
