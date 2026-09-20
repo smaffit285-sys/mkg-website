@@ -1,5 +1,6 @@
 /* Shared accents and existing ignition timing; the hero sequence is unchanged. */
 .route-page .sub-eyebrow { color:#f9a8d4; }
+.route-page .sub-body { color:#b4bec9; }
 :where(a[href], button:not(:disabled), summary):is(:hover, :focus-visible) { animation:navSoftIgnite 380ms ease-out both; }
 .route-page :where(a[href], button:not(:disabled), summary):is(:hover, :focus-visible) { text-shadow:0 0 5px rgba(34,211,238,.5),0 0 14px rgba(34,211,238,.25); }
 .route-page .panel-cta-pink:is(:hover, :focus-visible) { text-shadow:0 0 2px #fff3fb,0 0 10px #ec4899,0 0 22px rgba(236,72,153,.65); }

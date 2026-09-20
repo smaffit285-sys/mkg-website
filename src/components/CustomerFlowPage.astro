@@ -60,8 +60,7 @@ const {
       <slot />
       {nextCopy && (
         <aside class:list={["mb-10 p-5 border border-white/10 rounded bg-white/[0.022]", { "intake-next": intake }]} aria-labelledby="what-happens-next">
-          <p class="text-[9px] uppercase tracking-[0.24em] text-cyan-400/75 font-bold mb-2">What happens next</p>
-          <h2 id="what-happens-next" class="sr-only">What happens next</h2>
+          <h2 id="what-happens-next" class="text-[9px] uppercase tracking-[0.24em] text-cyan-400/75 font-bold mb-2">What happens next</h2>
           <p class="text-white/58 text-sm font-light leading-relaxed">{nextCopy}</p>
         </aside>
       )}

@@ -44,3 +44,5 @@ Run `python3 scripts/check-links.py --live` for a fresh production link audit.
 The local preview cannot be opened by this session's cloud browser, so visual verification uses the hosted preview. Actual iOS/Android messaging/share completion requires real-device follow-up. The site prepares a customer-sent message rather than accepting submissions on a server; it never claims a booking is confirmed automatically.
 
 The Edge Guide and its generated assets ship together with their new navigation and sitemap links.
+
+Hosted preview verification: home request renders the 12-knife default and full catalogue; entering test details and clicking Review prepares the correct message without sending it. Services → Thinning or reprofiling opens the specialty form with thinning selected. Rendered home and specialty forms were visually inspected, including skyline, pink outline button, typography, and page width. A final contrast improvement raises supporting route-page copy to a readable gray, and removes a repeated screen-reader heading.
