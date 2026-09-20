@@ -4,11 +4,9 @@ import "../styles/tokens.css";
 import "../styles/base.css";
 import "../styles/layout.css";
 import "../styles/neon.css";
-import "../styles/hero.css";
 import "../styles/service-cards.css";
 import "../styles/panels.css";
-import "../styles/proof.css";
-import "../styles/our-story.css";
+import "../styles/site-polish.css";
 import interactionsScript from "../scripts/interactions.js?url";
 import analyticsScript from "../scripts/analytics.js?url";
 import { GOOGLE_REVIEW_COUNT } from "../config/site";
@@ -81,6 +79,8 @@ const localBusinessSchema = {
 <meta name="twitter:image" content={socialImage} />
 <link rel="canonical" href={canonicalUrl} />
 <link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700;800&family=Yellowtail&family=Playfair+Display:ital,wght@1,900&family=Alex+Brush&display=swap" rel="stylesheet" />
 {preloadHero && <link rel="preload" href="/images/backgrounds/miami-skyline.webp" as="image" type="image/webp" fetchpriority="high" />}
 <!-- Privacy-friendly analytics by Plausible -->

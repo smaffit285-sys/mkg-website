@@ -3,7 +3,7 @@
            ============================================= */
         body { background-color: #060609; color: #ffffff; overflow-x: hidden; }
 
-        :where(a, button, input, select, textarea):focus-visible {
+        :where(a, button, input, select, textarea, summary):focus-visible {
             outline: 2px solid rgba(103, 232, 249, 0.95);
             outline-offset: 3px;
         }
@@ -25,7 +25,7 @@
             box-shadow: 0 0 8px #22d3ee, inset 0 0 8px #22d3ee;
             background: transparent;
         }
-        .neon-btn-cyan:hover {
+        .neon-btn-cyan:is(:hover, :focus-visible) {
             text-shadow: 0 0 8px #22d3ee, 0 0 15px #22d3ee, 0 0 20px #fff;
             box-shadow: 0 0 15px #22d3ee, inset 0 0 15px #22d3ee;
         }

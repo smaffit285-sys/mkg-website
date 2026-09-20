@@ -2,6 +2,7 @@
 const currentPath = Astro.url.pathname;
 const servicePaths = new Set([
     "/services/",
+    "/knife-sharpening-guide/",
     "/knife-sharpening-miami/",
     "/restaurant-knife-sharpening-miami/",
     "/japanese-knife-sharpening-miami/",
@@ -9,6 +10,8 @@ const servicePaths = new Set([
     "/steak-knife-sharpening-miami-restaurants/",
 ]);
 const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(currentPath) : currentPath === path;
+const requestAnchors = { "/book/home/": "#home-service-request", "/book/restaurant/": "#restaurant-service-request", "/send-photos/": "#special-request-review" };
+const bookingHref = requestAnchors[currentPath as keyof typeof requestAnchors] ?? "/book/";
 ---
 <header class="mkg-header fixed top-0 left-0 w-full z-50 bg-[#020202]/96 backdrop-blur-md border-b border-white/5">
     <div class="mkg-header-inner h-20 flex items-center justify-between gap-8">
@@ -31,7 +34,7 @@ const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(cur
 
         <div class="flex items-center gap-6 shrink-0">
             <a href="tel:+13059095773" class="mkg-header-phone hidden xl:inline text-sm font-light tracking-widest text-gray-300">(305) 909-5773</a>
-            <a href="/book/" aria-current={currentPath.startsWith("/book/") ? "page" : undefined} class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
+            <a href={bookingHref} data-referral-link aria-current={currentPath.startsWith("/book/") ? "page" : undefined} class="mkg-header-cta neon-btn-cyan border-2 rounded-md px-6 py-2.5 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 whitespace-nowrap hidden sm:inline-flex">
                 Book Service
             </a>
             <button id="mkg-hamburger" class="mkg-mobile-menu-button flex lg:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mkg-mobile-menu">
@@ -46,7 +49,7 @@ const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(cur
     </div>
 
     <div class="mkg-mobile-cta-row">
-        <a href="/book/" class="neon-btn-cyan border-2 rounded-md text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">
+        <a href={bookingHref} data-referral-link class="neon-btn-cyan border-2 rounded-md text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300">
             Book Service
         </a>
     </div>

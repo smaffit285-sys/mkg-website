@@ -1,0 +1,173 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import "../styles/edge-guide-interactions.css";
+
+export const prerender = true;
+
+const thinningPrice = "Thinning starts at $16 per side of the knife and increases with the scope of the work. Final charges vary with the amount of material removed, the labor required, abrasives consumed, and the total time spent on the work.";
+const questions = [
+  {
+    question: "Why does my knife feel sharp but still wedge in food?",
+    paragraphs: [
+      "A knife can have a sharp cutting edge and still meet resistance farther into the cut. If the blade is too thick behind the edge, that extra thickness can make it wedge in firm foods such as carrots or squash.",
+      "Sharpening restores the cutting edge. Thinning removes metal behind it to reduce that resistance. Thinning can change the blade’s surface finish, so the existing finish and desired result are part of the assessment. Not every knife that cuts poorly needs thinning.",
+    ],
+    href: "#thinning-price", label: "See thinning pricing →",
+  },
+  {
+    question: "Is there one best sharpening angle?",
+    paragraphs: [
+      "No single angle suits every knife. Steel, bevel design, condition, and intended use all matter. A slicing knife and a tool that meets bone face different demands.",
+      "Angle descriptions also need context: 15° per side is a 30° total angle on a symmetrical double-bevel edge.",
+    ],
+  },
+  {
+    question: "Does a more polished edge always cut better?",
+    paragraphs: ["Finish should serve the task. Smooth push cutting and slicing through slippery skins place different demands on an edge. A mirror finish describes the surface, but does not by itself establish how well a knife will cut."],
+  },
+  {
+    question: "How do I know whether to repair or replace a knife?",
+    paragraphs: [
+      "Start with an assessment of the damage and remaining blade. Chips, worn profiles, and many broken tips can be corrected. Structural damage or excessive loss of blade height may make replacement more sensible.",
+      "Send photos of both blade faces, the full profile, and a close-up of the damage. Include what feels wrong when you use it and whether preserving the factory finish matters to you.",
+    ],
+    href: "/send-photos/", label: "Send knife photos →",
+  },
+  {
+    question: "How often should I have my knives sharpened?",
+    paragraphs: ["Use performance as the signal, not a universal calendar. Cutting volume, technique, board, steel, and maintenance change the interval. If routine maintenance no longer restores predictable cutting, it is time for an assessment."],
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  mainEntity: [
+    ...questions.map((item) => ({
+      "@type": "Question", name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.paragraphs.join(" ") },
+    })),
+    { "@type": "Question", name: "How much does knife thinning cost?", acceptedAnswer: { "@type": "Answer", text: thinningPrice } },
+  ],
+};
+const articleSchema = {
+  "@context": "https://schema.org", "@type": "Article",
+  headline: "The Edge Behind the Glide: Knife Sharpening Guide",
+  description: "Answers about knife sharpening, thinning, angles, repairs, and cutting performance from Miami Knife Guy.",
+  author: { "@type": "Organization", name: "Miami Knife Guy", "@id": "https://www.miamiknifeguy.com/#business" },
+  publisher: { "@id": "https://www.miamiknifeguy.com/#business" },
+  mainEntityOfPage: "https://www.miamiknifeguy.com/knife-sharpening-guide/",
+  citation: "https://knifesteelnerds.com/2018/06/18/maximizing-edge-retention/",
+};
+---
+<RouteShell
+  title="Knife Sharpening & Thinning Guide | Miami Knife Guy"
+  description="Why does a sharp knife still wedge? Explore sharpening, thinning from $16 per side, edge angles, and repair with Miami Knife Guy in North Miami Beach."
+  canonicalPath="/knife-sharpening-guide/"
+  pageClass="edge-guide-page"
+  schema={[articleSchema, faqSchema]}
+>
+  <main class="panel" aria-hidden="false">
+    <article class="panel-inner edge-guide">
+      <nav class="guide-breadcrumb" aria-label="Breadcrumb"><a href="/services/">Services</a><span aria-hidden="true"> / </span><span aria-current="page">Knife sharpening guide</span></nav>
+      <header class="guide-opening">
+        <p class="guide-eyebrow">The knowledge behind the craft</p>
+        <h1>The edge behind<br />the <em>glide.</em></h1>
+        <p class="guide-lead">Knife sharpening questions. Clear answers.<br />And the science behind why the right edge feels different.</p>
+        <p class="guide-byline">Miami Knife Guy · North Miami Beach</p>
+        <div class="guide-jump"><a href="#guide-answers">Find your answer ↓</a><a href="#guide-research">Explore the evidence ↓</a></div>
+      </header>
+
+      <div class="guide-editorial">
+        <section id="guide-answers" aria-labelledby="answers-heading">
+          <p class="guide-eyebrow">Start with what you feel</p>
+          <h2 id="answers-heading">Sharp is only part of the story.</h2>
+          {questions.map((item, index) => (
+            <details open={index === 0}>
+              <summary>{item.question}</summary>
+              <div class="guide-answer">
+                {item.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+                {item.href && <a href={item.href}>{item.label}</a>}
+              </div>
+            </details>
+          ))}
+        </section>
+
+        <aside id="guide-research" aria-labelledby="research-heading">
+          <div class="guide-research">
+            <p class="guide-eyebrow">From the research</p>
+            <h2 id="research-heading">The steel name is only part of the picture.</h2>
+            <p>In the CATRA study analyzed by metallurgist Larrin Thomas, edge angle had a larger effect on measured edge retention than sharpening finish or the steels’ manufacturing process.</p>
+            <blockquote>“the CATRA tester is not necessarily a device that compares steels; it compares knives.”</blockquote>
+            <p class="guide-credit">Larrin Thomas · Knife Steel Nerds</p>
+            <h3>What this means for your knife</h3>
+            <p>Our practical takeaway: assess the knife’s geometry and its intended work together. The steel name alone cannot tell us which sharpening approach will suit your kitchen.</p>
+            <details class="guide-method">
+              <summary>See the test numbers and limitations</summary>
+              <p>The typical plain-edge test described uses 60 cuts, a 50 N load, and a speed of 50 mm/s against card containing 5% silica.</p>
+              <p>This measures abrasive-card cutting under controlled conditions. It does not measure time saved in kitchen prep or predict a fixed sharpening interval.</p>
+            </details>
+            <a class="guide-source" href="https://knifesteelnerds.com/2018/06/18/maximizing-edge-retention/" target="_blank" rel="noopener noreferrer">Read the test analysis ↗</a>
+          </div>
+        </aside>
+      </div>
+
+      <section class="guide-pricing" id="thinning-price" aria-labelledby="pricing-heading">
+        <p class="guide-eyebrow">Thinning · Priced to the work</p>
+        <h2 id="pricing-heading">How much does knife thinning cost?</h2>
+        <p class="guide-price">From $16 per side of the knife</p>
+        <p>{thinningPrice}</p>
+        <a href="/send-photos/?intent=thinning">Ask about thinning your knife →</a>
+      </section>
+
+      <section class="guide-bottom" aria-labelledby="next-heading">
+        <div><p class="guide-eyebrow">The next cut should feel different.</p><h2 id="next-heading">Stop fighting your tools.</h2><p>Ready to schedule? Book service. Unsure what your knife needs? Start with photos.</p></div>
+        <div class="guide-bottom-actions"><a class="panel-cta-btn panel-cta-cyan" href="/book/">Book Service</a><a class="guide-secondary" href="/send-photos/">Send Knife Photos →</a></div>
+      </section>
+    </article>
+  </main>
+</RouteShell>
+
+<style>
+  .edge-guide { max-width:1140px; color:#ececf0; font:400 16px/1.7 'Montserrat',sans-serif; }
+  .edge-guide a { text-decoration:none; }
+  .guide-breadcrumb { color:#a6a6b3; font-size:12px; }
+  .guide-breadcrumb > span:first-of-type { padding:0 10px; color:#676775; }
+  .guide-opening { padding:45px 0 43px; border-bottom:1px solid #272732; }
+  .guide-eyebrow { font-size:11px; letter-spacing:.21em; font-weight:700; color:#67e8f9; margin:0 0 13px; text-transform:uppercase; }
+  .edge-guide h1 { margin:0 0 22px; font:300 clamp(40px,7vw,70px)/1.07 'Dosis',sans-serif; letter-spacing:.04em; color:#c6f4fb; text-transform:uppercase; }
+  @supports (-webkit-text-stroke:1px #fff) { .edge-guide h1 { color:transparent; -webkit-text-stroke:1px #79dbe9; text-shadow:0 0 24px #22d3ee20; } }
+  .edge-guide h1 em { color:#f472b6; -webkit-text-stroke:0; font-style:normal; text-shadow:0 0 25px #ec489944; }
+  .guide-lead { max-width:660px; font-size:16px; color:#b0b0be; margin:0; line-height:1.8; }
+  .guide-byline { color:#b0b0be; font-size:12px; margin-top:16px; }
+  .guide-jump { display:flex; flex-wrap:wrap; gap:12px 30px; margin-top:25px; }
+  .guide-jump a { font-size:11px; font-weight:700; letter-spacing:.09em; padding:6px 0; text-transform:uppercase; }
+  .guide-editorial { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:40px; padding:42px 0 48px; }
+  .edge-guide h2 { font-size:23px; font-weight:500; line-height:1.4; letter-spacing:-.025em; margin:0 0 24px; }
+  .edge-guide details { border-bottom:1px solid #282831; padding:18px 0; }
+  .edge-guide summary { font-size:15px; font-weight:600; line-height:1.6; cursor:pointer; }
+  .edge-guide details[open] > summary { color:#67e8f9; }
+  .guide-answer p { color:#b0b0be; font-size:15px; margin:14px 0 0; }
+  .guide-answer a { display:inline-block; color:#67e8f9; font-size:13px; margin-top:15px; }
+  .guide-research { background:#0d0d13; border:1px solid #332433; border-top:2px solid #a94878; border-radius:4px; padding:26px; }
+  .guide-research .guide-eyebrow { color:#f472b6; }
+  .guide-research h2 { font-size:21px; }
+  .guide-research h3 { font-size:15px; font-weight:600; margin:24px 0 10px; }
+  .guide-research p { font-size:14px; color:#b0b0be; }
+  .guide-research blockquote { margin:25px 0 12px; padding-left:15px; border-left:2px solid #8a416e; color:#e2d3e0; font-size:16px; line-height:1.7; }
+  .guide-research .guide-credit { font-size:11px; color:#cdb4c6; }
+  .guide-method summary { font-size:13px; }
+  .guide-source { display:inline-block; margin-top:20px; color:#67e8f9; text-decoration:underline!important; text-underline-offset:4px; font-size:12px; }
+  .guide-pricing { margin-bottom:36px; padding:26px; border:1px solid #244852; border-left:2px solid #22d3ee; border-radius:4px; background:#0b1116; }
+  .guide-pricing h2 { margin-bottom:12px; }
+  .guide-pricing p:not(.guide-eyebrow) { max-width:760px; color:#b0b0be; font-size:15px; margin:0 0 16px; }
+  .guide-pricing .guide-price { color:#ececf0!important; font-size:20px!important; font-weight:600; }
+  .guide-pricing a { display:inline-block; color:#67e8f9; font-size:13px; }
+  .guide-bottom { border-top:1px solid #29313b; display:flex; justify-content:space-between; gap:30px; align-items:center; padding:36px 0 0; }
+  .guide-bottom h2 { margin-bottom:10px; font-size:28px; }
+  .guide-bottom p:last-child { color:#b0b0be; font-size:14px; margin:0; }
+  .guide-bottom-actions { display:flex; flex-direction:column; align-items:center; gap:15px; flex-shrink:0; }
+  .guide-secondary { font-size:11px; letter-spacing:.08em; padding:5px 0; text-transform:uppercase; }
+  @media(max-width:760px) { .guide-editorial { grid-template-columns:1fr; gap:30px; } .guide-bottom { flex-direction:column; align-items:flex-start; } .guide-bottom-actions { flex-direction:row; flex-wrap:wrap; gap:20px; } }
+  @media(max-width:400px) { .guide-research,.guide-pricing { padding:20px; } }
+  @media(pointer:coarse) { .edge-guide summary { min-height:44px; } .edge-guide a { display:inline-flex; align-items:center; min-height:44px; } }
+</style>

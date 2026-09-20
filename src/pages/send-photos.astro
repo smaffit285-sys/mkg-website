@@ -2,17 +2,20 @@
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
 import RequestForm from "../components/RequestForm.astro";
+import { sharpeningServices } from "../config/sharpeningServices";
 export const prerender = true;
 ---
 <RouteShell
-  title="Send Knife Photos | Miami Knife Guy"
-  description="Send knife damage, repair, restoration, and before-and-after photos to Miami Knife Guy."
+  title="Knife & Tool Sharpening Requests | Miami Knife Guy"
+  description="Send photos of knives, shears, blades, and specialty tools for sharpening, repair, thinning, or custom work assessment by Miami Knife Guy."
   canonicalPath="/send-photos/"
+  pageClass="intake-page"
 >
   <CustomerFlowPage
-    eyebrow="Repair & Restoration Assessment"
-    headline="Show us the blade."
-    intro="Clear photos help MKG understand damage and geometry before you bring the knife in."
+    intake={true}
+    eyebrow="Sharpening · Repair · Custom Work"
+    headline="Show us what needs an edge."
+    intro="Knives, shears, blades, or specialty tools: choose a service and tell Sean what you need. Clear photos help him assess the work and confirm the approach, price, and timing."
     steps={[
       { title: "Full profile", copy: "Photograph the entire knife from the side on a plain, well-lit background." },
       { title: "Damage close-up", copy: "Include the chip, broken tip, bend, corrosion, or worn section from multiple angles." },
@@ -26,27 +29,21 @@ export const prerender = true;
   >
     <RequestForm
       id="special-request-review"
-      title="Send Knife Photos"
-      description="Repairs, restorations, chips, broken tips, rust, unusual knives, events, rush situations, and custom requests are reviewed before scheduling."
+      title="Request Knife & Tool Service"
+      description="Choose the main service below and add any other tools in your notes. Specialty work and custom requests are assessed before scheduling."
       source="public_send_photos"
       serviceType="photo_review"
-      submitLabel="Prepare Photo Request"
+      submitLabel="Review My Photo Request"
       photoHandoff={true}
       fields={[
         { name: "name", label: "Your name", required: true, placeholder: "Name" },
         { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
         { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-        { name: "requestType", label: "Request type", type: "select", required: true, options: [
-          { value: "chip", label: "Chip or edge damage" },
-          { value: "tip", label: "Broken tip" },
-          { value: "restoration", label: "Rust or restoration" },
-          { value: "specialty", label: "Unusual or specialty knife" },
-          { value: "rush", label: "Event or rush request" },
-          { value: "other", label: "Other custom request" },
-        ] },
-        { name: "notes", label: "Knife and issue notes", type: "textarea", required: true, fullWidth: true, placeholder: "Describe the knife, condition, maker, intended use, timing, and what you would like reviewed" },
-        { name: "photos", label: "Knife photos", type: "file", fullWidth: true, accept: "image/*", help: "Selected photos stay on your device. On supported phones, the share sheet can pass them to Messages. Otherwise, attach them after the prepared message opens." },
+        { name: "requestType", label: "Sharpening service or tool", type: "select", required: true, options: sharpeningServices },
+        { name: "notes", label: "Knife or tool details", type: "textarea", required: true, fullWidth: true, placeholder: "Describe the knife or tool, quantity, condition, maker, intended use, timing, and what you would like reviewed" },
+        { name: "photos", label: "Knife or tool photos", type: "file", fullWidth: true, accept: "image/*", multiple: true, help: "Show the whole tool, both sides of the blade, and any damage. Photos stay on your device. On supported phones, the share sheet can pass them to Messages. Otherwise, attach them after the prepared message opens." },
       ]}
     />
+    <p class="sub-body intake-next">Thinning starts at <strong>$16 per side of the knife</strong>. Charges increase with the amount of material removed, labor and abrasives expended, and total time spent on the work.</p>
   </CustomerFlowPage>
 </RouteShell>

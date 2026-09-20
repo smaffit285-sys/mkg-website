@@ -1,0 +1,38 @@
+/* Guide-only interaction layer. Reuses the site's existing ignition keyframes
+   and CTA glow values; does not change the landing-page cinematic sequence. */
+.edge-guide-page :is(a[href], button, summary) {
+  transition: color 240ms ease, text-shadow 240ms ease, transform 220ms ease,
+    border-color 180ms ease, box-shadow 180ms ease, background 180ms ease,
+    filter 180ms ease;
+}
+
+.edge-guide-page :is(a[href], button, summary):is(:hover, :focus-visible, :active) {
+  color: #f0faff;
+  text-shadow: 0 0 1px rgba(255,255,255,.60), 0 0 5px rgba(34,211,238,.45);
+  animation: navSoftIgnite 380ms ease-out both;
+}
+
+.edge-guide-page :is(.panel-cta-btn, .neon-btn-cyan):is(:hover, :focus-visible, :active) {
+  color: #f4ffff;
+  border-color: #22d3ee;
+  background: linear-gradient(to bottom, rgba(34,211,238,.13), rgba(34,211,238,.03));
+  text-shadow: 0 0 2px rgba(255,255,255,.95), 0 0 10px rgba(34,211,238,.95), 0 0 22px rgba(34,211,238,.62);
+  box-shadow: 0 0 2px rgba(255,255,255,.7), 0 0 16px rgba(34,211,238,.82), 0 0 36px rgba(34,211,238,.48), inset 0 0 18px rgba(34,211,238,.24);
+  transform: translateY(-1px);
+  filter: saturate(1.18) brightness(1.10);
+}
+
+.edge-guide-page summary:focus-visible {
+  outline: 2px solid rgba(103,232,249,.95);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge-guide-page :is(a[href], button, summary) {
+    animation: none !important;
+    transition: none !important;
+  }
+  .edge-guide-page :is(a[href], button, summary):is(:hover, :focus-visible, :active) {
+    transform: none;
+  }
+}

@@ -10,9 +10,10 @@ interface Props {
   image?: string;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
   robots?: string;
+  pageClass?: string;
 }
 
-const { title, description, canonicalPath, image, schema = [], robots = "index, follow" } = Astro.props;
+const { title, description, canonicalPath, image, schema = [], robots = "index, follow", pageClass = "" } = Astro.props;
 ---
 <BaseLayout
   title={title}
@@ -21,7 +22,7 @@ const { title, description, canonicalPath, image, schema = [], robots = "index, 
   image={image}
   schema={schema}
   robots={robots}
-  pageClass="route-page"
+  pageClass={["route-page", pageClass].filter(Boolean).join(" ")}
 >
   <SiteHeader />
   <slot />
