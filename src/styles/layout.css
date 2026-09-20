@@ -81,6 +81,8 @@
         .mkg-mobile-menu.is-open {
             display: flex;
         }
+        .mkg-mobile-menu { max-height:calc(100dvh - 128px); overflow-y:auto; }
+        .route-page :is(form[id], section[id], h1[id], h2[id], details, input, select, textarea) { scroll-margin-top:150px; }
         .mkg-mobile-menu-link {
             display: block;
             padding: 13px 32px;

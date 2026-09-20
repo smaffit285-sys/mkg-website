@@ -1,27 +1,26 @@
 ---
 import RouteShell from "../../components/RouteShell.astro";
-import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import "../../styles/intake.css";
 export const prerender = true;
+const choices = [
+  { href: "/book/home/", title: "Home kitchen", copy: "Sharpening, repairs, or recurring Knife Club care for the knives you use at home." },
+  { href: "/book/restaurant/", title: "Restaurant or hotel", copy: "Kitchen fleets, steak knives, recurring programs, and Sharp After Dark service." },
+  { href: "/send-photos/", title: "Repair, thinning, or not sure yet?", copy: "Send photos and describe the problem. Sean can help identify the right service." },
+];
 ---
-<RouteShell
-  title="Book Knife Sharpening | Miami Knife Guy"
-  description="Choose home or restaurant knife sharpening service with Miami Knife Guy in South Florida."
-  canonicalPath="/book/"
->
-  <CustomerFlowPage
-    eyebrow="Book Miami Knife Guy"
-    headline="Choose your service path."
-    intro="MKG serves professional kitchens and serious home cooks differently. Choose the path that fits your knives and schedule."
-    steps={[
-      { title: "Restaurant & hotel", copy: "Recurring fleet care, after-hours collection, steak knives, repair, and zero-downtime programs." },
-      { title: "Home kitchen", copy: "Premium sharpening, repair, and recurring edge care for the knives you use every day." },
-      { title: "Special requests", copy: "Repairs, restorations, unusual knives, photos, events, or custom requests reviewed before scheduling." },
-    ]}
-    primaryHref="/book/restaurant/"
-    primaryLabel="Restaurant Service"
-    secondaryHref="/book/home/"
-    secondaryLabel="Home Service"
-    tertiaryHref="/send-photos/"
-    tertiaryLabel="Special Request"
-  />
+<RouteShell title="Book Knife Sharpening | Miami Knife Guy"
+  description="Request knife sharpening for your home or restaurant, or send photos for a repair assessment. Sean confirms the service and timing with you."
+  canonicalPath="/book/" pageClass="intake-page">
+  <main class="panel" aria-hidden="false">
+    <div class="panel-inner"><div class="max-w-4xl mx-auto">
+      <p class="sub-eyebrow">Book Miami Knife Guy</p>
+      <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">Let’s get your edge back.</h1>
+      <p class="sub-body">Choose your kitchen—or start with photos if you’re unsure what your knife needs.</p>
+      <nav class="booking-choices" aria-label="Choose your service">
+        {choices.map(choice => <a href={choice.href} class="booking-choice" data-referral-link><h2>{choice.title}</h2><p>{choice.copy}</p><span aria-hidden="true">→</span></a>)}
+      </nav>
+      <p class="booking-assurance">You’ll review and send a request to Sean. He’ll confirm the work, timing, and drop-off or collection details with you before service is scheduled.</p>
+      <div class="request-actions mt-6"><a class="panel-cta-btn panel-cta-ghost" href="tel:+13059095773">Talk to Sean · (305) 909-5773</a><a href="/services/" class="request-phone">View services &amp; pricing →</a></div>
+    </div></div>
+  </main>
 </RouteShell>

@@ -3,7 +3,8 @@ interface Props {
   eyebrow: string;
   headline: string;
   intro: string;
-  steps: Array<{ title: string; copy: string }>;
+  steps?: Array<{ title: string; copy: string }>;
+  intake?: boolean;
   primaryHref: string;
   primaryLabel: string;
   primaryExternal?: boolean;
@@ -20,7 +21,8 @@ const {
   eyebrow,
   headline,
   intro,
-  steps,
+  steps = [],
+  intake = false,
   primaryHref,
   primaryLabel,
   primaryExternal = false,
@@ -36,6 +38,7 @@ const {
 <main class="panel" aria-hidden="false">
   <div class="panel-inner">
     <div class="max-w-4xl mx-auto">
+      {intake && <nav class="intake-breadcrumb" aria-label="Breadcrumb"><a href="/book/" data-referral-link>← Choose a different service</a></nav>}
       <p class="sub-eyebrow">{eyebrow}</p>
       <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">{headline}</h1>
       <p class="sub-body max-w-2xl mb-10">{intro}</p>
@@ -44,7 +47,8 @@ const {
           {referralCode ? `MKG referral · ${referralCode}` : "MKG referral"}
         </p>
       )}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+      {intake && <p class="intake-sequence">Share your details <span aria-hidden="true">→</span> Send your request <span aria-hidden="true">→</span> Confirm with Sean</p>}
+      {!intake && steps.length > 0 && <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
         {steps.map((step, index) => (
           <div class="review-card">
             <div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">0{index + 1}</div>
@@ -52,10 +56,10 @@ const {
             <p class="text-white/58 text-sm font-light leading-relaxed">{step.copy}</p>
           </div>
         ))}
-      </div>
+      </div>}
       <slot />
       {nextCopy && (
-        <aside class="mb-10 p-5 border border-white/10 rounded bg-white/[0.022]" aria-labelledby="what-happens-next">
+        <aside class:list={["mb-10 p-5 border border-white/10 rounded bg-white/[0.022]", { "intake-next": intake }]} aria-labelledby="what-happens-next">
           <p class="text-[9px] uppercase tracking-[0.24em] text-cyan-400/75 font-bold mb-2">What happens next</p>
           <h2 id="what-happens-next" class="sr-only">What happens next</h2>
           <p class="text-white/58 text-sm font-light leading-relaxed">{nextCopy}</p>

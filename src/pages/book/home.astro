@@ -3,17 +3,20 @@ import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
 import RequestForm from "../../components/RequestForm.astro";
 import ServiceLogistics from "../../components/ServiceLogistics.astro";
+import { sharpeningServices } from "../../config/sharpeningServices";
 export const prerender = true;
 ---
 <RouteShell
   title="Book Home Knife Sharpening Miami | MKG"
   description="Request shop-based home knife sharpening with drop-off, qualifying pickup and return, same-day availability, or recurring Knife Club service."
   canonicalPath="/book/home/"
+  pageClass="intake-page"
 >
   <CustomerFlowPage
+    intake={true}
     eyebrow="Home Kitchens · Serious Cooks"
     headline="Book home knife sharpening."
-    intro="Tell MKG how many knives you have, the blade types, your location, and whether any need repair or restoration."
+    intro="Tell Sean what you have and where you are. He’ll review your knives, discuss the work, and confirm timing with you before service is scheduled."
     steps={[
       { title: "Count the knives", copy: "Include chef, utility, paring, bread, steak, and specialty knives." },
       { title: "Note the condition", copy: "Mention chips, broken tips, serrations, premium Japanese steel, or finish-sensitive blades." },
@@ -25,24 +28,24 @@ export const prerender = true;
     secondaryLabel="View Knife Club"
     nextCopy="Prepare the request, then send the message. Sean reviews the knife count, location, and service needs before confirming."
   >
-    <ServiceLogistics mode="residential" />
     <RequestForm
       id="home-service-request"
       title="Request Home Knife Service"
       description="Request one-time or recurring sharpening for the knives you use at home. Repairs and special conditions are reviewed before scheduling."
       source="public_book_home"
       serviceType="home_knives"
-      submitLabel="Prepare Home Request"
+      submitLabel="Review My Request"
       clubTitle="Join Miami Knife Club"
       clubSource="public_book_home_club"
       clubServiceType="knife_club"
-      clubSubmitLabel="Prepare Club Request"
+      clubSubmitLabel="Review My Club Request"
       fields={[
         { name: "name", label: "Your name", required: true, placeholder: "Name" },
         { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
         { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-        { name: "location", label: "Location", required: true, placeholder: "City or neighborhood" },
-        { name: "knifeCount", label: "Approximate knife count", type: "number", placeholder: "6" },
+        { name: "location", label: "Location", required: true, placeholder: "City or neighborhood", autocomplete: "address-level2" },
+        { name: "knifeCount", label: "Approximate knife count", type: "number", min: 1, step: 1, placeholder: "12", value: "12", help: "Adjust to your count. For tools only, clear this field and add quantities in the notes." },
+        { name: "requestType", label: "Sharpening service or tool", type: "select", value: "knife_sharpening", options: sharpeningServices, help: "Choose the main service; list any additional tools in the notes." },
         { name: "handoffPreference", label: "Preferred handoff", type: "select", options: [
           { value: "shop_dropoff", label: "I can drop off at the shop" },
           { value: "pickup_return", label: "Request pickup and return" },
@@ -54,14 +57,15 @@ export const prerender = true;
           { value: "rush", label: "Rush quote" },
           { value: "unsure", label: "Not sure" },
         ] },
-        { name: "serviceInterest", label: "Service interest", type: "select", required: true, options: [
+        { name: "serviceInterest", label: "Service interest", type: "select", value: "one_time_home", required: true, options: [
           { value: "one_time_home", label: "One-time home service" },
           { value: "knife_club", label: "Miami Knife Club" },
           { value: "repair_review", label: "Repair or restoration review" },
           { value: "consultation", label: "Not sure yet" },
         ] },
-        { name: "knifeDetails", label: "Knife details and condition", type: "textarea", fullWidth: true, placeholder: "Knife types, Japanese steel, serrations, chips, broken tips, or other details" },
+        { name: "knifeDetails", label: "Knife or tool details and condition", type: "textarea", fullWidth: true, placeholder: "Knife or tool types, quantities, Japanese steel, serrations, chips, broken tips, or other details" },
       ]}
     />
+    <details class="intake-logistics"><summary>Drop-off, pickup, travel fees &amp; turnaround</summary><ServiceLogistics mode="residential" /></details>
   </CustomerFlowPage>
 </RouteShell>

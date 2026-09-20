@@ -23,9 +23,9 @@ const canonicalPath = `/r/${encodeURIComponent(referralCode)}/`;
       { title: "Mention the referral", copy: "Your referral code is carried with this page and can be included when you contact MKG." },
       { title: "Describe the knives", copy: "Share quantity, blade types, condition, location, and preferred timing." },
     ]}
-    primaryHref="/book/"
+    primaryHref={`/book/?ref=${encodeURIComponent(referralCode)}`}
     primaryLabel="Choose Service"
-    secondaryHref="sms:+13059095773?body=Hi%20Miami%20Knife%20Guy%2C%20I%20was%20referred%20to%20you."
+    secondaryHref={`sms:+13059095773?body=${encodeURIComponent(`Hi Miami Knife Guy, I was referred to you. Referral code: ${referralCode}`)}`}
     secondaryLabel="Text MKG"
     referral={true}
     referralCode={referralCode}

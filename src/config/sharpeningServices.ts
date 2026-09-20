@@ -1,0 +1,21 @@
+/** Shared customer-facing catalogue for service discovery and request forms. */
+export const sharpeningServices = [
+  { value: "knife_sharpening", label: "Knife sharpening" },
+  { value: "kitchen_shears", label: "Kitchen shears" },
+  { value: "food_processor_blades", label: "Food processor blades" },
+  { value: "mandolins", label: "Mandolins" },
+  { value: "machetes", label: "Machetes" },
+  { value: "axes_hatchets", label: "Axes / hatchets" },
+  { value: "wood_planers", label: "Wood planers" },
+  { value: "carving_tools", label: "Carving tools" },
+  { value: "medical_tools", label: "Medical tools" },
+  { value: "hair_shears", label: "Hair shears" },
+  { value: "fabric_shears", label: "Fabric shears" },
+  { value: "thinning", label: "Thinning or reprofiling" },
+  { value: "chip", label: "Chip or edge damage" },
+  { value: "tip", label: "Broken tip" },
+  { value: "restoration", label: "Rust or restoration" },
+  { value: "custom_creations", label: "Custom creations" },
+  { value: "rush", label: "Event or rush request" },
+  { value: "other", label: "Other request / help me choose" },
+];

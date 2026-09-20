@@ -3,17 +3,20 @@ import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
 import RequestForm from "../../components/RequestForm.astro";
 import ServiceLogistics from "../../components/ServiceLogistics.astro";
+import { sharpeningServices } from "../../config/sharpeningServices";
 export const prerender = true;
 ---
 <RouteShell
   title="Book Restaurant Knife Sharpening Miami | MKG"
   description="Request restaurant, hotel, or commercial kitchen knife sharpening through Miami Knife Guy."
   canonicalPath="/book/restaurant/"
+  pageClass="intake-page"
 >
   <CustomerFlowPage
+    intake={true}
     eyebrow="Sharp After Dark"
     headline="Book restaurant edge care."
-    intro="Start with the size of your knife fleet, your operating schedule, service frequency, and any steak-knife or repair needs."
+    intro="Tell Sean about your kitchen and the service window you need. He’ll review the knife volume, route, and timing with you before the booking is confirmed."
     steps={[
       { title: "Describe the kitchen", copy: "Share restaurant or hotel name, location, operating hours, and the best contact." },
       { title: "Estimate the fleet", copy: "Include chef knives, prep knives, steak knives, specialty blades, and known damage." },
@@ -25,14 +28,13 @@ export const prerender = true;
     secondaryLabel="View Sharp After Dark"
     nextCopy="Prepare the request, then send the message. Sean reviews the account, knife volume, timing, and service window before confirming the right program."
   >
-    <ServiceLogistics mode="commercial" />
     <RequestForm
       id="restaurant-service-request"
       title="Request Restaurant Service"
       description="Share the kitchen, fleet, and preferred service window. Recurring programs, after-hours collection, repairs, and steak-knife service are reviewed before confirmation."
       source="public_book_restaurant"
       serviceType="restaurant"
-      submitLabel="Prepare Restaurant Request"
+      submitLabel="Review My Request"
       fields={[
         { name: "name", label: "Your name", required: true, placeholder: "Name" },
         { name: "business", label: "Restaurant or hotel", required: true, placeholder: "Business name" },
@@ -40,6 +42,7 @@ export const prerender = true;
         { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
         { name: "location", label: "Service location", required: true, placeholder: "City or address" },
         { name: "knifeVolume", label: "Approximate knife volume", placeholder: "Chef knives, prep knives, steak knives" },
+        { name: "requestType", label: "Sharpening service or tool", type: "select", value: "knife_sharpening", options: sharpeningServices, help: "Choose the main service; list any additional tools in the notes." },
         { name: "frequency", label: "Preferred frequency", type: "select", options: [
           { value: "one_time", label: "One-time service" },
           { value: "weekly", label: "Weekly" },
@@ -51,5 +54,6 @@ export const prerender = true;
         { name: "serviceNeeds", label: "Service needs", type: "textarea", fullWidth: true, placeholder: "Recurring sharpening, repairs, steak knives, fleet tracking, or other needs" },
       ]}
     />
+    <details class="intake-logistics"><summary>Service area, collection windows &amp; travel fees</summary><ServiceLogistics mode="commercial" /></details>
   </CustomerFlowPage>
 </RouteShell>

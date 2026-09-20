@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview --host 127.0.0.1"
+    "preview": "astro preview --host 127.0.0.1",
+    "test:forms": "node --test tests/request-form.test.mjs",
+    "check:links": "python3 scripts/check-links.py"
   },
   "dependencies": {
     "@astrojs/vercel": "11.0.4",
@@ -14,7 +16,8 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.0"
+    "@tailwindcss/vite": "^4.3.0",
+    "jsdom": "^30.1.0"
   },
   "overrides": {
     "path-to-regexp": "6.3.0"

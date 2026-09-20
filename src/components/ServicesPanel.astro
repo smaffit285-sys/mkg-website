@@ -1,5 +1,6 @@
 ---
 import ServiceLogistics from "./ServiceLogistics.astro";
+import { sharpeningServices } from "../config/sharpeningServices";
 ---
 <!-- ====================================================
 PANEL: SERVICES
@@ -7,7 +8,7 @@ PANEL: SERVICES
 <div id="panel-services" class="panel" aria-hidden="false">
 <div class="panel-inner">
 <p class="sub-eyebrow">Built for working kitchens and serious tools.</p>
-<h2 class="sub-headline-cyan text-4xl lg:text-5xl mb-3">Services</h2>
+<h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-3">Services</h1>
 <p class="sub-body mb-10 max-w-2xl text-sm">Every edge is approached through geometry, steel preservation, and real-world kitchen performance. The goal is not to grind every knife the same way. It is to understand what the tool is, what it does, and what it needs to do better.</p>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
@@ -20,6 +21,7 @@ PANEL: SERVICES
 <div class="service-tile-title">Repair &amp; Restoration</div>
 <div class="service-tile-body">Chip repair, tip repair, thinning, reprofiling, rust cleanup, and corrective work for knives that need more than a quick pass on a belt.</div>
 <div class="price-tag">By assessment</div>
+<p class="service-tile-body mt-3">Thinning starts at $16 per side of the knife. Final charges increase with material removed, labor, abrasives consumed, and total time spent.</p>
 </div>
 <div class="service-tile">
 <div class="service-tile-title">Restaurant &amp; Hotel Programs</div>
@@ -35,6 +37,15 @@ PANEL: SERVICES
 
 <ServiceLogistics mode="overview" />
 
+<section class="specialty-services mb-12" aria-labelledby="specialty-services-heading">
+<p class="sub-eyebrow">More than kitchen knives</p>
+<h2 id="specialty-services-heading" class="text-2xl text-white mb-4">The right edge for the tool.</h2>
+<p class="sub-body mb-5">Shears, workshop tools, specialty blades, and custom work each need their own approach. Choose a service to start a request with that option already selected. Sean reviews the tool, condition, and intended use before confirming the work and quote.</p>
+<ul class="specialty-service-list">
+{sharpeningServices.map(service => <li><a href={`/send-photos/?service=${service.value}`}>{service.label}<span aria-hidden="true"> ↗</span></a></li>)}
+</ul>
+</section>
+
 <section class="mb-12 pt-2" aria-labelledby="service-paths-heading">
 <p class="text-[9px] uppercase tracking-widest text-cyan-400/70 font-bold mb-2">Explore Service Pages</p>
 <h3 id="service-paths-heading" class="text-white/82 text-2xl font-semibold tracking-wide mb-5">Choose the right edge-care path</h3>
@@ -49,6 +60,7 @@ PANEL: SERVICES
 <a href="/send-photos/" class="service-tile block"><div class="service-tile-title">Send Knife Photos</div><div class="service-tile-body">Share clear photos for repair, restoration, unusual knives, or condition review.</div></a>
 <a href="/book/" class="service-tile block"><div class="service-tile-title">Book Service</div><div class="service-tile-body">Choose restaurant, home-kitchen, or special-request service and start scheduling.</div></a>
 </div>
+<p class="sub-body mt-6">Questions about your edge? <a href="/knife-sharpening-guide/" class="text-cyan-300 underline underline-offset-4">Read the knife sharpening guide &rarr;</a></p>
 </section>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
