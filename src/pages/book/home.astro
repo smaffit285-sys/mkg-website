@@ -8,7 +8,7 @@ export const prerender = true;
 ---
 <RouteShell
   title="Book Home Knife Sharpening Miami | MKG"
-  description="Request shop-based home knife sharpening with drop-off, qualifying pickup and return, same-day availability, or recurring Knife Club service."
+  description="Request shop-based home knife sharpening, Working Edge service, premium White Glove knife care, pickup and return, or recurring Knife Club service."
   canonicalPath="/book/home/"
   pageClass="intake-page"
 >
@@ -16,11 +16,11 @@ export const prerender = true;
     intake={true}
     eyebrow="Home Kitchens · Serious Cooks"
     headline="Book home knife sharpening."
-    intro="Tell Sean what you have and where you are. He’ll review your knives, discuss the work, and confirm timing with you before service is scheduled."
+    intro="Tell Sean what you have, how you use it, and whether you want lean working edges or higher-touch premium care. He’ll review the knives, discuss the work, and confirm timing before service is scheduled."
     steps={[
       { title: "Count the knives", copy: "Include chef, utility, paring, bread, steak, and specialty knives." },
-      { title: "Note the condition", copy: "Mention chips, broken tips, serrations, premium Japanese steel, or finish-sensitive blades." },
-      { title: "Choose your rhythm", copy: "Book one-time service or ask about recurring Miami Knife Club edge care." },
+      { title: "Choose the care level", copy: "Working Edge keeps daily knives sharp. Performance and White Glove care add refinement, finish care, and presentation." },
+      { title: "Note the condition", copy: "Mention chips, broken tips, serrations, premium steel, sentimental knives, or finish-sensitive blades." },
     ]}
     primaryHref="tel:+13059095773"
     primaryLabel="Call MKG"
@@ -31,7 +31,7 @@ export const prerender = true;
     <RequestForm
       id="home-service-request"
       title="Request Home Knife Service"
-      description="Request one-time or recurring sharpening for the knives you use at home. Repairs and special conditions are reviewed before scheduling."
+      description="Request one-time or recurring sharpening for the knives you use at home. Working Edge, premium care, repairs, and special conditions are reviewed before scheduling."
       source="public_book_home"
       serviceType="home_knives"
       submitLabel="Review My Request"
@@ -46,9 +46,15 @@ export const prerender = true;
         { name: "location", label: "Location", required: true, placeholder: "City or neighborhood", autocomplete: "address-level2" },
         { name: "knifeCount", label: "Approximate knife count", type: "number", min: 1, step: 1, placeholder: "12", value: "12", help: "Adjust to your count. For tools only, clear this field and add quantities in the notes." },
         { name: "requestType", label: "Sharpening service or tool", type: "select", value: "knife_sharpening", options: sharpeningServices, help: "Choose the main service; list any additional tools in the notes." },
+        { name: "careLevel", label: "Care level", type: "select", value: "working_edge", options: [
+          { value: "working_edge", label: "Working Edge - practical daily sharpening" },
+          { value: "performance_edge", label: "Performance Edge - more refined finish" },
+          { value: "white_glove", label: "White Glove care - premium refresh" },
+          { value: "not_sure", label: "Not sure - help me choose" },
+        ], help: "Pick the closest match. Sean can adjust the recommendation after seeing the knives." },
         { name: "handoffPreference", label: "Preferred handoff", type: "select", options: [
           { value: "shop_dropoff", label: "I can drop off at the shop" },
-          { value: "pickup_return", label: "Request pickup and return" },
+          { value: "pickup_return", label: "Request pickup and return - travel priced separately" },
           { value: "unsure", label: "Help me choose" },
         ] },
         { name: "turnaround", label: "Timing preference", type: "select", options: [

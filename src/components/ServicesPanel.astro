@@ -9,29 +9,29 @@ PANEL: SERVICES
 <div class="panel-inner">
 <p class="sub-eyebrow">Built for working kitchens and serious tools.</p>
 <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-3">Services</h1>
-<p class="sub-body mb-10 max-w-2xl text-sm">Every edge is approached through geometry, steel preservation, and real-world kitchen performance. The goal is not to grind every knife the same way. It is to understand what the tool is, what it does, and what it needs to do better.</p>
+<p class="sub-body mb-10 max-w-2xl text-sm">Every edge is approached through geometry, steel preservation, and real-world kitchen performance. Working prep knives can stay lean and practical. Premium knives, sentimental tools, and showpiece blades can receive more refinement, correction, and finish care.</p>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
 <div class="service-tile">
 <div class="service-tile-title">Knife Sharpening</div>
-<div class="service-tile-body">Precision sharpening for chef knives, slicers, utility knives, paring knives, and specialty blades. Edges are matched to the tool, the steel, and the way the knife is used.</div>
-<div class="price-tag">From $10/knife</div>
+<div class="service-tile-body">Standard fine-edge sharpening is priced by blade length: $9 minimum for knives 6 inches or smaller, then $1.50 per inch. Serrated knives start at $12 and are $2 per inch.</div>
+<div class="price-tag">From $9</div>
 </div>
 <div class="service-tile">
 <div class="service-tile-title">Repair &amp; Restoration</div>
 <div class="service-tile-body">Chip repair, tip repair, thinning, reprofiling, rust cleanup, and corrective work for knives that need more than a quick pass on a belt.</div>
-<div class="price-tag">By assessment</div>
-<p class="service-tile-body mt-3">Thinning starts at $16 per side of the knife. Final charges increase with material removed, labor, abrasives consumed, and total time spent.</p>
+<div class="price-tag">Repairs from $6</div>
+<p class="service-tile-body mt-3">Minor repairs are $6, major repairs are $10, and heavy or specialty repairs start at $20+. Thinning starts at $16 per side and scales with material removed, labor, abrasives, and time.</p>
 </div>
 <div class="service-tile">
 <div class="service-tile-title">Restaurant &amp; Hotel Programs</div>
-<div class="service-tile-body">Scheduled edge-care programs for kitchens that need consistency, accountability, and tools ready for service.</div>
-<div class="price-tag">Custom quote</div>
+<div class="service-tile-body">Scheduled edge-care programs for kitchens that need consistency, accountability, and tools ready for service. One-time resets and recurring accounts are priced by volume, timing, and scope.</div>
+<div class="price-tag">From $150 reset</div>
 </div>
 <div class="service-tile">
-<div class="service-tile-title">Specialty Modifications</div>
-<div class="service-tile-body">Functional adjustments for tools that need to perform differently, including practical conversions, shape changes, and task-specific edge work.</div>
-<div class="price-tag">By assessment</div>
+<div class="service-tile-title">White Glove Knife Care</div>
+<div class="service-tile-body">A premium care path for knives that deserve more than a working edge: pickup-ready packaging, handle care, aesthetic refresh, careful edge refinement, polishing, and protective coating where appropriate.</div>
+<div class="price-tag">From $30/knife</div>
 </div>
 </div>
 
@@ -40,7 +40,7 @@ PANEL: SERVICES
 <section class="specialty-services mb-12" aria-labelledby="specialty-services-heading">
 <p class="sub-eyebrow">More than kitchen knives</p>
 <h2 id="specialty-services-heading" class="text-2xl text-white mb-4">The right edge for the tool.</h2>
-<p class="sub-body mb-5">Shears, workshop tools, specialty blades, and custom work each need their own approach. Choose a service to start a request with that option already selected. Sean reviews the tool, condition, and intended use before confirming the work and quote.</p>
+<p class="sub-body mb-5">Shears, workshop tools, specialty blades, and custom work each need their own approach. Choose a service to start a request with that option already selected. Sean reviews the tool, condition, intended use, and whether the right path is a working edge, premium finish, repair, or restoration.</p>
 <ul class="specialty-service-list">
 {sharpeningServices.map(service => <li><a href={`/send-photos/?service=${service.value}`}>{service.label}<span aria-hidden="true"> ↗</span></a></li>)}
 </ul>
@@ -53,7 +53,7 @@ PANEL: SERVICES
 <a href="/knife-sharpening-miami/" class="service-tile block"><div class="service-tile-title">Knife Sharpening in Miami</div><div class="service-tile-body">Professional edge care for Japanese, Western, serrated, and everyday kitchen knives.</div></a>
 <a href="/restaurant-knife-sharpening-miami/" class="service-tile block"><div class="service-tile-title">Restaurant Knife Sharpening</div><div class="service-tile-body">Recurring fleet sharpening and repair for restaurants, hotels, and commercial kitchens.</div></a>
 <a href="/sharp-after-dark/" class="service-tile block"><div class="service-tile-title">Sharp After Dark</div><div class="service-tile-body">After-hours collection and return designed around service and prep schedules.</div></a>
-<a href="/japanese-knife-sharpening-miami/" class="service-tile block"><div class="service-tile-title">Japanese Knife Sharpening</div><div class="service-tile-body">Careful sharpening for premium steels, single-bevel knives, and geometry-sensitive blades.</div></a>
+<a href="/japanese-knife-sharpening-miami/" class="service-tile block"><div class="service-tile-title">Premium Knife Sharpening</div><div class="service-tile-body">Careful sharpening for premium steels, single-bevel knives, Japanese and Western makers, and geometry-sensitive blades.</div></a>
 <a href="/knife-repair-restoration-miami/" class="service-tile block"><div class="service-tile-title">Knife Repair &amp; Restoration</div><div class="service-tile-body">Assessment and correction for chips, broken tips, rust, wear, and damaged profiles.</div></a>
 <a href="/steak-knife-sharpening-miami-restaurants/" class="service-tile block"><div class="service-tile-title">Steak Knife Sharpening</div><div class="service-tile-body">Batch and recurring dining-room fleet care for restaurants, steakhouses, and hotels.</div></a>
 <a href="/miami-knife-club/" class="service-tile block"><div class="service-tile-title">Miami Knife Club</div><div class="service-tile-body">Recurring premium edge care for serious home cooks and private chefs.</div></a>
@@ -68,12 +68,20 @@ PANEL: SERVICES
 <p class="text-sm uppercase tracking-widest text-white/22 font-bold mb-4">&Agrave; la Carte</p>
 <div class="space-y-0">
 <div class="flex justify-between items-start py-3 border-b border-white/5">
-<div><div class="text-white/72 text-sm font-semibold mb-0.5">Single Knife Sharpening</div><div class="text-white/28 text-xs font-light">Shop drop-off &middot; Same-day or quick turnaround when available</div></div>
-<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">$10/knife</div>
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Working Edge Sharpening</div><div class="text-white/28 text-xs font-light">Fine edge: $9 minimum up to 6&quot;, then $1.50/in &middot; Serrated: $12 minimum, then $2/in</div></div>
+<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">From $9</div>
 </div>
 <div class="flex justify-between items-start py-3 border-b border-white/5">
-<div><div class="text-white/72 text-sm font-semibold mb-0.5">Pickup &amp; Return</div><div class="text-white/28 text-xs font-light">Free within 10 miles for orders of 10+ knives</div></div>
-<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">Free / $1 per mile</div>
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Repairs</div><div class="text-white/28 text-xs font-light">Minor repair $6 &middot; Major repair $10 &middot; Heavy, cleaver, axe, or specialty repair from $20+</div></div>
+<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">Base + repair</div>
+</div>
+<div class="flex justify-between items-start py-3 border-b border-white/5">
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Premium &amp; White Glove Care</div><div class="text-white/28 text-xs font-light">Performance finish upgrades, handle care, aesthetic refresh, polish, coating, and careful packaging when requested</div></div>
+<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">From $30/knife</div>
+</div>
+<div class="flex justify-between items-start py-3 border-b border-white/5">
+<div><div class="text-white/72 text-sm font-semibold mb-0.5">Pickup &amp; Return</div><div class="text-white/28 text-xs font-light">Priced separately from sharpening; route reductions may be offered on qualifying first service</div></div>
+<div class="text-cyan-400 text-sm font-bold whitespace-nowrap ml-4">$1/mile</div>
 </div>
 <div class="flex justify-between items-start py-3 border-b border-white/5">
 <div><div class="text-white/72 text-sm font-semibold mb-0.5">Knife Exchange Program</div><div class="text-white/28 text-xs font-light">Trade dull knives for sharp refurbished ones &middot; Shipping included</div></div>

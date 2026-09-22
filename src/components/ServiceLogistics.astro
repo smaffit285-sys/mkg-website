@@ -17,7 +17,7 @@ const showResidential = mode !== "commercial";
         {mode === "commercial" ? "Built around your kitchen." : mode === "residential" ? "Choose the easiest handoff." : "Choose your service path."}
       </h2>
     </div>
-    {mode === "overview" && <p class="service-logistics-summary">The short version: commercial service travels; residential sharpening happens at the shop.</p>}
+    {mode === "overview" && <p class="service-logistics-summary">The short version: sharpening is priced by the work; travel is priced as travel.</p>}
   </div>
 
   <div class:list={["service-logistics-grid", `service-logistics-grid--${mode}`]}>
@@ -53,14 +53,14 @@ const showResidential = mode !== "commercial";
     <article class="service-logistics-card service-logistics-card--neutral">
       <div class="service-logistics-card-topline">
         <span>Pickup + return</span>
-        <span>Simple rule</span>
+        <span>Travel is separate</span>
       </div>
-      <div class="service-logistics-rate" aria-label="Free pickup and return within 10 miles for 10 or more knives">
-        <span><strong>10 mi</strong><small>or closer</small></span>
+      <div class="service-logistics-rate" aria-label="Pickup and return priced at one dollar per mile driven">
+        <span><strong>$1</strong><small>per mile</small></span>
         <span class="service-logistics-plus">+</span>
-        <span><strong>10+</strong><small>knives</small></span>
+        <span><strong>Min</strong><small>travel fee</small></span>
         <span class="service-logistics-equals">=</span>
-        <span class="service-logistics-free">Free</span>
+        <span class="service-logistics-free">Clear quote</span>
       </div>
       <p>{serviceLogistics.pickupRule}</p>
       <p class="service-logistics-note">The exact travel fee and timing are confirmed before scheduling.</p>
