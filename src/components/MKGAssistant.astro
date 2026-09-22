@@ -1,0 +1,68 @@
+---
+import "../styles/chatbot.css";
+import chatbotScript from "../scripts/chatbot.js?url";
+---
+<aside class="mkg-chat" data-mkg-chat aria-label="Miami Knife Guy sharpening assistant">
+  <button class="mkg-chat-launcher" type="button" data-chat-open aria-expanded="false" aria-controls="mkg-chat-panel">
+    <span class="mkg-chat-launcher-glow" aria-hidden="true"></span>
+    <span class="mkg-chat-launcher-mark" aria-hidden="true">MKG</span>
+    <span class="mkg-chat-launcher-label">Ask the sharpener</span>
+  </button>
+
+  <section id="mkg-chat-panel" class="mkg-chat-panel" data-chat-panel hidden aria-label="Sharpening assistant">
+    <header class="mkg-chat-header">
+      <div>
+        <span class="mkg-chat-kicker">Miami Knife Guy</span>
+        <h2>Edge Concierge</h2>
+        <span class="mkg-chat-status"><i aria-hidden="true"></i> Ready to help</span>
+      </div>
+      <button type="button" class="mkg-chat-close" data-chat-close aria-label="Close sharpening assistant">×</button>
+    </header>
+
+    <div class="mkg-chat-messages" data-chat-messages role="log" aria-live="polite" aria-relevant="additions">
+      <article class="mkg-chat-message mkg-chat-message--assistant">
+        <span class="mkg-chat-avatar" aria-hidden="true">M</span>
+        <div><p>Feeling a little dull today?</p><p>I can answer sharpening questions, help you choose a service, and estimate the cost. Upload clear photos of your knives or tools and I’ll take a look.</p><p>Would you rather drop off, or arrange pickup and return?</p></div>
+      </article>
+    </div>
+
+    <div class="mkg-chat-quick" data-chat-quick aria-label="Common questions">
+      <button type="button" data-prompt="Help me estimate sharpening for my knives.">Get a quote</button>
+      <button type="button" data-prompt="Help me choose the right sharpening service.">Choose a service</button>
+      <button type="button" data-prompt="I would like pickup and return. What do you need from me?">Pickup + return</button>
+      <button type="button" data-prompt="How can I tell whether my knife needs repair, thinning, or just sharpening?">Ask a question</button>
+    </div>
+
+    <details class="mkg-chat-details" data-chat-details>
+      <summary>Service details <span>for travel + scheduling</span></summary>
+      <div class="mkg-chat-details-grid">
+        <label><span>Name</span><input name="chatName" autocomplete="name" placeholder="Your name" /></label>
+        <label><span>Mobile number</span><input name="chatPhone" type="tel" autocomplete="tel" placeholder="(305) 555-0123" /></label>
+        <label><span>Handoff</span><select name="chatHandoff"><option value="dropoff">Shop drop-off</option><option value="pickup">Pickup + return</option></select></label>
+        <label class="mkg-chat-address" data-chat-address hidden><span>Service address</span><input name="chatAddress" autocomplete="street-address" placeholder="Full pickup address" /></label>
+        <div class="mkg-chat-travel" data-chat-travel hidden>
+          <button type="button" data-travel-quote>Calculate travel</button>
+          <span data-travel-result>Travel is $1 per total driven mile.</span>
+        </div>
+        <label><span>Preferred day</span><select name="chatDay"><option value="Today">Today</option><option value="Tomorrow">Tomorrow</option><option value="another">Another day</option></select></label>
+        <label data-chat-other-day hidden><span>Date</span><input name="chatOtherDay" type="date" /></label>
+        <label><span>Preferred time</span><select name="chatDayPart"><option value="morning">Morning</option><option value="evening">Evening</option></select></label>
+        <label class="mkg-chat-consent"><input name="chatConsent" type="checkbox" /><span>I agree to receive service-related texts about this request. Reply STOP to opt out.</span></label>
+      </div>
+      <button type="button" class="mkg-chat-schedule" data-schedule-request>Request a service window</button>
+      <p class="mkg-chat-detail-note" data-schedule-status>Sean will receive your preference, reply with availability, and you’ll confirm the proposed window.</p>
+    </details>
+
+    <form class="mkg-chat-composer" data-chat-form>
+      <div class="mkg-chat-files" data-chat-files hidden></div>
+      <label class="mkg-chat-upload" title="Add knife or tool photos">
+        <span aria-hidden="true">＋</span><span class="sr-only">Add photos</span>
+        <input type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-chat-upload />
+      </label>
+      <textarea rows="1" maxlength="4000" data-chat-input aria-label="Message the sharpening assistant" placeholder="Ask about an edge, service, or price…"></textarea>
+      <button type="submit" class="mkg-chat-send" aria-label="Send message">→</button>
+    </form>
+    <p class="mkg-chat-privacy">Photo assessments and prices are estimates pending Sean’s review. <a href="/privacy/">Privacy</a></p>
+  </section>
+</aside>
+<script is:inline type="module" src={chatbotScript}></script>

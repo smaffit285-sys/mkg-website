@@ -8,12 +8,17 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "test:forms": "node --test tests/request-form.test.mjs",
+    "test:chatbot": "node --experimental-strip-types --test tests/chatbot.test.mjs",
     "check:links": "python3 scripts/check-links.py"
   },
   "dependencies": {
     "@astrojs/vercel": "11.0.4",
-    "astro": "7.1.6",
-    "tailwindcss": "^4.3.0"
+    "@upstash/redis": "^1.39.0",
+    "ai": "^7.0.111",
+    "astro": "^7.3.4",
+    "tailwindcss": "^4.3.0",
+    "twilio": "^6.1.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.0",

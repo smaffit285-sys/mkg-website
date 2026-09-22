@@ -10,6 +10,7 @@ import "../styles/site-polish.css";
 import interactionsScript from "../scripts/interactions.js?url";
 import analyticsScript from "../scripts/analytics.js?url";
 import { GOOGLE_REVIEW_COUNT } from "../config/site";
+import MKGAssistant from "../components/MKGAssistant.astro";
 
 interface Props {
   title?: string;
@@ -121,7 +122,8 @@ const localBusinessSchema = {
 </head>
 <body class:list={["min-h-screen bg-[#060609] text-white", pageClass, { "overflow-hidden": !pageClass.includes("route-page") }]}>
 <slot />
-<script src={interactionsScript}></script>
-<script src={analyticsScript}></script>
+<MKGAssistant />
+<script is:inline type="module" src={interactionsScript}></script>
+<script is:inline type="module" src={analyticsScript}></script>
 </body>
 </html>
