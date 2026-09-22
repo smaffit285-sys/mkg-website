@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { calculateSharpeningEstimate } from "../src/lib/mkgPricing.ts";
+import { fallbackAssistantReply } from "../src/lib/mkgFallback.ts";
 
 test("published knife rates are calculated deterministically", () => {
   const quote = calculateSharpeningEstimate([
@@ -33,4 +34,14 @@ test("rendered pages include the accessible assistant and scheduling controls", 
   assert.match(html, /Request a service window/);
   assert.match(html, /Photo assessments and prices are estimates pending Sean/);
   assert.match(html, /<script type="module" src="\/_astro\/chatbot\.[^"]+\.js"><\/script>/);
+});
+
+test("local fallback answers core pricing and service questions", () => {
+  const price = fallbackAssistantReply([{ role: "user", text: "How much will sharpening cost?" }]);
+  assert.match(price, /\$9 minimum/);
+  assert.match(price, /\$12 minimum/);
+  const thinning = fallbackAssistantReply([{ role: "user", text: "Does my wedging knife need thinning?" }]);
+  assert.match(thinning, /\$16 per side/);
+  const photos = fallbackAssistantReply([{ role: "user", text: "Take a look", images: [{}] }]);
+  assert.match(photos, /received the photos/i);
 });

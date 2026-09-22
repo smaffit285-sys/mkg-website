@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import type { ModelMessage } from "ai";
 import { mkgAssistant } from "../../lib/mkgAssistant";
+import { fallbackAssistantReply } from "../../lib/mkgFallback";
 
 export const prerender = false;
 
@@ -13,12 +14,14 @@ type IncomingMessage = {
 const allowedImageTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"]);
 
 export const POST: APIRoute = async ({ request }) => {
+  let fallbackMessages: IncomingMessage[] = [];
   try {
     const contentLength = Number(request.headers.get("content-length") || 0);
     if (contentLength > 12_000_000) return Response.json({ error: "Please upload fewer or smaller photos." }, { status: 413 });
 
     const body = await request.json() as { messages?: IncomingMessage[] };
     const incoming = Array.isArray(body.messages) ? body.messages.slice(-14) : [];
+    fallbackMessages = incoming;
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
 
     const messages: ModelMessage[] = incoming.map((message) => {
@@ -43,6 +46,9 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (error) {
     console.error("MKG assistant error", error);
-    return Response.json({ error: "The sharpener is temporarily offline. You can still text Sean directly." }, { status: 503 });
+    if (!fallbackMessages.length) return Response.json({ error: "The sharpener is temporarily offline. You can still text Sean directly." }, { status: 503 });
+    return Response.json({ reply: fallbackAssistantReply(fallbackMessages), fallback: true }, {
+      headers: { "Cache-Control": "no-store" },
+    });
   }
 };
