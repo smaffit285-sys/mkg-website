@@ -32,4 +32,5 @@ test("rendered pages include the accessible assistant and scheduling controls", 
   assert.match(html, /aria-controls="mkg-chat-panel"/);
   assert.match(html, /Request a service window/);
   assert.match(html, /Photo assessments and prices are estimates pending Sean/);
+  assert.match(html, /<script type="module" src="\/_astro\/chatbot\.[^"]+\.js"><\/script>/);
 });
