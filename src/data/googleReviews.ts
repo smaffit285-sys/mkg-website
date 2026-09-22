@@ -111,3 +111,5 @@ If you need sharpening services from someone experienced and trustworthy, I high
   },
 ];
 
+// The website's curated selection is separate from the full source record and Google total.
+export const featuredGoogleReviews = googleReviews.filter(review => review.name !== "Jenine Jones");

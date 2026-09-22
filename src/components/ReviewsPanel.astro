@@ -1,9 +1,7 @@
 ---
 import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_URL } from "../config/site";
-import { googleReviews } from "../data/googleReviews";
+import { featuredGoogleReviews } from "../data/googleReviews";
 const isLongReview = (body: string) => body.length > 180;
-// Keep the source record; curate the site's selection separately from Google's total.
-const featuredReviews = googleReviews.filter(review => review.name !== "Jenine Jones");
 ---
 <!-- ====================================================
 PANEL: REVIEWS
@@ -26,7 +24,7 @@ PANEL: REVIEWS
 </div>
 
 <div class="review-grid grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-{featuredReviews.map((review, index) => (
+{featuredGoogleReviews.map((review, index) => (
 <article class="review-card">
 <div class="star-row" aria-label={`${review.rating} out of 5 stars`}>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p class="review-quote review-quote-preview whitespace-pre-line">&ldquo;{review.body}&rdquo;</p>
