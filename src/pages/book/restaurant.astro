@@ -8,7 +8,7 @@ export const prerender = true;
 ---
 <RouteShell
   title="Book Restaurant Knife Sharpening Miami | MKG"
-  description="Request restaurant, hotel, or commercial kitchen knife sharpening through Miami Knife Guy."
+  description="Request a one-time restaurant reset, recurring restaurant knife program, or Sharp After Dark service through Miami Knife Guy."
   canonicalPath="/book/restaurant/"
   pageClass="intake-page"
 >
@@ -16,11 +16,11 @@ export const prerender = true;
     intake={true}
     eyebrow="Sharp After Dark"
     headline="Book restaurant edge care."
-    intro="Tell Sean about your kitchen and the service window you need. He’ll review the knife volume, route, and timing with you before the booking is confirmed."
+    intro="Tell Sean about your kitchen, knife volume, and service window. He’ll review whether you need a one-time reset, recurring edge program, or after-hours service before the booking is confirmed."
     steps={[
       { title: "Describe the kitchen", copy: "Share restaurant or hotel name, location, operating hours, and the best contact." },
       { title: "Estimate the fleet", copy: "Include chef knives, prep knives, steak knives, specialty blades, and known damage." },
-      { title: "Plan the cycle", copy: "Choose preferred pickup and return windows; MKG confirms timing around location, route, and availability." },
+      { title: "Plan the cycle", copy: "Choose one-time reset, weekly, bi-weekly, monthly, or Sharp After Dark timing; MKG confirms around location, route, and availability." },
     ]}
     primaryHref="tel:+13059095773"
     primaryLabel="Call MKG"
@@ -31,7 +31,7 @@ export const prerender = true;
     <RequestForm
       id="restaurant-service-request"
       title="Request Restaurant Service"
-      description="Share the kitchen, fleet, and preferred service window. Recurring programs, after-hours collection, repairs, and steak-knife service are reviewed before confirmation."
+      description="Share the kitchen, fleet, and preferred service window. One-time resets start at $150; recurring programs are quoted around volume, timing, repairs, and route fit."
       source="public_book_restaurant"
       serviceType="restaurant"
       submitLabel="Review My Request"
@@ -43,6 +43,12 @@ export const prerender = true;
         { name: "location", label: "Service location", required: true, placeholder: "City or address" },
         { name: "knifeVolume", label: "Approximate knife volume", placeholder: "Chef knives, prep knives, steak knives" },
         { name: "requestType", label: "Sharpening service or tool", type: "select", value: "knife_sharpening", options: sharpeningServices, help: "Choose the main service; list any additional tools in the notes." },
+        { name: "programType", label: "Program type", type: "select", value: "one_time_reset", options: [
+          { value: "one_time_reset", label: "One-time restaurant reset - from $150" },
+          { value: "recurring_program", label: "Recurring edge program - typically from $250/mo" },
+          { value: "sharp_after_dark", label: "Sharp After Dark - after-hours service" },
+          { value: "not_sure", label: "Not sure - help me choose" },
+        ] },
         { name: "frequency", label: "Preferred frequency", type: "select", options: [
           { value: "one_time", label: "One-time service" },
           { value: "weekly", label: "Weekly" },
