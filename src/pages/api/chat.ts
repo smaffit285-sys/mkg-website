@@ -23,6 +23,11 @@ export const POST: APIRoute = async ({ request }) => {
     const incoming = Array.isArray(body.messages) ? body.messages.slice(-14) : [];
     fallbackMessages = incoming;
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
+    if (process.env.MKG_AI_ENABLED !== "true") {
+      return Response.json({ reply: fallbackAssistantReply(incoming), fallback: true }, {
+        headers: { "Cache-Control": "no-store" },
+      });
+    }
 
     const messages: ModelMessage[] = incoming.map((message) => {
       const text = String(message.text || "").slice(0, 4000);
