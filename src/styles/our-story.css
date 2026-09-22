@@ -64,6 +64,10 @@
   margin:0 auto;
   padding:0 0 clamp(58px,6vw,92px);
 }
+.story-founder { max-width:850px; margin:clamp(40px,5vw,68px) auto 0; }
+.story-founder h2 { margin:0 0 22px; color:#f6efe6; font-family:Georgia,"Times New Roman",serif; font-size:clamp(1.9rem,3vw,2.8rem); line-height:1.2; font-weight:400; }
+.story-founder > p:not(.story-column__kicker) { margin:0 0 18px; color:#cbc2b8; font-size:16px; line-height:1.85; }
+.story-founder-link { display:inline-flex; align-items:center; min-height:44px; color:#f9a8d4; font-size:14px; text-decoration:underline; text-underline-offset:5px; }
 .story-quote-band {
   position:relative;
   margin-top:clamp(2.75rem,5vw,4.5rem);

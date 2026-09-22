@@ -39,6 +39,7 @@ export const prerender = true;
         { name: "name", label: "Your name", required: true, placeholder: "Name" },
         { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
         { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "City or neighborhood", placeholder: "For example, North Miami Beach", autocomplete: "address-level2", help: "Helps Sean discuss drop-off, pickup, and timing. You can still request an assessment without it." },
         { name: "requestType", label: "Sharpening service or tool", type: "select", required: true, options: sharpeningServices },
         { name: "notes", label: "Knife or tool details", type: "textarea", required: true, fullWidth: true, placeholder: "Describe the knife or tool, quantity, condition, maker, intended use, timing, and what you would like reviewed" },
         { name: "photos", label: "Knife or tool photos", type: "file", fullWidth: true, accept: "image/*", multiple: true, help: "Show the whole tool, both sides of the blade, and any damage. Photos stay on your device. On supported phones, the share sheet can pass them to Messages. Otherwise, attach them after the prepared message opens." },
