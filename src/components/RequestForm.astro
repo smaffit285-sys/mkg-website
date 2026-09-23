@@ -26,6 +26,7 @@ const autocomplete = { name: "name", phone: "tel", email: "email", business: "or
     data-club-source={clubSource} data-club-service-type={clubServiceType} data-club-submit-label={clubSubmitLabel}>
     <input type="hidden" name="source" value={source} data-private />
     <input type="hidden" name="serviceType" value={serviceType} data-private />
+    <label class="sr-only" aria-hidden="true">Company website <input name="companyWebsite" tabindex="-1" autocomplete="off" /></label>
     {fields.map((field) => {
       const type = field.type ?? "text";
       const helpId = `${id}-${field.name}-help`;
@@ -53,12 +54,12 @@ const autocomplete = { name: "name", phone: "tel", email: "email", business: "or
       );
     })}
     <div class="request-field-wide request-action-area">
-      <p class="request-handoff-note">Review your message, then send it to Sean. Nothing is sent by this form automatically.</p>
+      <p class="request-handoff-note">Submitting saves your request details to the private MKG Growth Engine. You can also review and send the prepared text to Sean.</p>
       <div class="request-actions">
         <button type="submit" data-prepare-request class="panel-cta-btn panel-cta-pink">{submitLabel}</button>
         <a href="tel:+13059095773" class="request-phone">Or call (305) 909-5773</a>
       </div>
-      <p class="request-privacy">Your details and photos stay on this page until you choose to copy or share them. <a href="/privacy/">Privacy</a></p>
+      <p class="request-privacy">Request details are saved to MKG's private CRM. Raw selected photo files are not copied to the CRM. <a href="/privacy/">Privacy</a></p>
     </div>
     <section class="request-field-wide request-preview" data-request-preview hidden aria-labelledby={`${id}-preview-title`}>
       <h3 id={`${id}-preview-title`}>Your message is ready to send</h3>

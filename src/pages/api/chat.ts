@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import type { ModelMessage } from "ai";
 import { mkgAssistant } from "../../lib/mkgAssistant";
 import { fallbackAssistantReply } from "../../lib/mkgFallback";
+import { sendCrmEvent } from "../../lib/crm";
 
 export const prerender = false;
 
@@ -19,12 +20,17 @@ export const POST: APIRoute = async ({ request }) => {
     const contentLength = Number(request.headers.get("content-length") || 0);
     if (contentLength > 12_000_000) return Response.json({ error: "Please upload fewer or smaller photos." }, { status: 413 });
 
-    const body = await request.json() as { messages?: IncomingMessage[] };
+    const body = await request.json() as {
+      messages?: IncomingMessage[];
+      crm?: { eventId?: string; sessionId?: string; attribution?: Record<string, unknown>; page?: Record<string, unknown> };
+    };
     const incoming = Array.isArray(body.messages) ? body.messages.slice(-14) : [];
     fallbackMessages = incoming;
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
     if (process.env.MKG_AI_ENABLED !== "true") {
-      return Response.json({ reply: fallbackAssistantReply(incoming), fallback: true }, {
+      const reply = fallbackAssistantReply(incoming);
+      await saveChatTurn(body.crm, incoming, reply);
+      return Response.json({ reply, fallback: true }, {
         headers: { "Cache-Control": "no-store" },
       });
     }
@@ -46,7 +52,9 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     const result = await mkgAssistant.generate({ messages });
-    return Response.json({ reply: result.text || "I couldn't complete that answer. Please try again or text Sean directly." }, {
+    const reply = result.text || "I couldn't complete that answer. Please try again or text Sean directly.";
+    await saveChatTurn(body.crm, incoming, reply);
+    return Response.json({ reply }, {
       headers: { "Cache-Control": "no-store" },
     });
   } catch (error) {
@@ -57,3 +65,29 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 };
+
+async function saveChatTurn(
+  crm: { eventId?: string; sessionId?: string; attribution?: Record<string, unknown>; page?: Record<string, unknown> } | undefined,
+  messages: IncomingMessage[], reply: string,
+) {
+  const latest = [...messages].reverse().find(message => message.role === "user");
+  if (!latest || !crm?.eventId) return;
+  try {
+    await sendCrmEvent({
+      eventId: crm.eventId,
+      eventType: "chat_turn",
+      source: "website_chatbot",
+      serviceType: "assistant",
+      sessionId: crm.sessionId,
+      details: {
+        customerMessage: String(latest.text || "").slice(0, 4000),
+        assistantReply: reply.slice(0, 5000),
+        photos: (latest.images || []).slice(0, 4).map(image => ({ name: image.name || "photo", type: image.mediaType })),
+      },
+      attribution: crm.attribution,
+      page: crm.page,
+    });
+  } catch (error) {
+    console.error("Chat CRM capture error", error);
+  }
+}

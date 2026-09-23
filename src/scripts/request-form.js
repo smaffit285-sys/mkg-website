@@ -1,4 +1,5 @@
 export const MKG_PHONE = '+13059095773';
+import { captureRequestForm } from './crm-capture.js';
 
 export function buildRequestMessage(form) {
   const lines = [`Miami Knife Guy — ${form.dataset.formTitle || 'Service Request'}`];
@@ -74,6 +75,7 @@ export function initRequestForms(doc) {
       event.target.setCustomValidity?.('');
       if (!preparedMessage) return;
       preparedMessage = ''; preview.hidden = true; openMessage.removeAttribute('href');
+      delete form.dataset.crmEventId;
       messageBox.value = ''; status.textContent = 'Details changed. Review the updated request before sending.';
     };
     form.addEventListener('input', invalidate);
@@ -101,6 +103,11 @@ export function initRequestForms(doc) {
       fileSummary.hidden = form.dataset.photoHandoff !== 'true' && files.length === 0;
       preview.hidden = false;
       status.textContent = 'Ready for your review. Nothing has been sent yet.';
+      void captureRequestForm(form, win).then(result => {
+        if (result.ok && preparedMessage) status.textContent = 'Saved to MKG. Your prepared text is also ready if you want to message Sean directly.';
+      }).catch(() => {
+        if (preparedMessage) status.textContent = 'Automatic saving is temporarily unavailable. Your request is ready—please send the prepared text to Sean.';
+      });
       messageBox.focus();
       preview.scrollIntoView?.({ block: 'nearest', behavior: 'auto' });
       const definitions = {

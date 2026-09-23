@@ -3,12 +3,16 @@ import {
   customerKey, newRequestId, normalizePhone, requestKey, schedulingServices, sendText,
   type ServiceWindowRequest,
 } from "../../lib/scheduling";
+import { sendCrmEvent } from "../../lib/crm";
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const input = await request.json() as Partial<ServiceWindowRequest> & { consent?: boolean };
+    const input = await request.json() as Partial<ServiceWindowRequest> & {
+      consent?: boolean; eventId?: string; sessionId?: string;
+      attribution?: Record<string, unknown>; page?: Record<string, unknown>;
+    };
     const customerPhone = normalizePhone(input.customerPhone || "");
     if (!input.name?.trim() || !customerPhone || !input.requestedDay || !["morning", "evening"].includes(input.dayPart || "")) {
       return Response.json({ error: "Name, valid mobile number, requested day, and morning/evening preference are required." }, { status: 400 });
@@ -30,6 +34,31 @@ export const POST: APIRoute = async ({ request }) => {
       input.travelEstimate ? `Travel estimate: ${input.travelEstimate}` : "",
       `Details: ${(input.requestSummary || "Sharpening request").slice(0, 700)}`,
     ].filter(Boolean).join("\n");
+
+    if (!input.eventId) return Response.json({ error: "A booking event ID is required.", fallbackBody }, { status: 400 });
+    const crm = await sendCrmEvent({
+      eventId: input.eventId,
+      eventType: "booking_request",
+      source: "website_chatbot_schedule",
+      serviceType: "service_window",
+      sessionId: input.sessionId,
+      contact: {
+        name: input.name.trim().slice(0, 100), customerPhone,
+        ...(input.address ? { address: input.address.trim().slice(0, 240) } : {}),
+      },
+      details: {
+        handoff, requestedDay: String(input.requestedDay).slice(0, 80), dayPart: input.dayPart,
+        travelEstimate: input.travelEstimate?.slice(0, 80),
+        requestSummary: String(input.requestSummary || "Sharpening request").slice(0, 1000),
+        serviceTextConsent: true,
+      },
+      attribution: input.attribution,
+      page: input.page,
+    });
+    if (!crm.ok) return Response.json({
+      connected: false, fallbackBody,
+      error: "Automatic saving is not connected yet. Please open a text to send this request directly to Sean.",
+    }, { status: 503 });
 
     if (!services) return Response.json({
       connected: false,

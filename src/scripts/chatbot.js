@@ -1,4 +1,5 @@
 const OWNER_NUMBER = "+13059095773";
+import { crmAttribution, crmEventId, crmSession } from "./crm-capture.js";
 
 function initChatbot(root) {
   if (!root || root.dataset.ready === "true") return;
@@ -21,6 +22,7 @@ function initChatbot(root) {
   const history = [];
   let pendingImages = [];
   let travelEstimate = "";
+  const sessionId = crmSession(window);
 
   function toggle(force) {
     const shouldOpen = typeof force === "boolean" ? force : panel.hidden;
@@ -76,7 +78,13 @@ function initChatbot(root) {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history.slice(-14) }),
+        body: JSON.stringify({
+          messages: history.slice(-14),
+          crm: {
+            eventId: crmEventId("chat"), sessionId, attribution: crmAttribution(window),
+            page: { path: window.location.pathname, title: document.title, referrer: document.referrer || "" },
+          },
+        }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Assistant unavailable");
@@ -179,6 +187,10 @@ function initChatbot(root) {
       consent: root.querySelector('[name="chatConsent"]').checked,
       travelEstimate,
       requestSummary: requestSummary(),
+      eventId: crmEventId("booking"),
+      sessionId,
+      attribution: crmAttribution(window),
+      page: { path: window.location.pathname, title: document.title, referrer: document.referrer || "" },
     };
     scheduleStatus.textContent = "Sending your preference to Sean…";
     try {
