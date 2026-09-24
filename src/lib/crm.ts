@@ -1,3 +1,5 @@
+import { getVercelOidcToken } from "@vercel/oidc";
+
 const allowedEventTypes = new Set([
   "form_submission", "booking_request", "chat_turn", "review_submission", "referral_request",
 ]);
@@ -25,11 +27,11 @@ export function validateCrmEvent(value: unknown): CrmEvent {
 
 export async function sendCrmEvent(event: CrmEvent) {
   const url = process.env.MKG_CRM_INGEST_URL || import.meta.env.MKG_CRM_INGEST_URL;
-  const secret = process.env.MKG_CRM_INGEST_SECRET || import.meta.env.MKG_CRM_INGEST_SECRET;
-  if (!url || !secret) return { configured: false, ok: false };
+  if (!url) return { configured: false, ok: false };
+  const token = await getVercelOidcToken();
   const response = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
     body: JSON.stringify(event),
     signal: AbortSignal.timeout(8000),
   });
