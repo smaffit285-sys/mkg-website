@@ -29,6 +29,14 @@ export const POST: APIRoute = async ({ request }) => {
     const incoming = Array.isArray(body.messages) ? body.messages.slice(-14) : [];
     fallbackMessages = incoming;
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
+    const latestCustomerText = [...incoming].reverse().find(message => message.role === "user")?.text || "";
+    if (isMailInPolicyQuestion(latestCustomerText)) {
+      const reply = fallbackAssistantReply(incoming);
+      await saveChatTurn(body.crm, incoming, reply, false);
+      return Response.json({ reply, policyAnswer: true }, {
+        headers: { "Cache-Control": "no-store" },
+      });
+    }
     if (process.env.MKG_AI_ENABLED !== "true") {
       const reply = fallbackAssistantReply(incoming);
       await saveChatTurn(body.crm, incoming, reply, needsOwnerReview(reply));
@@ -104,4 +112,8 @@ const OWNER_REVIEW_MARKER = "[[OWNER_REVIEW_REQUIRED]]";
 
 function needsOwnerReview(reply: string) {
   return /need Sean to (review|verify)|don't have a verified MKG answer/i.test(reply);
+}
+
+function isMailInPolicyQuestion(text: string) {
+  return /mail.?in|ship|shipping|package|packing|ceramic|mandolin|saw|drill bit|peeler|zester/i.test(text);
 }

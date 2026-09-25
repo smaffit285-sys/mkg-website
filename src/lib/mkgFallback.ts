@@ -16,8 +16,8 @@ export function fallbackAssistantReply(messages: Message[]) {
   if (/pickup|delivery|collect|travel|drop.?off/.test(text)) {
     return `Drop-off keeps the service lean. Pickup and return are ${publishedPricing.travel}. Choose pickup in Service Details and enter the complete address; if live routing is unavailable, Sean will confirm the travel amount before scheduling.`;
   }
-  if (/mail.?in|ship|shipping|package|packing/.test(text)) {
-    return "Mail-in service starts with an online quote—do not ship first. MKG reviews almost anything with a blade, but not ceramic knives, saws, drill bits, peelers, or zesters; mandolin blades must be removable. Customers pay current inbound and return shipping. Standard turnaround is three business days from arrival to departure, subject to final inspection, quote approval, payment details, and unusual work. The private address is provided only after the quote is complete and you are filling out the shipping intake.";
+  if (/mail.?in|ship|shipping|package|packing|ceramic|mandolin|saw|drill bit|peeler|zester/.test(text)) {
+    return "Do not ship yet. Mail-in service starts with an online quote at /book/mail-in/. MKG reviews almost anything with a blade, but not ceramic knives, saws, drill bits, peelers, or zesters; mandolin blades must be removable. Customers pay current inbound and return shipping. Standard turnaround is three business days from arrival to departure, subject to final inspection, quote approval, payment details, and unusual work. The private address is provided only after the quote is complete and you are filling out the shipping intake. For approved shipments, clean and dry every knife, guard every edge and point, immobilize the protected knives in a sturdy box, and use tracking.";
   }
   if (/thin|wedge|geometry|behind the edge/.test(text)) {
     return `Sharpening restores the apex; thinning removes material behind the edge when a knife still wedges or feels thick after sharpening. Thinning starts at $16 per side and rises with material removed, labor, abrasives, and time. Clear side-profile and choil photos help Sean assess it.`;
