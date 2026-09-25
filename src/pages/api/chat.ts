@@ -16,6 +16,7 @@ const allowedImageTypes = new Set(["image/jpeg", "image/png", "image/webp", "ima
 
 export const POST: APIRoute = async ({ request }) => {
   let fallbackMessages: IncomingMessage[] = [];
+  let fallbackCrm: { eventId?: string; sessionId?: string; attribution?: Record<string, unknown>; page?: Record<string, unknown> } | undefined;
   try {
     const contentLength = Number(request.headers.get("content-length") || 0);
     if (contentLength > 12_000_000) return Response.json({ error: "Please upload fewer or smaller photos." }, { status: 413 });
@@ -24,6 +25,7 @@ export const POST: APIRoute = async ({ request }) => {
       messages?: IncomingMessage[];
       crm?: { eventId?: string; sessionId?: string; attribution?: Record<string, unknown>; page?: Record<string, unknown> };
     };
+    fallbackCrm = body.crm;
     const incoming = Array.isArray(body.messages) ? body.messages.slice(-14) : [];
     fallbackMessages = incoming;
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
@@ -60,7 +62,9 @@ export const POST: APIRoute = async ({ request }) => {
   } catch (error) {
     console.error("MKG assistant error", error);
     if (!fallbackMessages.length) return Response.json({ error: "The sharpener is temporarily offline. You can still text Sean directly." }, { status: 503 });
-    return Response.json({ reply: fallbackAssistantReply(fallbackMessages), fallback: true }, {
+    const reply = fallbackAssistantReply(fallbackMessages);
+    await saveChatTurn(fallbackCrm, fallbackMessages, reply);
+    return Response.json({ reply, fallback: true }, {
       headers: { "Cache-Control": "no-store" },
     });
   }

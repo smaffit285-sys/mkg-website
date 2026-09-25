@@ -1,6 +1,5 @@
 ---
 import "../styles/chatbot.css";
-import chatbotScript from "../scripts/chatbot.js?url";
 ---
 <aside class="mkg-chat" data-mkg-chat aria-label="Miami Knife Guy sharpening assistant">
   <button class="mkg-chat-launcher" type="button" data-chat-open aria-expanded="false" aria-controls="mkg-chat-panel">
@@ -65,4 +64,6 @@ import chatbotScript from "../scripts/chatbot.js?url";
     <p class="mkg-chat-privacy">Photo assessments and prices are estimates pending Sean’s review. <a href="/privacy/">Privacy</a></p>
   </section>
 </aside>
-<script is:inline type="module" src={chatbotScript}></script>
+<script>
+  import "../scripts/chatbot.js";
+</script>
