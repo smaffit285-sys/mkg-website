@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { calculateSharpeningEstimate } from "../src/lib/mkgPricing.ts";
 import { fallbackAssistantReply } from "../src/lib/mkgFallback.ts";
+import { ensurePhotoGuardrails, PHOTO_REVIEW_DISCLAIMER } from "../src/lib/mkgPhotoGuardrails.ts";
 
 test("published knife rates are calculated deterministically", () => {
   const quote = calculateSharpeningEstimate([
@@ -60,6 +61,18 @@ test("assistant instructions define cautious image-based knife assessment", asyn
   assert.match(source, /ruler or tape measure beside the blade in the same plane/i);
   assert.match(source, /AI can make mistakes/i);
   assert.match(source, /What Sean must confirm/i);
+});
+
+test("photo guardrails deterministically add profile instructions and human-review warning", () => {
+  const reply = ensurePhotoGuardrails("Upload a clear side view.", [
+    { role: "user", text: "How should I photograph my knives?" },
+  ]);
+  assert.match(reply, /known-flat cutting board/i);
+  assert.match(reply, /board height/i);
+  assert.match(reply, /camera level with the edge/i);
+  assert.match(reply, /light visible behind any gap/i);
+  assert.match(reply, new RegExp(PHOTO_REVIEW_DISCLAIMER.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.equal(ensurePhotoGuardrails("Ordinary answer.", [{ role: "user", text: "What does sharpening cost?" }]), "Ordinary answer.");
 });
 
 test("mail-in guidance uses the approved service rules and unknowns defer to Sean", () => {

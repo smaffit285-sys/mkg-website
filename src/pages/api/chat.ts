@@ -3,6 +3,7 @@ import type { ModelMessage } from "ai";
 import { mkgAssistant } from "../../lib/mkgAssistant";
 import { fallbackAssistantReply } from "../../lib/mkgFallback";
 import { sendCrmEvent } from "../../lib/crm";
+import { ensurePhotoGuardrails } from "../../lib/mkgPhotoGuardrails";
 
 export const prerender = false;
 
@@ -31,14 +32,14 @@ export const POST: APIRoute = async ({ request }) => {
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
     const latestCustomerText = [...incoming].reverse().find(message => message.role === "user")?.text || "";
     if (isMailInPolicyQuestion(latestCustomerText)) {
-      const reply = fallbackAssistantReply(incoming);
+      const reply = ensurePhotoGuardrails(fallbackAssistantReply(incoming), incoming);
       await saveChatTurn(body.crm, incoming, reply, false);
       return Response.json({ reply, policyAnswer: true }, {
         headers: { "Cache-Control": "no-store" },
       });
     }
     if (process.env.MKG_AI_ENABLED !== "true") {
-      const reply = fallbackAssistantReply(incoming);
+      const reply = ensurePhotoGuardrails(fallbackAssistantReply(incoming), incoming);
       await saveChatTurn(body.crm, incoming, reply, needsOwnerReview(reply));
       return Response.json({ reply, fallback: true }, {
         headers: { "Cache-Control": "no-store" },
@@ -65,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
     const rawReply = result.text?.trim();
     const ownerReviewRequired = Boolean(rawReply?.includes(OWNER_REVIEW_MARKER));
     const generatedReply = rawReply?.replaceAll(OWNER_REVIEW_MARKER, "").trim();
-    const reply = generatedReply || fallbackAssistantReply(incoming);
+    const reply = ensurePhotoGuardrails(generatedReply || fallbackAssistantReply(incoming), incoming);
     await saveChatTurn(body.crm, incoming, reply, ownerReviewRequired || needsOwnerReview(reply));
     return Response.json({ reply, fallback: !generatedReply }, {
       headers: { "Cache-Control": "no-store" },
@@ -73,7 +74,7 @@ export const POST: APIRoute = async ({ request }) => {
   } catch (error) {
     console.error("MKG assistant error", error);
     if (!fallbackMessages.length) return Response.json({ error: "The sharpener is temporarily offline. You can still text Sean directly." }, { status: 503 });
-    const reply = fallbackAssistantReply(fallbackMessages);
+    const reply = ensurePhotoGuardrails(fallbackAssistantReply(fallbackMessages), fallbackMessages);
     await saveChatTurn(fallbackCrm, fallbackMessages, reply, needsOwnerReview(reply));
     return Response.json({ reply, fallback: true }, {
       headers: { "Cache-Control": "no-store" },
