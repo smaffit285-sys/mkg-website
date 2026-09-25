@@ -54,9 +54,10 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     const result = await mkgAssistant.generate({ messages });
-    const reply = result.text || "I couldn't complete that answer. Please try again or text Sean directly.";
+    const generatedReply = result.text?.trim();
+    const reply = generatedReply || fallbackAssistantReply(incoming);
     await saveChatTurn(body.crm, incoming, reply);
-    return Response.json({ reply }, {
+    return Response.json({ reply, fallback: !generatedReply }, {
       headers: { "Cache-Control": "no-store" },
     });
   } catch (error) {
