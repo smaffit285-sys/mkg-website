@@ -11,10 +11,8 @@ const quoteItem = z.object({
 });
 
 export const mkgAssistant = new ToolLoopAgent({
-  model: process.env.AI_MODEL || "inclusionai/ling-3.0-flash-vl",
-  providerOptions: {
-    gateway: { has: ["free"] },
-  },
+  model: process.env.AI_MODEL || "google/gemini-2.5-flash-lite",
+  maxOutputTokens: 800,
   maxRetries: 0,
   instructions: `You are the Miami Knife Guy website assistant. Your voice is warm, concise, knowledgeable, candid, and lightly playful—not salesy or theatrical.
 
