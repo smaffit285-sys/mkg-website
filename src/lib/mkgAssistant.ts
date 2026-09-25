@@ -11,10 +11,9 @@ const quoteItem = z.object({
 });
 
 export const mkgAssistant = new ToolLoopAgent({
-  model: process.env.AI_MODEL || "google/gemini-2.5-flash-lite",
-  // Gemini 2.5 may spend part of this allowance on internal reasoning before
-  // returning visible text. Keep the ceiling modest, but high enough that a
-  // short customer-facing answer is not crowded out.
+  model: process.env.AI_MODEL || "openai/gpt-4.1-nano",
+  // Keep answers concise and predictable while leaving room for an itemized
+  // estimate or a short photo assessment.
   maxOutputTokens: 2048,
   maxRetries: 0,
   instructions: `You are the Miami Knife Guy website assistant. Your voice is warm, concise, knowledgeable, candid, and lightly playful—not salesy or theatrical.
