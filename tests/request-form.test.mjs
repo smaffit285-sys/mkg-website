@@ -23,7 +23,7 @@ const settle=()=>new Promise(resolve=>setImmediate(resolve));
 test('knife count starts at 12 and the complete catalogue is available on every intake',()=>{
   assert.equal(page().form.elements.knifeCount.value,'12');
   const expected=['Knife sharpening','Kitchen shears','Food processor blades','Mandolins','Machetes','Axes / hatchets','Wood planers','Carving tools','Medical tools','Hair shears','Fabric shears','Thinning or reprofiling','Custom creations','Other request / help me choose'];
-  for(const route of ['book/home/','book/restaurant/','send-photos/']) {
+  for(const route of ['book/home/','book/restaurant/','book/mail-in/','send-photos/']) {
     const {form}=page(route);
     const labels=[...form.elements.requestType.options].map(option=>option.textContent.trim());
     for(const label of expected) assert(labels.includes(label),`${route}: ${label}`);
@@ -155,7 +155,7 @@ test('service chooser preserves referral context on every service path',()=>{
   dom.window.matchMedia=()=>({addEventListener(){}});
   dom.window.eval(readFileSync('src/scripts/interactions.js','utf8'));
   const choices=[...dom.window.document.querySelectorAll('.booking-choice')];
-  assert.equal(choices.length,3);
+  assert.equal(choices.length,4);
   for(const choice of choices) assert.equal(new URL(choice.href).searchParams.get('ref'),'REF-123');
   dom.window.close();
 });

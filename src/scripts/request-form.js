@@ -114,6 +114,7 @@ export function initRequestForms(doc) {
         'restaurant-service-request': ['restaurant_request_prepared','restaurant'],
         'home-service-request': ['home_request_prepared','home'],
         'special-request-review': ['photo_request_prepared','photo'],
+        'mail-in-service-request': ['mail_in_request_prepared','mail_in'],
         'review-submission': ['review_message_prepared','review'],
         'generic-referral-request': ['referral_request_prepared','referral'],
         'coded-referral-request': ['referral_request_prepared','referral'],

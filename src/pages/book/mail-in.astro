@@ -1,0 +1,85 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+import { sharpeningServices } from "../../config/sharpeningServices";
+
+export const prerender = true;
+
+const faq = [
+  { question: "Should I ship my knives before contacting Miami Knife Guy?", answer: "No. Submit the mail-in request first. Sean confirms that the work is a fit and provides the current shipping instructions and destination before anything is mailed." },
+  { question: "How should knives be packed for sharpening?", answer: "Each clean, dry blade should have a secure blade guard or rigid corrugated-cardboard sleeve. Immobilize the wrapped knives inside a sturdy box so no edge or point can move, pierce the packaging, or contact another knife." },
+  { question: "How long does mail-in sharpening take?", answer: "Turnaround depends on the work and current shop load. Sean confirms the expected service window before the package is sent; the service window begins when the package is received and inspected." },
+  { question: "Who pays for shipping?", answer: "Inbound and return shipping, insurance, signature requirements, and the payment method are confirmed with the estimate before the package is accepted." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map(item => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
+};
+---
+<RouteShell
+  title="Mail-In Knife Sharpening | Miami Knife Guy"
+  description="Request approval for tracked mail-in knife sharpening, repair, thinning, and restoration from Miami Knife Guy. Packing and shipping instructions are provided after review."
+  canonicalPath="/book/mail-in/"
+  pageClass="intake-page"
+  schema={faqSchema}
+>
+  <CustomerFlowPage
+    intake={true}
+    eyebrow="Nationwide Requests · Approval Required"
+    headline="Mail in your knives—after we make a plan."
+    intro="Start with the request below. Sean will review the knives, location, timing, and any damage before providing the current shipping destination and packing instructions. Please do not mail anything until the request is approved."
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
+    secondaryHref="/send-photos/"
+    secondaryLabel="Send Photos First"
+    nextCopy="Sean reviews the request first. If the work is a fit, he confirms the preliminary scope, expected turnaround, shipping responsibility, and the address to use. The final condition and estimate are confirmed after the package arrives and is inspected."
+  >
+    <section class="mb-10" aria-labelledby="mail-in-process-heading">
+      <h2 id="mail-in-process-heading" class="text-white/86 text-2xl font-semibold mb-5">A safer mail-in process</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <article class="review-card"><div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">01</div><h3 class="text-white/82 text-base font-semibold mb-3">Request approval</h3><p class="text-white/58 text-sm font-light leading-relaxed">Share the knife count, condition, return location, timing, and photos of damage or premium finishes.</p></article>
+        <article class="review-card"><div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">02</div><h3 class="text-white/82 text-base font-semibold mb-3">Pack each blade</h3><p class="text-white/58 text-sm font-light leading-relaxed">Clean and dry every knife. Use a secure blade guard or rigid cardboard sleeve, then immobilize the protected knives inside a sturdy box.</p></article>
+        <article class="review-card"><div class="text-cyan-400 text-[11px] tracking-[0.28em] font-bold mb-4">03</div><h3 class="text-white/82 text-base font-semibold mb-3">Track both directions</h3><p class="text-white/58 text-sm font-light leading-relaxed">Use tracking and consider insurance and signature service based on value. Keep the receipt and tracking number until the knives return.</p></article>
+      </div>
+      <aside class="mt-5 p-5 border border-pink-500/20 rounded bg-pink-500/[0.035]">
+        <h3 class="text-[10px] uppercase tracking-[0.24em] text-pink-400 font-bold mb-2">Do not ship yet</h3>
+        <p class="text-white/62 text-sm font-light leading-relaxed">Do not send loose blades, wet or contaminated tools, automatic knives, or anything unlawful or restricted for shipment. If you are unsure whether an item is eligible, include it in the request and wait for Sean’s answer.</p>
+      </aside>
+    </section>
+
+    <RequestForm
+      id="mail-in-service-request"
+      title="Request Mail-In Service"
+      description="Tell Sean what you plan to send. This request is a review—not permission to ship and not a final estimate."
+      source="public_book_mail_in"
+      serviceType="mail_in"
+      submitLabel="Review My Mail-In Request"
+      photoHandoff={true}
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Mobile phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", required: true, placeholder: "you@example.com" },
+        { name: "location", label: "Return city, state, and ZIP", required: true, placeholder: "Atlanta, GA 30303", autocomplete: "postal-code", help: "A street address is not needed for the initial review." },
+        { name: "knifeCount", label: "Approximate item count", type: "number", required: true, min: 1, step: 1, placeholder: "3", value: "3" },
+        { name: "requestType", label: "Main service or tool", type: "select", required: true, value: "knife_sharpening", options: sharpeningServices, help: "Choose the main request and list any additional tools below." },
+        { name: "declaredValue", label: "Approximate total replacement value", placeholder: "$300", help: "Helps Sean discuss appropriate tracking, insurance, and signature options." },
+        { name: "neededBy", label: "Needed-by date", placeholder: "Flexible, or a specific date", help: "A deadline is not guaranteed until Sean confirms it." },
+        { name: "shippingApproval", label: "Shipping acknowledgment", type: "select", required: true, options: [
+          { value: "wait_for_approval", label: "I will wait for approval and the current shipping address" },
+        ] },
+        { name: "notes", label: "Knife, condition, and service details", type: "textarea", required: true, fullWidth: true, placeholder: "Maker/model if known, blade lengths, edge types, chips, broken tips, rust, thinning needs, finish concerns, and intended use" },
+        { name: "photos", label: "Knife or damage photos", type: "file", fullWidth: true, accept: "image/*", multiple: true, help: "Show the full profile, both blade faces, edge, tip, and any damage. Photos remain on your device until you choose to share them." },
+      ]}
+    />
+
+    <section class="mb-10" aria-labelledby="mail-in-faq-heading">
+      <h2 id="mail-in-faq-heading" class="text-white/86 text-2xl font-semibold mb-5">Mail-in questions</h2>
+      <div class="space-y-3">
+        {faq.map(item => <details class="intake-logistics"><summary>{item.question}</summary><p class="sub-body mt-4">{item.answer}</p></details>)}
+      </div>
+    </section>
+  </CustomerFlowPage>
+</RouteShell>

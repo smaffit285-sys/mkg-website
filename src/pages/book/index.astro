@@ -5,17 +5,18 @@ export const prerender = true;
 const choices = [
   { href: "/book/home/", title: "Home kitchen", copy: "Sharpening, repairs, or recurring Knife Club care for the knives you use at home." },
   { href: "/book/restaurant/", title: "Restaurant or hotel", copy: "Kitchen fleets, steak knives, recurring programs, and Sharp After Dark service." },
+  { href: "/book/mail-in/", title: "Mail-in service", copy: "Request approval and packing instructions before shipping knives from outside the local service area." },
   { href: "/send-photos/", title: "Repair, thinning, or not sure yet?", copy: "Send photos and describe the problem. Sean can help identify the right service." },
 ];
 ---
 <RouteShell title="Book Knife Sharpening | Miami Knife Guy"
-  description="Request knife sharpening for your home or restaurant, or send photos for a repair assessment. Sean confirms the service and timing with you."
+  description="Request local, restaurant, or mail-in knife sharpening, or send photos for a repair assessment. Sean confirms the service and timing with you."
   canonicalPath="/book/" pageClass="intake-page">
   <main class="panel" aria-hidden="false">
     <div class="panel-inner"><div class="max-w-4xl mx-auto">
       <p class="sub-eyebrow">Book Miami Knife Guy</p>
       <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">Let’s get your edge back.</h1>
-      <p class="sub-body">Choose your kitchen—or start with photos if you’re unsure what your knife needs.</p>
+      <p class="sub-body">Choose local, restaurant, or mail-in service—or start with photos if you’re unsure what your knife needs.</p>
       <nav class="booking-choices" aria-label="Choose your service">
         {choices.map(choice => <a href={choice.href} class="booking-choice" data-referral-link><h2>{choice.title}</h2><p>{choice.copy}</p><span aria-hidden="true">→</span></a>)}
       </nav>

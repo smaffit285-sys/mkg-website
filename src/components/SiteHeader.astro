@@ -8,9 +8,10 @@ const servicePaths = new Set([
     "/japanese-knife-sharpening-miami/",
     "/knife-repair-restoration-miami/",
     "/steak-knife-sharpening-miami-restaurants/",
+    "/book/mail-in/",
 ]);
 const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(currentPath) : currentPath === path;
-const requestAnchors = { "/book/home/": "#home-service-request", "/book/restaurant/": "#restaurant-service-request", "/send-photos/": "#special-request-review" };
+const requestAnchors = { "/book/home/": "#home-service-request", "/book/restaurant/": "#restaurant-service-request", "/book/mail-in/": "#mail-in-service-request", "/send-photos/": "#special-request-review" };
 const bookingHref = requestAnchors[currentPath as keyof typeof requestAnchors] ?? "/book/";
 ---
 <header class="mkg-header fixed top-0 left-0 w-full z-50 bg-[#020202]/96 backdrop-blur-md border-b border-white/5">

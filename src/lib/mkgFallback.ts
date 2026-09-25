@@ -16,6 +16,9 @@ export function fallbackAssistantReply(messages: Message[]) {
   if (/pickup|delivery|collect|travel|drop.?off/.test(text)) {
     return `Drop-off keeps the service lean. Pickup and return are ${publishedPricing.travel}. Choose pickup in Service Details and enter the complete address; if live routing is unavailable, Sean will confirm the travel amount before scheduling.`;
   }
+  if (/mail.?in|ship|shipping|package|packing/.test(text)) {
+    return "Mail-in service starts with approval—do not ship first. Use the Mail-In Service request to share the knife count, return city/state/ZIP, condition, timing, and photos. If the work is a fit, Sean will confirm the current shipping address, packing plan, expected turnaround, shipping responsibility, and preliminary scope before you send anything.";
+  }
   if (/thin|wedge|geometry|behind the edge/.test(text)) {
     return `Sharpening restores the apex; thinning removes material behind the edge when a knife still wedges or feels thick after sharpening. Thinning starts at $16 per side and rises with material removed, labor, abrasives, and time. Clear side-profile and choil photos help Sean assess it.`;
   }
