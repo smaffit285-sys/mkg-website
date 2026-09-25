@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
     if (!incoming.length) return Response.json({ error: "A message is required." }, { status: 400 });
     if (process.env.MKG_AI_ENABLED !== "true") {
       const reply = fallbackAssistantReply(incoming);
-      await saveChatTurn(body.crm, incoming, reply);
+      await saveChatTurn(body.crm, incoming, reply, needsOwnerReview(reply));
       return Response.json({ reply, fallback: true }, {
         headers: { "Cache-Control": "no-store" },
       });
@@ -54,9 +54,11 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     const result = await mkgAssistant.generate({ messages });
-    const generatedReply = result.text?.trim();
+    const rawReply = result.text?.trim();
+    const ownerReviewRequired = Boolean(rawReply?.includes(OWNER_REVIEW_MARKER));
+    const generatedReply = rawReply?.replaceAll(OWNER_REVIEW_MARKER, "").trim();
     const reply = generatedReply || fallbackAssistantReply(incoming);
-    await saveChatTurn(body.crm, incoming, reply);
+    await saveChatTurn(body.crm, incoming, reply, ownerReviewRequired || needsOwnerReview(reply));
     return Response.json({ reply, fallback: !generatedReply }, {
       headers: { "Cache-Control": "no-store" },
     });
@@ -64,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
     console.error("MKG assistant error", error);
     if (!fallbackMessages.length) return Response.json({ error: "The sharpener is temporarily offline. You can still text Sean directly." }, { status: 503 });
     const reply = fallbackAssistantReply(fallbackMessages);
-    await saveChatTurn(fallbackCrm, fallbackMessages, reply);
+    await saveChatTurn(fallbackCrm, fallbackMessages, reply, needsOwnerReview(reply));
     return Response.json({ reply, fallback: true }, {
       headers: { "Cache-Control": "no-store" },
     });
@@ -73,7 +75,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 async function saveChatTurn(
   crm: { eventId?: string; sessionId?: string; attribution?: Record<string, unknown>; page?: Record<string, unknown> } | undefined,
-  messages: IncomingMessage[], reply: string,
+  messages: IncomingMessage[], reply: string, ownerReviewRequired = false,
 ) {
   const latest = [...messages].reverse().find(message => message.role === "user");
   if (!latest || !crm?.eventId) return;
@@ -87,6 +89,7 @@ async function saveChatTurn(
       details: {
         customerMessage: String(latest.text || "").slice(0, 4000),
         assistantReply: reply.slice(0, 5000),
+        ownerReviewRequired,
         photos: (latest.images || []).slice(0, 4).map(image => ({ name: image.name || "photo", type: image.mediaType })),
       },
       attribution: crm.attribution,
@@ -95,4 +98,10 @@ async function saveChatTurn(
   } catch (error) {
     console.error("Chat CRM capture error", error);
   }
+}
+
+const OWNER_REVIEW_MARKER = "[[OWNER_REVIEW_REQUIRED]]";
+
+function needsOwnerReview(reply: string) {
+  return /need Sean to (review|verify)|don't have a verified MKG answer/i.test(reply);
 }

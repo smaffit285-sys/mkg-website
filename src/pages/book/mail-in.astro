@@ -7,10 +7,12 @@ import { sharpeningServices } from "../../config/sharpeningServices";
 export const prerender = true;
 
 const faq = [
-  { question: "Should I ship my knives before contacting Miami Knife Guy?", answer: "No. Submit the mail-in request first. Sean confirms that the work is a fit and provides the current shipping instructions and destination before anything is mailed." },
+  { question: "What can I send for mail-in sharpening?", answer: "MKG reviews almost anything with a blade. Ceramic knives, saws, drill bits, peelers, and zesters are not accepted. Mandolins are accepted only when the blade is removable. Every order remains subject to condition and safety review." },
+  { question: "Should I ship my knives before contacting Miami Knife Guy?", answer: "No. Submit the quote request first. After the online quote is complete, Sean provides a private shipping intake with the current destination and packing instructions." },
   { question: "How should knives be packed for sharpening?", answer: "Each clean, dry blade should have a secure blade guard or rigid corrugated-cardboard sleeve. Immobilize the wrapped knives inside a sturdy box so no edge or point can move, pierce the packaging, or contact another knife." },
-  { question: "How long does mail-in sharpening take?", answer: "Turnaround depends on the work and current shop load. Sean confirms the expected service window before the package is sent; the service window begins when the package is received and inspected." },
-  { question: "Who pays for shipping?", answer: "Inbound and return shipping, insurance, signature requirements, and the payment method are confirmed with the estimate before the package is accepted." },
+  { question: "How long does mail-in sharpening take?", answer: "Standard turnaround is three business days from package arrival to package departure. Severe damage, unusual work, or time spent awaiting final quote approval or payment details can extend that window; Sean confirms any exception." },
+  { question: "Who pays for shipping?", answer: "The customer pays the current inbound and return shipping rates. MKG may add reduced-rate shipping options later, but no discount is promised today. Tracking, insurance, and signature options should reflect the shipment value." },
+  { question: "When is the final price approved and charged?", answer: "The online quote is reviewed after the package arrives. If inspection changes the scope, Sean finalizes the quote with the customer before work begins and collects the payment method. The completed order is invoiced and charged before the package departs." },
 ];
 
 const faqSchema = {
@@ -30,12 +32,12 @@ const faqSchema = {
     intake={true}
     eyebrow="Nationwide Requests · Approval Required"
     headline="Mail in your knives—after we make a plan."
-    intro="Start with the request below. Sean will review the knives, location, timing, and any damage before providing the current shipping destination and packing instructions. Please do not mail anything until the request is approved."
+    intro="Start with the quote request below. Sean reviews the knives, location, timing, and any damage. Once the online quote is complete, you’ll receive a private shipping intake with the current destination and packing instructions. Please do not mail anything before then."
     primaryHref="tel:+13059095773"
     primaryLabel="Call MKG"
     secondaryHref="/send-photos/"
     secondaryLabel="Send Photos First"
-    nextCopy="Sean reviews the request first. If the work is a fit, he confirms the preliminary scope, expected turnaround, shipping responsibility, and the address to use. The final condition and estimate are confirmed after the package arrives and is inspected."
+    nextCopy="Sean prepares the online quote first. After you complete the private shipping intake, the package is received and inspected. Any change is reviewed and approved with you before payment details are collected or work begins. Standard service is three business days from package arrival to departure. The finished order is invoiced, charged, packed, shipped, and followed by a confirmation email."
   >
     <section class="mb-10" aria-labelledby="mail-in-process-heading">
       <h2 id="mail-in-process-heading" class="text-white/86 text-2xl font-semibold mb-5">A safer mail-in process</h2>
@@ -46,7 +48,7 @@ const faqSchema = {
       </div>
       <aside class="mt-5 p-5 border border-pink-500/20 rounded bg-pink-500/[0.035]">
         <h3 class="text-[10px] uppercase tracking-[0.24em] text-pink-400 font-bold mb-2">Do not ship yet</h3>
-        <p class="text-white/62 text-sm font-light leading-relaxed">Do not send loose blades, wet or contaminated tools, automatic knives, or anything unlawful or restricted for shipment. If you are unsure whether an item is eligible, include it in the request and wait for Sean’s answer.</p>
+        <p class="text-white/62 text-sm font-light leading-relaxed">Do not send loose blades, wet or contaminated tools, automatic knives, ceramic knives, saws, drill bits, peelers, zesters, or anything unlawful or restricted for shipment. Mandolins must have a removable blade. If you are unsure, include the item in the quote request and wait for Sean’s answer.</p>
       </aside>
     </section>
 
@@ -68,7 +70,7 @@ const faqSchema = {
         { name: "declaredValue", label: "Approximate total replacement value", placeholder: "$300", help: "Helps Sean discuss appropriate tracking, insurance, and signature options." },
         { name: "neededBy", label: "Needed-by date", placeholder: "Flexible, or a specific date", help: "A deadline is not guaranteed until Sean confirms it." },
         { name: "shippingApproval", label: "Shipping acknowledgment", type: "select", required: true, options: [
-          { value: "wait_for_approval", label: "I will wait for approval and the current shipping address" },
+          { value: "wait_for_approval", label: "I will wait for my completed quote and private shipping intake" },
         ] },
         { name: "notes", label: "Knife, condition, and service details", type: "textarea", required: true, fullWidth: true, placeholder: "Maker/model if known, blade lengths, edge types, chips, broken tips, rust, thinning needs, finish concerns, and intended use" },
         { name: "photos", label: "Knife or damage photos", type: "file", fullWidth: true, accept: "image/*", multiple: true, help: "Show the full profile, both blade faces, edge, tip, and any damage. Photos remain on your device until you choose to share them." },

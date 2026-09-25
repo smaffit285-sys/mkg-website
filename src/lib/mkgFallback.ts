@@ -17,7 +17,7 @@ export function fallbackAssistantReply(messages: Message[]) {
     return `Drop-off keeps the service lean. Pickup and return are ${publishedPricing.travel}. Choose pickup in Service Details and enter the complete address; if live routing is unavailable, Sean will confirm the travel amount before scheduling.`;
   }
   if (/mail.?in|ship|shipping|package|packing/.test(text)) {
-    return "Mail-in service starts with approval—do not ship first. Use the Mail-In Service request to share the knife count, return city/state/ZIP, condition, timing, and photos. If the work is a fit, Sean will confirm the current shipping address, packing plan, expected turnaround, shipping responsibility, and preliminary scope before you send anything.";
+    return "Mail-in service starts with an online quote—do not ship first. MKG reviews almost anything with a blade, but not ceramic knives, saws, drill bits, peelers, or zesters; mandolin blades must be removable. Customers pay current inbound and return shipping. Standard turnaround is three business days from arrival to departure, subject to final inspection, quote approval, payment details, and unusual work. The private address is provided only after the quote is complete and you are filling out the shipping intake.";
   }
   if (/thin|wedge|geometry|behind the edge/.test(text)) {
     return `Sharpening restores the apex; thinning removes material behind the edge when a knife still wedges or feels thick after sharpening. Thinning starts at $16 per side and rises with material removed, labor, abrasives, and time. Clear side-profile and choil photos help Sean assess it.`;
@@ -52,5 +52,5 @@ export function fallbackAssistantReply(messages: Message[]) {
   if (/choose|best option|which service|recommend/.test(text)) {
     return "For practical daily knives, start with Working Edge. Choose Performance Edge when you want a more refined finish, and White Glove for premium, sentimental, or presentation-sensitive knives. Chips, broken tips, wedging, rust, or specialty tools need a condition review. What are you sharpening and how do you use it?";
   }
-  return "I can help with prices, repairs, thinning, serrations, single-bevel knives, specialty tools, care, pickup, restaurant programs, and scheduling. Tell me what you have—or upload clear photos—and I’ll narrow down the best service and likely cost.";
+  return "I don’t have a verified MKG answer for that yet, so I need Sean to review it rather than guess. Your question is being retained with this chat for follow-up. You can add any knife details or photos that would help him answer.";
 }

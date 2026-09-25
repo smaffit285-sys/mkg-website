@@ -46,3 +46,15 @@ test("local fallback answers core pricing and service questions", () => {
   const photos = fallbackAssistantReply([{ role: "user", text: "Take a look", images: [{}] }]);
   assert.match(photos, /received the photos/i);
 });
+
+test("mail-in guidance uses the approved service rules and unknowns defer to Sean", () => {
+  const mailIn = fallbackAssistantReply([{ role: "user", text: "Can I ship a ceramic knife or mandolin?" }]);
+  assert.match(mailIn, /not ceramic knives/i);
+  assert.match(mailIn, /mandolin blades must be removable/i);
+  assert.match(mailIn, /three business days/i);
+  assert.match(mailIn, /private address/i);
+
+  const unknown = fallbackAssistantReply([{ role: "user", text: "Do you sponsor competitive underwater basket weaving?" }]);
+  assert.match(unknown, /need Sean to review/i);
+  assert.doesNotMatch(unknown, /yes|promise/i);
+});
