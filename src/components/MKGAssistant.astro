@@ -21,12 +21,12 @@ import "../styles/chatbot.css";
     <div class="mkg-chat-messages" data-chat-messages role="log" aria-live="polite" aria-relevant="additions">
       <article class="mkg-chat-message mkg-chat-message--assistant">
         <span class="mkg-chat-avatar" aria-hidden="true">M</span>
-        <div><p>Feeling a little dull today?</p><p>I can answer sharpening questions, help you choose a service, and estimate the cost. Upload clear photos of your knives or tools and I’ll take a look.</p><p>Would you rather drop off, or arrange pickup and return?</p></div>
+        <div><p>Feeling a little dull today?</p><p>I can answer sharpening questions, help you choose a service, and estimate the cost. Upload up to four clear photos for a preliminary AI assessment of size and visible damage.</p><p>AI can make mistakes, so Sean confirms every photo assessment and final quote.</p><p>Would you rather drop off, or arrange pickup and return?</p></div>
       </article>
     </div>
 
     <div class="mkg-chat-quick" data-chat-quick aria-label="Common questions">
-      <button type="button" data-prompt="Help me estimate sharpening for my knives.">Get a quote</button>
+      <button type="button" data-prompt="Help me estimate sharpening for my knives. Explain how I can upload photos with a safe size reference for a preliminary assessment.">Get a quote</button>
       <button type="button" data-prompt="Help me choose the right sharpening service.">Choose a service</button>
       <button type="button" data-prompt="I would like pickup and return. What do you need from me?">Pickup + return</button>
       <button type="button" data-prompt="How can I tell whether my knife needs repair, thinning, or just sharpening?">Ask a question</button>
@@ -54,14 +54,14 @@ import "../styles/chatbot.css";
 
     <form class="mkg-chat-composer" data-chat-form>
       <div class="mkg-chat-files" data-chat-files hidden></div>
-      <label class="mkg-chat-upload" title="Add knife or tool photos">
-        <span aria-hidden="true">＋</span><span class="sr-only">Add photos</span>
+      <label class="mkg-chat-upload" title="Add up to four knife photos for a preliminary AI assessment">
+        <span aria-hidden="true">＋</span><span class="sr-only">Add knife photos for a preliminary AI assessment</span>
         <input type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-chat-upload />
       </label>
       <textarea rows="1" maxlength="4000" data-chat-input aria-label="Message the sharpening assistant" placeholder="Ask about an edge, service, or price…"></textarea>
       <button type="submit" class="mkg-chat-send" aria-label="Send message">→</button>
     </form>
-    <p class="mkg-chat-privacy">Photo assessments and prices are estimates pending Sean’s review. <a href="/privacy/">Privacy</a></p>
+    <p class="mkg-chat-privacy">AI can make mistakes. Photo findings and prices are estimates pending Sean’s human review. <a href="/privacy/">Privacy</a></p>
   </section>
 </aside>
 <script>

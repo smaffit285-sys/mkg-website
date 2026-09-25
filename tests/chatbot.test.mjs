@@ -32,7 +32,8 @@ test("rendered pages include the accessible assistant and scheduling controls", 
   assert.match(html, /Feeling a little dull today\?/);
   assert.match(html, /aria-controls="mkg-chat-panel"/);
   assert.match(html, /Request a service window/);
-  assert.match(html, /Photo assessments and prices are estimates pending Sean/);
+  assert.match(html, /AI can make mistakes/);
+  assert.match(html, /Add knife photos for a preliminary AI assessment/);
   assert.match(html, /<script type="module" src="\/_astro\/MKGAssistant\.[^"]+\.js"><\/script>/);
   assert.doesNotMatch(html, /src="\/_astro\/crm-capture\.js"/);
 });
@@ -45,6 +46,20 @@ test("local fallback answers core pricing and service questions", () => {
   assert.match(thinning, /\$16 per side/);
   const photos = fallbackAssistantReply([{ role: "user", text: "Take a look", images: [{}] }]);
   assert.match(photos, /received the photos/i);
+  assert.match(photos, /known-flat board/i);
+  assert.match(photos, /human inspection/i);
+  assert.match(price, /tap the \+ button/i);
+  assert.match(price, /ruler/i);
+  assert.match(price, /AI can make mistakes/i);
+});
+
+test("assistant instructions define cautious image-based knife assessment", async () => {
+  const source = await readFile(new URL("../src/lib/mkgAssistant.ts", import.meta.url), "utf8");
+  assert.match(source, /reverse bow\/recurve\/low spot/i);
+  assert.match(source, /edge-down, low-angle, backlit board-contact photo/i);
+  assert.match(source, /ruler or tape measure beside the blade in the same plane/i);
+  assert.match(source, /AI can make mistakes/i);
+  assert.match(source, /What Sean must confirm/i);
 });
 
 test("mail-in guidance uses the approved service rules and unknowns defer to Sean", () => {

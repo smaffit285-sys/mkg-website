@@ -8,10 +8,10 @@ export function fallbackAssistantReply(messages: Message[]) {
   const hasPhotos = Boolean(last?.images?.length);
 
   if (hasPhotos) {
-    return "I received the photos. They can help Sean assess visible chips, broken tips, corrosion, and likely thinning or reprofiling—but the final condition and price still need his review. What is the approximate blade length, how many tools are shown, and are any edges serrated?";
+    return "I received the photos, but automated visual assessment is temporarily unavailable. Sean can still review visible chips, broken tips, corrosion, and profile problems. AI and photo estimates can be wrong, so all findings, work, and prices require his human inspection. If the photos do not include a ruler beside each blade in the same plane and an edge-down view on a known-flat board, please add those or tell me the measured blade lengths.";
   }
   if (/price|cost|quote|estimate|how much/.test(text)) {
-    return `I can build an estimate from the published rates. Fine-edge knives are ${publishedPricing.fineEdge}. Serrated knives are ${publishedPricing.serrated}. Repairs are ${publishedPricing.repairs}; thinning is ${publishedPricing.thinning}. How many knives do you have, what are their approximate blade lengths, and are any serrated or damaged?`;
+    return `I can build an estimate from the published rates. Fine-edge knives are ${publishedPricing.fineEdge}. Serrated knives are ${publishedPricing.serrated}. Repairs are ${publishedPricing.repairs}; thinning is ${publishedPricing.thinning}. You can also tap the + button to upload up to four photos for a preliminary AI assessment. Include each full knife beside a ruler in the same plane, close-ups of the edge and tip, and an edge-down view on a known-flat board. AI can make mistakes; all visible findings, dimensions, work, and prices are estimates subject to Sean's human review. How many knives do you have, and are any serrated?`;
   }
   if (/pickup|delivery|collect|travel|drop.?off/.test(text)) {
     return `Drop-off keeps the service lean. Pickup and return are ${publishedPricing.travel}. Choose pickup in Service Details and enter the complete address; if live routing is unavailable, Sean will confirm the travel amount before scheduling.`;
