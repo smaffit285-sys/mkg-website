@@ -6,7 +6,7 @@ export const prerender = true;
 const schema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Selected Miami Knife Guy Google Reviews",
+  name: "Miami Knife Guy Google Reviews",
   numberOfItems: featuredGoogleReviews.length,
   itemListElement: featuredGoogleReviews.map(({ name, body, rating }, index) => ({
     "@type": "ListItem",
@@ -22,7 +22,7 @@ const schema = {
 ---
 <RouteShell
   title="Miami Knife Guy Reviews | Verified Google Reviews"
-  description="Read selected customer reviews from Google for Miami Knife Guy knife sharpening, repair, and restoration services."
+  description="Read all public customer reviews from Google for Miami Knife Guy knife sharpening, repair, and restoration services."
   canonicalPath="/reviews/"
   schema={schema}
 >
