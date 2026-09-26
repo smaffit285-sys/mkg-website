@@ -6,6 +6,16 @@ export type GoogleReview = {
 
 export const googleReviews: GoogleReview[] = [
   {
+    name: "Esti Bareli",
+    rating: 5,
+    body: "Super fast service and high quality. Great customer service too! I'm so impressed with the results on my Global knives. Grateful to finally have a sharpening service like this in the area. He even has a dedicated kosher knife service if needed. Definitely plan to use again. Thank you Miami Knife Guy!!",
+  },
+  {
+    name: "greg socherman",
+    rating: 5,
+    body: "Best knife sharpening I’ve ever had and I’ve tried many. Knives are all super sharp and were picked up and delivered to my house in 1 day. Would highly recommend.",
+  },
+  {
     name: "Jordan Fein",
     rating: 5,
     body: "What a pleasure it was to deal with Miami Knife Guy. Very punctual and replying to me when I text messaged him after finding him online. Came over very personal and knowledgeable about knives, was not trying to do a money grab, and was very fair and honest. We need more businessmen like him. I recommend him to anybody who wants to get their knife sharpened!",
@@ -111,5 +121,5 @@ If you need sharpening services from someone experienced and trustworthy, I high
   },
 ];
 
-// The website's curated selection is separate from the full source record and Google total.
-export const featuredGoogleReviews = googleReviews.filter(review => review.name !== "Jenine Jones");
+// Keep the public page aligned with the complete public Google review record.
+export const featuredGoogleReviews = googleReviews;
