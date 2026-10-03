@@ -40,7 +40,7 @@ export const servicePages = [
     ],
     detailTitle: "Sharp After Dark",
     detail: "The program is designed for kitchens that cannot afford dull knives or missing tools during prep. Every cycle is planned around operational timing and the way each team actually uses its fleet.",
-    bookingPath: "/book/restaurant/",
+    bookingPath: "/book/restaurant/?intent=sharp-after-dark",
     faq: [
       { question: "Do you sharpen knives for restaurants in Miami?", answer: "Yes. MKG serves restaurants, hotels, and commercial kitchens across Miami-Dade and Broward with professional fleet sharpening and repair." },
       { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. For confirmed accounts in agreed service areas and schedules, MKG collects after the last ticket and returns before prep the next day. We plan around your actual operating times." },
@@ -115,7 +115,7 @@ export const servicePages = [
     ],
     detailTitle: "Protect the Experience",
     detail: "A dull steak knife drags through food and changes the guest’s perception of the plate. Dining-room fleet care treats the knife as part of the hospitality experience.",
-    bookingPath: "/book/restaurant/",
+    bookingPath: "/book/restaurant/?intent=steak-knives",
     faq: [
       { question: "Do restaurants need steak knives sharpened?", answer: "Yes. Even durable steak knives lose performance through regular dining-room use, dishwashing, and contact with plates." },
       { question: "Why do steak knives matter to the guest experience?", answer: "The guest feels the knife on the first cut. A clean-cutting, consistent fleet supports the food, the table setting, and the standard of service." },

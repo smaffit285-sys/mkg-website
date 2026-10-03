@@ -13,7 +13,8 @@ const servicePaths = new Set([
 ]);
 const isCurrent = (path: string) => path === "/services/" ? servicePaths.has(currentPath) : currentPath === path;
 const requestAnchors = { "/book/home/": "#home-service-request", "/book/restaurant/": "#restaurant-service-request", "/book/mail-in/": "#mail-in-service-request", "/send-photos/": "#special-request-review" };
-const bookingHref = requestAnchors[currentPath as keyof typeof requestAnchors] ?? "/book/";
+const offerBooking = { "/sharp-after-dark/": "/book/restaurant/?intent=sharp-after-dark", "/miami-knife-club/": "/book/home/?intent=club", "/one-time-sharpening/": "/book/home/?intent=one-time" };
+const bookingHref = requestAnchors[currentPath as keyof typeof requestAnchors] ?? offerBooking[currentPath as keyof typeof offerBooking] ?? "/book/";
 ---
 <header class="mkg-header fixed top-0 left-0 w-full z-50 bg-[#020202]/96 backdrop-blur-md border-b border-white/5">
     <div class="mkg-header-inner h-20 flex items-center justify-between gap-8">
@@ -61,7 +62,7 @@ const bookingHref = requestAnchors[currentPath as keyof typeof requestAnchors] ?
         <a href="/miami-knife-club/" class="mkg-mobile-menu-link" aria-current={isCurrent("/miami-knife-club/") ? "page" : undefined}>Knife Club</a>
         <a href="/proof/" class="mkg-mobile-menu-link" aria-current={isCurrent("/proof/") ? "page" : undefined}>Proof</a>
         <a href="/reviews/" class="mkg-mobile-menu-link" aria-current={isCurrent("/reviews/") ? "page" : undefined}>Reviews</a>
-        <a href="/book/home/?intent=one-time" class="mkg-mobile-menu-link">One-Time Sharpening</a>
+        <a href="/one-time-sharpening/" class="mkg-mobile-menu-link">One-Time Sharpening</a>
         <a href="/book/mail-in/" class="mkg-mobile-menu-link">Mail-In Sharpening</a>
         <a href="/learn/" class="mkg-mobile-menu-link">Knife Care Articles</a>
         <a href="/services/" class="mkg-mobile-menu-link" aria-current={isCurrent("/services/") ? "page" : undefined}>Services</a>

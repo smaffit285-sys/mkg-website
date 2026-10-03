@@ -1,0 +1,32 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import ServiceLogistics from "../components/ServiceLogistics.astro";
+import { publishedPricing } from "../lib/mkgPricing";
+export const prerender = true;
+const serviceSchema = { "@context": "https://schema.org", "@type": "Service", name: "One-Time Local Knife Sharpening", serviceType: "Knife sharpening and repair for home kitchens", provider: { "@id": "https://www.miamiknifeguy.com/#business" }, areaServed: "Miami-Dade and Broward, Florida" };
+---
+<RouteShell title="One-Time Knife Sharpening Miami | Miami Knife Guy" description="Request one-time knife sharpening in the Miami area. Shop drop-off or confirmed pickup and return; fine-edge sharpening starts at $9 and travel is $1 per total driven mile." canonicalPath="/one-time-sharpening/" schema={serviceSchema}>
+  <main class="panel" aria-hidden="false"><div class="panel-inner max-w-5xl mx-auto">
+    <nav class="intake-breadcrumb" aria-label="Breadcrumb"><a href="/services/">← Services</a></nav>
+    <p class="sub-eyebrow">One Visit · Local Home Kitchens</p>
+    <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">One-time sharpening, built around your knives.</h1>
+    <p class="sub-body max-w-3xl mb-10">Bring in the knives you use now, without joining a recurring plan. Sean reviews the blade type, condition, and result you want, then confirms the work and timing before service.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+      <article class="review-card"><h2 class="text-white text-xl font-semibold mb-3">Choose your care</h2><p class="text-white/75">Working Edge for practical daily use, Performance Edge for a more refined finish, or White Glove care for premium knives. Sean confirms the right level after review.</p></article>
+      <article class="review-card"><h2 class="text-white text-xl font-semibold mb-3">Choose your handoff</h2><p class="text-white/75">Drop off at the MKG shop in North Miami Beach, or request pickup and return. Travel is a separate charge at $1 per total driven mile for any knife count.</p></article>
+      <article class="review-card"><h2 class="text-white text-xl font-semibold mb-3">Know the condition</h2><p class="text-white/75">Chips, broken tips, serrations, thinning, rust, and specialty blades may change the work. Photos and knife details help Sean prepare an accurate recommendation.</p></article>
+    </div>
+    <section class="mb-10" aria-labelledby="one-time-pricing">
+      <h2 id="one-time-pricing" class="text-white text-2xl font-semibold mb-4">Starting prices, clearly separated</h2>
+      <ul class="space-y-3 text-white/80 text-base leading-relaxed">
+        <li><strong class="text-white">Fine-edge knives:</strong> {publishedPricing.fineEdge}.</li>
+        <li><strong class="text-white">Serrated knives:</strong> {publishedPricing.serrated}.</li>
+        <li><strong class="text-white">Repairs:</strong> {publishedPricing.repairs}.</li>
+        <li><strong class="text-white">Pickup and return:</strong> {publishedPricing.travel}.</li>
+      </ul>
+      <p class="sub-body mt-4">These are published rate anchors, not a final quote. Sean checks condition, scope, timing, and route before confirming.</p>
+    </section>
+    <div class="mb-10"><ServiceLogistics mode="residential" /></div>
+    <div class="flex flex-wrap gap-4"><a class="panel-cta-btn panel-cta-cyan" href="/book/home/?intent=one-time">Request One-Time Sharpening</a><a class="panel-cta-btn panel-cta-ghost" href="/miami-knife-club/">Prefer a Recurring Plan?</a><a class="panel-cta-btn panel-cta-ghost" href="/book/mail-in/">Outside the Local Area?</a></div>
+  </div></main>
+</RouteShell>
