@@ -46,7 +46,7 @@ function initChatbot(root) {
     p.textContent = text;
     bubble.append(p);
     if (role === 'assistant') {
-      const routes = [...new Set(String(text).match(/\/(?:book(?:\/mail-in|\/home|\/restaurant)?|send-photos)\//g) || [])];
+      const routes = [...new Set(String(text).match(/\/(?:book(?:\/mail-in|\/home|\/restaurant|\/knife-exchange|\/knife-skills|\/corporate-experience)?|send-photos)\//g) || [])];
       for (const route of routes) {
         const link = document.createElement('a');
         link.href = route;

@@ -10,8 +10,26 @@ export function fallbackAssistantReply(messages: Message[]) {
   if (hasPhotos) {
     return "The photos reached this chat, but automated visual assessment is unavailable. They are not automatically sent to Sean as image files. Please text the photos to (305) 909-5773 or use /send-photos/ so he can inspect them. Include a ruler beside each blade and a close view of damage. Any estimate needs his human review.";
   }
-  if (/mail.?in|ship|shipping|package|packing|ceramic|mandolin|saw|drill bit|peeler|zester/.test(text)) {
+  if (/knife exchange|exchange program/.test(text)) {
+    return "The Knife Exchange Program is listed at $99 with shipping included. Trade dull knives for sharp refurbished ones after Sean confirms eligibility and the handoff. Start at /book/knife-exchange/.";
+  }
+  if (/knife skills|intensive|workshop/.test(text)) {
+    return "The Knife Skills Intensive is $399 for four weeks of weekly two-hour sessions with sharpening instruction. Sean confirms the next available schedule at /book/knife-skills/.";
+  }
+  if (/corporate culinary|team event|corporate experience/.test(text)) {
+    return "The Corporate Culinary Experience is a half-day event for up to 15 participants, with a sharpening demonstration and meal. It starts at $1,200; Sean confirms scope and availability at /book/corporate-experience/.";
+  }
+  if (/online course|knife care course/.test(text)) {
+    return "The Miami Knife Club online knife care course is planned and is not a current membership benefit. Ask Sean for care guidance between service visits.";
+  }
+  if (/mail.?in|\bship(?:ping|ped|ment)?\b|package|packing|ceramic|mandolin|\bsaws?\b|drill bit|peeler|zester/.test(text)) {
     return "Do not ship yet. Mail-in service starts with an online quote at /book/mail-in/. MKG reviews almost anything with a blade, but not ceramic knives, saws, drill bits, peelers, or zesters; mandolin blades must be removable. Customers pay current inbound and return shipping. Standard turnaround is three business days from arrival to departure, subject to final inspection, quote approval, payment details, and unusual work. The private address is provided only after the quote is complete and you are filling out the shipping intake. For approved shipments, clean and dry every knife, guard every edge and point, immobilize the protected knives in a sturdy box, and use tracking.";
+  }
+  if (/restaurant|hotel|commercial|fleet|sharp after dark/.test(text)) {
+    return `A one-time restaurant reset starts at $150. Recurring commercial programs typically start at $250 per month and scale with fleet size, repair load, timing, and route fit. For confirmed accounts within agreed areas and schedules, Sharp After Dark collects after the last ticket and returns before prep the next day.`;
+  }
+  if (/club|membership|monthly|concierge/.test(text)) {
+    return `Miami Knife Club options are ${publishedPricing.club}. Essential Edge suits smaller active drawers, Chef's Drawer supports a larger rotation, and Private Kitchen Concierge adds higher-touch care and route planning.`;
   }
   if (/price|cost|quote|estimate|how much/.test(text)) {
     return `I can build an estimate from the published rates. Fine-edge knives are ${publishedPricing.fineEdge}. Serrated knives are ${publishedPricing.serrated}. Repairs are ${publishedPricing.repairs}; thinning is ${publishedPricing.thinning}. You can also tap the + button to upload up to four photos for a preliminary AI assessment. Include each full knife beside a ruler in the same plane, close-ups of the edge and tip, and an edge-down view on a known-flat board. AI can make mistakes; all visible findings, dimensions, work, and prices are estimates subject to Sean's human review. How many knives do you have, and are any serrated?`;
@@ -42,12 +60,6 @@ export function fallbackAssistantReply(messages: Message[]) {
   }
   if (/board|dishwasher|care|rust|store|storage/.test(text)) {
     return "Use wood or quality plastic boards, hand-wash and dry promptly, and store the edge in a guard, block, or secure magnetic rack. Glass, stone, ceramic boards, dishwasher cycles, and loose drawer storage shorten edge life or damage finishes.";
-  }
-  if (/restaurant|hotel|commercial|fleet|sharp after dark/.test(text)) {
-    return `A one-time restaurant reset starts at $150. Recurring commercial programs typically start at $250 per month and scale with fleet size, repair load, timing, and route fit. For confirmed accounts within agreed areas and schedules, Sharp After Dark collects after the last ticket and returns before prep the next day.`;
-  }
-  if (/club|membership|monthly|concierge/.test(text)) {
-    return `Miami Knife Club options are ${publishedPricing.club}. Essential Edge suits smaller active drawers, Chef's Drawer supports a larger rotation, and Private Kitchen Concierge adds higher-touch care and route planning.`;
   }
   if (/choose|best option|which service|recommend/.test(text)) {
     return "For practical daily knives, start with Working Edge. Choose Performance Edge when you want a more refined finish, and White Glove for premium, sentimental, or presentation-sensitive knives. Chips, broken tips, wedging, rust, or specialty tools need a condition review. What are you sharpening and how do you use it?";

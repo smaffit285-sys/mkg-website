@@ -46,9 +46,9 @@ test("local fallback answers core pricing and service questions", () => {
   const thinning = fallbackAssistantReply([{ role: "user", text: "Does my wedging knife need thinning?" }]);
   assert.match(thinning, /\$16 per side/);
   const photos = fallbackAssistantReply([{ role: "user", text: "Take a look", images: [{}] }]);
-  assert.match(photos, /received the photos/i);
-  assert.match(photos, /known-flat board/i);
-  assert.match(photos, /human inspection/i);
+  assert.match(photos, /not automatically sent to Sean/i);
+  assert.match(photos, /text the photos/i);
+  assert.match(photos, /human review/i);
   assert.match(price, /tap the \+ button/i);
   assert.match(price, /ruler/i);
   assert.match(price, /AI can make mistakes/i);
@@ -85,4 +85,19 @@ test("mail-in guidance uses the approved service rules and unknowns defer to Sea
   const unknown = fallbackAssistantReply([{ role: "user", text: "Do you sponsor competitive underwater basket weaving?" }]);
   assert.match(unknown, /need Sean to review/i);
   assert.doesNotMatch(unknown, /yes|promise/i);
+});
+
+
+test("offer questions stay in their own chatbot paths", () => {
+  const club = fallbackAssistantReply([{ role: "user", text: "How much is club membership?" }]);
+  assert.match(club, /Miami Knife Club options/);
+  assert.doesNotMatch(club, /Do not ship yet/);
+  const restaurant = fallbackAssistantReply([{ role: "user", text: "What does Sharp After Dark cost?" }]);
+  assert.match(restaurant, /one-time restaurant reset starts at \$150/);
+  assert.match(restaurant, /after the last ticket/);
+  const exchange = fallbackAssistantReply([{ role: "user", text: "Does the knife exchange include shipping?" }]);
+  assert.match(exchange, /\$99 with shipping included/);
+  assert.match(exchange, /\/book\/knife-exchange\//);
+  const course = fallbackAssistantReply([{ role: "user", text: "Is the online course included in Knife Club?" }]);
+  assert.match(course, /planned and is not a current membership benefit/);
 });

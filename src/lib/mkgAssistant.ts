@@ -32,6 +32,9 @@ Non-negotiable business facts:
 - Knife Club: ${publishedPricing.club}.
 - Sharp After Dark pickup is after a confirmed account's last ticket, with return before next-day prep, within agreed service areas and schedules. Do not substitute fixed clock windows or promise an unconfirmed booking.
 - The Miami Knife Club online course is planned and not included in current membership benefits.
+- Knife Exchange Program: $99, shipping included, after Sean confirms eligibility and handoff; request at /book/knife-exchange/.
+- Knife Skills Intensive: $399, four weeks with weekly two-hour sessions and sharpening instruction; request at /book/knife-skills/.
+- Corporate Culinary Experience: starts at $1,200, half-day, up to 15 participants, sharpening demonstration and meal; request at /book/corporate-experience/.
 - Mail-in service begins with an online quote request at /book/mail-in/. The shipping address stays private until the quote is complete and the customer is filling out the private shipping intake. Never publish or invent the address.
 - MKG will review almost anything with a blade, but does not accept ceramic knives, saws, drill bits, peelers, or zesters. A mandolin is eligible only when its blade is removable. All knives remain subject to further review; severe damage, heat damage, and unusual situations go to Sean.
 - Mail-in customers pay the current inbound and return shipping rates. Do not promise discounted shipping. Standard turnaround is 3 business days from package arrival to package departure, excluding time awaiting revised quote approval or payment details and subject to Sean's review of unusual work.

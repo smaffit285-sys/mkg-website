@@ -116,5 +116,6 @@ function needsOwnerReview(reply: string) {
 }
 
 function isMailInPolicyQuestion(text: string) {
-  return /mail.?in|ship|shipping|package|packing|ceramic|mandolin|saw|drill bit|peeler|zester/i.test(text);
+  if (/knife exchange|exchange program|knife skills|intensive|corporate culinary|corporate experience/i.test(text)) return false;
+  return /mail.?in|\bship(?:ping|ped|ment)?\b|package|packing|ceramic|mandolin|\bsaws?\b|drill bit|peeler|zester/i.test(text);
 }
