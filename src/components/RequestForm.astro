@@ -54,7 +54,7 @@ const autocomplete = { name: "name", phone: "tel", email: "email", business: "or
       );
     })}
     <div class="request-field-wide request-action-area">
-      <p class="request-handoff-note">Submitting saves your request details to the private MKG Growth Engine. You can also review and send the prepared text to Sean.</p>
+      <p class="request-handoff-note">Reviewing this form saves your request to MKG's private Growth Engine when the connection is available. You may also send the prepared text to Sean. Service is confirmed only in his reply.</p>
       <div class="request-actions">
         <button type="submit" data-prepare-request class="panel-cta-btn panel-cta-pink">{submitLabel}</button>
         <a href="tel:+13059095773" class="request-phone">Or call (305) 909-5773</a>
@@ -62,7 +62,7 @@ const autocomplete = { name: "name", phone: "tel", email: "email", business: "or
       <p class="request-privacy">Request details are saved to MKG's private CRM. Raw selected photo files are not copied to the CRM. <a href="/privacy/">Privacy</a></p>
     </div>
     <section class="request-field-wide request-preview" data-request-preview hidden aria-labelledby={`${id}-preview-title`}>
-      <h3 id={`${id}-preview-title`}>Your message is ready to send</h3>
+      <h3 id={`${id}-preview-title`}>Review or text your request</h3>
       <p>Send to <strong>Miami Knife Guy · (305) 909-5773</strong>.</p>
       <label class="request-field"><span class="request-label">Request summary</span><textarea data-request-message readonly rows="8"></textarea></label>
       <p class="request-help" data-file-summary></p>

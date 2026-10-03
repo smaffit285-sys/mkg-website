@@ -32,9 +32,9 @@ export const servicePages = [
     eyebrow: "Restaurants · Hotels · Commercial Kitchens",
     headline: "Restaurant Knife Sharpening Miami",
     accent: "pink",
-    intro: "A recurring edge program built around the rhythm of service, with scheduled 8 PM–1 AM pickup, 3 AM–8 AM return windows, and pricing scaled to the fleet.",
+    intro: "A recurring edge program built around the rhythm of service. For confirmed accounts in agreed areas and schedules, pickup follows the last ticket and return comes before next-day prep.",
     highlights: [
-      "Confirmed after-hours pickup and return windows designed to avoid kitchen downtime.",
+      "Confirmed pickup after your last ticket and return before next-day prep.",
       "One-time restaurant resets from $150; recurring programs typically start at $250/month.",
       "Fleet tracking, chip repair, tip correction, and profile restoration in the same cycle.",
     ],
@@ -43,7 +43,7 @@ export const servicePages = [
     bookingPath: "/book/restaurant/",
     faq: [
       { question: "Do you sharpen knives for restaurants in Miami?", answer: "Yes. MKG serves restaurants, hotels, and commercial kitchens across Miami-Dade and Broward with professional fleet sharpening and repair." },
-      { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. Sharp After Dark offers scheduled pickup between 8 PM and 1 AM and return between 3 AM and 8 AM. The final appointment is confirmed around the kitchen's preferred timing, location, and MKG route availability." },
+      { question: "Can service be scheduled outside prep or service hours?", answer: "Yes. For confirmed accounts in agreed service areas and schedules, MKG collects after the last ticket and returns before prep the next day. We plan around your actual operating times." },
       { question: "How far does commercial service travel?", answer: "Commercial service is available throughout Miami-Dade and Broward by scheduled appointment. Timing depends on the kitchen location and the existing service route; immediate on-call service is not offered." },
       { question: "How much does restaurant knife sharpening cost?", answer: "One-time restaurant resets start at $150. Recurring programs typically start at $250 per month and are quoted around knife volume, timing, route fit, repair load, and whether after-hours service is needed." },
       { question: "Do you handle recurring restaurant knife programs?", answer: "Yes. Weekly, bi-weekly, monthly, and other recurring intervals can be arranged based on fleet size, volume, and operational needs." },

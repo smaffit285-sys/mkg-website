@@ -8,6 +8,6 @@ export const serviceLogistics = {
     "Rush service is available when the schedule permits, with pricing based on current workload and requested turnaround.",
   pickupRule:
     "Pickup and return are priced separately from sharpening at $1 per total driven mile for any knife count. Sean confirms the route mileage and travel charge before scheduling.",
-  afterDarkPickupWindow: "8 PM–1 AM",
-  afterDarkReturnWindow: "3 AM–8 AM",
+  afterDarkPickupWindow: "After your last ticket",
+  afterDarkReturnWindow: "Before prep the next day",
 } as const;

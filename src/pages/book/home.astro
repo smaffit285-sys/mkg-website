@@ -69,6 +69,17 @@ export const prerender = true;
           { value: "repair_review", label: "Repair or restoration review" },
           { value: "consultation", label: "Not sure yet" },
         ] },
+        { name: "clubTier", label: "Knife Club plan", type: "select", options: [
+          { value: "essential_edge", label: "Essential Edge — $39/mo" },
+          { value: "chefs_drawer", label: "Chef’s Drawer — $99/mo" },
+          { value: "private_kitchen_concierge", label: "Private Kitchen Concierge — from $199/mo" },
+          { value: "unsure", label: "Help me choose" },
+        ], help: "Only for Knife Club requests. Sean confirms the plan before enrollment." },
+        { name: "clubCadence", label: "Knife Club cadence", type: "select", options: [
+          { value: "monthly", label: "Monthly maintenance" },
+          { value: "twice_yearly", label: "Twice-yearly reset" },
+          { value: "unsure", label: "Help me choose" },
+        ], help: "Only for Knife Club requests." },
         { name: "knifeDetails", label: "Knife or tool details and condition", type: "textarea", fullWidth: true, placeholder: "Knife or tool types, quantities, Japanese steel, serrations, chips, broken tips, or other details" },
       ]}
     />

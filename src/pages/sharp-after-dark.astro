@@ -5,7 +5,7 @@ export const prerender = true;
 const faq = [
   { question: "What is Sharp After Dark?", answer: "Sharp After Dark is MKG’s recurring after-hours edge-care program for restaurants, hotels, and commercial kitchens." },
   { question: "Who is Sharp After Dark for?", answer: "It is built for hospitality teams that need sharp, accountable knife fleets without interrupting prep or service." },
-  { question: "How does after-hours knife service work?", answer: "Choose a preferred pickup window between 8 PM and 1 AM and a return window between 3 AM and 8 AM. MKG confirms the appointment around your location, operating schedule, and route availability." },
+  { question: "How does after-hours knife service work?", answer: "For a confirmed account in an agreed service area and schedule, MKG collects the knives after your last ticket and returns them before prep the next day. Tell us your actual last-ticket and next-prep times so we can agree on the handoff." },
   { question: "How much does restaurant knife sharpening cost?", answer: "One-time restaurant resets start at $150. Recurring commercial programs typically start at $250 per month and are quoted around knife volume, repair load, timing, route fit, and whether after-hours service is required." },
   { question: "Can you handle weekly, bi-weekly, or monthly restaurant programs?", answer: "Yes. Weekly, bi-weekly, monthly, and other recurring schedules can be arranged around fleet size, volume, and kitchen operations." },
   { question: "Do you service steak knives and guest-facing knives?", answer: "Yes. Straight-edge and serviceable serrated steak knives can be included in a restaurant or hotel program." },
@@ -31,7 +31,7 @@ const faqSchema = {
 ---
 <RouteShell
   title="Sharp After Dark | Restaurant Knife Sharpening Miami"
-  description="Scheduled knife sharpening for Miami restaurants, hotels, and commercial kitchens, with 8 PM–1 AM collection and 3 AM–8 AM return windows."
+  description="Scheduled knife sharpening for Miami restaurants, hotels, and commercial kitchens, with pickup after the last ticket and return before next-day prep for confirmed accounts."
   canonicalPath="/sharp-after-dark/"
   image="/images/brand/sharp-after-dark-transparent.webp"
   schema={[serviceSchema, faqSchema]}

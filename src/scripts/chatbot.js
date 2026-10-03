@@ -45,6 +45,16 @@ function initChatbot(root) {
     const p = document.createElement("p");
     p.textContent = text;
     bubble.append(p);
+    if (role === 'assistant') {
+      const routes = [...new Set(String(text).match(/\/(?:book(?:\/mail-in|\/home|\/restaurant)?|send-photos)\//g) || [])];
+      for (const route of routes) {
+        const link = document.createElement('a');
+        link.href = route;
+        link.textContent = route === '/book/mail-in/' ? 'Request mail-in service' : route === '/send-photos/' ? 'Send photos for review' : 'Open service request';
+        link.className = 'mkg-chat-fallback';
+        bubble.append(document.createTextNode(' '), link);
+      }
+    }
     if (imageCount) {
       const small = document.createElement("small");
       small.textContent = `${imageCount} photo${imageCount === 1 ? "" : "s"} attached`;
@@ -118,14 +128,14 @@ function initChatbot(root) {
 
   async function readImages(fileList) {
     const files = [...fileList].slice(0, Math.max(0, 4 - pendingImages.length));
-    const total = files.reduce((sum, file) => sum + file.size, 0);
+    const total = files.reduce((sum, file) => sum + file.size, 0) + pendingImages.reduce((sum, image) => sum + (image.size || 0), 0);
     if (total > 8_000_000 || files.some((file) => file.size > 4_000_000)) {
       addMessage("assistant", "Please use up to four photos, no larger than 4 MB each or 8 MB total.");
       return;
     }
     const loaded = await Promise.all(files.map((file) => new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => resolve({ dataUrl: reader.result, mediaType: file.type, name: file.name });
+      reader.onload = () => resolve({ dataUrl: reader.result, mediaType: file.type, name: file.name, size: file.size });
       reader.onerror = reject;
       reader.readAsDataURL(file);
     })));

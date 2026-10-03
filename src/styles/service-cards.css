@@ -388,7 +388,6 @@
     backdrop-filter: blur(4px) saturate(1.08);
     -webkit-backdrop-filter: blur(4px) saturate(1.08);
     box-shadow:
-        box-shadow:
         0 0 2px rgba(255,255,255,0.78),
         0 0 12px rgba(34,211,238,0.64),
         0 0 28px rgba(34,211,238,0.44),
@@ -417,7 +416,6 @@
     backdrop-filter: blur(4px) saturate(1.08);
     -webkit-backdrop-filter: blur(4px) saturate(1.08);
     box-shadow:
-        box-shadow:
         0 0 2px rgba(255,255,255,0.76),
         0 0 12px rgba(168,85,247,0.62),
         0 0 28px rgba(168,85,247,0.44),
@@ -827,3 +825,10 @@
             inset 0 1px 0 rgba(255,255,255,0.20);
     }
 }
+
+/* Temporary sign lettering for the local and mail-in offer paths. */
+.gateway-placeholder-neon { width: 90%; max-height: 86%; text-align: center; font-family: 'Dosis','Montserrat',sans-serif; font-weight: 500; font-size: clamp(2rem,4vw,3.5rem); line-height: 1.12; letter-spacing: .07em; text-transform: uppercase; color: rgba(220,248,255,.72); -webkit-text-stroke: 1px rgba(238,252,255,.65); text-shadow: 0 0 5px rgba(34,211,238,.75), 0 0 18px rgba(34,211,238,.35); filter: none; }
+.gateway-placeholder-neon--pink { color: rgba(255,217,245,.78); -webkit-text-stroke-color: rgba(255,240,252,.66); text-shadow: 0 0 5px rgba(236,72,153,.8), 0 0 20px rgba(168,85,247,.4); }
+.group:hover .gateway-placeholder-neon, .group:focus-within .gateway-placeholder-neon, .group:active .gateway-placeholder-neon { opacity: 1; transform: translateY(-46px) scale(.78); filter: none; }
+.group:focus-within .hardware-gateway { outline: 2px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .gateway-placeholder-neon { transition: none; } }
