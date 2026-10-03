@@ -13,7 +13,7 @@ function page(route='book/home/', search='') {
   return {dom,doc,form,win:dom.window};
 }
 function fill(form,values={}) {
-  const defaults={name:'Test Customer',phone:'3055550100',location:'North Miami Beach',business:'Test Kitchen',notes:'Wedges in carrots',requestType:'thinning',platform:'private',feedback:'Test feedback',referrer:'Test referrer',serviceInterest:'one_time_home'};
+  const defaults={name:'Test Customer',phone:'3055550100',location:'North Miami Beach',business:'Test Kitchen',notes:'Wedges in carrots',requestType:'thinning',platform:'private',feedback:'Test feedback',referrer:'Test referrer',serviceInterest:'one_time_home',businessType:'restaurant',clubTier:'essential_edge',clubCadence:'monthly'};
   for(const control of form.querySelectorAll('[required]')) {
     control.value=values[control.name] ?? defaults[control.name] ?? 'Test';
   }
@@ -55,7 +55,7 @@ test('home request prepares a readable SMS without sending or exposing internal 
   assert(!text.includes('home_knives'));
   assert.equal(decodeURIComponent(doc.querySelector('[data-open-message]').getAttribute('href').split('?body=')[1]),text);
   assert.equal(win.location.pathname,'/book/home/');
-  assert.match(doc.querySelector('[data-form-status]').textContent,/Nothing has been sent/);
+  assert.match(doc.querySelector('[data-form-status]').textContent,/Saving your request/);
   assert(!JSON.stringify(events).includes('Test Customer'));
 });
 
@@ -155,7 +155,7 @@ test('service chooser preserves referral context on every service path',()=>{
   dom.window.matchMedia=()=>({addEventListener(){}});
   dom.window.eval(readFileSync('src/scripts/interactions.js','utf8'));
   const choices=[...dom.window.document.querySelectorAll('.booking-choice')];
-  assert.equal(choices.length,4);
+  assert.equal(choices.length,9);
   for(const choice of choices) assert.equal(new URL(choice.href).searchParams.get('ref'),'REF-123');
   dom.window.close();
 });
@@ -192,4 +192,27 @@ test('coded referral routes preserve attribution through header and footer booki
   dom.window.eval(readFileSync('src/scripts/interactions.js','utf8'));
   for(const link of dom.window.document.querySelectorAll('a[href^="/book/"]')) assert.equal(new URL(link.href).searchParams.get('ref'),'FRIEND-123');
   dom.window.close();
+});
+
+
+test('offer links preselect the matching commercial and club request details',()=>{
+  const afterDark=page('book/restaurant/','?intent=sharp-after-dark');
+  assert.equal(afterDark.form.elements.programType.value,'sharp_after_dark');
+  assert.equal(afterDark.form.elements.source.value,'public_book_restaurant_sharp_after_dark');
+  const steak=page('book/restaurant/','?intent=steak-knives');
+  assert.match(steak.form.elements.serviceNeeds.value,/Steak knife/);
+  const club=page('book/home/','?intent=club');
+  assert.equal(club.form.elements.clubTier.required,true);
+  assert.equal(club.form.elements.clubCadence.required,true);
+  assert.equal(club.form.elements.clubTier.disabled,false);
+  const oneTime=page('book/home/','?intent=one-time');
+  assert.equal(oneTime.form.elements.serviceInterest.value,'one_time_home');
+  assert.equal(oneTime.form.elements.clubTier.disabled,true);
+});
+
+test('general contact questions use a CRM-backed request form',()=>{
+  const {form}=page('contact/');
+  assert.equal(form.id,'contact-request');
+  assert.equal(form.elements.source.value,'public_contact');
+  assert.equal(form.elements.question.required,true);
 });
