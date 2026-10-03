@@ -77,7 +77,7 @@ export const publishedPricing = {
   thickSingleBevel: "$5 per inch",
   thinning: "From $16 per side; varies with material removed, labor, abrasives, and time",
   whiteGlove: "Condition and scope reviewed before pricing",
-  travel: "$1 per total driven mile, rounded up; minimum travel charge confirmed before scheduling",
+  travel: "$1 per total driven mile, rounded up, for any knife count; Sean confirms the route before scheduling",
   restaurantReset: "From $150",
   restaurantRecurring: "Typically from $250 per month",
   club: "Essential Edge $39/month; Chef's Drawer $99/month; Private Kitchen Concierge from $199/month",

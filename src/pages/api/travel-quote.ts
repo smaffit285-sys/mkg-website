@@ -40,7 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
       totalMiles,
       travelEstimate: totalMiles,
       display: `$${totalMiles}`,
-      note: "Pickup-and-return travel estimate at $1 per total driven mile, rounded up. Sean confirms the route and any minimum before scheduling.",
+      note: "Pickup-and-return travel estimate at $1 per total driven mile, rounded up, for any knife count. Sean confirms the route before scheduling.",
     });
   } catch (error) {
     console.error("Travel quote error", error);
