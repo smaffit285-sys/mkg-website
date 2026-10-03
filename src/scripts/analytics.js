@@ -1,6 +1,7 @@
 const allowedEvents = new Set([
   "book_service_click",
   "offer_path_click",
+  "contact_request_start", "contact_request_prepared",
   "restaurant_request_start",
   "restaurant_request_prepared",
   "home_request_start",
@@ -89,6 +90,7 @@ function formAnalytics(form) {
     "knife-skills-request": { start: "knife_skills_request_start", serviceType: "knife_skills_intensive" },
     "corporate-experience-request": { start: "corporate_experience_request_start", serviceType: "corporate_culinary_experience" },
     "special-request-review": { start: "photo_request_start", serviceType: "photo" },
+    "contact-request": { start: "contact_request_start", serviceType: "general" },
     "review-submission": { start: null, serviceType: "review" },
     "generic-referral-request": { start: null, serviceType: "referral" },
     "coded-referral-request": { start: null, serviceType: "referral" },

@@ -1,6 +1,7 @@
 ---
 import RouteShell from "../components/RouteShell.astro";
 import CustomerFlowPage from "../components/CustomerFlowPage.astro";
+import RequestForm from "../components/RequestForm.astro";
 export const prerender = true;
 ---
 <RouteShell
@@ -21,5 +22,23 @@ export const prerender = true;
     primaryLabel="Text MKG"
     secondaryHref="tel:+13059095773"
     secondaryLabel="Call (305) 909-5773"
-  />
+    tertiaryHref="/book/"
+    tertiaryLabel="Choose a Service"
+  >
+    <RequestForm
+      id="contact-request"
+      title="Ask Sean a Question"
+      description="Share your question here. The request is saved to MKG when the connection is available, and Sean can reply using the contact details you provide."
+      source="public_contact"
+      serviceType="general"
+      submitLabel="Review My Question"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "City or neighborhood", placeholder: "Location" },
+        { name: "question", label: "Your question", type: "textarea", required: true, fullWidth: true, placeholder: "What would you like Sean to know?" },
+      ]}
+    />
+  </CustomerFlowPage>
 </RouteShell>
