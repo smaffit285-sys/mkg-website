@@ -14,7 +14,7 @@ export const prerender = true;
 >
   <CustomerFlowPage
     intake={true}
-    eyebrow="Sharp After Dark"
+    eyebrow="Restaurant Knife Service"
     headline="Book restaurant edge care."
     intro="Tell Sean about your kitchen, knife volume, and service window. He’ll review whether you need a one-time reset, recurring edge program, or after-hours service before the booking is confirmed."
     steps={[
@@ -26,7 +26,7 @@ export const prerender = true;
     primaryLabel="Call MKG"
     secondaryHref="/sharp-after-dark/"
     secondaryLabel="View Sharp After Dark"
-    nextCopy="Prepare the request, then send the message. Sean reviews the account, knife volume, timing, and service window before confirming the right program."
+    nextCopy="Review the details and save your request to MKG. Sean confirms the program, handoff, and timing with you."
   >
     <RequestForm
       id="restaurant-service-request"
@@ -61,7 +61,9 @@ export const prerender = true;
           { value: "monthly", label: "Monthly" },
           { value: "unsure", label: "Not sure yet" },
         ] },
-        { name: "serviceWindow", label: "Preferred service window", placeholder: "Pickup 8 PM–1 AM · Return 3 AM–8 AM · Preferred days" },
+        { name: "lastTicket", label: "Last ticket or end of service", placeholder: "Example: midnight" },
+        { name: "nextPrep", label: "Next-day prep start", placeholder: "Example: 8 AM" },
+        { name: "serviceWindow", label: "Preferred service days and handoff notes", placeholder: "Preferred days, pickup location, return contact" },
         { name: "serviceNeeds", label: "Service needs", type: "textarea", fullWidth: true, placeholder: "Recurring sharpening, repairs, steak knives, fleet tracking, or other needs" },
       ]}
     />

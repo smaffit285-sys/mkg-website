@@ -198,6 +198,8 @@ test('coded referral routes preserve attribution through header and footer booki
 test('offer links preselect the matching commercial and club request details',()=>{
   const afterDark=page('book/restaurant/','?intent=sharp-after-dark');
   assert.equal(afterDark.form.elements.programType.value,'sharp_after_dark');
+  assert(afterDark.form.elements.lastTicket);
+  assert(afterDark.form.elements.nextPrep);
   assert.equal(afterDark.form.elements.source.value,'public_book_restaurant_sharp_after_dark');
   const steak=page('book/restaurant/','?intent=steak-knives');
   assert.match(steak.form.elements.serviceNeeds.value,/Steak knife/);
