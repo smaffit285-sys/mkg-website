@@ -56,6 +56,24 @@ export function initRequestForms(doc) {
       }
       if (form.dataset.clubSubmitLabel) form.querySelector('[data-prepare-request]').textContent = form.dataset.clubSubmitLabel;
     }
+    if (form.id === 'home-service-request' && params.get('intent') === 'one-time') {
+      form.dataset.formTitle = 'One-Time Local Sharpening';
+      form.closest('section').querySelector('h2').textContent = 'Request One-Time Sharpening';
+      form.elements.namedItem('serviceInterest').value = 'one_time_home';
+      form.elements.namedItem('source').value = 'public_book_home_one_time';
+    }
+    if (form.id === 'restaurant-service-request' && params.get('intent') === 'sharp-after-dark') {
+      form.dataset.formTitle = 'Sharp After Dark Request';
+      form.closest('section').querySelector('h2').textContent = 'Request Sharp After Dark';
+      form.elements.namedItem('programType').value = 'sharp_after_dark';
+      form.elements.namedItem('source').value = 'public_book_restaurant_sharp_after_dark';
+    }
+    if (form.id === 'restaurant-service-request' && params.get('intent') === 'steak-knives') {
+      form.dataset.formTitle = 'Steak Knife Service Request';
+      form.closest('section').querySelector('h2').textContent = 'Request Steak Knife Service';
+      form.elements.namedItem('serviceNeeds').value = 'Steak knife sharpening for the dining room.';
+      form.elements.namedItem('source').value = 'public_book_restaurant_steak_knives';
+    }
     if (params.get('intent') === 'thinning' && form.id === 'special-request-review') {
       form.elements.namedItem('requestType').value = 'thinning';
     }
@@ -64,6 +82,16 @@ export function initRequestForms(doc) {
     if (serviceSelect?.tagName === 'SELECT' && [...serviceSelect.options].some(option => option.value === service)) {
       serviceSelect.value = service;
     }
+    const clubFields = ['clubTier', 'clubCadence'].map(name => form.elements.namedItem(name)).filter(Boolean);
+    const toggleClubFields = () => {
+      const active = form.elements.namedItem('serviceInterest')?.value === 'knife_club';
+      for (const field of clubFields) {
+        field.closest('label').hidden = !active;
+        field.disabled = !active;
+        field.required = active;
+      }
+    };
+    if (clubFields.length) { toggleClubFields(); form.elements.namedItem('serviceInterest')?.addEventListener('change', toggleClubFields); }
     const referral = params.get('ref');
     if (referral && referral.length <= 100 && !form.elements.namedItem('referralCode')) {
       const input = doc.createElement('input');
@@ -102,11 +130,15 @@ export function initRequestForms(doc) {
         : 'No photos selected.';
       fileSummary.hidden = form.dataset.photoHandoff !== 'true' && files.length === 0;
       preview.hidden = false;
-      status.textContent = 'Ready for your review. Nothing has been sent yet.';
+      status.textContent = 'Saving your request to MKG… You can review the prepared text below.';
+      const submittedMessage = preparedMessage;
       void captureRequestForm(form, win).then(result => {
-        if (result.ok && preparedMessage) status.textContent = 'Saved to MKG. Your prepared text is also ready if you want to message Sean directly.';
+        if (preparedMessage !== submittedMessage) return;
+        status.textContent = result.ok
+          ? 'Request saved to MKG. Sean will review it; service is confirmed only after his reply. You may also text him directly.'
+          : 'Automatic saving is unavailable. Please send the prepared text to Sean.';
       }).catch(() => {
-        if (preparedMessage) status.textContent = 'Automatic saving is temporarily unavailable. Your request is ready—please send the prepared text to Sean.';
+        if (preparedMessage === submittedMessage) status.textContent = 'Automatic saving is temporarily unavailable. Your request is ready—please send the prepared text to Sean.';
       });
       messageBox.focus();
       preview.scrollIntoView?.({ block: 'nearest', behavior: 'auto' });
@@ -115,6 +147,9 @@ export function initRequestForms(doc) {
         'home-service-request': ['home_request_prepared','home'],
         'special-request-review': ['photo_request_prepared','photo'],
         'mail-in-service-request': ['mail_in_request_prepared','mail_in'],
+        'knife-exchange-request': ['knife_exchange_request_prepared','knife_exchange'],
+        'knife-skills-request': ['knife_skills_request_prepared','knife_skills_intensive'],
+        'corporate-experience-request': ['corporate_experience_request_prepared','corporate_culinary_experience'],
         'contact-request': ['contact_request_prepared','general'],
         'review-submission': ['review_message_prepared','review'],
         'generic-referral-request': ['referral_request_prepared','referral'],
