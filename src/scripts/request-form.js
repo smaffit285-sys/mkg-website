@@ -131,13 +131,14 @@ export function initRequestForms(doc) {
       fileSummary.hidden = form.dataset.photoHandoff !== 'true' && files.length === 0;
       preview.hidden = false;
       status.textContent = 'Saving your request to MKG… You can review the prepared text below.';
+      const submittedMessage = preparedMessage;
       void captureRequestForm(form, win).then(result => {
-        if (!preparedMessage) return;
+        if (preparedMessage !== submittedMessage) return;
         status.textContent = result.ok
           ? 'Request saved to MKG. Sean will review it; service is confirmed only after his reply. You may also text him directly.'
           : 'Automatic saving is unavailable. Please send the prepared text to Sean.';
       }).catch(() => {
-        if (preparedMessage) status.textContent = 'Automatic saving is temporarily unavailable. Your request is ready—please send the prepared text to Sean.';
+        if (preparedMessage === submittedMessage) status.textContent = 'Automatic saving is temporarily unavailable. Your request is ready—please send the prepared text to Sean.';
       });
       messageBox.focus();
       preview.scrollIntoView?.({ block: 'nearest', behavior: 'auto' });
@@ -146,6 +147,9 @@ export function initRequestForms(doc) {
         'home-service-request': ['home_request_prepared','home'],
         'special-request-review': ['photo_request_prepared','photo'],
         'mail-in-service-request': ['mail_in_request_prepared','mail_in'],
+        'knife-exchange-request': ['knife_exchange_request_prepared','knife_exchange'],
+        'knife-skills-request': ['knife_skills_request_prepared','knife_skills_intensive'],
+        'corporate-experience-request': ['corporate_experience_request_prepared','corporate_culinary_experience'],
         'review-submission': ['review_message_prepared','review'],
         'generic-referral-request': ['referral_request_prepared','referral'],
         'coded-referral-request': ['referral_request_prepared','referral'],

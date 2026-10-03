@@ -1,0 +1,43 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Knife Exchange Program | Miami Knife Guy"
+  description="Ask about the $99 Miami Knife Guy knife exchange: trade dull knives for sharp refurbished knives with shipping included."
+  canonicalPath="/book/knife-exchange/"
+  pageClass="intake-page"
+>
+  <CustomerFlowPage
+    intake={true}
+    eyebrow="Knife Exchange"
+    headline="Request a knife exchange."
+    intro="Trade dull knives for sharp refurbished ones. Tell Sean what you have and what you need so he can confirm the exchange before you send anything."
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
+    secondaryHref="/services/"
+    secondaryLabel="View Services"
+    nextCopy="Sean reviews the request, confirms availability and the final details, then replies before anything is scheduled."
+  >
+    <p class="sub-body mb-6"><strong class="text-white">$99.</strong> Shipping is included in the listed exchange program. Sean confirms eligibility and the exact handoff before you ship or drop off knives.</p>
+    <RequestForm
+      id="knife-exchange-request"
+      title="Request a knife exchange."
+      description="Share the details below so Sean can review this offer with you."
+      source="public_book_knife_exchange"
+      serviceType="knife_exchange"
+      submitLabel="Review My Request"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "City or ZIP", required: true, placeholder: "Location" },
+        { name: "knifeCount", label: "How many knives?", type: "number", min: 1, step: 1, placeholder: "Number of knives" },
+        { name: "knifeDetails", label: "Knives to exchange", type: "textarea", fullWidth: true, required: true, placeholder: "Types, condition, and any details you know" },
+        { name: "notes", label: "Anything else Sean should know?", type: "textarea", fullWidth: true, placeholder: "Goals, timing, questions, and special requests" },
+      ]}
+    />
+  </CustomerFlowPage>
+</RouteShell>

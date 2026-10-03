@@ -1,0 +1,44 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Knife Skills Intensive | Miami Knife Guy"
+  description="Request the Miami Knife Guy four-week Knife Skills Intensive: weekly two-hour sessions with sharpening instruction."
+  canonicalPath="/book/knife-skills/"
+  pageClass="intake-page"
+>
+  <CustomerFlowPage
+    intake={true}
+    eyebrow="Hands-On Learning"
+    headline="Request Knife Skills Intensive."
+    intro="A four-week intensive with a two-hour session each week and sharpening instruction. Share your experience and preferred timing so Sean can confirm a place."
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
+    secondaryHref="/services/"
+    secondaryLabel="View Services"
+    nextCopy="Sean reviews the request, confirms availability and the final details, then replies before anything is scheduled."
+  >
+    <p class="sub-body mb-6"><strong class="text-white">$399.</strong> Four weekly two-hour sessions. The schedule and location are confirmed directly with Sean.</p>
+    <RequestForm
+      id="knife-skills-request"
+      title="Request Knife Skills Intensive."
+      description="Share the details below so Sean can review this offer with you."
+      source="public_book_knife_skills"
+      serviceType="knife_skills_intensive"
+      submitLabel="Review My Request"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "City or ZIP", required: true, placeholder: "Location" },
+        { name: "participants", label: "Number of participants", type: "number", min: 1, step: 1, placeholder: "1" },
+        { name: "experience", label: "Your current knife skills", type: "textarea", fullWidth: true, placeholder: "What you would like to learn or improve" },
+        { name: "preferredDates", label: "Preferred days or timing", placeholder: "Your availability" },
+        { name: "notes", label: "Anything else Sean should know?", type: "textarea", fullWidth: true, placeholder: "Goals, timing, questions, and special requests" },
+      ]}
+    />
+  </CustomerFlowPage>
+</RouteShell>

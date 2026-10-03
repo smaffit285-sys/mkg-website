@@ -3,10 +3,15 @@ import RouteShell from "../../components/RouteShell.astro";
 import "../../styles/intake.css";
 export const prerender = true;
 const choices = [
-  { href: "/book/home/", title: "Home kitchen", copy: "Sharpening, repairs, or recurring Knife Club care for the knives you use at home." },
-  { href: "/book/restaurant/", title: "Restaurant or hotel", copy: "Kitchen fleets, steak knives, recurring programs, and Sharp After Dark service." },
-  { href: "/book/mail-in/", title: "Mail-in service", copy: "Request approval and packing instructions before shipping knives from outside the local service area." },
-  { href: "/send-photos/", title: "Repair, thinning, or not sure yet?", copy: "Send photos and describe the problem. Sean can help identify the right service." },
+  { href: "/book/home/?intent=one-time", title: "One-time local sharpening", copy: "Shop drop-off or pickup and return for the knives you need sharpened now." },
+  { href: "/book/home/?intent=club", title: "Miami Knife Club", copy: "Choose a recurring home-kitchen plan, tier, and service cadence." },
+  { href: "/book/restaurant/?intent=sharp-after-dark", title: "Sharp After Dark", copy: "For confirmed kitchens: pickup after the last ticket and return before next-day prep." },
+  { href: "/book/restaurant/", title: "One-time restaurant reset", copy: "A commercial fleet refresh, starting at $150." },
+  { href: "/book/mail-in/", title: "Mail-in service", copy: "Request a quote and packing instructions before shipping your knives." },
+  { href: "/send-photos/", title: "Repair, thinning, or unsure?", copy: "Send details and photos for a human review." },
+  { href: "/book/knife-exchange/", title: "Knife Exchange Program", copy: "Ask about the $99 exchange with shipping included." },
+  { href: "/book/knife-skills/", title: "Knife Skills Intensive", copy: "Request the four-week workshop with weekly two-hour sessions." },
+  { href: "/book/corporate-experience/", title: "Corporate Culinary Experience", copy: "Plan a half-day event for up to 15 participants." },
 ];
 ---
 <RouteShell title="Book Knife Sharpening | Miami Knife Guy"
@@ -16,11 +21,11 @@ const choices = [
     <div class="panel-inner"><div class="max-w-4xl mx-auto">
       <p class="sub-eyebrow">Book Miami Knife Guy</p>
       <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">Let’s get your edge back.</h1>
-      <p class="sub-body">Choose local, restaurant, or mail-in service—or start with photos if you’re unsure what your knife needs.</p>
+      <p class="sub-body">Choose the offer that fits your kitchen. Each request goes to Sean for review before service is confirmed.</p>
       <nav class="booking-choices" aria-label="Choose your service">
         {choices.map(choice => <a href={choice.href} class="booking-choice" data-referral-link><h2>{choice.title}</h2><p>{choice.copy}</p><span aria-hidden="true">→</span></a>)}
       </nav>
-      <p class="booking-assurance">You’ll review and send a request to Sean. He’ll confirm the work, timing, and drop-off or collection details with you before service is scheduled.</p>
+      <p class="booking-assurance">Your form details are saved to MKG when the connection is available; you can also text Sean. He’ll confirm the work, timing, and drop-off or collection details with you before service is scheduled.</p>
       <div class="request-actions mt-6"><a class="panel-cta-btn panel-cta-ghost" href="tel:+13059095773">Talk to Sean · (305) 909-5773</a><a href="/services/" class="request-phone">View services &amp; pricing →</a></div>
     </div></div>
   </main>

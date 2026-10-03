@@ -1,0 +1,45 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
+import RequestForm from "../../components/RequestForm.astro";
+export const prerender = true;
+---
+<RouteShell
+  title="Corporate Culinary Experience | Miami Knife Guy"
+  description="Request Miami Knife Guy's half-day Corporate Culinary Experience for up to 15 participants, with a sharpening demonstration and meal."
+  canonicalPath="/book/corporate-experience/"
+  pageClass="intake-page"
+>
+  <CustomerFlowPage
+    intake={true}
+    eyebrow="Corporate Culinary Experience"
+    headline="Plan a culinary team experience."
+    intro="Bring a group together for a half-day culinary experience with a sharpening demonstration and meal. Tell Sean about the group and the date you have in mind."
+    primaryHref="tel:+13059095773"
+    primaryLabel="Call MKG"
+    secondaryHref="/services/"
+    secondaryLabel="View Services"
+    nextCopy="Sean reviews the request, confirms availability and the final details, then replies before anything is scheduled."
+  >
+    <p class="sub-body mb-6"><strong class="text-white">From $1,200.</strong> Half-day experience for up to 15 participants. Scope, menu, location, and final quote are confirmed with Sean.</p>
+    <RequestForm
+      id="corporate-experience-request"
+      title="Plan a culinary team experience."
+      description="Share the details below so Sean can review this offer with you."
+      source="public_book_corporate_experience"
+      serviceType="corporate_culinary_experience"
+      submitLabel="Review My Request"
+      fields={[
+        { name: "name", label: "Your name", required: true, placeholder: "Name" },
+        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
+        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
+        { name: "location", label: "City or ZIP", required: true, placeholder: "Location" },
+        { name: "business", label: "Company or organization", required: true, placeholder: "Business name" },
+        { name: "participants", label: "Expected participants (up to 15)", type: "number", min: 1, step: 1, placeholder: "Number of guests" },
+        { name: "preferredDates", label: "Preferred date or timeframe", placeholder: "Date or month" },
+        { name: "eventGoals", label: "What would make the event successful?", type: "textarea", fullWidth: true, placeholder: "Team goals, dietary considerations, and questions" },
+        { name: "notes", label: "Anything else Sean should know?", type: "textarea", fullWidth: true, placeholder: "Goals, timing, questions, and special requests" },
+      ]}
+    />
+  </CustomerFlowPage>
+</RouteShell>
