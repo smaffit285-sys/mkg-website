@@ -19,3 +19,17 @@ jobs:
       - run: npm run test:chatbot
       - run: npm run test:forms
       - run: npm run check:links
+      - name: Live assistant mail-in smoke
+        if: github.event_name == 'push'
+        run: |
+          node --input-type=module <<'NODE'
+          const response = await fetch('https://www.miamiknifeguy.com/api/chat', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ messages: [{ role: 'user', text: 'How do I mail in a knife?' }] }),
+          });
+          const body = await response.json();
+          if (!response.ok || !body.reply?.includes('Do not ship yet') || !body.reply.includes('/book/mail-in/')) {
+            throw new Error(`Assistant mail-in response failed with HTTP ${response.status}`);
+          }
+          NODE
