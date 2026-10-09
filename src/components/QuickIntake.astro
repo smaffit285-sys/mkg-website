@@ -86,7 +86,6 @@ const serviceType = mode === "restaurant" ? "restaurant" : mailIn ? "mail_in" : 
         </>
       )}
       <label class="quick-intake-check"><input type="checkbox" name="rushRequested" value="yes" /><span>Request rush service <small>Availability and any extra charge are confirmed by Sean.</small></span></label>
-      <label class="quick-intake-field" data-needed-by hidden><span>When do you need it?</span><input name="neededBy" type="date" /></label>
       <p class="quick-intake-note">This is a request, not a confirmed booking. Sean will text you about the work, price, and timing. <a href="/privacy/">Privacy</a></p>
       <div class="quick-intake-actions"><button type="button" data-back class="quick-intake-secondary">Back</button><button type="submit" data-send class="quick-intake-primary">Text Sean</button></div>
     </div>

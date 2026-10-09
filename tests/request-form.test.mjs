@@ -86,6 +86,8 @@ test('culinary pro branches to personal or restaurant; restaurant fields appear 
   assert.equal(shell.querySelector('[data-pickup-fields]').hidden, false);
   assert.equal(form.elements.namedItem('address').required, true);
   assert.equal(form.elements.namedItem('knifeVolume').value, '18');
+  assert(form.elements.namedItem('rushRequested'));
+  assert.equal(form.elements.namedItem('neededBy'), null);
 });
 
 test('restaurant entry skips the role question but lets the customer go back', () => {

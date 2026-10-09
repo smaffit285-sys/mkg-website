@@ -34,7 +34,7 @@ function buildQuickMessage(form, mode, includePhotos) {
   if (selected(form, 'otherEquipment') === 'yes') lines.push(`Other kitchen equipment: ${value(form, 'equipmentDetails') || 'Yes — discuss with Sean'}`);
   if (value(form, 'address')) lines.push(`Pickup address: ${value(form, 'address')}`);
   if (value(form, 'availability')) lines.push(`Availability: ${value(form, 'availability')}`);
-  if (form.elements.namedItem('rushRequested')?.checked) lines.push(`Rush requested: ${value(form, 'neededBy') || 'Date to discuss'}`);
+  if (form.elements.namedItem('rushRequested')?.checked) lines.push('Rush service requested');
   if (value(form, 'offerIntent')) lines.push(`Service interest: ${value(form, 'offerIntent').replaceAll('-', ' ')}`);
   if (value(form, 'requestType')) lines.push(`Specialty: ${value(form, 'requestType').replaceAll('_', ' ')}`);
   if (value(form, 'notes')) lines.push(`Notes: ${value(form, 'notes')}`);
@@ -63,7 +63,6 @@ export function initQuickIntakes(doc) {
     const restaurantDetails = shell.querySelector('[data-restaurant-details]');
     const equipmentDetails = shell.querySelector('[data-equipment-details]');
     const pickupFields = shell.querySelector('[data-pickup-fields]');
-    const neededBy = shell.querySelector('[data-needed-by]');
     const photoCount = shell.querySelector('[data-photo-count]');
     const photoInput = form.elements.namedItem('photos');
     let step = 1;
@@ -119,13 +118,6 @@ export function initQuickIntakes(doc) {
       pickupFields.hidden = !pickup;
       for (const input of pickupFields.querySelectorAll('input')) { input.disabled = !pickup; input.required = pickup; }
     }
-    function updateRush() {
-      const rush = form.elements.namedItem('rushRequested').checked;
-      neededBy.hidden = !rush;
-      const date = neededBy.querySelector('input');
-      date.disabled = !rush;
-      date.required = rush;
-    }
     function updatePhotos() {
       const files = photos(form);
       photoCount.textContent = files.length ? `${files.length} photo${files.length === 1 ? '' : 's'} selected` : mode === 'mail_in' ? 'Add at least one photo; up to four total.' : 'Choose up to four photos, or continue without one.';
@@ -174,7 +166,6 @@ export function initQuickIntakes(doc) {
             if (!value(form, 'availability')) return invalid('Tell Sean when pickup generally works.', form.elements.namedItem('availability'));
           }
         }
-        if (form.elements.namedItem('rushRequested').checked && !value(form, 'neededBy')) return invalid('Choose your needed-by date for a rush request.', form.elements.namedItem('neededBy'));
       }
       return true;
     }
@@ -187,7 +178,6 @@ export function initQuickIntakes(doc) {
     form.querySelectorAll('[name="otherEquipment"]').forEach(control => control.addEventListener('change', updateEquipment));
     form.elements.namedItem('knifeVolumeRange').addEventListener('change', updateVolume);
     form.querySelectorAll('[name="handoffPreference"]').forEach(control => control.addEventListener('change', updateHandoff));
-    form.elements.namedItem('rushRequested').addEventListener('change', updateRush);
     photoInput.addEventListener('change', updatePhotos);
     form.addEventListener('input', () => { delete form.dataset.crmEventId; });
     shell.querySelectorAll('[data-next]').forEach(button => button.addEventListener('click', () => { if (validate(step)) showStep(step + 1, true); }));
@@ -243,6 +233,6 @@ export function initQuickIntakes(doc) {
       void crmPromise;
     });
 
-    updateRole(); updateVolume(); updateEquipment(); updateHandoff(); updateRush(); updatePhotos(); showStep(step);
+    updateRole(); updateVolume(); updateEquipment(); updateHandoff(); updatePhotos(); showStep(step);
   }
 }
