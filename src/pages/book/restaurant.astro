@@ -1,9 +1,8 @@
 ---
 import RouteShell from "../../components/RouteShell.astro";
 import CustomerFlowPage from "../../components/CustomerFlowPage.astro";
-import RequestForm from "../../components/RequestForm.astro";
+import QuickIntake from "../../components/QuickIntake.astro";
 import ServiceLogistics from "../../components/ServiceLogistics.astro";
-import { sharpeningServices } from "../../config/sharpeningServices";
 export const prerender = true;
 ---
 <RouteShell
@@ -16,7 +15,7 @@ export const prerender = true;
     intake={true}
     eyebrow="Restaurant Knife Service"
     headline="Book restaurant edge care."
-    intro="Tell Sean about your kitchen, knife volume, and service window. He’ll review whether you need a one-time reset, recurring edge program, or after-hours service before the booking is confirmed."
+    intro="Give Sean a rough knife count, tell him whether other kitchen equipment needs attention, and leave a contact number. He’ll work out the service plan and schedule with you."
     steps={[
       { title: "Describe the kitchen", copy: "Share restaurant or hotel name, location, operating hours, and the best contact." },
       { title: "Estimate the fleet", copy: "Include chef knives, prep knives, steak knives, specialty blades, and known damage." },
@@ -26,47 +25,9 @@ export const prerender = true;
     primaryLabel="Call MKG"
     secondaryHref="/sharp-after-dark/"
     secondaryLabel="View Sharp After Dark"
-    nextCopy="Review the details and save your request to MKG. Sean confirms the program, handoff, and timing with you."
+    nextCopy="Text the short request and any photos. Sean will confirm the scope, pickup or drop-off, and schedule with you. Sharp After Dark timing is agreed for each account and service area."
   >
-    <RequestForm
-      id="restaurant-service-request"
-      title="Request Restaurant Service"
-      description="Share the kitchen, fleet, and preferred service window. One-time resets start at $150; recurring programs are quoted around volume, timing, repairs, and route fit."
-      source="public_book_restaurant"
-      serviceType="restaurant"
-      submitLabel="Review My Request"
-      fields={[
-        { name: "name", label: "Your name", required: true, placeholder: "Name" },
-        { name: "business", label: "Restaurant or hotel", required: true, placeholder: "Business name" },
-        { name: "businessType", label: "Business type", type: "select", required: true, options: [
-          { value: "restaurant", label: "Restaurant" },
-          { value: "hotel", label: "Hotel" },
-          { value: "other", label: "Other commercial kitchen" },
-        ] },
-        { name: "phone", label: "Phone", type: "tel", required: true, placeholder: "(305) 555-0123" },
-        { name: "email", label: "Email", type: "email", placeholder: "you@example.com" },
-        { name: "location", label: "Service location", required: true, placeholder: "City or address" },
-        { name: "knifeVolume", label: "Approximate knife volume", placeholder: "Chef knives, prep knives, steak knives" },
-        { name: "requestType", label: "Sharpening service or tool", type: "select", value: "knife_sharpening", options: sharpeningServices, help: "Choose the main service; list any additional tools in the notes." },
-        { name: "programType", label: "Program type", type: "select", value: "one_time_reset", options: [
-          { value: "one_time_reset", label: "One-time restaurant reset - from $150" },
-          { value: "recurring_program", label: "Recurring edge program - typically from $250/mo" },
-          { value: "sharp_after_dark", label: "Sharp After Dark - after-hours service" },
-          { value: "not_sure", label: "Not sure - help me choose" },
-        ] },
-        { name: "frequency", label: "Preferred frequency", type: "select", options: [
-          { value: "one_time", label: "One-time service" },
-          { value: "weekly", label: "Weekly" },
-          { value: "biweekly", label: "Bi-weekly" },
-          { value: "monthly", label: "Monthly" },
-          { value: "unsure", label: "Not sure yet" },
-        ] },
-        { name: "lastTicket", label: "Last ticket or end of service", placeholder: "Example: midnight" },
-        { name: "nextPrep", label: "Next-day prep start", placeholder: "Example: 8 AM" },
-        { name: "serviceWindow", label: "Preferred service days and handoff notes", placeholder: "Preferred days, pickup location, return contact" },
-        { name: "serviceNeeds", label: "Service needs", type: "textarea", fullWidth: true, placeholder: "Recurring sharpening, repairs, steak knives, fleet tracking, or other needs" },
-      ]}
-    />
+    <QuickIntake mode="restaurant" />
     <details class="intake-logistics"><summary>Service area, collection windows &amp; travel fees</summary><ServiceLogistics mode="commercial" /></details>
   </CustomerFlowPage>
 </RouteShell>

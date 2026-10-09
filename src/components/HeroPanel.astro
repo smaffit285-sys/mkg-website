@@ -1,5 +1,10 @@
 ---
 import SiteFooter from "./SiteFooter.astro";
+import { Image } from "astro:assets";
+import oneTimeWordmark from "../assets/portals/one-time-wordmark.png";
+import mailInWordmark from "../assets/portals/mail-in-wordmark.png";
+import oneTimeScene from "../assets/portals/one-time-scene.png";
+import mailInScene from "../assets/portals/mail-in-scene.png";
 ---
 <!-- ====================================================
 PANEL: HOME
@@ -194,15 +199,18 @@ Recurring edge care for homes that cook seriously.
 <a href="/one-time-sharpening/" class="absolute inset-0 z-40" aria-label="Request one-time local knife sharpening"></a>
 <div class="hardware-gateway club-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
 <div class="service-card-water-scrim" aria-hidden="true"></div>
-<img
-src="/images/services/neon-knives.webp"
+<Image
+src={oneTimeScene}
+width={900}
+format="webp"
+quality={72}
 class="service-card-bg service-card-bg--club absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-85 group-hover:grayscale-0 z-10 rounded-lg"
-alt="Premium knives with neon lighting"
+alt="One kitchen knife on a sharpening bench"
 loading="lazy"
->
+/>
 <div class="gateway-vignette"></div>
 <div class="service-card-logo-stage">
-<span class="service-card-logo gateway-placeholder-neon gateway-placeholder-neon--cyan">One-Time<br />Sharpening</span>
+<Image src={oneTimeWordmark} width={900} format="webp" quality={85} alt="One-Time Sharpening" class="service-card-logo service-card-logo--knifeclub" loading="lazy" />
 </div>
 <div class="gateway-contact-cap gateway-contact-cap--club" aria-hidden="true"></div>
 <div class="gateway-contact-pin gateway-contact-pin--club-a" aria-hidden="true"></div>
@@ -245,15 +253,18 @@ One visit for the knives you use now. Shop drop-off or pickup and return.
 <a href="/book/mail-in/" class="absolute inset-0 z-40" aria-label="Request mail-in knife sharpening"></a>
 <div class="hardware-gateway after-dark-grid h-[260px] sm:h-[280px] lg:h-[300px] w-full flex items-center justify-center">
 <div class="service-card-water-scrim" aria-hidden="true"></div>
-<img
-src="/images/services/gemini-table.webp"
+<Image
+src={mailInScene}
+width={900}
+format="webp"
+quality={72}
 class="service-card-bg service-card-bg--after-dark absolute inset-0 w-full h-full object-cover opacity-0 grayscale transition-all duration-1000 group-hover:opacity-60 group-hover:grayscale-0 z-10 rounded-lg"
-alt="Sharp After Dark commercial knife sharpening"
+alt="Protected knives packed for mail-in sharpening"
 loading="lazy"
->
+/>
 <div class="gateway-vignette"></div>
 <div class="service-card-logo-stage">
-<span class="service-card-logo gateway-placeholder-neon gateway-placeholder-neon--pink">Mail-In<br />Sharpening</span>
+<Image src={mailInWordmark} width={900} format="webp" quality={85} alt="Mail-In Sharpening" class="service-card-logo service-card-logo--afterdark" loading="lazy" />
 </div>
 <div class="gateway-contact-cap gateway-contact-cap--after-dark" aria-hidden="true"></div>
 <div class="gateway-contact-pin gateway-contact-pin--after-a" aria-hidden="true"></div>

@@ -9,6 +9,7 @@ const allowedEvents = new Set([
   "photo_request_start",
   "photo_request_prepared",
   "photo_share_opened",
+  "service_request_saved",
   "review_google_click",
   "review_message_prepared",
   "phone_tap",
@@ -57,7 +58,7 @@ function track(name, properties = {}) {
 function inferPlacement(element) {
   if (element.closest("header")) return "header";
   if (element.closest("footer")) return "footer";
-  if (element.closest("[data-mkg-request-form]")) return "form";
+  if (element.closest("[data-mkg-request-form], [data-quick-form]")) return "form";
   if (element.closest(".mkg-hero-cta-row")) return "hero";
   if (element.closest(".mkg-glide-cta")) return "final_cta";
   if (element.closest(".service-tile")) return "services_grid";
@@ -101,7 +102,7 @@ function formAnalytics(form) {
 document.addEventListener("focusin", (event) => {
   const target = event.target;
   if (!(target instanceof Element)) return;
-  const form = target.closest("[data-mkg-request-form]");
+  const form = target.closest("[data-mkg-request-form], [data-quick-form]");
   if (!(form instanceof HTMLFormElement) || form.dataset.analyticsStarted === "true") return;
 
   const definition = formAnalytics(form);
