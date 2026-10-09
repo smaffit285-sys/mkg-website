@@ -2,151 +2,143 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { JSDOM } from 'jsdom';
-import { initRequestForms, buildRequestMessage, canSharePhotos } from '../src/scripts/request-form.js';
+import { initRequestForms } from '../src/scripts/request-form.js';
+import { initQuickIntakes } from '../src/scripts/quick-intake.js';
 
-function page(route='book/home/', search='') {
-  const html=readFileSync(`.vercel/output/static/${route}index.html`,'utf8');
-  const dom=new JSDOM(html,{url:`https://www.miamiknifeguy.com/${route}${search}`});
-  const doc=dom.window.document;
-  initRequestForms(doc);
-  const form=doc.querySelector('[data-mkg-request-form]');
-  return {dom,doc,form,win:dom.window};
+function quickPage(route = 'book/home/', search = '') {
+  const html = readFileSync(`.vercel/output/static/${route}index.html`, 'utf8');
+  const dom = new JSDOM(html, { url: `https://www.miamiknifeguy.com/${route}${search}` });
+  const { document: doc } = dom.window;
+  initQuickIntakes(doc);
+  const form = doc.querySelector('[data-quick-form]');
+  return { dom, win: dom.window, doc, form, shell: doc.querySelector('[data-mkg-quick-intake]') };
 }
-function fill(form,values={}) {
-  const defaults={name:'Test Customer',phone:'3055550100',location:'North Miami Beach',business:'Test Kitchen',notes:'Wedges in carrots',requestType:'thinning',platform:'private',feedback:'Test feedback',referrer:'Test referrer',serviceInterest:'one_time_home',businessType:'restaurant',clubTier:'essential_edge',clubCadence:'monthly'};
-  for(const control of form.querySelectorAll('[required]')) {
-    control.value=values[control.name] ?? defaults[control.name] ?? 'Test';
-  }
+function classicPage(route) {
+  const html = readFileSync(`.vercel/output/static/${route}index.html`, 'utf8');
+  const dom = new JSDOM(html, { url: `https://www.miamiknifeguy.com/${route}` });
+  initRequestForms(dom.window.document);
+  return { dom, doc: dom.window.document, form: dom.window.document.querySelector('[data-mkg-request-form]') };
 }
-const settle=()=>new Promise(resolve=>setImmediate(resolve));
+function choose(win, form, name, chosen) {
+  const control = form.querySelector(`[name="${name}"][value="${chosen}"]`);
+  assert(control, `missing ${name}=${chosen}`);
+  control.checked = true;
+  control.dispatchEvent(new win.Event('change', { bubbles: true }));
+}
+function next(shell, step) {
+  shell.querySelector(`[data-step="${step}"] [data-next]`).click();
+}
+function setPhotos(win, form, files) {
+  const input = form.elements.namedItem('photos');
+  Object.defineProperty(input, 'files', { configurable: true, value: files });
+  input.dispatchEvent(new win.Event('change', { bubbles: true }));
+}
+const settle = () => new Promise(resolve => setImmediate(resolve));
 
-test('knife count starts at 12 and the complete catalogue is available on every intake',()=>{
-  assert.equal(page().form.elements.knifeCount.value,'12');
-  const expected=['Knife sharpening','Kitchen shears','Food processor blades','Mandolins','Machetes','Axes / hatchets','Wood planers','Carving tools','Medical tools','Hair shears','Fabric shears','Thinning or reprofiling','Custom creations','Other request / help me choose'];
-  for(const route of ['book/home/','book/restaurant/','book/mail-in/','send-photos/']) {
-    const {form}=page(route);
-    const labels=[...form.elements.requestType.options].map(option=>option.textContent.trim());
-    for(const label of expected) assert(labels.includes(label),`${route}: ${label}`);
-  }
+test('home cook starts with two choices and can request service with only a name, phone and handoff', async () => {
+  const { win, form, shell } = quickPage();
+  assert.equal(form.querySelectorAll('[name="roleGate"]').length, 2);
+  assert.equal(shell.querySelector('[data-pro-choices]').hidden, true);
+  choose(win, form, 'roleGate', 'home');
+  next(shell, 1);
+  assert.equal(shell.querySelector('[data-step="2"]').hidden, false);
+  next(shell, 2);
+  assert.equal(shell.querySelector('[data-step="3"]').hidden, false);
+  form.elements.namedItem('name').value = 'Test Customer';
+  form.elements.namedItem('phone').value = '3055550100';
+  choose(win, form, 'handoffPreference', 'shop_dropoff');
+  let saved;
+  win.fetch = async (url, options) => { saved = JSON.parse(options.body); return { ok: true, json: async () => ({ ok: true }) }; };
+  const fallback = shell.querySelector('[data-sms-fallback]');
+  let opened = '';
+  fallback.click = () => { opened = fallback.href; };
+  form.dispatchEvent(new win.Event('submit', { bubbles: true, cancelable: true }));
+  await settle();
+  assert.match(opened, /^sms:\+13059095773/);
+  assert.equal(saved.contact.name, 'Test Customer');
+  assert.equal(saved.contact.phone, '3055550100');
+  assert.equal(saved.details.customerRole, 'home');
+  assert.equal(saved.details.handoffPreference, 'shop_dropoff');
+  assert.equal(saved.details.knifeVolume, undefined);
 });
 
-test('service discovery links preselect valid tools and ignore unknown query values',()=>{
-  const services=new JSDOM(readFileSync('.vercel/output/static/services/index.html','utf8'));
-  for(const link of services.window.document.querySelectorAll('.specialty-service-list a')) {
-    const url=new URL(link.getAttribute('href'),'https://www.miamiknifeguy.com');
-    const {form}=page('send-photos/',url.search);
-    assert.equal(form.elements.requestType.value,url.searchParams.get('service'));
-    assert.match(buildRequestMessage(form),new RegExp(form.elements.requestType.selectedOptions[0].textContent.trim().replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
-  }
-  assert.equal(page('send-photos/','?service=unknown').form.elements.requestType.value,'');
-  assert.equal(page('book/home/','?service=unknown').form.elements.requestType.value,'knife_sharpening');
+test('culinary pro branches to personal or restaurant; restaurant fields appear only when applicable', () => {
+  const { win, form, shell } = quickPage();
+  choose(win, form, 'roleGate', 'pro');
+  assert.equal(shell.querySelector('[data-pro-choices]').hidden, false);
+  next(shell, 1);
+  assert.match(shell.querySelector('[data-status]').textContent, /personal knives or restaurant/);
+  choose(win, form, 'customerRole', 'pro_personal');
+  next(shell, 1);
+  assert.equal(shell.querySelector('[data-restaurant-details]').hidden, true);
+  shell.querySelector('[data-step="2"] [data-back]').click();
+  choose(win, form, 'customerRole', 'restaurant');
+  next(shell, 1);
+  assert.equal(shell.querySelector('[data-restaurant-details]').hidden, false);
+  form.elements.namedItem('knifeVolumeRange').value = '11-25';
+  form.elements.namedItem('knifeVolumeRange').dispatchEvent(new win.Event('change', { bubbles: true }));
+  choose(win, form, 'otherEquipment', 'yes');
+  assert.equal(shell.querySelector('[data-equipment-details]').hidden, false);
+  next(shell, 2);
+  assert.equal(shell.querySelector('[data-business-field]').hidden, false);
+  assert.equal(form.elements.namedItem('business').required, true);
+  choose(win, form, 'handoffPreference', 'pickup_return');
+  assert.equal(shell.querySelector('[data-pickup-fields]').hidden, false);
+  assert.equal(form.elements.namedItem('address').required, true);
+  assert.equal(form.elements.namedItem('knifeVolume').value, '18');
 });
 
-test('home request prepares a readable SMS without sending or exposing internal metadata',()=>{
-  const {win,doc,form}=page();
-  fill(form); form.elements.knifeDetails.value='Chipped tip & 8-inch knife';
-  const events=[]; win.addEventListener('mkg:analytics',event=>events.push(event.detail));
-  form.requestSubmit();
-  assert.equal(doc.querySelector('[data-request-preview]').hidden,false);
-  const text=doc.querySelector('[data-request-message]').value;
-  assert.match(text,/Service interest: One-time home service/);
-  assert.match(text,/Chipped tip & 8-inch knife/);
-  assert(!text.includes('public_book_home'));
-  assert(!text.includes('home_knives'));
-  assert.equal(decodeURIComponent(doc.querySelector('[data-open-message]').getAttribute('href').split('?body=')[1]),text);
-  assert.equal(win.location.pathname,'/book/home/');
-  assert.match(doc.querySelector('[data-form-status]').textContent,/Saving your request/);
-  assert(!JSON.stringify(events).includes('Test Customer'));
+test('restaurant entry skips the role question but lets the customer go back', () => {
+  const { form, shell } = quickPage('book/restaurant/', '?intent=sharp-after-dark&ref=SEAN-123');
+  assert.equal(shell.querySelector('[data-step="2"]').hidden, false);
+  assert.equal(form.querySelector('[name="customerRole"][value="restaurant"]').checked, true);
+  assert.equal(form.elements.namedItem('source').value, 'public_book_restaurant_sharp_after_dark');
+  assert.equal(form.elements.namedItem('referralCode').value, 'SEAN-123');
+  shell.querySelector('[data-step="2"] [data-back]').click();
+  assert.equal(shell.querySelector('[data-step="1"]').hidden, false);
 });
 
-test('required fields, whitespace, and non-positive knife counts block preparation',()=>{
-  const {doc,form}=page();
-  form.requestSubmit();
-  assert(doc.querySelector('[data-request-preview]').hidden);
-  fill(form); form.elements.name.value='   '; form.requestSubmit();
-  assert(doc.querySelector('[data-request-preview]').hidden);
-  form.elements.name.value='Test'; form.elements.name.setCustomValidity('');
-  for(const count of ['-1','0','1.5']) {
-    form.elements.knifeCount.value=count; form.requestSubmit();
-    assert(doc.querySelector('[data-request-preview]').hidden,count);
-  }
-  form.elements.knifeCount.value='2'; form.requestSubmit();
-  assert.equal(doc.querySelector('[data-request-preview]').hidden,false);
+test('mail-in requires a photo, omits local handoff, and shares the photos with the request text', async () => {
+  const { win, form, shell } = quickPage('book/mail-in/');
+  choose(win, form, 'roleGate', 'home');
+  next(shell, 1);
+  next(shell, 2);
+  assert.match(shell.querySelector('[data-status]').textContent, /at least one photo/);
+  const files = [new win.File(['front'], 'front.jpg', { type: 'image/jpeg' })];
+  setPhotos(win, form, files);
+  next(shell, 2);
+  assert.equal(shell.querySelector('[data-step="3"]').hidden, false);
+  assert.equal(form.querySelector('[name="handoffPreference"]').value, 'mail_in');
+  form.elements.namedItem('name').value = 'Mail Customer';
+  form.elements.namedItem('phone').value = '3055550100';
+  win.navigator.canShare = () => true;
+  let shared;
+  win.navigator.share = async payload => { shared = payload; };
+  win.fetch = async () => ({ ok: true, json: async () => ({ ok: true }) });
+  form.dispatchEvent(new win.Event('submit', { bubbles: true, cancelable: true }));
+  await settle();
+  assert.equal(shared.files.length, 1);
+  assert.match(shared.text, /Mail-in request/);
+  assert.match(shell.querySelector('[data-status]').textContent, /Check that your messaging app sent/);
 });
 
-test('edited details invalidate an old prepared message',()=>{
-  const {win,doc,form}=page(); fill(form); form.requestSubmit();
-  form.elements.name.value='Updated Customer';
-  form.elements.name.dispatchEvent(new win.Event('input',{bubbles:true}));
-  assert(doc.querySelector('[data-request-preview]').hidden);
-  assert.equal(doc.querySelector('[data-open-message]').getAttribute('href'),null);
-  form.requestSubmit();
-  assert.match(doc.querySelector('[data-request-message]').value,/Updated Customer/);
-});
-
-test('copy failure selects the request and never claims clipboard success',async()=>{
-  const {win,doc,form}=page(); fill(form);
-  Object.defineProperty(win.navigator,'clipboard',{value:{writeText:async()=>{throw new Error('Denied')}}});
-  form.requestSubmit(); doc.querySelector('[data-copy-request]').click(); await settle();
-  assert.match(doc.querySelector('[data-form-status]').textContent,/copy it manually/);
-  assert(!doc.querySelector('[data-form-status]').textContent.includes('Request text copied'));
-  const box=doc.querySelector('[data-request-message]');
-  assert.equal(box.selectionEnd,box.value.length);
-});
-
-test('copy succeeds only after the clipboard confirms',async()=>{
-  const {win,doc,form}=page(); fill(form); let copied='';
-  Object.defineProperty(win.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
-  form.requestSubmit(); doc.querySelector('[data-copy-request]').click(); await settle();
-  assert.equal(copied,doc.querySelector('[data-request-message]').value);
-  assert.match(doc.querySelector('[data-form-status]').textContent,/Request text copied/);
-});
-
-test('club and thinning links select the matching request and preserve referral context',()=>{
-  const club=page('book/home/','?intent=club&ref=SEAN-123');
-  assert.equal(club.form.elements.serviceInterest.value,'knife_club');
-  assert.equal(club.doc.querySelector('section.request-section h2').textContent,'Join Miami Knife Club');
-  assert.match(buildRequestMessage(club.form),/Referral code: SEAN-123/);
-  assert(!buildRequestMessage(club.form).includes('public_book_home_club'));
-  const photo=page('send-photos/','?intent=thinning');
-  assert.equal(photo.form.elements.requestType.value,'thinning');
-});
-
-test('multiple-photo sharing passes every selected file; cancellation keeps request available',async()=>{
-  const {win,doc,form}=page('send-photos/'); fill(form);
-  const files=[new win.File(['a'],'front.jpg',{type:'image/jpeg'}),new win.File(['b'],'back.jpg',{type:'image/jpeg'})];
-  assert(form.elements.photos.multiple);
-  Object.defineProperty(form.elements.photos,'files',{value:files});
-  let payload;
-  win.navigator.canShare=()=>true;
-  win.navigator.share=async data=>{payload=data;throw new win.DOMException('Canceled','AbortError')};
-  form.requestSubmit();
-  assert.equal(doc.querySelector('[data-share-photos]').hidden,false);
-  doc.querySelector('[data-share-photos]').click(); await settle();
-  assert.equal(payload.files.length,2);
-  assert.equal(doc.querySelector('[data-share-photos]').disabled,false);
-  assert.equal(doc.querySelector('[data-request-preview]').hidden,false);
-  assert.match(doc.querySelector('[data-form-status]').textContent,/Sharing canceled/);
-});
-
-test('unsupported or throwing file-share capability leaves text fallback available',()=>{
-  const {win,doc,form}=page('send-photos/'); fill(form);
-  Object.defineProperty(form.elements.photos,'files',{value:[new win.File(['a'],'front.jpg')]});
-  win.navigator.share=async()=>{};
-  win.navigator.canShare=()=>{throw new Error('Unsupported')};
-  assert.equal(canSharePhotos(win.navigator,[{}],'test'),false);
-  form.requestSubmit();
-  assert(doc.querySelector('[data-share-photos]').hidden);
-  assert.match(doc.querySelector('[data-file-summary]').textContent,/Attach these photos yourself/);
-  assert(doc.querySelector('[data-open-message]').hasAttribute('href'));
-});
-
-test('restaurant, feedback, and referral forms retain their required fields and readable selections',()=>{
-  for(const route of ['book/restaurant/','review/','r/']) {
-    const {doc,form}=page(route); fill(form,{serviceInterest:'home'}); form.requestSubmit();
-    assert.equal(doc.querySelector('[data-request-preview]').hidden,false,route);
-    assert.match(doc.querySelector('[data-request-message]').value,/Your name: Test Customer/);
-  }
+test('unsupported photo sharing offers a prepared text and asks the customer to attach photos', async () => {
+  const { win, form, shell } = quickPage('send-photos/');
+  choose(win, form, 'roleGate', 'home');
+  next(shell, 1);
+  setPhotos(win, form, [new win.File(['front'], 'front.jpg', { type: 'image/jpeg' })]);
+  next(shell, 2);
+  form.elements.namedItem('name').value = 'Photo Customer';
+  form.elements.namedItem('phone').value = '3055550100';
+  choose(win, form, 'handoffPreference', 'shop_dropoff');
+  win.fetch = async () => ({ ok: true, json: async () => ({ ok: true }) });
+  const fallback = shell.querySelector('[data-sms-fallback]');
+  let opened = '';
+  fallback.click = () => { opened = fallback.href; };
+  form.dispatchEvent(new win.Event('submit', { bubbles: true, cancelable: true }));
+  await settle();
+  assert.match(opened, /^sms:\+13059095773/);
+  assert.match(shell.querySelector('[data-status]').textContent, /Attach your photos/);
 });
 
 test('service chooser preserves referral context on every service path',()=>{
@@ -195,25 +187,18 @@ test('coded referral routes preserve attribution through header and footer booki
 });
 
 
-test('offer links preselect the matching commercial and club request details',()=>{
-  const afterDark=page('book/restaurant/','?intent=sharp-after-dark');
-  assert.equal(afterDark.form.elements.programType.value,'sharp_after_dark');
-  assert(afterDark.form.elements.lastTicket);
-  assert(afterDark.form.elements.nextPrep);
-  assert.equal(afterDark.form.elements.source.value,'public_book_restaurant_sharp_after_dark');
-  const steak=page('book/restaurant/','?intent=steak-knives');
-  assert.match(steak.form.elements.serviceNeeds.value,/Steak knife/);
-  const club=page('book/home/','?intent=club');
-  assert.equal(club.form.elements.clubTier.required,true);
-  assert.equal(club.form.elements.clubCadence.required,true);
-  assert.equal(club.form.elements.clubTier.disabled,false);
-  const oneTime=page('book/home/','?intent=one-time');
-  assert.equal(oneTime.form.elements.serviceInterest.value,'one_time_home');
-  assert.equal(oneTime.form.elements.clubTier.disabled,true);
+test('offer links preserve intent while keeping the short form', () => {
+  const club = quickPage('book/home/', '?intent=club');
+  assert.equal(club.form.elements.namedItem('offerIntent').value, 'club');
+  assert.equal(club.form.elements.namedItem('serviceType').value, 'knife_club');
+  const oneTime = quickPage('book/home/', '?intent=one-time');
+  assert.equal(oneTime.form.elements.namedItem('source').value, 'public_book_home_one_time');
+  const steak = quickPage('book/restaurant/', '?intent=steak-knives');
+  assert.equal(steak.form.elements.namedItem('requestType').value, 'steak_knives');
 });
 
 test('general contact questions use a CRM-backed request form',()=>{
-  const {form}=page('contact/');
+  const {form}=classicPage('contact/');
   assert.equal(form.id,'contact-request');
   assert.equal(form.elements.source.value,'public_contact');
   assert.equal(form.elements.question.required,true);

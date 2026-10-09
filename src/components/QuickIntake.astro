@@ -1,0 +1,101 @@
+---
+import "../styles/quick-intake.css";
+type Mode = "home" | "restaurant" | "mail_in" | "photo";
+interface Props { mode: Mode; }
+const { mode } = Astro.props;
+const mailIn = mode === "mail_in";
+const id = mode === "restaurant" ? "restaurant-service-request" : mode === "mail_in" ? "mail-in-service-request" : mode === "photo" ? "special-request-review" : "home-service-request";
+const title = mailIn ? "Request Mail-In Service" : mode === "restaurant" ? "Request Restaurant Service" : mode === "photo" ? "Show Sean Your Knives or Tools" : "Request Sharpening";
+const source = mode === "restaurant" ? "public_book_restaurant" : mailIn ? "public_book_mail_in" : mode === "photo" ? "public_send_photos" : "public_book_home";
+const serviceType = mode === "restaurant" ? "restaurant" : mailIn ? "mail_in" : mode === "photo" ? "photo_review" : "home_knives";
+---
+<section class="quick-intake" aria-labelledby={`${id}-title`} data-mkg-quick-intake data-mode={mode}>
+  <div class="quick-intake-header">
+    <p class="quick-intake-eyebrow">A short request · Sean confirms the details</p>
+    <h2 id={`${id}-title`}>{title}</h2>
+    <p>{mailIn ? "Show Sean what you plan to send. He will review it and give you private shipping instructions. Do not ship yet." : "Three quick steps. A photo can do most of the explaining."}</p>
+    <div class="quick-intake-progress" aria-label="Request progress">
+      <span data-progress="1">1 · Who</span><span data-progress="2">2 · What</span><span data-progress="3">3 · Contact</span>
+    </div>
+  </div>
+  <form id={id} data-quick-form novalidate>
+    <input type="hidden" name="source" value={source} data-private />
+    <input type="hidden" name="serviceType" value={serviceType} data-private />
+    <input type="hidden" name="offerIntent" value="" data-private />
+    <input type="hidden" name="referralCode" value="" data-private />
+    <input type="hidden" name="requestType" value="" data-private />
+    {mailIn && <input type="hidden" name="handoffPreference" value="mail_in" data-private />}
+    <label class="quick-intake-trap" aria-hidden="true">Company website <input name="companyWebsite" tabindex="-1" autocomplete="off" /></label>
+
+    <div class="quick-intake-step" data-step="1">
+      <h3 tabindex="-1">Who is this for?</h3>
+      <p class="quick-intake-hint">Choose the closest fit. Sean can sort out the service details with you.</p>
+      <div class="quick-intake-choices quick-intake-choices--two" role="radiogroup" aria-label="Home cook or culinary professional">
+        <label class="quick-intake-choice"><input type="radio" name="roleGate" value="home" /><span><strong>Home cook</strong><small>Knives for my own kitchen</small></span></label>
+        <label class="quick-intake-choice"><input type="radio" name="roleGate" value="pro" /><span><strong>Culinary pro</strong><small>My work knives or a restaurant</small></span></label>
+      </div>
+      <div data-pro-choices hidden>
+        <p class="quick-intake-hint quick-intake-followup">Is this for your own knives or the restaurant?</p>
+        <div class="quick-intake-choices quick-intake-choices--two" role="radiogroup" aria-label="Personal or restaurant service">
+          <label class="quick-intake-choice"><input type="radio" name="customerRole" value="pro_personal" /><span><strong>My personal work knives</strong><small>For my own kit</small></span></label>
+          <label class="quick-intake-choice"><input type="radio" name="customerRole" value="restaurant" /><span><strong>A restaurant or kitchen</strong><small>For a business's knives and equipment</small></span></label>
+        </div>
+      </div>
+      <input type="hidden" name="customerRole" value="" data-role-value data-private />
+      <div class="quick-intake-actions"><button type="button" data-next class="quick-intake-primary">Continue</button></div>
+    </div>
+
+    <div class="quick-intake-step" data-step="2" hidden>
+      <h3 tabindex="-1">What needs an edge?</h3>
+      <div data-restaurant-details hidden>
+        <label class="quick-intake-field"><span>About how many knives?</span>
+          <select name="knifeVolumeRange"><option value="">Choose a range</option><option value="1-10">1–10</option><option value="11-25">11–25</option><option value="26-50">26–50</option><option value="51-plus">More than 50</option><option value="unsure">Not sure yet</option></select><input type="hidden" name="knifeVolume" value="" data-private />
+        </label>
+        <fieldset class="quick-intake-fieldset"><legend>Any other kitchen blades or equipment?</legend>
+          <div class="quick-intake-inline"><label><input type="radio" name="otherEquipment" value="yes" /> Yes</label><label><input type="radio" name="otherEquipment" value="no" /> No</label></div>
+        </fieldset>
+        <label class="quick-intake-field" data-equipment-details hidden><span>What else? <em>Optional</em></span><input name="equipmentDetails" placeholder="For example, slicer blades or kitchen shears" /></label>
+      </div>
+      <p class="quick-intake-hint" data-photo-hint>One group photo is enough to start. Add a close-up if something needs special attention.</p>
+      <label class="quick-intake-field quick-intake-photo"><span>Add photos {mailIn ? <b>*</b> : <em>Optional</em>}</span><input type="file" name="photos" accept="image/*" multiple /><small data-photo-count>Choose up to four photos.</small></label>
+      <label class="quick-intake-field"><span>Anything Sean should know? <em>Optional</em></span><textarea name="notes" rows="2" placeholder="A short note is plenty"></textarea></label>
+      <div class="quick-intake-actions"><button type="button" data-back class="quick-intake-secondary">Back</button><button type="button" data-next class="quick-intake-primary">Continue</button></div>
+    </div>
+
+    <div class="quick-intake-step" data-step="3" hidden>
+      <h3 tabindex="-1">How can Sean reach you?</h3>
+      <div class="quick-intake-two-col">
+        <label class="quick-intake-field"><span>Your name *</span><input name="name" autocomplete="name" required placeholder="Your name" /></label>
+        <label class="quick-intake-field"><span>Mobile number *</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="(305) 555-0123" /></label>
+      </div>
+      <label class="quick-intake-field" data-business-field hidden><span>Restaurant or business *</span><input name="business" autocomplete="organization" placeholder="Business name" /></label>
+      {mailIn ? (
+        <p class="quick-intake-note">Sean will text you about the quote and shipping. Your return address and packing details come later. <strong>Do not ship yet.</strong></p>
+      ) : (
+        <>
+          <fieldset class="quick-intake-fieldset" data-handoff-fieldset><legend>How would you like to hand off the knives?</legend>
+            <div class="quick-intake-choices quick-intake-choices--two">
+              <label class="quick-intake-choice"><input type="radio" name="handoffPreference" value="shop_dropoff" /><span><strong>Save money · NMB drop-off</strong><small>By appointment, after Sean confirms</small></span></label>
+              <label class="quick-intake-choice"><input type="radio" name="handoffPreference" value="pickup_return" /><span><strong>Skip the traffic · pickup & return</strong><small>Travel is $1 per total driven mile</small></span></label>
+            </div>
+          </fieldset>
+          <div data-pickup-fields hidden>
+            <label class="quick-intake-field"><span>Pickup address *</span><input name="address" autocomplete="street-address" placeholder="Street address, city, ZIP" /></label>
+            <label class="quick-intake-field"><span>When are you generally available? *</span><input name="availability" placeholder="For example, weekdays after 5" /></label>
+          </div>
+        </>
+      )}
+      <label class="quick-intake-check"><input type="checkbox" name="rushRequested" value="yes" /><span>Request rush service <small>Availability and any extra charge are confirmed by Sean.</small></span></label>
+      <label class="quick-intake-field" data-needed-by hidden><span>When do you need it?</span><input name="neededBy" type="date" /></label>
+      <p class="quick-intake-note">This is a request, not a confirmed booking. Sean will text you about the work, price, and timing. <a href="/privacy/">Privacy</a></p>
+      <div class="quick-intake-actions"><button type="button" data-back class="quick-intake-secondary">Back</button><button type="submit" data-send class="quick-intake-primary">Text Sean</button></div>
+    </div>
+    <p class="quick-intake-status" data-status role="status" aria-live="polite"></p>
+    <a data-sms-fallback hidden></a>
+  </form>
+  <noscript><p class="quick-intake-note">To request service, <a href="sms:+13059095773">text Sean at (305) 909-5773</a>.</p></noscript>
+</section>
+<script>
+  import { initQuickIntakes } from "../scripts/quick-intake.js";
+  initQuickIntakes(document);
+</script>
