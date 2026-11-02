@@ -1,5 +1,6 @@
 ---
 import "../styles/intake.css";
+import DiscoverySource from "./DiscoverySource.astro";
 type Option = { value: string; label: string };
 type Field = {
   name: string; label: string;
@@ -53,8 +54,9 @@ const autocomplete = { name: "name", phone: "tel", email: "email", business: "or
         </label>
       );
     })}
+    {!["review", "referral"].includes(serviceType) && <DiscoverySource />}
     <div class="request-field-wide request-action-area">
-      <p class="request-handoff-note">Reviewing this form saves your request to MKG's private Growth Engine when the connection is available. You may also send the prepared text to Sean. Service is confirmed only in his reply.</p>
+      <p class="request-handoff-note">Review your details to send a request to MKG. You can also text Sean directly. Service is confirmed only in his reply.</p>
       <div class="request-actions">
         <button type="submit" data-prepare-request class="panel-cta-btn panel-cta-pink">{submitLabel}</button>
         <a href="tel:+13059095773" class="request-phone">Or call (305) 909-5773</a>

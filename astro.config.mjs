@@ -8,6 +8,7 @@ export default defineConfig({
   adapter: vercel(),
 
   vite: {
+    server: { allowedHosts: process.env.SITES_MANAGED_LINUX_CONTAINER === "1" ? ["terminal.local"] : [] },
     plugins: [tailwindcss()]
   }
 });

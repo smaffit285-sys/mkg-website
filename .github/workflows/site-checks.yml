@@ -18,6 +18,7 @@ jobs:
       - run: npm run build
       - run: npm run test:chatbot
       - run: npm run test:forms
+      - run: node --test tests/crm-capture.test.mjs tests/proof-contract.test.mjs
       - run: npm run check:links
       - name: Live assistant mail-in smoke
         if: github.event_name == 'push'

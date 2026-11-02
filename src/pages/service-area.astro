@@ -1,0 +1,26 @@
+---
+import RouteShell from "../components/RouteShell.astro";
+import FAQSection from "../components/FAQSection.astro";
+export const prerender = true;
+const faq = [
+  { question: "Do you sharpen knives at my home?", answer: "Residential knives are sharpened off-site at the MKG shop. Choose North Miami Beach drop-off by confirmed appointment, or request pickup and return." },
+  { question: "How much does pickup cost?", answer: "Pickup and return are separate from sharpening and cost $1 per total driven mile for any knife count. Sean confirms the full route mileage and charge before scheduling." },
+  { question: "Can I walk in or get same-day service?", answer: "Arrange a confirmed appointment before visiting or handing off knives. Same-day and rush service depend on workload and the timing Sean agrees with you." },
+  { question: "Do you serve restaurants in Broward?", answer: "Commercial service covers Miami-Dade and Broward by confirmed appointment. After-hours pickup and return depend on the kitchen location, operating hours, and available route." },
+];
+---
+<RouteShell title="Knife Sharpening Service Area | North Miami Beach, Aventura & South Florida" description="North Miami Beach knife sharpening with appointment drop-off and scheduled pickup and return for Aventura, Sunny Isles Beach, Miami-Dade and Broward." canonicalPath="/service-area/" schema={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(item => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }}>
+  <main class="panel" aria-hidden="false"><div class="panel-inner max-w-5xl mx-auto">
+    <p class="sub-eyebrow">Based in North Miami Beach · Scheduled service</p>
+    <h1 class="sub-headline-cyan text-4xl lg:text-5xl mb-6">A better edge, closer to home.</h1>
+    <p class="sub-body mb-8">Miami Knife Guy sharpens and repairs knives for home cooks, chefs, restaurants, and hospitality teams. Start with your location and knife details; Sean confirms the work, price, and handoff.</p>
+    <div class="grid md:grid-cols-2 gap-6 mb-10">
+      <section class="review-card"><h2 class="text-white text-2xl mb-3">North Miami Beach drop-off</h2><p class="sub-body">Bring your knives to MKG by confirmed appointment. Request the appointment before traveling; Sean provides handoff details directly. Residential work is completed off-site at the shop.</p><a class="text-cyan-300 underline" href="/book/home/">Request shop drop-off →</a></section>
+      <section class="review-card"><h2 class="text-white text-2xl mb-3">Aventura &amp; Sunny Isles Beach</h2><p class="sub-body">Request pickup and return if you prefer to avoid the drive. Provide your address so Sean can confirm route availability and the full travel charge. Travel costs $1 per total driven mile, with timing confirmed before scheduling.</p><a class="text-cyan-300 underline" href="/learn/miami-knife-sharpening-pickup-cost/">How travel pricing works →</a></section>
+      <section class="review-card"><h2 class="text-white text-2xl mb-3">Miami-Dade &amp; Broward kitchens</h2><p class="sub-body">Commercial appointments are arranged around the kitchen and the service route, including Miami, Hollywood, and Fort Lauderdale. Sharp After Dark pairs agreed after-service pickup with return before next-day prep for confirmed accounts.</p><a class="text-pink-300 underline" href="/book/restaurant/?intent=sharp-after-dark">Discuss your kitchen's schedule →</a></section>
+      <section class="review-card"><h2 class="text-white text-2xl mb-3">Outside the local route?</h2><p class="sub-body">Ask about mail-in service. Start with photos and a quote request, then wait for approved packing and shipping instructions. Do not ship knives before Sean confirms the plan.</p><a class="text-cyan-300 underline" href="/book/mail-in/">Request mail-in service →</a></section>
+    </div>
+    <FAQSection items={faq} />
+    <div class="flex flex-wrap gap-4 mt-10"><a class="panel-cta-btn panel-cta-cyan" href="/book/">Request Service</a><a class="panel-cta-btn panel-cta-ghost" href="/services/">Services &amp; Pricing</a></div>
+  </div></main>
+</RouteShell>

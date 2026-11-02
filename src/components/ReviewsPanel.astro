@@ -1,5 +1,5 @@
 ---
-import { GOOGLE_REVIEW_COUNT, GOOGLE_REVIEW_URL } from "../config/site";
+import { GOOGLE_REVIEW_URL } from "../config/site";
 import { featuredGoogleReviews } from "../data/googleReviews";
 const isLongReview = (body: string) => body.length > 180;
 ---
@@ -15,10 +15,10 @@ PANEL: REVIEWS
 <h1 class="sub-headline-cyan text-3xl lg:text-4xl mb-0">What Clients Say</h1>
 </div>
 <div class="sm:ml-auto flex items-center gap-3 pb-1">
-<span class="text-4xl font-bold text-white/88">5.0</span>
+<a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline">Read on Google</a>
 <div>
 <div class="text-cyan-400 text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<div class="text-[9px] uppercase tracking-widest text-white/65 font-bold">Google &middot; {GOOGLE_REVIEW_COUNT} Reviews</div>
+<div class="text-[9px] uppercase tracking-widest text-white/65 font-bold">{featuredGoogleReviews.length} selected Google reviews</div>
 </div>
 </div>
 </div>
@@ -106,7 +106,7 @@ PANEL: REVIEWS
 
 <div class="p-6 border border-white/6 rounded bg-white/[0.02] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 mb-5">
 <div>
-<p class="text-white/75 text-sm font-semibold mb-1">Happy with your edge?</p>
+<p class="text-white/75 text-sm font-semibold mb-1">How was your service?</p>
 <p class="text-white/42 text-xs font-light leading-relaxed max-w-md">Leave a public Google review, or send private feedback directly to MKG.</p>
 </div>
 <div class="flex flex-wrap gap-3 shrink-0">
@@ -115,7 +115,7 @@ PANEL: REVIEWS
 </div>
 </div>
 
-<p class="text-white/65 text-[9px] uppercase tracking-widest font-semibold">All public customer reviews currently shown on the Miami Knife Guy Google listing.</p>
+<p class="text-white/65 text-[9px] uppercase tracking-widest font-semibold">Selected customer reviews. Visit Google for the current rating, total, and newest feedback.</p>
 
 </div>
 </div><!-- /panel-reviews -->
