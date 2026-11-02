@@ -1,0 +1,16 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import { getWorkExamples } from "../../lib/proofFeed";
+export const prerender = false;
+let cases = [];
+try { cases = await getWorkExamples(); Astro.response.headers.set("Cache-Control", "public, s-maxage=60"); }
+catch { Astro.response.status = 503; Astro.response.headers.set("Cache-Control", "no-store"); Astro.response.headers.set("Retry-After", "60"); }
+---
+<RouteShell title="Knife Repair Case Studies | Miami Knife Guy" description="Documented knife repairs and restoration examples from Miami Knife Guy: condition, work performed, and observed results." canonicalPath="/work/">
+  <main class="panel" aria-hidden="false"><div class="panel-inner max-w-5xl mx-auto">
+    <p class="sub-eyebrow">From the MKG workshop</p><h1 class="sub-headline-cyan text-4xl mb-6">The work behind the edge.</h1>
+    <p class="sub-body mb-8">Real tools, specific problems, and the work done to put them back into service. Each knife is assessed individually.</p>
+    {cases.length ? <div class="grid md:grid-cols-2 gap-6">{cases.map(item => <a href={`/work/${item.slug}/`} class="review-card block"><h2 class="text-white text-2xl mb-3">{item.title}</h2><p class="sub-body">{item.knifeType}{item.location ? ` · ${item.location}` : ''}</p><p class="sub-body">{item.problem}</p><span class="text-cyan-300">See the work →</span></a>)}</div> : <p class="sub-body">Workshop stories are temporarily unavailable. You can still <a class="text-cyan-300 underline" href="/proof/">see repair photographs</a> or <a class="text-cyan-300 underline" href="/contact/">contact Sean</a>.</p>}
+    <a class="panel-cta-btn panel-cta-cyan mt-10" href="/send-photos/">Ask About Your Knife</a>
+  </div></main>
+</RouteShell>

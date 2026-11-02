@@ -52,7 +52,7 @@ for route, page in pages.items():
         if file.is_dir():
             file /= 'index.html'
         if not file.exists():
-            if re.fullmatch(r'/r/[^/]+/?', target):
+            if re.fullmatch(r'/r/[^/]+/?', target) or target == '/work/' or target.startswith('/work/'):
                 pending.add(target)
             else:
                 errors.append({'from': route, 'target': href, 'error': 'missing file'})

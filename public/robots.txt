@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.miamiknifeguy.com/sitemap.xml
+Sitemap: https://www.miamiknifeguy.com/work/sitemap.xml

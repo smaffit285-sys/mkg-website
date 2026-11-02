@@ -1,4 +1,4 @@
-const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"];
+const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid", "msclkid"];
 
 function randomId(prefix) {
   const id = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -69,7 +69,7 @@ export async function captureRequestForm(form, win) {
     contact: serialized.contact,
     details: serialized.details,
     attribution: crmAttribution(win),
-    page: { path: win.location.pathname, title: win.document.title, referrer: win.document.referrer || "" },
+    page: { path: win.location.pathname, title: win.document.title, referrer: win.document.referrer || "", ...crmDiscovery(win) },
     honeypot: serialized.honeypot,
   };
   if (typeof win.fetch !== "function") return { ok: false, unavailable: true };
@@ -78,4 +78,16 @@ export async function captureRequestForm(form, win) {
   });
   if (!response.ok) throw new Error("Automatic saving is temporarily unavailable.");
   return { ok: true, ...(await response.json()) };
+}
+
+export function crmDiscovery(win) {
+  try {
+    const existing = JSON.parse(win.sessionStorage.getItem('mkgDiscovery') || 'null');
+    if (existing && typeof existing === 'object') return existing;
+    let referrerHost = '';
+    try { referrerHost = new URL(win.document.referrer).hostname; } catch { /* direct visit */ }
+    const first = { landingPath: win.location.pathname, referrerHost };
+    win.sessionStorage.setItem('mkgDiscovery', JSON.stringify(first));
+    return first;
+  } catch { return {}; }
 }

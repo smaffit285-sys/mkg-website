@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
-import { crmAttribution, serializeCrmForm } from '../src/scripts/crm-capture.js';
+import { crmAttribution, crmDiscovery, captureRequestForm, serializeCrmForm } from '../src/scripts/crm-capture.js';
 
 test('CRM form serialization separates contact details and excludes raw photo data', () => {
   const dom = new JSDOM(`<form>
@@ -24,4 +24,17 @@ test('Google campaign and click attribution persist across the website session',
   assert.deepEqual(crmAttribution(first.window), { utm_source: 'google', utm_campaign: 'gbp_booking', gclid: 'abc123' });
   first.reconfigure({ url: 'https://www.miamiknifeguy.com/book/home/' });
   assert.equal(crmAttribution(first.window).utm_campaign, 'gbp_booking');
+});
+
+test('landing attribution survives navigation and optional AI discovery reaches the CRM', async () => {
+  const dom = new JSDOM('<form id="contact-request"><input name="source" value="public_contact"><select name="discoverySource"><option value="chatgpt" selected>ChatGPT</option></select></form>', { url: 'https://www.miamiknifeguy.com/?utm_source=chatgpt', referrer: 'https://chatgpt.com/' });
+  crmAttribution(dom.window); crmDiscovery(dom.window);
+  dom.reconfigure({ url: 'https://www.miamiknifeguy.com/contact/' });
+  let payload;
+  dom.window.fetch = async (_url, options) => { payload = JSON.parse(options.body); return { ok: true, json: async () => ({ saved: true }) }; };
+  await captureRequestForm(dom.window.document.querySelector('form'), dom.window);
+  assert.equal(payload.attribution.utm_source, 'chatgpt');
+  assert.equal(payload.page.landingPath, '/');
+  assert.equal(payload.page.referrerHost, 'chatgpt.com');
+  assert.equal(payload.details.discoverySource, 'ChatGPT');
 });

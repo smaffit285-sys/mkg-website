@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "deba-restoration",
+    "title": "Deba restoration: rust and edge damage",
+    "knifeType": "Deba knife",
+    "problem": "The existing MKG before-and-after photograph documents oxidation and edge damage.",
+    "workPerformed": "Rust removal and edge repair are shown in the workshop restoration example.",
+    "result": "The after photograph shows the restored blade surface and edge. Finish and remaining marks depend on the original damage.",
+    "beforeImage": "https://www.miamiknifeguy.com/images/proof/deba-before-after.webp",
+    "afterImage": "",
+    "location": "",
+    "serviceDate": ""
+  },
+  {
+    "slug": "santoku-profile-repair",
+    "title": "Santoku repair: restoring a damaged profile",
+    "knifeType": "Santoku knife",
+    "problem": "The before photograph shows a damaged cutting profile.",
+    "workPerformed": "The profile was corrected before the final edge was sharpened.",
+    "result": "The after photograph shows the repaired profile. The repair plan depends on damage depth and the usable blade remaining.",
+    "beforeImage": "https://www.miamiknifeguy.com/images/proof/shun-santoku-chipped.webp",
+    "afterImage": "https://www.miamiknifeguy.com/images/proof/shun-santoku-restored.webp",
+    "location": "",
+    "serviceDate": ""
+  },
+  {
+    "slug": "german-chef-profile-correction",
+    "title": "German chef knife: profile correction",
+    "knifeType": "German chef knife",
+    "problem": "This knife needed profile correction as well as edge work.",
+    "workPerformed": "The working geometry was corrected before final sharpening.",
+    "result": "The paired photographs show the change in profile. Each knife is assessed individually to preserve usable blade life.",
+    "beforeImage": "https://www.miamiknifeguy.com/images/proof/german-profile-before.webp",
+    "afterImage": "https://www.miamiknifeguy.com/images/proof/german-profile-after.webp",
+    "location": "",
+    "serviceDate": ""
+  }
+]

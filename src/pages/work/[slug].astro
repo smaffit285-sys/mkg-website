@@ -1,0 +1,22 @@
+---
+import RouteShell from "../../components/RouteShell.astro";
+import { getWorkExamples } from "../../lib/proofFeed";
+export const prerender = false;
+let item;
+try { item = (await getWorkExamples()).find(entry => entry.slug === Astro.params.slug); }
+catch { return new Response("Workshop stories are temporarily unavailable. Please try again shortly.", { status: 503, headers: { "Retry-After": "60", "Cache-Control": "no-store" } }); }
+if (!item) return new Response("Case study not found", { status: 404, headers: { "X-Robots-Tag": "noindex", "Cache-Control": "no-store" } });
+Astro.response.headers.set("Cache-Control", "public, s-maxage=60");
+const path = `/work/${item.slug}/`;
+const schema = { "@context": "https://schema.org", "@type": "Article", headline: item.title, author: { "@id": "https://www.miamiknifeguy.com/#business" }, publisher: { "@id": "https://www.miamiknifeguy.com/#business" }, mainEntityOfPage: `https://www.miamiknifeguy.com${path}`, ...(item.beforeImage ? { image: [item.beforeImage, item.afterImage].filter(Boolean) } : {}) };
+---
+<RouteShell title={`${item.title} | Miami Knife Guy`} description={`${item.knifeType}: ${item.problem}`.slice(0,180)} canonicalPath={path} schema={schema}>
+  <main class="panel" aria-hidden="false"><article class="panel-inner max-w-4xl mx-auto">
+    <a class="text-cyan-300 underline" href="/work/">← Workshop case studies</a>
+    <p class="sub-eyebrow mt-6">{item.knifeType}{item.location ? ` · ${item.location}` : ''}</p><h1 class="sub-headline-cyan text-4xl mb-6">{item.title}</h1>
+    {item.serviceDate && <p class="sub-body mb-6">Service date: <time datetime={item.serviceDate}>{item.serviceDate}</time></p>}
+    <div class="grid sm:grid-cols-2 gap-5 mb-10">{[item.beforeImage, item.afterImage].filter(Boolean).map((src, index) => <figure><img src={src} alt={`${item.knifeType}: ${index === 0 && item.afterImage ? 'before service' : item.afterImage ? 'after service' : 'documented restoration'}`} width="1000" height="750" loading="lazy" style="width:100%;height:auto;border-radius:12px" /><figcaption class="sub-body text-sm mt-2">{item.afterImage ? index === 0 ? 'Before' : 'After' : 'Workshop restoration example'}</figcaption></figure>)}</div>
+    <div class="space-y-8">{[['Condition', item.problem], ['Work performed', item.workPerformed], ['Observed result', item.result]].map(([label, text]) => <section><h2 class="text-white text-2xl mb-3">{label}</h2><p class="sub-body whitespace-pre-line">{text}</p></section>)}</div>
+    <p class="sub-body mt-10">Have a similar problem? Send photos of the full blade, both faces, and the damage. Sean confirms what is practical before work begins.</p><div class="flex gap-4 flex-wrap mt-6"><a class="panel-cta-btn panel-cta-cyan" href="/send-photos/">Send Knife Photos</a><a class="panel-cta-btn panel-cta-ghost" href="/service-area/">Local Service Details</a></div>
+  </article></main>
+</RouteShell>
